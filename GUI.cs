@@ -555,15 +555,15 @@ namespace MirrorAlignmentSystem
 		/// <param name="dir">The direction to be shown to the user</param>  
 		public void ShowLeftRightDirection(string dir) 
 		{
-			if (this.dirLeftRightLabel.InvokeRequired)
-			{
-				SetDirLeftRightLabelCallback d = new SetDirLeftRightLabelCallback(ShowLeftRightDirection);
-				this.Invoke(d, new object[] { dir });
-			}
-			else
-			{
-				this.dirLeftRightLabel.Text = dirLeftRightLabel.Text = dir;
-			}
+			//if (this.dirLeftRightLabel.InvokeRequired)
+			//{
+			//	SetDirLeftRightLabelCallback d = new SetDirLeftRightLabelCallback(ShowLeftRightDirection);
+			//	this.Invoke(d, new object[] { dir });
+			//}
+			//else
+			//{
+			//	this.dirLeftRightLabel.Text = dirLeftRightLabel.Text = dir;
+			//}
 		}
 
 		/// <summary>
@@ -1026,14 +1026,14 @@ namespace MirrorAlignmentSystem
 		/// <param name="rot_y">The y rotation.</param>
 		/// <param name="rot_z">The z rotation.</param>
 		public void UpdateLabel (
-			int segnum,
+			string segnum,
 			int align_x,
 			int align_y,
 			int rot_x,
 			int rot_y,
 			int rot_z )
 		{
-			lbl_01.Text = "SEGMENT " + segnum.ToString();
+			lbl_01.Text = "SEGMENT " + segnum;
 
 			lbl_03.Text = align_x.ToString() + " mm";
 			lbl_03.ForeColor = (align_x > 4) ? Color.Red : Color.Green;

@@ -62,8 +62,6 @@
 			this.upDownPBOne = new System.Windows.Forms.PictureBox();
 			this.leftRightPBOne = new System.Windows.Forms.PictureBox();
 			this.leftRightPBTwo = new System.Windows.Forms.PictureBox();
-			this.lbl_lr_1 = new System.Windows.Forms.Label();
-			this.dirLeftRightLabel = new System.Windows.Forms.Label();
 			this.tabFine = new System.Windows.Forms.TabPage();
 			this.combinedImagePB = new System.Windows.Forms.PictureBox();
 			this.CoMLabel = new System.Windows.Forms.Label();
@@ -367,8 +365,6 @@
 			this.tabCoarse.AutoScroll = true;
 			this.tabCoarse.BackColor = System.Drawing.Color.MistyRose;
 			this.tabCoarse.Controls.Add(this.gbCoarse);
-			this.tabCoarse.Controls.Add(this.lbl_lr_1);
-			this.tabCoarse.Controls.Add(this.dirLeftRightLabel);
 			this.tabCoarse.Location = new System.Drawing.Point(4, 48);
 			this.tabCoarse.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.tabCoarse.Name = "tabCoarse";
@@ -386,7 +382,7 @@
 			this.gbCoarse.Controls.Add(this.leftRightPBOne);
 			this.gbCoarse.Controls.Add(this.leftRightPBTwo);
 			this.gbCoarse.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.gbCoarse.Location = new System.Drawing.Point(7, 6);
+			this.gbCoarse.Location = new System.Drawing.Point(100, 6);
 			this.gbCoarse.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.gbCoarse.Name = "gbCoarse";
 			this.gbCoarse.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
@@ -464,27 +460,6 @@
 			this.leftRightPBTwo.TabIndex = 12;
 			this.leftRightPBTwo.TabStop = false;
 			this.leftRightPBTwo.WaitOnLoad = true;
-			// 
-			// lbl_lr_1
-			// 
-			this.lbl_lr_1.Location = new System.Drawing.Point(1143, 294);
-			this.lbl_lr_1.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-			this.lbl_lr_1.Name = "lbl_lr_1";
-			this.lbl_lr_1.Size = new System.Drawing.Size(45, 45);
-			this.lbl_lr_1.TabIndex = 18;
-			this.lbl_lr_1.Text = " 0";
-			this.lbl_lr_1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-			// 
-			// dirLeftRightLabel
-			// 
-			this.dirLeftRightLabel.AutoSize = true;
-			this.dirLeftRightLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.dirLeftRightLabel.Location = new System.Drawing.Point(1181, 65);
-			this.dirLeftRightLabel.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-			this.dirLeftRightLabel.Name = "dirLeftRightLabel";
-			this.dirLeftRightLabel.Size = new System.Drawing.Size(29, 31);
-			this.dirLeftRightLabel.TabIndex = 16;
-			this.dirLeftRightLabel.Text = "0";
 			// 
 			// tabFine
 			// 
@@ -685,7 +660,6 @@
 			this.groupBox5.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.overviewImagePB)).EndInit();
 			this.tabCoarse.ResumeLayout(false);
-			this.tabCoarse.PerformLayout();
 			this.gbCoarse.ResumeLayout(false);
 			this.gbCoarse.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.upDownPBTwo)).EndInit();
@@ -722,10 +696,8 @@
         private System.Windows.Forms.PictureBox combinedImagePB;
         private System.Windows.Forms.TabPage tabCoarse;
         private System.Windows.Forms.GroupBox gbCoarse;
-        private System.Windows.Forms.Label lbl_lr_2;
-        private System.Windows.Forms.Label lbl_lr_1;
-        private System.Windows.Forms.Label dirUpDownLabel;
-        private System.Windows.Forms.Label dirLeftRightLabel;
+		private System.Windows.Forms.Label lbl_lr_2;
+		private System.Windows.Forms.Label dirUpDownLabel;
         private System.Windows.Forms.PictureBox upDownPBTwo;
         private System.Windows.Forms.PictureBox upDownPBOne;
         private System.Windows.Forms.PictureBox leftRightPBOne;

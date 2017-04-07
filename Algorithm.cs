@@ -502,6 +502,7 @@ namespace MirrorAlignmentSystem
 				{
 					//MessageBox.Show("ROI Error");
                     ++errcnt;
+					continue;
 				}
 
                 //Show black pattern on monitor
@@ -607,6 +608,7 @@ namespace MirrorAlignmentSystem
                 {
                     //MessageBox.Show("ROI Error");
                     ++errcnt;
+					continue;
                 }
 
                 //Show black pattern on monitor
