@@ -49,7 +49,6 @@
 			this.DWbutton = new System.Windows.Forms.Button();
 			this.UpButton = new System.Windows.Forms.Button();
 			this.checkBox1 = new System.Windows.Forms.CheckBox();
-			this.button1 = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
 			this.BlackBGNumberTextBox = new System.Windows.Forms.TextBox();
 			this.SegmentNumberTextbox = new System.Windows.Forms.TextBox();
@@ -107,7 +106,7 @@
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Padding = new System.Windows.Forms.Padding(12, 4, 0, 4);
-			this.menuStrip1.Size = new System.Drawing.Size(1413, 27);
+			this.menuStrip1.Size = new System.Drawing.Size(1370, 27);
 			this.menuStrip1.TabIndex = 19;
 			this.menuStrip1.Text = "menuStrip1";
 			this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -206,7 +205,6 @@
 			this.tabOverview.Controls.Add(this.DWbutton);
 			this.tabOverview.Controls.Add(this.UpButton);
 			this.tabOverview.Controls.Add(this.checkBox1);
-			this.tabOverview.Controls.Add(this.button1);
 			this.tabOverview.Controls.Add(this.button2);
 			this.tabOverview.Controls.Add(this.BlackBGNumberTextBox);
 			this.tabOverview.Controls.Add(this.SegmentNumberTextbox);
@@ -306,29 +304,18 @@
 			this.checkBox1.UseVisualStyleBackColor = true;
 			this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
 			// 
-			// button1
-			// 
-			this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button1.Location = new System.Drawing.Point(175, 563);
-			this.button1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(524, 66);
-			this.button1.TabIndex = 42;
-			this.button1.Text = "Update Overview image";
-			this.button1.UseVisualStyleBackColor = true;
-			// 
 			// button2
 			// 
 			this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button2.Location = new System.Drawing.Point(753, 563);
+			this.button2.Location = new System.Drawing.Point(175, 557);
 			this.button2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(571, 66);
 			this.button2.TabIndex = 41;
-			this.button2.Text = "Save image";
+			this.button2.Text = "Save all data";
 			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.button2_Click_1);
 			// 
 			// BlackBGNumberTextBox
 			// 
@@ -384,7 +371,7 @@
 			this.tabCoarse.Location = new System.Drawing.Point(4, 48);
 			this.tabCoarse.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.tabCoarse.Name = "tabCoarse";
-			this.tabCoarse.Size = new System.Drawing.Size(1354, 609);
+			this.tabCoarse.Size = new System.Drawing.Size(1379, 658);
 			this.tabCoarse.TabIndex = 2;
 			this.tabCoarse.Text = "COARSE";
 			// 
@@ -507,7 +494,7 @@
 			this.tabFine.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.tabFine.Name = "tabFine";
 			this.tabFine.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-			this.tabFine.Size = new System.Drawing.Size(1354, 649);
+			this.tabFine.Size = new System.Drawing.Size(1379, 658);
 			this.tabFine.TabIndex = 1;
 			this.tabFine.Text = "FINE";
 			// 
@@ -541,7 +528,7 @@
 			this.tabCal.Location = new System.Drawing.Point(4, 48);
 			this.tabCal.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.tabCal.Name = "tabCal";
-			this.tabCal.Size = new System.Drawing.Size(1354, 649);
+			this.tabCal.Size = new System.Drawing.Size(1379, 658);
 			this.tabCal.TabIndex = 3;
 			this.tabCal.Text = "CALIBRATE";
 			// 
@@ -662,7 +649,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoScroll = true;
-			this.ClientSize = new System.Drawing.Size(1413, 799);
+			this.ClientSize = new System.Drawing.Size(1370, 750);
 			this.Controls.Add(this.lbl_11);
 			this.Controls.Add(this.lbl_10);
 			this.Controls.Add(this.lbl_09);
@@ -742,8 +729,7 @@
         private System.Windows.Forms.PictureBox leftRightPBTwo;
         private System.Windows.Forms.TabPage tabCal;
         private System.Windows.Forms.TextBox BlackBGNumberTextBox;
-        private System.Windows.Forms.TextBox SegmentNumberTextbox;
-        private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.TextBox SegmentNumberTextbox;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label CoMLabel;
         private System.Windows.Forms.CheckBox checkBox1;
