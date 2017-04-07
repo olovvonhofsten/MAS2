@@ -198,6 +198,7 @@
 			// 
 			// tabOverview
 			// 
+			this.tabOverview.AutoScroll = true;
 			this.tabOverview.BackColor = System.Drawing.Color.Moccasin;
 			this.tabOverview.Controls.Add(this.btnCheckAllCoarse);
 			this.tabOverview.Controls.Add(this.btnCheckAllFine);
@@ -377,6 +378,7 @@
 			// 
 			// tabCoarse
 			// 
+			this.tabCoarse.AutoScroll = true;
 			this.tabCoarse.BackColor = System.Drawing.Color.MistyRose;
 			this.tabCoarse.Controls.Add(this.gbCoarse);
 			this.tabCoarse.Controls.Add(this.lbl_lr_1);
@@ -384,7 +386,7 @@
 			this.tabCoarse.Location = new System.Drawing.Point(4, 48);
 			this.tabCoarse.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.tabCoarse.Name = "tabCoarse";
-			this.tabCoarse.Size = new System.Drawing.Size(1354, 609);
+			this.tabCoarse.Size = new System.Drawing.Size(1379, 658);
 			this.tabCoarse.TabIndex = 2;
 			this.tabCoarse.Text = "COARSE";
 			// 
@@ -500,6 +502,7 @@
 			// 
 			// tabFine
 			// 
+			this.tabFine.AutoScroll = true;
 			this.tabFine.BackColor = System.Drawing.Color.LemonChiffon;
 			this.tabFine.Controls.Add(this.combinedImagePB);
 			this.tabFine.Controls.Add(this.CoMLabel);
@@ -507,7 +510,7 @@
 			this.tabFine.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.tabFine.Name = "tabFine";
 			this.tabFine.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-			this.tabFine.Size = new System.Drawing.Size(1354, 649);
+			this.tabFine.Size = new System.Drawing.Size(1379, 658);
 			this.tabFine.TabIndex = 1;
 			this.tabFine.Text = "FINE";
 			// 
@@ -536,12 +539,13 @@
 			// 
 			// tabCal
 			// 
+			this.tabCal.AutoScroll = true;
 			this.tabCal.BackColor = System.Drawing.Color.White;
 			this.tabCal.Controls.Add(this.CalibrateImgPB);
 			this.tabCal.Location = new System.Drawing.Point(4, 48);
 			this.tabCal.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.tabCal.Name = "tabCal";
-			this.tabCal.Size = new System.Drawing.Size(1354, 649);
+			this.tabCal.Size = new System.Drawing.Size(1379, 658);
 			this.tabCal.TabIndex = 3;
 			this.tabCal.Text = "CALIBRATE";
 			// 
