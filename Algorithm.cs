@@ -499,7 +499,7 @@ namespace MirrorAlignmentSystem
 				Rectangle rect = TotImg.ROI;
 				if (!rect_check(sz, rect))
 				{
-					MessageBox.Show("ROI Error");
+					//MessageBox.Show("ROI Error");
 				}
 
                 //Show black pattern on monitor
