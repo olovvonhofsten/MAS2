@@ -55,6 +55,12 @@
 			this.groupBox5 = new System.Windows.Forms.GroupBox();
 			this.overviewImagePB = new System.Windows.Forms.PictureBox();
 			this.tabCoarse = new System.Windows.Forms.TabPage();
+			this.lbl_lr = new System.Windows.Forms.Label();
+			this.lbl_ll = new System.Windows.Forms.Label();
+			this.lbl_ur = new System.Windows.Forms.Label();
+			this.lbl_ul = new System.Windows.Forms.Label();
+			this.pb_Lower = new System.Windows.Forms.PictureBox();
+			this.pb_Upper = new System.Windows.Forms.PictureBox();
 			this.gbCoarse = new System.Windows.Forms.GroupBox();
 			this.lbl_lr_2 = new System.Windows.Forms.Label();
 			this.dirUpDownLabel = new System.Windows.Forms.Label();
@@ -78,15 +84,19 @@
 			this.lbl_08 = new System.Windows.Forms.Label();
 			this.lbl_11 = new System.Windows.Forms.Label();
 			this.lbl_10 = new System.Windows.Forms.Label();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+			this.button1 = new System.Windows.Forms.Button();
+			this.button3 = new System.Windows.Forms.Button();
+			this.button4 = new System.Windows.Forms.Button();
+			this.button5 = new System.Windows.Forms.Button();
 			this.menuStrip1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabOverview.SuspendLayout();
 			this.groupBox5.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.overviewImagePB)).BeginInit();
 			this.tabCoarse.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pb_Lower)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pb_Upper)).BeginInit();
 			this.gbCoarse.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.upDownPBTwo)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.upDownPBOne)).BeginInit();
@@ -96,8 +106,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.combinedImagePB)).BeginInit();
 			this.tabCal.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.CalibrateImgPB)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -312,7 +320,7 @@
 			// 
 			this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button2.Location = new System.Drawing.Point(175, 411);
+			this.button2.Location = new System.Drawing.Point(175, 436);
 			this.button2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(571, 66);
@@ -369,15 +377,81 @@
 			// 
 			this.tabCoarse.AutoScroll = true;
 			this.tabCoarse.BackColor = System.Drawing.Color.MistyRose;
-			this.tabCoarse.Controls.Add(this.pictureBox2);
-			this.tabCoarse.Controls.Add(this.pictureBox1);
+			this.tabCoarse.Controls.Add(this.button5);
+			this.tabCoarse.Controls.Add(this.button4);
+			this.tabCoarse.Controls.Add(this.button3);
+			this.tabCoarse.Controls.Add(this.button1);
+			this.tabCoarse.Controls.Add(this.lbl_lr);
+			this.tabCoarse.Controls.Add(this.lbl_ll);
+			this.tabCoarse.Controls.Add(this.lbl_ur);
+			this.tabCoarse.Controls.Add(this.lbl_ul);
+			this.tabCoarse.Controls.Add(this.pb_Lower);
+			this.tabCoarse.Controls.Add(this.pb_Upper);
 			this.tabCoarse.Controls.Add(this.gbCoarse);
 			this.tabCoarse.Location = new System.Drawing.Point(4, 48);
 			this.tabCoarse.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.tabCoarse.Name = "tabCoarse";
-			this.tabCoarse.Size = new System.Drawing.Size(1379, 658);
+			this.tabCoarse.Size = new System.Drawing.Size(1247, 487);
 			this.tabCoarse.TabIndex = 2;
 			this.tabCoarse.Text = "COARSE";
+			// 
+			// lbl_lr
+			// 
+			this.lbl_lr.AutoSize = true;
+			this.lbl_lr.BackColor = System.Drawing.Color.White;
+			this.lbl_lr.Location = new System.Drawing.Point(953, 449);
+			this.lbl_lr.Name = "lbl_lr";
+			this.lbl_lr.Size = new System.Drawing.Size(24, 26);
+			this.lbl_lr.TabIndex = 32;
+			this.lbl_lr.Text = "0";
+			// 
+			// lbl_ll
+			// 
+			this.lbl_ll.AutoSize = true;
+			this.lbl_ll.BackColor = System.Drawing.Color.White;
+			this.lbl_ll.Location = new System.Drawing.Point(868, 449);
+			this.lbl_ll.Name = "lbl_ll";
+			this.lbl_ll.Size = new System.Drawing.Size(24, 26);
+			this.lbl_ll.TabIndex = 31;
+			this.lbl_ll.Text = "0";
+			// 
+			// lbl_ur
+			// 
+			this.lbl_ur.AutoSize = true;
+			this.lbl_ur.BackColor = System.Drawing.Color.White;
+			this.lbl_ur.Location = new System.Drawing.Point(953, 136);
+			this.lbl_ur.Name = "lbl_ur";
+			this.lbl_ur.Size = new System.Drawing.Size(24, 26);
+			this.lbl_ur.TabIndex = 30;
+			this.lbl_ur.Text = "0";
+			// 
+			// lbl_ul
+			// 
+			this.lbl_ul.AutoSize = true;
+			this.lbl_ul.BackColor = System.Drawing.Color.White;
+			this.lbl_ul.Location = new System.Drawing.Point(868, 136);
+			this.lbl_ul.Name = "lbl_ul";
+			this.lbl_ul.Size = new System.Drawing.Size(24, 26);
+			this.lbl_ul.TabIndex = 29;
+			this.lbl_ul.Text = "0";
+			// 
+			// pb_Lower
+			// 
+			this.pb_Lower.Image = ((System.Drawing.Image)(resources.GetObject("pb_Lower.Image")));
+			this.pb_Lower.Location = new System.Drawing.Point(822, 395);
+			this.pb_Lower.Name = "pb_Lower";
+			this.pb_Lower.Size = new System.Drawing.Size(200, 224);
+			this.pb_Lower.TabIndex = 28;
+			this.pb_Lower.TabStop = false;
+			// 
+			// pb_Upper
+			// 
+			this.pb_Upper.Image = ((System.Drawing.Image)(resources.GetObject("pb_Upper.Image")));
+			this.pb_Upper.Location = new System.Drawing.Point(822, 81);
+			this.pb_Upper.Name = "pb_Upper";
+			this.pb_Upper.Size = new System.Drawing.Size(200, 224);
+			this.pb_Upper.TabIndex = 27;
+			this.pb_Upper.TabStop = false;
 			// 
 			// gbCoarse
 			// 
@@ -478,7 +552,7 @@
 			this.tabFine.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.tabFine.Name = "tabFine";
 			this.tabFine.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-			this.tabFine.Size = new System.Drawing.Size(1379, 658);
+			this.tabFine.Size = new System.Drawing.Size(1247, 487);
 			this.tabFine.TabIndex = 1;
 			this.tabFine.Text = "FINE";
 			// 
@@ -513,7 +587,7 @@
 			this.tabCal.Location = new System.Drawing.Point(4, 48);
 			this.tabCal.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.tabCal.Name = "tabCal";
-			this.tabCal.Size = new System.Drawing.Size(1379, 658);
+			this.tabCal.Size = new System.Drawing.Size(1247, 487);
 			this.tabCal.TabIndex = 3;
 			this.tabCal.Text = "CALIBRATE";
 			// 
@@ -629,33 +703,55 @@
 			this.lbl_10.TabIndex = 47;
 			this.lbl_10.Text = "Z:";
 			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-			this.pictureBox1.Location = new System.Drawing.Point(822, 81);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(200, 224);
-			this.pictureBox1.TabIndex = 27;
-			this.pictureBox1.TabStop = false;
-			this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-			// 
-			// pictureBox2
-			// 
-			this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-			this.pictureBox2.Location = new System.Drawing.Point(822, 395);
-			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(200, 224);
-			this.pictureBox2.TabIndex = 28;
-			this.pictureBox2.TabStop = false;
-			// 
 			// imageList1
 			// 
 			this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
 			this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-			this.imageList1.Images.SetKeyName(0, "leftleft.png");
-			this.imageList1.Images.SetKeyName(1, "leftright.png");
-			this.imageList1.Images.SetKeyName(2, "rightleft.png");
-			this.imageList1.Images.SetKeyName(3, "rightright.png");
+			this.imageList1.Images.SetKeyName(0, "Segment.png");
+			this.imageList1.Images.SetKeyName(1, "leftleft.png");
+			this.imageList1.Images.SetKeyName(2, "leftright.png");
+			this.imageList1.Images.SetKeyName(3, "rightleft.png");
+			this.imageList1.Images.SetKeyName(4, "rightright.png");
+			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(10, 60);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(94, 34);
+			this.button1.TabIndex = 33;
+			this.button1.Text = "+1 +1";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click_2);
+			// 
+			// button3
+			// 
+			this.button3.Location = new System.Drawing.Point(10, 100);
+			this.button3.Name = "button3";
+			this.button3.Size = new System.Drawing.Size(94, 34);
+			this.button3.TabIndex = 34;
+			this.button3.Text = "0 0";
+			this.button3.UseVisualStyleBackColor = true;
+			this.button3.Click += new System.EventHandler(this.button3_Click);
+			// 
+			// button4
+			// 
+			this.button4.Location = new System.Drawing.Point(10, 140);
+			this.button4.Name = "button4";
+			this.button4.Size = new System.Drawing.Size(94, 34);
+			this.button4.TabIndex = 35;
+			this.button4.Text = "-1 +1";
+			this.button4.UseVisualStyleBackColor = true;
+			this.button4.Click += new System.EventHandler(this.button4_Click);
+			// 
+			// button5
+			// 
+			this.button5.Location = new System.Drawing.Point(10, 180);
+			this.button5.Name = "button5";
+			this.button5.Size = new System.Drawing.Size(94, 34);
+			this.button5.TabIndex = 36;
+			this.button5.Text = "+2 -3";
+			this.button5.UseVisualStyleBackColor = true;
+			this.button5.Click += new System.EventHandler(this.button5_Click);
 			// 
 			// MainWindow
 			// 
@@ -695,6 +791,9 @@
 			this.groupBox5.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.overviewImagePB)).EndInit();
 			this.tabCoarse.ResumeLayout(false);
+			this.tabCoarse.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pb_Lower)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pb_Upper)).EndInit();
 			this.gbCoarse.ResumeLayout(false);
 			this.gbCoarse.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.upDownPBTwo)).EndInit();
@@ -706,8 +805,6 @@
 			((System.ComponentModel.ISupportInitialize)(this.combinedImagePB)).EndInit();
 			this.tabCal.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.CalibrateImgPB)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -763,9 +860,17 @@
 		private System.Windows.Forms.Label lbl_08;
 		private System.Windows.Forms.Label lbl_11;
 		private System.Windows.Forms.Label lbl_10;
-		private System.Windows.Forms.PictureBox pictureBox1;
-		private System.Windows.Forms.PictureBox pictureBox2;
+		private System.Windows.Forms.PictureBox pb_Upper;
+		private System.Windows.Forms.PictureBox pb_Lower;
 		private System.Windows.Forms.ImageList imageList1;
+		private System.Windows.Forms.Label lbl_ur;
+		private System.Windows.Forms.Label lbl_ul;
+		private System.Windows.Forms.Label lbl_lr;
+		private System.Windows.Forms.Label lbl_ll;
+		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button button4;
+		private System.Windows.Forms.Button button3;
+		private System.Windows.Forms.Button button5;
     }
 }
 
