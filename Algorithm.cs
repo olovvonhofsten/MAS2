@@ -441,6 +441,16 @@ namespace MirrorAlignmentSystem
             return doublePoints;
         }
 
+		private static bool rect_check(Size sz, Rectangle r)
+		{
+			if (r.X < 0) return false;
+			if (r.Y < 0) return false;
+			if (r.Right  >= sz.Width)  return false;
+			if (r.Bottom >= sz.Height) return false;
+			return true;
+		}
+
+
         public static void checkAllSegmentsFine(
 			CameraController cameraController, 
 			string[] cameraSettings, 
@@ -485,6 +495,13 @@ namespace MirrorAlignmentSystem
                 Rectangle currentROI = new Rectangle((int)AOIData[0], (int)AOIData[1], (int)AOIData[2], (int)AOIData[3]);
                 TotImg.ROI = currentROI;
 
+				Size sz = TotImg.Size;
+				Rectangle rect = TotImg.ROI;
+				if (!rect_check(sz, rect))
+				{
+					MessageBox.Show("ROI Error");
+				}
+
                 //Show black pattern on monitor
                 monitor.BlackScreen();
                 Thread.Sleep(waitOnMonitor);
@@ -506,11 +523,7 @@ namespace MirrorAlignmentSystem
                 Image<Bgr, byte> combinedImg = new Image<Bgr, byte>(combinedBitmap);
          
                 // check tolerance
-                if(mradOffset[0]+mradOffset[1] < fineTolerance)
-                {
-                    ok = 1;
-            }
-                else { ok = 0; }
+                ok = (mradOffset[0]+mradOffset[1] < fineTolerance) ? 1 : 0;
 
                 fineData[tick, 0] = ok;
                 fineData[tick, 1] = offsetXY[0];
@@ -518,22 +531,21 @@ namespace MirrorAlignmentSystem
                 fineData[tick, 3] = mradOffset[0];
                 fineData[tick, 4] = mradOffset[1];
 
-                /*
-                TotImg = combinedImg.Copy();
-
-                tick++;
-                TotImg.ROI = Rectangle.Empty;
-                */
-                Image<Bgr, Byte> addImg = TotImg.Copy();
-                addImg.SetZero();
-                CvInvoke.Add(combinedImg, TotImg.Copy(), addImg);
+				Image<Bgr, Byte> addImg = new Image<Bgr, byte>(TotImg.Size);
+				//	= TotImg.Copy();
+                //addImg.SetZero();
+                CvInvoke.Add(combinedImg, TotImg, addImg);
                 CvInvoke.cvCopy(addImg, TotImg, IntPtr.Zero);
                 tick++;
-                TotImg.ROI = Rectangle.Empty;
+                //TotImg.ROI = Rectangle.Empty;
+
+				//addImg.Dispose();
+				//combinedImg.Dispose();
 
 
             }
-            overviewFine = TotImg.ToBitmap();
+			TotImg.ROI = Rectangle.Empty;
+			overviewFine = TotImg.ToBitmap();
 			caf.SetImage(overviewFine);
 			caf.WaitClose();
 		}
