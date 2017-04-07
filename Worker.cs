@@ -429,6 +429,7 @@ namespace MirrorAlignmentSystem
                             double rotZ;
                             Calibrate.rotationZ(segmentCenterOffsetPoints, out rotZ);
 
+                            mainWindow.UpdateLabel(segment, (int)Math.Round(blackholeOffsetPoint[0]), (int)Math.Round(blackholeOffsetPoint[1]), (int)Math.Round(segmentCenterOffsetPoint[0]), (int)Math.Round(segmentCenterOffsetPoint[1]), (int)Math.Round(rotZ));
                             //mainWindow.UpdateSegmentLabel(segmentCenterOffsetPoint);
                             //mainWindow.UpdateblackholeLabel(blackholeOffsetPoint);
 
