@@ -921,7 +921,7 @@ namespace MirrorAlignmentSystem
 				}
 				else
 				{
-					--sub;
+					++sub;
 				}
 			}
 			public void Lf()
