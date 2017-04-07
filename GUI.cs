@@ -1078,10 +1078,91 @@ namespace MirrorAlignmentSystem
 			lbl_11.Visible = false;
 		}
 
-		private void pictureBox1_Click(object sender, EventArgs e)
+		/// <summary>
+		/// Sets the upper img.
+		/// </summary>
+		/// <param name="lft">The LFT.</param>
+		/// <param name="rgt">The RGT.</param>
+		public void SetUpperImg( int lft, int rgt )
 		{
+			if (lft==0 && rgt==0)
+			{
+				pb_Upper.Image = imageList1.Images[0];
+				lbl_ul.Visible = false;
+				lbl_ur.Visible = false;
+				return;
+			}
 
+			lbl_ul.Visible = true;
+			lbl_ur.Visible = true;
+
+			bool neglft = lft < 0;
+			if (neglft) lft = -lft;
+			bool negrgt = rgt < 0;
+			if (negrgt) rgt = -rgt;
+
+			lbl_ul.Text = lft.ToString();
+			lbl_ur.Text = rgt.ToString();
+
+			int num = 1 + (neglft ? 0 : 2) + (negrgt ? 0 : 1);
+			pb_Upper.Image = imageList1.Images[num];
 		}
+
+
+		/// <summary>
+		/// Sets the lower img.
+		/// </summary>
+		/// <param name="lft">The LFT.</param>
+		/// <param name="rgt">The RGT.</param>
+		public void SetLowerImg(int lft, int rgt)
+		{
+			if (lft == 0 && rgt == 0)
+			{
+				pb_Lower.Image = imageList1.Images[0];
+				lbl_ll.Visible = false;
+				lbl_lr.Visible = false;
+				return;
+			}
+
+			lbl_ll.Visible = true;
+			lbl_lr.Visible = true;
+
+			bool neglft = lft < 0;
+			if (neglft) lft = -lft;
+			bool negrgt = rgt < 0;
+			if (negrgt) rgt = -rgt;
+
+			lbl_ll.Text = lft.ToString();
+			lbl_lr.Text = rgt.ToString();
+
+			int num = 1 + (neglft ? 0 : 2) + (negrgt ? 0 : 1);
+			pb_Lower.Image = imageList1.Images[num];
+		}
+
+		private void button1_Click_2(object sender, EventArgs e)
+		{
+			SetUpperImg(1, 1);
+			SetLowerImg(1, 1);
+		}
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			SetUpperImg(0, 0);
+			SetLowerImg(0, 0);
+		}
+
+		private void button4_Click(object sender, EventArgs e)
+		{
+			SetUpperImg(-1, +1);
+			SetLowerImg(-1, +1);
+		}
+
+		private void button5_Click(object sender, EventArgs e)
+		{
+			SetUpperImg(+2, -3);
+			SetLowerImg(+2, -3);
+		}
+
 
 	}
 }
