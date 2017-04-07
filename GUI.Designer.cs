@@ -316,7 +316,6 @@
 			this.button2.TabIndex = 41;
 			this.button2.Text = "Save all data";
 			this.button2.UseVisualStyleBackColor = true;
-			this.button2.Click += new System.EventHandler(this.button2_Click_1);
 			// 
 			// BlackBGNumberTextBox
 			// 
