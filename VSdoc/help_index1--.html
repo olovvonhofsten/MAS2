@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>Index</title>
+  <meta content="text/html; charset=utf-8" http-equiv="content-type">
+	<style>
+		html,body {
+			margin: 0; padding: 0px;
+			height:100%; 
+			min-height:100%;
+			background-color: rgb(233,232,220);
+			font-family: Verdana, Arial, Helvetica, sans-serif;
+			font-style: normal;
+			font-weight: normal;
+			color: black;
+		}
+
+		body {font-size:75%;position:relative; margin-top:-1px; border-style: solid solid solid solid;	border-color: rgb(172,168,153);	border-width: 0px 0px 1px 0px;}
+		a { text-decoration:none; color:#06c }
+		form {padding:5px; margin:0px;}
+	</style>
+</head>
+<body style="direction: ltr;">
+	<form>
+	Look for:<br /><input style="width:100%" onKeyDown="check_input(this.value,get_match)" onKeyUp="check_input(this.value,get_match)"/>
+	</form>
+
+	<script>
+		var words = new Array(
+"AddImage Method","AddUser Method","AdministrateUsersForm Class","AdministrateUsersForm Constructor","AdministrateUsersForm_Load Method","Aquisition Method","AquisitionVideo Method","BlackBGNumberTextBox_KeyDown Method","CameraController Class","ChangePassword Method","ChangePasswordForm Class","ChangePasswordForm Constructor","CreateNewUserForm Class","CreateNewUserForm Constructor","CurrentUser Class","DAL Class","DAserver Field","DAserver_DataChanged Method","DAserver_ServerStateChanged Method","DAserver_WriteCompleted Method","DataChanged Method","Eventlog Class","Eventlog Constructor","Eventlog_Load Method","Form Field","GetAOI Method","GetAOIData Method","GetAlignmentMode Method","GetBitmapBackgroundOfflineCameraImage Method","GetBlackBGNumber Method","GetBlackBackgroundOfflineCameraImage Method","GetCalibrateMode Method","GetCoarseBlackBitmapBackgroundOfflineImage Method","GetCoarseDownBitmapBackgroundOfflineImage Method","GetCoarseLeftBitmapBackgroundOfflineImage Method","GetCoarseRightBitmapBackgroundOfflineImage Method","GetCoarseUpBitmapBackgroundOfflineImage Method","GetCurrentUser Method","GetCurrentUserType Method","GetEventLog Method","GetExposureTime Method","GetFramerate Method","GetGamma Method","GetOfflineOnlineMode Method","GetOverviewImageOffline Method","GetPasswordForUser Method","GetPixelFormat Method","GetSegmentNumber Method","GetSettings Method","GetSubsamplingMode Method","GetUserData Method","GetUserTypeForUser Method","ImageHistory Class","ImageHistory Constructor","ImageHistory_Load Method","Init Method {MirrorAlignmentSystem.CameraController}","Init Method {MirrorAlignmentSystem.OPC}","InsertEvent Method","IsSettingsUpdated Method","Login Class","Login Constructor","Logout Method","MainWindow Class","MainWindow Constructor","MirrorAlignmentSystem Namespace","MirrorAlignmentSystem Reference","MonitorHandler Class","MonitorHandler Constructor","OPC Class","OPCTestValue Field","OptionForm Class","OptionForm Constructor","OptionForm_Load Method","ParentWindow Property","Run Method {MirrorAlignmentSystem.MonitorHandler}","Run Method {MirrorAlignmentSystem.Worker}","SQLString Field","SegmentNumberTextbox_KeyDown Method","ServerStateChanged Method","SetAOI Method","SetBitmapOrBlack Method","SetCurrentUser Method","SetCurrentUserType Method","SetEnableCallback Delegate","SetExposureTime Method","SetFramerate Method","SetGamma Method","SetPixelFormat Method","SetSubsamplingMode Method","SetTextCallback Delegate","SetVectors Method","SettingsUpdated Method","ShowBitmapBackgroundBitmap Method","ShowBlackBackgroundBitmap Method","ShowCombinedBitmap Method","ShowFPSCallback Delegate","ShowLeftRightOneBackgroundBitmap Method","ShowLeftRightTwoBackgroundBitmap Method","ShowOverviewBitmap Method","ShowUpDownOneBackgroundBitmap Method","ShowUpDownTwoBackgroundBitmap Method","Shutdown Method","SubscribeToOPCDAServerEvents Method","UpdateFPS Method","UpdateGUI Method","UpdateSettings Method","UpdateUserType Method","Worker Class","Worker Constructor","activeClientSubscriptionHandle Field","activeServerSubscriptionHandle Field","administrateToolStripMenuItem_Click Method","bitmapOrBlack Field","button1_Click Method {MirrorAlignmentSystem.Eventlog}","button1_Click Method {MirrorAlignmentSystem.ImageHistory}","button1_Click Method {MirrorAlignmentSystem.MainWindow}","button1_Click Method {MirrorAlignmentSystem.OptionForm}","calibrate Field","calibrateRadioButton_CheckedChanged Method","camera Field","changePasswordButton_Click Method","changePasswordForm Field","coarseRadioButton_CheckedChanged Method","context Field","createNewUserButton_Click Method","currentUser Field {MirrorAlignmentSystem.CurrentUser}","currentUser Field {MirrorAlignmentSystem.MainWindow}","currentUserType Field {MirrorAlignmentSystem.CurrentUser}","currentUserType Field {MirrorAlignmentSystem.MainWindow}","dataGridView1_RowEnter Method","dataGridView1_RowLeave Method","device Field","eventLogToolStripMenuItem_Click Method","exitToolStripMenuItem_Click Method","fineAlignment Field","fineRadioButton_CheckedChanged Method","imagesToolStripMenuItem_Click Method","inputSignature Field","loginButton_Click Method","logoutButton_Click Method","mainWindow Field","newUserButton_Click Method","newUserType Field","offline Field","offlineRadioButton_CheckedChanged Method","oldValue Field","onlineRadionButton_CheckedChanged Method","optionsToolStripMenuItem_Click Method","passwordTB_KeyPress Method","pixelShader Field","renderTarget Field","resourceView Field","settingsUpdated Field","swapChain Field","updateButton_Click Method","userToChange Field","valueBlackBGNumberTextBox Field","valueSegmentNumberTextbox Field","vertexShader Field","viewport Field"
+		);
+		
+		
+		var oldHighlight = 0;
+		var oldKey = "";
+		
+		function get_match(text) {
+		    var ltext = text.toLowerCase();
+		    for(i in words) {
+		        if(words[i].toLowerCase().indexOf(ltext) == "0") {
+		            return words[i];
+		        }
+		    }
+		    return "";
+		}
+		
+		function highlight(keyword) {
+		    if(oldHighlight) oldHighlight.className = "";
+		    var el = parent.frames['zindex'].document.getElementById("w_"+keyword);
+		    el.className="highlighted";
+		    oldHighlight = el;
+		}
+		
+		function check_input(text, matchfun) {
+		    if(text!=oldKey) {
+		        var keyword = matchfun(text);
+		        if(keyword) {       
+		            highlight(keyword);
+		            parent.frames['zindex'].document.getElementById('w_'+keyword).scrollIntoView();
+		        }
+		        oldKey = text;
+		    }
+		}
+	</script>
+</body>
+</html>
+

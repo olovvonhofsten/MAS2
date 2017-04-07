@@ -1,0 +1,1609 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<DynamicHelp xmlns="http://msdn.microsoft.com/vsdata/xsd/vsdh.xsd" xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance" xsi:schemaLocation="http://msdn.microsoft.com/vsdata/xsd/vsdh.xsd">	
+   <LINKGROUP ID="MirrorAlignmentSystem" Title="MirrorAlignmentSystem Reference Help" Priority="2100">
+      <GLYPH Expanded="vs:/ctxhelp_show.gif" Collapsed="vs:/ctxhelp_hide.gif"/>
+   </LINKGROUP>
+
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.AddImage" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000003D.html" LinkGroup="MirrorAlignmentSystem">AddImage Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.AddUser" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000036.html" LinkGroup="MirrorAlignmentSystem">AddUser Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.AdministrateUsersForm" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000001.html" LinkGroup="MirrorAlignmentSystem">AdministrateUsersForm Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.AdministrateUsersForm.AdministrateUsersForm" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000004.html" LinkGroup="MirrorAlignmentSystem">AdministrateUsersForm Constructor</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.AdministrateUsersForm.AdministrateUsersForm_Load" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000005.html" LinkGroup="MirrorAlignmentSystem">AdministrateUsersForm_Load Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CameraController.Aquisition" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000000B.html" LinkGroup="MirrorAlignmentSystem">Aquisition Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CameraController.AquisitionVideo" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000000C.html" LinkGroup="MirrorAlignmentSystem">AquisitionVideo Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.BlackBGNumberTextBox_KeyDown" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000005E.html" LinkGroup="MirrorAlignmentSystem">BlackBGNumberTextBox_KeyDown Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CameraController" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000008.html" LinkGroup="MirrorAlignmentSystem">CameraController Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.ChangePassword" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000039.html" LinkGroup="MirrorAlignmentSystem">ChangePassword Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.ChangePasswordForm" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000001A.html" LinkGroup="MirrorAlignmentSystem">ChangePasswordForm Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.ChangePasswordForm.ChangePasswordForm" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000001B.html" LinkGroup="MirrorAlignmentSystem">ChangePasswordForm Constructor</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CreateNewUserForm" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000001D.html" LinkGroup="MirrorAlignmentSystem">CreateNewUserForm Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CreateNewUserForm.CreateNewUserForm" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000001E.html" LinkGroup="MirrorAlignmentSystem">CreateNewUserForm Constructor</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CurrentUser" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000020.html" LinkGroup="MirrorAlignmentSystem">CurrentUser Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000028.html" LinkGroup="MirrorAlignmentSystem">DAL Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.OPC.DAserver" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000008B.html" LinkGroup="MirrorAlignmentSystem">DAserver Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.OPC.DAserver_DataChanged" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000091.html" LinkGroup="MirrorAlignmentSystem">DAserver_DataChanged Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.OPC.DAserver_ServerStateChanged" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000092.html" LinkGroup="MirrorAlignmentSystem">DAserver_ServerStateChanged Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.OPC.DAserver_WriteCompleted" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000090.html" LinkGroup="MirrorAlignmentSystem">DAserver_WriteCompleted Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.OPC.DataChanged" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000093.html" LinkGroup="MirrorAlignmentSystem">DataChanged Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.Eventlog" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000003E.html" LinkGroup="MirrorAlignmentSystem">Eventlog Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.Eventlog.Eventlog" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000003F.html" LinkGroup="MirrorAlignmentSystem">Eventlog Constructor</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.Eventlog.Eventlog_Load" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000040.html" LinkGroup="MirrorAlignmentSystem">Eventlog_Load Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MonitorHandler.Form" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000007B.html" LinkGroup="MirrorAlignmentSystem">Form Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CameraController.GetAOI" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000013.html" LinkGroup="MirrorAlignmentSystem">GetAOI Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.GetAOIData" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000033.html" LinkGroup="MirrorAlignmentSystem">GetAOIData Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.GetAlignmentMode" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000005B.html" LinkGroup="MirrorAlignmentSystem">GetAlignmentMode Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.GetBitmapBackgroundOfflineCameraImage" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000002C.html" LinkGroup="MirrorAlignmentSystem">GetBitmapBackgroundOfflineCameraImage Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.GetBlackBGNumber" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000057.html" LinkGroup="MirrorAlignmentSystem">GetBlackBGNumber Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.GetBlackBackgroundOfflineCameraImage" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000002B.html" LinkGroup="MirrorAlignmentSystem">GetBlackBackgroundOfflineCameraImage Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.GetCalibrateMode" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000005C.html" LinkGroup="MirrorAlignmentSystem">GetCalibrateMode Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.GetCoarseBlackBitmapBackgroundOfflineImage" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000031.html" LinkGroup="MirrorAlignmentSystem">GetCoarseBlackBitmapBackgroundOfflineImage Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.GetCoarseDownBitmapBackgroundOfflineImage" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000030.html" LinkGroup="MirrorAlignmentSystem">GetCoarseDownBitmapBackgroundOfflineImage Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.GetCoarseLeftBitmapBackgroundOfflineImage" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000002D.html" LinkGroup="MirrorAlignmentSystem">GetCoarseLeftBitmapBackgroundOfflineImage Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.GetCoarseRightBitmapBackgroundOfflineImage" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000002E.html" LinkGroup="MirrorAlignmentSystem">GetCoarseRightBitmapBackgroundOfflineImage Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.GetCoarseUpBitmapBackgroundOfflineImage" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000002F.html" LinkGroup="MirrorAlignmentSystem">GetCoarseUpBitmapBackgroundOfflineImage Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CurrentUser.GetCurrentUser" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000024.html" LinkGroup="MirrorAlignmentSystem">GetCurrentUser Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CurrentUser.GetCurrentUserType" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000026.html" LinkGroup="MirrorAlignmentSystem">GetCurrentUserType Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.GetEventLog" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000034.html" LinkGroup="MirrorAlignmentSystem">GetEventLog Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CameraController.GetExposureTime" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000017.html" LinkGroup="MirrorAlignmentSystem">GetExposureTime Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CameraController.GetFramerate" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000019.html" LinkGroup="MirrorAlignmentSystem">GetFramerate Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CameraController.GetGamma" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000000F.html" LinkGroup="MirrorAlignmentSystem">GetGamma Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.GetOfflineOnlineMode" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000005A.html" LinkGroup="MirrorAlignmentSystem">GetOfflineOnlineMode Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.GetOverviewImageOffline" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000002A.html" LinkGroup="MirrorAlignmentSystem">GetOverviewImageOffline Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.GetPasswordForUser" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000037.html" LinkGroup="MirrorAlignmentSystem">GetPasswordForUser Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CameraController.GetPixelFormat" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000015.html" LinkGroup="MirrorAlignmentSystem">GetPixelFormat Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.GetSegmentNumber" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000058.html" LinkGroup="MirrorAlignmentSystem">GetSegmentNumber Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.GetSettings" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000003B.html" LinkGroup="MirrorAlignmentSystem">GetSettings Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CameraController.GetSubsamplingMode" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000011.html" LinkGroup="MirrorAlignmentSystem">GetSubsamplingMode Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.GetUserData" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000035.html" LinkGroup="MirrorAlignmentSystem">GetUserData Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.GetUserTypeForUser" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000038.html" LinkGroup="MirrorAlignmentSystem">GetUserTypeForUser Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.ImageHistory" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000006F.html" LinkGroup="MirrorAlignmentSystem">ImageHistory Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.ImageHistory.ImageHistory" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000070.html" LinkGroup="MirrorAlignmentSystem">ImageHistory Constructor</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.ImageHistory.ImageHistory_Load" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000071.html" LinkGroup="MirrorAlignmentSystem">ImageHistory_Load Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CameraController.Init" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000000A.html" LinkGroup="MirrorAlignmentSystem">Init Method {MirrorAlignmentSystem.CameraController}</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.OPC.Init" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000008E.html" LinkGroup="MirrorAlignmentSystem">Init Method {MirrorAlignmentSystem.OPC}</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.InsertEvent" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000032.html" LinkGroup="MirrorAlignmentSystem">InsertEvent Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.IsSettingsUpdated" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000051.html" LinkGroup="MirrorAlignmentSystem">IsSettingsUpdated Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.Login" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000073.html" LinkGroup="MirrorAlignmentSystem">Login Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.Login.Login" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000075.html" LinkGroup="MirrorAlignmentSystem">Login Constructor</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CurrentUser.Logout" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000027.html" LinkGroup="MirrorAlignmentSystem">Logout Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000042.html" LinkGroup="MirrorAlignmentSystem">MainWindow Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.MainWindow" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000004F.html" LinkGroup="MirrorAlignmentSystem">MainWindow Constructor</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000000.html" LinkGroup="MirrorAlignmentSystem">MirrorAlignmentSystem Namespace</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem Reference" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_00000000000000A0.html" LinkGroup="MirrorAlignmentSystem">MirrorAlignmentSystem Reference</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MonitorHandler" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000007A.html" LinkGroup="MirrorAlignmentSystem">MonitorHandler Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MonitorHandler.MonitorHandler" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000086.html" LinkGroup="MirrorAlignmentSystem">MonitorHandler Constructor</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.OPC" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000008A.html" LinkGroup="MirrorAlignmentSystem">OPC Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.OPCTestValue" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000043.html" LinkGroup="MirrorAlignmentSystem">OPCTestValue Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.OptionForm" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000095.html" LinkGroup="MirrorAlignmentSystem">OptionForm Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.OptionForm.OptionForm" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000096.html" LinkGroup="MirrorAlignmentSystem">OptionForm Constructor</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.OptionForm.OptionForm_Load" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000098.html" LinkGroup="MirrorAlignmentSystem">OptionForm_Load Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.OptionForm.ParentWindow" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000097.html" LinkGroup="MirrorAlignmentSystem">ParentWindow Property</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MonitorHandler.Run" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000089.html" LinkGroup="MirrorAlignmentSystem">Run Method {MirrorAlignmentSystem.MonitorHandler}</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.Worker.Run" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000009F.html" LinkGroup="MirrorAlignmentSystem">Run Method {MirrorAlignmentSystem.Worker}</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.SQLString" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000029.html" LinkGroup="MirrorAlignmentSystem">SQLString Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.SegmentNumberTextbox_KeyDown" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000005F.html" LinkGroup="MirrorAlignmentSystem">SegmentNumberTextbox_KeyDown Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.OPC.ServerStateChanged" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000094.html" LinkGroup="MirrorAlignmentSystem">ServerStateChanged Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CameraController.SetAOI" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000012.html" LinkGroup="MirrorAlignmentSystem">SetAOI Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MonitorHandler.SetBitmapOrBlack" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000087.html" LinkGroup="MirrorAlignmentSystem">SetBitmapOrBlack Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CurrentUser.SetCurrentUser" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000023.html" LinkGroup="MirrorAlignmentSystem">SetCurrentUser Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CurrentUser.SetCurrentUserType" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000025.html" LinkGroup="MirrorAlignmentSystem">SetCurrentUserType Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.SetEnableCallback" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000048.html" LinkGroup="MirrorAlignmentSystem">SetEnableCallback Delegate</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CameraController.SetExposureTime" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000016.html" LinkGroup="MirrorAlignmentSystem">SetExposureTime Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CameraController.SetFramerate" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000018.html" LinkGroup="MirrorAlignmentSystem">SetFramerate Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CameraController.SetGamma" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000000E.html" LinkGroup="MirrorAlignmentSystem">SetGamma Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CameraController.SetPixelFormat" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000014.html" LinkGroup="MirrorAlignmentSystem">SetPixelFormat Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CameraController.SetSubsamplingMode" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000010.html" LinkGroup="MirrorAlignmentSystem">SetSubsamplingMode Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.SetTextCallback" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000047.html" LinkGroup="MirrorAlignmentSystem">SetTextCallback Delegate</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MonitorHandler.SetVectors" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000088.html" LinkGroup="MirrorAlignmentSystem">SetVectors Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.SettingsUpdated" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000050.html" LinkGroup="MirrorAlignmentSystem">SettingsUpdated Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.ShowBitmapBackgroundBitmap" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000055.html" LinkGroup="MirrorAlignmentSystem">ShowBitmapBackgroundBitmap Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.ShowBlackBackgroundBitmap" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000054.html" LinkGroup="MirrorAlignmentSystem">ShowBlackBackgroundBitmap Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.ShowCombinedBitmap" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000056.html" LinkGroup="MirrorAlignmentSystem">ShowCombinedBitmap Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.ShowFPSCallback" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000049.html" LinkGroup="MirrorAlignmentSystem">ShowFPSCallback Delegate</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.ShowLeftRightOneBackgroundBitmap" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000006B.html" LinkGroup="MirrorAlignmentSystem">ShowLeftRightOneBackgroundBitmap Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.ShowLeftRightTwoBackgroundBitmap" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000006C.html" LinkGroup="MirrorAlignmentSystem">ShowLeftRightTwoBackgroundBitmap Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.ShowOverviewBitmap" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000053.html" LinkGroup="MirrorAlignmentSystem">ShowOverviewBitmap Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.ShowUpDownOneBackgroundBitmap" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000006D.html" LinkGroup="MirrorAlignmentSystem">ShowUpDownOneBackgroundBitmap Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.ShowUpDownTwoBackgroundBitmap" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000006E.html" LinkGroup="MirrorAlignmentSystem">ShowUpDownTwoBackgroundBitmap Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CameraController.Shutdown" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000000D.html" LinkGroup="MirrorAlignmentSystem">Shutdown Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.OPC.SubscribeToOPCDAServerEvents" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000008F.html" LinkGroup="MirrorAlignmentSystem">SubscribeToOPCDAServerEvents Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.UpdateFPS" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000067.html" LinkGroup="MirrorAlignmentSystem">UpdateFPS Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.UpdateGUI" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000052.html" LinkGroup="MirrorAlignmentSystem">UpdateGUI Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.UpdateSettings" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000003C.html" LinkGroup="MirrorAlignmentSystem">UpdateSettings Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.DAL.UpdateUserType" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000003A.html" LinkGroup="MirrorAlignmentSystem">UpdateUserType Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.Worker" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000009B.html" LinkGroup="MirrorAlignmentSystem">Worker Class</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.Worker.Worker" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000009E.html" LinkGroup="MirrorAlignmentSystem">Worker Constructor</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.OPC.activeClientSubscriptionHandle" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000008D.html" LinkGroup="MirrorAlignmentSystem">activeClientSubscriptionHandle Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.OPC.activeServerSubscriptionHandle" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000008C.html" LinkGroup="MirrorAlignmentSystem">activeServerSubscriptionHandle Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.administrateToolStripMenuItem_Click" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000064.html" LinkGroup="MirrorAlignmentSystem">administrateToolStripMenuItem_Click Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MonitorHandler.bitmapOrBlack" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000085.html" LinkGroup="MirrorAlignmentSystem">bitmapOrBlack Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.Eventlog.button1_Click" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000041.html" LinkGroup="MirrorAlignmentSystem">button1_Click Method {MirrorAlignmentSystem.Eventlog}</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.ImageHistory.button1_Click" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000072.html" LinkGroup="MirrorAlignmentSystem">button1_Click Method {MirrorAlignmentSystem.ImageHistory}</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.button1_Click" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000062.html" LinkGroup="MirrorAlignmentSystem">button1_Click Method {MirrorAlignmentSystem.MainWindow}</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.OptionForm.button1_Click" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000099.html" LinkGroup="MirrorAlignmentSystem">button1_Click Method {MirrorAlignmentSystem.OptionForm}</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.calibrate" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000046.html" LinkGroup="MirrorAlignmentSystem">calibrate Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.calibrateRadioButton_CheckedChanged" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000068.html" LinkGroup="MirrorAlignmentSystem">calibrateRadioButton_CheckedChanged Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CameraController.camera" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000009.html" LinkGroup="MirrorAlignmentSystem">camera Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.Login.changePasswordButton_Click" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000079.html" LinkGroup="MirrorAlignmentSystem">changePasswordButton_Click Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.Login.changePasswordForm" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000074.html" LinkGroup="MirrorAlignmentSystem">changePasswordForm Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.coarseRadioButton_CheckedChanged" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000066.html" LinkGroup="MirrorAlignmentSystem">coarseRadioButton_CheckedChanged Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MonitorHandler.context" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000007C.html" LinkGroup="MirrorAlignmentSystem">context Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CreateNewUserForm.createNewUserButton_Click" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000001F.html" LinkGroup="MirrorAlignmentSystem">createNewUserButton_Click Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CurrentUser.currentUser" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000021.html" LinkGroup="MirrorAlignmentSystem">currentUser Field {MirrorAlignmentSystem.CurrentUser}</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.currentUser" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000004C.html" LinkGroup="MirrorAlignmentSystem">currentUser Field {MirrorAlignmentSystem.MainWindow}</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.CurrentUser.currentUserType" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000022.html" LinkGroup="MirrorAlignmentSystem">currentUserType Field {MirrorAlignmentSystem.CurrentUser}</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.currentUserType" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000004D.html" LinkGroup="MirrorAlignmentSystem">currentUserType Field {MirrorAlignmentSystem.MainWindow}</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.AdministrateUsersForm.dataGridView1_RowEnter" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000007.html" LinkGroup="MirrorAlignmentSystem">dataGridView1_RowEnter Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.AdministrateUsersForm.dataGridView1_RowLeave" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000006.html" LinkGroup="MirrorAlignmentSystem">dataGridView1_RowLeave Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MonitorHandler.device" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000007F.html" LinkGroup="MirrorAlignmentSystem">device Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.eventLogToolStripMenuItem_Click" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000060.html" LinkGroup="MirrorAlignmentSystem">eventLogToolStripMenuItem_Click Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.exitToolStripMenuItem_Click" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000061.html" LinkGroup="MirrorAlignmentSystem">exitToolStripMenuItem_Click Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.fineAlignment" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000045.html" LinkGroup="MirrorAlignmentSystem">fineAlignment Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.fineRadioButton_CheckedChanged" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000065.html" LinkGroup="MirrorAlignmentSystem">fineRadioButton_CheckedChanged Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.imagesToolStripMenuItem_Click" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000006A.html" LinkGroup="MirrorAlignmentSystem">imagesToolStripMenuItem_Click Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MonitorHandler.inputSignature" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000083.html" LinkGroup="MirrorAlignmentSystem">inputSignature Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.Login.loginButton_Click" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000077.html" LinkGroup="MirrorAlignmentSystem">loginButton_Click Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.logoutButton_Click" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000063.html" LinkGroup="MirrorAlignmentSystem">logoutButton_Click Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.Worker.mainWindow" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000009D.html" LinkGroup="MirrorAlignmentSystem">mainWindow Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.Login.newUserButton_Click" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000076.html" LinkGroup="MirrorAlignmentSystem">newUserButton_Click Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.AdministrateUsersForm.newUserType" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000003.html" LinkGroup="MirrorAlignmentSystem">newUserType Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.offline" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000044.html" LinkGroup="MirrorAlignmentSystem">offline Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.offlineRadioButton_CheckedChanged" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000005D.html" LinkGroup="MirrorAlignmentSystem">offlineRadioButton_CheckedChanged Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.Worker.oldValue" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000009C.html" LinkGroup="MirrorAlignmentSystem">oldValue Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.onlineRadionButton_CheckedChanged" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000059.html" LinkGroup="MirrorAlignmentSystem">onlineRadionButton_CheckedChanged Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.optionsToolStripMenuItem_Click" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000069.html" LinkGroup="MirrorAlignmentSystem">optionsToolStripMenuItem_Click Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.Login.passwordTB_KeyPress" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000078.html" LinkGroup="MirrorAlignmentSystem">passwordTB_KeyPress Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MonitorHandler.pixelShader" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000082.html" LinkGroup="MirrorAlignmentSystem">pixelShader Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MonitorHandler.renderTarget" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000080.html" LinkGroup="MirrorAlignmentSystem">renderTarget Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MonitorHandler.resourceView" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000084.html" LinkGroup="MirrorAlignmentSystem">resourceView Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.settingsUpdated" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000004E.html" LinkGroup="MirrorAlignmentSystem">settingsUpdated Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MonitorHandler.swapChain" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000007E.html" LinkGroup="MirrorAlignmentSystem">swapChain Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.ChangePasswordForm.updateButton_Click" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000001C.html" LinkGroup="MirrorAlignmentSystem">updateButton_Click Method</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.AdministrateUsersForm.userToChange" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000002.html" LinkGroup="MirrorAlignmentSystem">userToChange Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.valueBlackBGNumberTextBox" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000004A.html" LinkGroup="MirrorAlignmentSystem">valueBlackBGNumberTextBox Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MainWindow.valueSegmentNumberTextbox" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000004B.html" LinkGroup="MirrorAlignmentSystem">valueSegmentNumberTextbox Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MonitorHandler.vertexShader" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_0000000000000081.html" LinkGroup="MirrorAlignmentSystem">vertexShader Field</LItem>
+      </Links>
+   </Context>
+   
+
+   <Context>
+      <Keywords>
+         <KItem Name="MirrorAlignmentSystem.MonitorHandler.viewport" />
+      </Keywords>
+      <Links>
+         <LItem URL="ms-its:MirrorAlignmentSystem.chm::/topic_000000000000007D.html" LinkGroup="MirrorAlignmentSystem">viewport Field</LItem>
+      </Links>
+   </Context>
+   
+
+</DynamicHelp>
+
