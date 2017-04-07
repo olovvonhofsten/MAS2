@@ -1,0 +1,1567 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MirrorAlignmentSystem</name>
+    </assembly>
+    <members>
+        <member name="T:MirrorAlignmentSystem.AdministrateUsersForm">
+            <summary>
+             This class handles the form that take care of the administration form
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.AdministrateUsersForm.#ctor">
+            <summary>
+            The class constructor
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.AdministrateUsersForm.AdministrateUsersForm_Load(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the form is loaded
+            </summary>
+            <param name="sender">The control, in this method the form</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.AdministrateUsersForm.dataGridView1_CellValueChanged(System.Object,System.Windows.Forms.DataGridViewCellEventArgs)">
+            <summary>
+            Event method for when the user leaves a row. Calls the DAL to update the user type
+            </summary>
+            <param name="sender">The control, in this method the datagridview</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.AdministrateUsersForm.dataGridView1_CellEnter(System.Object,System.Windows.Forms.DataGridViewCellEventArgs)">
+            <summary>
+            Event method for when the user enters a row. Let's the program know which user that is going to be changed
+            </summary>
+            <param name="sender">The control, in this method the datagridview</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="F:MirrorAlignmentSystem.AdministrateUsersForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.AdministrateUsersForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.AdministrateUsersForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:MirrorAlignmentSystem.CameraController">
+            <summary>
+             This class handles everything that have to do with the camera.
+            </summary>
+        </member>
+        <member name="F:MirrorAlignmentSystem.CameraController.camera">
+            <summary>
+            The camera variable
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CameraController.Init">
+            <summary>
+            Initialize the camera
+            </summary>   
+            <returns>
+            Returns a boolean depending on if the initialize was successfull or not.
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CameraController.Aquisition(System.Int32)">
+            <summary>
+            Aquiring an image from the camera
+            </summary>   
+            <returns>
+            Returns a bitmap aquired from the camera via the memory allocated in the initializion
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CameraController.AquisitionVideo(System.Int32)">
+            <summary>
+            Aquiring an image from the camera
+            </summary>   
+            <returns>
+            Returns a bitmap aquired from the camera via the memory allocated in the initializion
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CameraController.Shutdown">
+            <summary>
+            Shutdowns the camera and free the memory
+            </summary>   
+        </member>
+        <member name="M:MirrorAlignmentSystem.CameraController.SetGamma(System.Int32)">
+            <summary>
+            Sets the camera gamma
+            </summary>
+            <param name="newGamma">The new gamma value</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CameraController.GetGamma">
+            <summary>
+            Aquiring the current gamma setting for the camera
+            </summary>   
+            <returns>
+            Returns an integer with the current gamma value of the camera
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CameraController.SetSubsamplingMode(uEye.Defines.SubsamplingMode)">
+            <summary>
+            Sets the camera subsampling mode
+            </summary>
+            <param name="mode">The new subsampling mode</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CameraController.GetSubsamplingMode">
+            <summary>
+            Aquiring the current subsampling mode for the camera
+            </summary>   
+            <returns>
+            Returns an uEye.Defines.SubsamplingMode with the current subsampling mode value of the camera
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CameraController.SetAOI(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Sets the camera Area Of Interest
+            </summary>
+            <param name="width">Width of the new Area Of Interest</param>
+            <param name="height">Height of the new Area Of Interest</param>
+            <param name="x">X-point of the new Area Of Interest</param>
+            <param name="y">Y-point of the new Area Of Interest</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CameraController.GetAOI">
+            <summary>
+            Aquiring the current Area Of Interest setting for the camera
+            </summary>   
+            <returns>
+            Returns an rectangle with the current Area Of Interest value of the camera
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CameraController.SetPixelFormat(uEye.Defines.ColorMode)">
+            <summary>
+            Sets the camera pixel format
+            </summary>
+            <param name="mode">The new pixel format</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CameraController.GetPixelFormat">
+            <summary>
+            Aquiring the current pixel format for the camera
+            </summary>   
+            <returns>
+            Returns an uEye.Defines.ColorMode with the current pixel format value of the camera
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CameraController.SetExposureTime(System.Double)">
+            <summary>
+            Sets the camera exposure time
+            </summary>
+            <param name="time">The new exposure time</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CameraController.GetExposureTime">
+            <summary>
+            Aquiring the current exposure time setting for the camera
+            </summary>   
+            <returns>
+            Returns a double with the current exposure time value of the camera
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CameraController.SetFramerate(System.Double)">
+            <summary>
+            Sets the framerate
+            </summary>
+            <param name="rate">The new framerate</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CameraController.GetFramerate">
+            <summary>
+            Aquiring the current framerate setting for the camera
+            </summary>   
+            <returns>
+            Returns a double with the current framerate value of the camera
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CameraController.GetFrameRateRange(System.Double@,System.Double@,System.Double@)">
+            <summary>
+            Aquiring the current range of the framerate
+            </summary>   
+            <returns>
+            return three double values with max, min and increament of the framerate range
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CameraController.GetExposureTimeRange(System.Double@,System.Double@,System.Double@)">
+            <summary>
+            Aquiring the current range of the exposure time
+            </summary>   
+            <returns>
+            return three double values with max, min and increament of the exposure time range
+            </returns>
+        </member>
+        <member name="T:MirrorAlignmentSystem.ChangePasswordForm">
+            <summary>
+             This class handles the form for when the user wants to change password
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.ChangePasswordForm.#ctor">
+            <summary>
+            The class constructor
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.ChangePasswordForm.updateButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user clicks the update button. Calls the DAL class which then updates the settings in the database
+            </summary>
+            <param name="sender">The control, in this method the button</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="F:MirrorAlignmentSystem.ChangePasswordForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.ChangePasswordForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.ChangePasswordForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:MirrorAlignmentSystem.CreateNewUserForm">
+            <summary>
+             This class handles the CreateNewUser form
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CreateNewUserForm.#ctor">
+            <summary>
+            The class constructor
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CreateNewUserForm.createNewUserButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user clicks the create new user button. Check that everything is in order before calling DAL to create the user
+            </summary>
+            <param name="sender">The control, in this method the button</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="F:MirrorAlignmentSystem.CreateNewUserForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CreateNewUserForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CreateNewUserForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:MirrorAlignmentSystem.CurrentUser">
+            <summary>
+             This class handles the current user that is logged in and makes the application able to get user information fast without 
+             asking for information in the database
+            </summary>
+        </member>
+        <member name="F:MirrorAlignmentSystem.CurrentUser.currentUser">
+            <summary>
+            The current user 
+            </summary>
+        </member>
+        <member name="F:MirrorAlignmentSystem.CurrentUser.currentUserType">
+            <summary>
+            The type of the current user
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CurrentUser.SetCurrentUser(System.String)">
+            <summary>
+            Sets the username of the current logged in user.
+            </summary>
+            <param name="username">The username of the user</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CurrentUser.GetCurrentUser">
+            <summary>
+            Gets the current logged in user
+            </summary>   
+            <returns>
+            Returns a string with the username of the currently logged in user
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CurrentUser.SetCurrentUserType(System.String)">
+            <summary>
+            Sets the user type of the current logged in user
+            </summary>
+            <param name="userType">The user type to set</param>   
+        </member>
+        <member name="M:MirrorAlignmentSystem.CurrentUser.GetCurrentUserType">
+            <summary>
+            Gets the user type of the currently logged in user
+            </summary>   
+            <returns>
+            Returns a string with the user type of the currently logged in user
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CurrentUser.Logout">
+            <summary>
+            If the user logs out the current user and current user type are reseted
+            </summary>   
+        </member>
+        <member name="T:MirrorAlignmentSystem.DAL">
+            <summary>
+             This class work as the Data Access Level and handle all communication with the database.
+            </summary>
+        </member>
+        <member name="F:MirrorAlignmentSystem.DAL.SQLString">
+            <summary>
+            The connection string to the database
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.GetOverviewImageOffline">
+            <summary>
+            Gets a image from the database of the whole disc. This method is only used when the application is running in offline mode
+            and in fine alignment
+            </summary>
+            <returns>
+            Returns a bitmap with the overview image from the database.
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.GetBlackBackgroundOfflineCameraImage">
+            <summary>
+            Gets a image from the database of the segment when the monitor is showing a black image. This method is only used when the application is running in offline mode
+            and fine alignment is choosen
+            </summary>
+            <returns>
+            Returns a bitmap with the segment image from the database
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.GetBitmapBackgroundOfflineCameraImage">
+            <summary>
+            Gets a image from the database of the segment when the monitor is showing a bitmap image. This method is only used when the application is running in offline mode 
+            and fine alignment is choosen
+            </summary>
+            <returns>
+            Returns a bitmap with the segment image from the database
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.GetCoarseLeftBitmapBackgroundOfflineImage">
+            <summary>
+            Gets a image from the database of the segment when the monitor is showing the left bitmap image. This method is only used when the application is running in offline mode 
+            and coarse alignment is choosen
+            </summary>
+            <returns>
+            Returns a bitmap with the segment image from the database
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.GetCoarseRightBitmapBackgroundOfflineImage">
+            <summary>
+            Gets a image from the database of the segment when the monitor is showing the right bitmap image. This method is only used when the application is running in offline mode 
+            and coarse alignment is choosen
+            </summary>
+            <returns>
+            Returns a bitmap with the segment image from the database
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.UpdateFPSExp(System.Double,System.Double)">
+            <summary>
+            Updates the FPS and the exposure time
+            </summary>   
+            <param name="expTime">The new exposure time</param> 
+            <param name="FPS">The new FPS</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.GetCoarseUpBitmapBackgroundOfflineImage">
+            <summary>
+            Gets a image from the database of the segment when the monitor is showing the up bitmap image. This method is only used when the application is running in offline mode 
+            and coarse alignment is choosen
+            </summary>
+            <returns>
+            Returns a bitmap with the segment image from the database
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.GetCoarseDownBitmapBackgroundOfflineImage">
+            <summary>
+            Gets a image from the database of the segment when the monitor is showing the down bitmap image. This method is only used when the application is running in offline mode 
+            and coarse alignment is choosen
+            </summary>
+            <returns>
+            Returns a bitmap with the segment image from the database
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.GetCoarseBlackBitmapBackgroundOfflineImage">
+            <summary>
+            Gets a image from the database of the segment when the monitor is showing a black image. This method is only used when the application is running in offline mode 
+            and coarse alignment is choosen
+            </summary>
+            <returns>
+            Returns a bitmap with the segment image from the database
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.InsertEvent(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Inserts an event into the database. This method is used everytime the user changes something or do anykind of action
+            </summary>
+            <param name="newValue">The new value of the control</param>
+            <param name="oldValue">The old value of the control</param>
+            <param name="username">The user that triggered the event</param>
+            <param name="eventName">A short description of the event</param>
+            <param name="control">The control which triggered the event</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.GetAOIData(System.String)">
+            <summary>
+            Gets the Area Of Interest of a certain segment number from the database
+            </summary>
+            <param name="segment">The segment number</param>      
+            <returns>
+            Returns an array with 16 values representing data of the Area Of Interest
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.GetAOIDataRawSegment(System.String)">
+            <summary>
+            Gets the Area Of Interest of a certain segment number from the database, using the raw segment number instead of the string name
+            </summary>
+            <param name="segment">The segment number</param>      
+            <returns>
+            Returns an array with 16 values representing data of the Area Of Interest
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.GetRawSegmentNumber(System.String)">
+            <summary>
+            Gets the raw segment number of a segment string number
+            </summary>
+            <param name="segment">The segment number</param>      
+            <returns>
+            Returns a string with the number of the raw segment
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.GetEventLog(System.String)">
+            <summary>
+            Gets the EventLog from the database
+            </summary>
+            <param name="SQLQuery">The SQL string the method uses to get the correct data. This contains the filter applied in the form</param>      
+            <returns>
+            Returns an array with all the data within the limits stated by the user using the filter function
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.GetUserData(System.String)">
+            <summary>
+            Get user data from the database
+            </summary>
+            <param name="SQLQuery">The SQL string the method uses to get the correct user data</param>      
+            <returns>
+            Returns an array with all the user data that exist in the database
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.AddUser(System.String,System.String)">
+            <summary>
+            Add a user to the database
+            </summary>
+            <param name="username">The username of the user to be added to the database</param>     
+            <param name="password">The password of the user to be added to the database</param>  
+            <returns>
+            Returns a boolean to indicate if everything went okey or if something went wrong in the process of adding the user to the database
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.GetPasswordForUser(System.String)">
+            <summary>
+            Gets the password for a certain user from the database
+            </summary>
+            <param name="username">The username of the user which password the application wants to be returned</param>      
+            <returns>
+            Returns a string with the password. If the username doesn't exist the method returns an empty string.
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.GetUserTypeForUser(System.String)">
+            <summary>
+            Gets the user type for a certain user from the database
+            </summary>
+            <param name="username">The username of the user which user type should be returned</param>      
+            <returns>
+            Returns a string with a user type, for example Admin, Operator or User
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.ChangePassword(System.String,System.String,System.String)">
+            <summary>
+            Changes the password for a certain user in the database
+            </summary>
+            <param name="username">The username of the user which password is to be changed</param> 
+            <param name="currentPassword">The current password</param>  
+            <param name="newPassword">The new password</param>  
+            <returns>
+            Returns a boolean if the change of password went okey or if something went wrong
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.UpdateUserType(System.String,System.String)">
+            <summary>
+            Updates the user type for a certain user in the database
+            </summary>
+            <param name="username">The username of the user which user type is to be changed</param> 
+            <param name="userType">The user type to be added to the user in the database</param>  
+            <returns>
+            Returns a boolean if the change of user type went okey or if something went wrong
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.GetSettings(System.String)">
+            <summary>
+            Gets the settings for a certain type. For example factory settings, user settings. This can in the future be made into different profiles
+            </summary>
+            <param name="type">The type of settings to return, for example Factory settings or User settings</param>   
+            <returns>
+            Returns an array of strings with the settings that are changeable from the option window
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.UpdateSettings(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Updates the settings 
+            </summary>  
+            <param name="threshold">The threshold for the camera</param>  
+            <param name="waitTimeMonitor">Wait time for the image to be transfered to the monitor</param>
+            <param name="waitTimeCycle">Wait time every cycle</param>
+            <param name="xOffset">the X offset for the area of interest</param>
+            <param name="yOffset">the Y offset for the area of interest</param>
+            <returns>
+            Returns a boolean with a value depending on if the update of the settings went okey or if something went wrong
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.AddImage(System.Drawing.Bitmap,System.Double,System.String,System.Int32,System.Double,System.Int32,System.Drawing.Point)">
+            <summary>
+            Calls a Store Procedure in the database that stores the image with the data at the time of the capture.
+            </summary>
+            <param name="img">The image to be inserted into the database</param>   
+            <param name="exposureTime">The exposure time of the camera when the image was captured</param> 
+            <param name="AOI">The Area Of Interest at the time when the image was aquired</param>   
+            <param name="cameraID">The ID of the camera capturing the image</param>  
+            <param name="threshold">The threshold at the time for the image aquiring</param>  
+            <param name="type">The type of image aquired</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.GetMaxHeight">
+            <summary>
+            Gets the max height of all the area of interest
+            </summary>   
+            <returns>
+            Returns an int with the max height
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DAL.GetMaxWidth">
+            <summary>
+            Gets the max width of all the area of interest
+            </summary>   
+            <returns>
+            Returns an int with the max width
+            </returns>
+        </member>
+        <member name="T:MirrorAlignmentSystem.Eventlog">
+            <summary>
+             This class handles the EventLog form
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.Eventlog.#ctor">
+            <summary>
+            The class constructor
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.Eventlog.Eventlog_Load(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the form is loaded
+            </summary>
+            <param name="sender">The control, in this method the form</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.Eventlog.button1_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user clicks the update button. Calls the DAL class which then updates the settings in the database
+            </summary>
+            <param name="sender">The control, in this method the button</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="F:MirrorAlignmentSystem.Eventlog.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.Eventlog.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.Eventlog.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:MirrorAlignmentSystem.MainWindow">
+            <summary>
+             This class Handles the Graphic User Interface and everything associated with it
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.#ctor(MirrorAlignmentSystem.CameraController)">
+            <summary>
+            The class constructor
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.UpdateMotor1Values(System.String)">
+            <summary>
+            Updates the string which tells the user at which position motor 1 is.
+            </summary>
+            <param name="motor1Pos">The position of motor 1</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.UpdateOnOffButton(System.String)">
+            <summary>
+            Updates the On/Off1 value for motor 1
+            </summary>
+            <param name="onOff">The current On/Off1 value for motor 1</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.UpdateMDIActiveMotor1Button(System.String)">
+            <summary>
+            Updates the MDIActive value for motor 1 in the GUI
+            </summary>
+            <param name="MDIActive">The current MDIActive value for motor 1</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.UpdateMDIActiveMotor2Button(System.String)">
+            <summary>
+            Updates the MDIActive value for motor 2 in the GUI
+            </summary>
+            <param name="MDIActive">The current MDIActive value for motor 2</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.UpdateMotor1Alarm(System.String)">
+            <summary>
+            Updates the alarm value for motor 1 in the GUI
+            </summary>
+            <param name="motor1Alarm">The alarm string</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.UpdateMotor1SPReached(System.String)">
+            <summary>
+            Updates the string which tells the user if motor 1 has reached it's target
+            </summary>
+            <param name="motor1SPReached">The setpoint reached string</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.UpdateMotor2Values(System.String)">
+            <summary>
+            Updates the string which tells the user at which position motor 2 is.
+            </summary>
+            <param name="motor2Pos">The position of motor 2</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.UpdateOnOff2Button(System.String)">
+            <summary>
+            Updates the On/Off1 value for motor 2
+            </summary>
+            <param name="onOff">The current On/Off1 value for motor 2</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.UpdateMotor2Alarm(System.String)">
+            <summary>
+            Updates the alarm value for motor 2 in the GUI
+            </summary>
+            <param name="motor2Alarm">The alarm string</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.UpdateMotor2SPReached(System.String)">
+            <summary>
+            Updates the string which tells the user if motor 2 has reached it's target
+            </summary>
+            <param name="motor2SPReached">The setpoint reached string</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.SettingsUpdated(System.Boolean)">
+            <summary>
+            Lets the GUI know that the settings have been updated or not
+            </summary>
+            <param name="value">Sets the settingsUpdated variable depeding on what the application are requesting</param>    
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.DisposeImages">
+            <summary>
+            Disposes the images on display
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.IsSettingsUpdated">
+            <summary>
+            Returns the current value of the settingsUpdated variable, if this one is true the settings needs to be updated
+            </summary>
+            <returns>
+            Returns a boolean indicating if the settings have been updated
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.UpdateGUI(System.Int32)">
+            <summary>
+            This method updates all the GUI elements that needs to be updated every cycle of the worker class
+            </summary>
+            <param name="i">A counter that indicates to the user that the worker and GUI classes are working with eachother.
+            The worker count and the GUI displays the new value to the user every cycle.</param>    
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.ShowOverviewBitmap(System.Drawing.Bitmap)">
+            <summary>
+            Updates the picturebox which contains the overview image for the segment
+            </summary>
+            <param name="image">The image to be displayed in the picturebox</param>    
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.ShowBlackBackgroundBitmap(System.Drawing.Bitmap)">
+            <summary>
+            Updates the picturebox which contains the image of the segment when the monitor display a black background during fine alignment
+            </summary>
+            <param name="image">The image to be displayed in the picturebox</param>    
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.ShowBitmapBackgroundBitmap(System.Drawing.Bitmap)">
+            <summary>
+            Updates the picturebox which contains the image of the segment when the monitor display a bitmap during fine alignment 
+            </summary>
+            <param name="image">The image to be displayed in the picturebox</param>    
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.ShowCombinedBitmap(System.Drawing.Bitmap)">
+            <summary>
+            Updates the picturebox which contains the image of the combined image calculated by the algorithm during fine alignment
+            </summary>
+            <param name="image">The image to be displayed in the picturebox</param>    
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.GetBlackBGNumber">
+            <summary>
+            This method returns the value currently in the textbox for interval between black background and bitmap on the monitor
+            </summary>
+            <returns>
+            Returns the number(as a string) of intervall between the monitor showing a bitmap and a black background, only works in Fine Alignment phase
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.GetSegmentNumber">
+            <summary>
+            This method returns the value of the textbox containing the segment the user want to run at the moment
+            </summary>
+            <returns>
+            Returns the number(as a string) of the segment that the user wants to run the algorithm on at the moment
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.onlineRadionButton_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the online radiobutton is pressed
+            </summary>
+            <param name="sender">The control, in this method the radiobutton</param> 
+            <param name="e">The event information</param>  
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.GetOfflineOnlineMode">
+            <summary>
+            This method returns the current online/offline mode
+            </summary>
+            <returns>
+            The online/offline mode
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.GetAlignmentMode">
+            <summary>
+            This method returns the current fine/coarse alignment mode
+            </summary>
+            <returns>
+            The fine/coarse alignment mode
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.GetCalibrateMode">
+            <summary>
+            This method returns true if the application is in calibrate mode
+            </summary>
+            <returns>
+            The calibrate mode
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.offlineRadioButton_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the offline radiobutton is pressed
+            </summary>
+            <param name="sender">The control, in this method the radiobutton</param> 
+            <param name="e">The event information</param>  
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.BlackBGNumberTextBox_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Event method for when the user presses the enter button inside the textbox displaying the number of cycles between each black image on the monitor
+            </summary>
+            <param name="sender">The control, in this method the textbox</param> 
+            <param name="e">The event information</param>  
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.SegmentNumberTextbox_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Event method for when the user presses the enter button inside the textbox displaying the current segment number being worked on
+            </summary>
+            <param name="sender">The control, in this method the textbox</param> 
+            <param name="e">The event information</param>  
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.eventLogToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user clicks the eventlog button in the menu. Displays the eventlog to the user
+            </summary>
+            <param name="sender">The control, in this method the menuitem</param> 
+            <param name="e">The event information</param>  
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.exitToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user clicks the exit button in the menu. Terminates the program
+            </summary>
+            <param name="sender">The control, in this method the menuitem</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.button1_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user clicks the login button. Creates a new LoginForm
+            </summary>
+            <param name="sender">The control, in this method the button</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.logoutButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user clicks the logout button. Calls the CurrentUser class and logouts the user
+            </summary>
+            <param name="sender">The control, in this method the button</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.administrateToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user clicks the administrate button in the menu. creates a new AdministrateUserForm if the current user is the a admin
+            </summary>
+            <param name="sender">The control, in this method the menuitem</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.fineRadioButton_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the fine alignment radiobutton is pressed
+            </summary>
+            <param name="sender">The control, in this method the radiobutton</param> 
+            <param name="e">The event information</param>  
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.coarseRadioButton_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            Event method for then the coarse alignment radiobutton is pressed
+            </summary>
+            <param name="sender">The control, in this method the radiobutton</param> 
+            <param name="e">The event information</param>  
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.UpdateFPS(System.Single)">
+            <summary>
+            This method updates the FPS label in the GUI
+            </summary>
+            <param name="FPS">The current FPS</param>    
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.calibrateRadioButton_CheckedChanged(System.Object,System.EventArgs)">
+            <summary>
+            Event method for then the calibrate radiobutton is pressed
+            </summary>
+            <param name="sender">The control, in this method the radiobutton</param> 
+            <param name="e">The event information</param>  
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.optionsToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user clicks the option button in the menu. creates a new OptionForm if the current user is the a admin
+            </summary>
+            <param name="sender">The control, in this method the menuitem</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.imagesToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user clicks the image history button in the menu. creates a new ImageHistory form if the current user is the a admin
+            </summary>
+            <param name="sender">The control, in this method the menuitem</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.ShowLeftRightOneBackgroundBitmap(System.Drawing.Bitmap)">
+            <summary>
+            Updates the picturebox which contains the image of the segment when the left bitmap is shown on the monitor, only during coarse alignment
+            </summary>
+            <param name="image">The image to be displayed in the picturebox</param>   
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.ShowLeftRightTwoBackgroundBitmap(System.Drawing.Bitmap)">
+            <summary>
+            Updates the picturebox which contains the image of the segment when the right bitmap is shown on the monitor, only during coarse alignment
+            </summary>
+            <param name="image">The image to be displayed in the picturebox</param>  
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.ShowUpDownOneBackgroundBitmap(System.Drawing.Bitmap)">
+            <summary>
+            Updates the picturebox which contains the image of the segment when the up bitmap is shown on the monitor, only during coarse alignment
+            </summary>
+            <param name="image">The image to be displayed in the picturebox</param>  
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.ShowUpDownTwoBackgroundBitmap(System.Drawing.Bitmap)">
+            <summary>
+            Updates the picturebox which contains the image of the segment when the down bitmap is shown on the monitor, only during coarse alignment
+            </summary>
+            <param name="image">The image to be displayed in the picturebox</param>  
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.ShowLeftRightDirection(System.String)">
+            <summary>
+            Updates the label which states in which direction the engines should run
+            </summary>
+            <param name="dir">The direction to be shown to the user</param>  
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.ShowUpDownDirection(System.String)">
+            <summary>
+            Updates the label which states in which direction the engines should run
+            </summary>
+            <param name="dir">The direction to be shown to the user</param>  
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.button1_Click_1(System.Object,System.EventArgs)">
+            <summary>
+            Manual button to update the overview image is updated
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.SetManualUpdateOverviewImg(System.Boolean)">
+            <summary>
+            Setting the update telling the worker that the overview image should be updated
+            </summary>
+            <param name="value">Set or not set the value that the worker reads</param>  
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.GetUpdateManualOverview">
+            <summary>
+            Setting the update telling the worker that the overview image should be updated
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.button2_Click(System.Object,System.EventArgs)">
+            <summary>
+            Saves the settings in the DAL
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.button4_Click(System.Object,System.EventArgs)">
+            <summary>
+            Not implemented
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.onOffButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Not implemented
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.Motor1NewPosButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user updates motor 1's position
+            </summary>
+            <param name="sender">The control, in this method the button</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.Motor2NewPos_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user updates motor 2's position
+            </summary>
+            <param name="sender">The control, in this method the button</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.AcknowledgeButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user acknowledges any alarm from the motor
+            </summary>
+            <param name="sender">The control, in this method the button</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.Motor1MDIActiveButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user activates or deactives MDI on the first motor controller
+            </summary>
+            <param name="sender">The control, in this method the button</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.Motor2MDIActiveButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user activates or deactives MDI on the second motor controller
+            </summary>
+            <param name="sender">The control, in this method the button</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.RadialAddButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user uses the radial add button
+            </summary>
+            <param name="sender">The control, in this method the button</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.TetaAddButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user uses the teta add button
+            </summary>
+            <param name="sender">The control, in this method the button</param> 
+            <param name="e">The event information</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.RadialSubButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user uses the radial subtract button
+            </summary>
+            <param name="sender">The control, in this method the button</param> 
+            <param name="e">The event information</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.TetaSubButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user uses the teta subtract button
+            </summary>
+            <param name="sender">The control, in this method the button</param> 
+            <param name="e">The event information</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.UpdateCoMLabel(System.String,System.Drawing.Point)">
+            <summary>
+            Updates the CoM value in the GUI
+            </summary>
+            <param name="CoM">The CoM string</param>
+        </member>
+        <member name="F:MirrorAlignmentSystem.MainWindow.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.MainWindow.CreateNewUserForm">
+            <summary>
+            Not implemented
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.MainWindow.AdministrateUsersForm">
+            <summary>
+            Not implemented
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.MainWindow.ChangePasswordForm">
+            <summary>
+            Not implemented
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.MainWindow.Eventlog">
+            <summary>
+            Not implemented
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.MainWindow.OptionForm">
+            <summary>
+            Not implemented
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.MainWindow.ImageHistory">
+            <summary>
+            Not implemented
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.MainWindow.ImageInfo">
+            <summary>
+            Not implemented
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.MainWindow.Login">
+            <summary>
+            Not implemented
+            </summary>
+        </member>
+        <member name="T:MirrorAlignmentSystem.ImageHistory">
+            <summary>
+             This class handles the ImageHistory form
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.ImageHistory.#ctor">
+            <summary>
+            The class constructor
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.ImageHistory.ImageHistory_Load(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the form is loaded
+            </summary>
+            <param name="sender">The control, in this method the form</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.ImageHistory.button1_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user clicks the update button. Calls the DAL class which then returns a datasource with the requested data
+            </summary>
+            <param name="sender">The control, in this method the button</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="F:MirrorAlignmentSystem.ImageHistory.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.ImageHistory.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.ImageHistory.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:MirrorAlignmentSystem.ImageInfo">
+            <summary>
+             This class handles the Image the user choose from the image history form
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.ImageInfo.#ctor">
+            <summary>
+            The class constructor
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.ImageInfo.ImageInfo_Load(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the form is loaded
+            </summary>
+            <param name="sender">The control, in this method the form</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.ImageInfo.LoadNewImage(System.Drawing.Bitmap,System.String,System.String,System.String,System.String)">
+            <summary>
+            Displays the image information and the image to the user inside the form
+            </summary>
+            <param name="img">The image</param> 
+            <param name="timestamp">The timestamp of the when the image was inserted into the database</param> 
+            <param name="expTime">Exposure time when the image was captured</param> 
+            <param name="threshold">Threshold when the image was captured</param> 
+            <param name="cameraID">The camera ID of the camera that took the image</param> 
+        </member>
+        <member name="F:MirrorAlignmentSystem.ImageInfo.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.ImageInfo.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.ImageInfo.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:MirrorAlignmentSystem.Login">
+            <summary>
+             This class handles the OptionForm 
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.Login.#ctor">
+            <summary>
+            The class constructor
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.Login.newUserButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user clicks the new user button. Open up a new form which will handle the new user
+            </summary>
+            <param name="sender">The control, in this method the button</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.Login.loginButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user clicks the login button. Asks the DAL for the correct password and makes sure it is correct
+            or tell the user otherwise
+            </summary>
+            <param name="sender">The control, in this method the button</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.Login.passwordTB_KeyPress(System.Object,System.Windows.Forms.KeyPressEventArgs)">
+            <summary>
+            Event method for when the user clicks the enter button when inside the password textbox. 
+            </summary>
+            <param name="sender">The control, in this method the textbox</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.Login.changePasswordButton_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user clicks the change password button. Open up a new form which will handle the password change
+            </summary>
+            <param name="sender">The control, in this method the button</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="F:MirrorAlignmentSystem.Login.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.Login.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.Login.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:MirrorAlignmentSystem.MonitorHandler">
+            <summary>
+             This class handles the TV and it's image by using DirectX 
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MonitorHandler.#ctor">
+            <summary>
+            The class constructor
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MonitorHandler.SetCalibrateOrNot(System.Boolean)">
+            <summary>
+            Let the class know what kind of image to render on the TV
+            </summary>
+            <param name="input">Sets the variable which tells the TV if the image is supose to be black or a bitmap</param>    
+        </member>
+        <member name="M:MirrorAlignmentSystem.MonitorHandler.SetVectors">
+            <summary>
+            Let the class know what vectors to render, this method is not yet implemented
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MonitorHandler.Run">
+            <summary>
+            The MonitorHandler has it's own thread. This is the entry point for this thread.
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MonitorHandler.BlackScreen">
+            <summary>
+            Moves the vertices off the screen so that a blackscreen is rendered.
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MonitorHandler.UpdatePatternVertices(System.Double[0:,0:],System.Boolean)">
+            <summary>
+            Updates the the vertices to show a pattern depending on which segment number is currently being worked on
+            </summary>
+            <param name="doublePoints">The points for the pattern</param>    
+            <param name="fine">True if fine alignment is used, false if coarse alignment is used</param> 
+        </member>
+        <member name="T:MirrorAlignmentSystem.OPC">
+            <summary>
+            This class handles the OPC and the communication with the PLC
+            </summary>
+        </member>
+        <member name="F:MirrorAlignmentSystem.OPC.DAserver">
+            <summary>
+            The server managment
+            </summary>
+            
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.Init">
+            <summary>
+            Initiate the OPC server 
+            </summary>
+            <returns>
+            Returns a boolean indicating if the OPC intiation have been successful
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.getMotor1Pos">
+            <summary>
+            Method to retrive motor 1's position
+            </summary>
+            <returns>
+            Returns a string with the current position of the motor
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.getOn1Off">
+            <summary>
+            Method to retrive motor 1's On/Off1 Value
+            </summary>
+            <returns>
+            Returns a string with the current value of On/Off1
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.getMotor1SPReached">
+            <summary>
+            Method to retrive if motor 1 has reached it's setpoint
+            </summary>
+            <returns>
+            Returns a string with a 1/0 depending on if the motor has reached the Setpoint
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.getMotor1Alarm">
+            <summary>
+            Method to retrive alarms or fault that motor 1 have
+            </summary>
+            <returns>
+            Returns a string with the fault number 
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.getMotor2Pos">
+            <summary>
+            Method to retrive motor 1's position
+            </summary>
+            <returns>
+            Returns a string with the current position of the motor
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.getOn2Off">
+            <summary>
+            Method to retrive motor 1's On/Off1 Value
+            </summary>
+            <returns>
+            Returns a string with the current value of On/Off1
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.getMotor2SPReached">
+            <summary>
+            Method to retrive if motor 2 has reached it's setpoint
+            </summary>
+            <returns>
+            Returns a string with a 1/0 depending on if the motor has reached the Setpoint
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.getMotor2Alarm">
+            <summary>
+            Method to retrive alarms or fault that motor 2 have
+            </summary>
+            <returns>
+            Returns a string with the fault number 
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.getMotor1MDIActive">
+            <summary>
+            Method to retrive motor 1's MDIActive Value
+            </summary>
+            <returns>
+            Returns a string with the current value of MDIActive
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.getMotor2MDIActive">
+            <summary>
+            Method to retrive motor 2's MDIActive Value
+            </summary>
+            <returns>
+            Returns a string with the current value of MDIActive
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.SubscribeToOPCDAServerEvents">
+            <summary>
+            Subscribe to the server events
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.DAserver_WriteCompleted(System.Int32,System.Boolean,Kepware.ClientAce.OpcDaClient.ItemResultCallback[])">
+            <summary>
+            This is an event run when the write of the values to the OPC server have been completed
+            </summary>
+            <param name="transaction">Transaction</param>
+            <param name="noErrors">No errors reported</param>   
+            <param name="itemResults">The result</param>   
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.DAserver_ReadCompleted(System.Int32,System.Boolean,System.Boolean,Kepware.ClientAce.OpcDaClient.ItemValueCallback[])">
+            <summary>
+            This is an event run when the read of the values to the OPC server have been completed
+            </summary>
+            <param name="transaction">Transaction</param>
+            <param name="noErrors">No errors reported</param>   
+            <param name="quality">Quality of the tags</param> 
+            <param name="itemValues">The result</param>   
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.DAserver_DataChanged(System.Int32,System.Boolean,System.Boolean,Kepware.ClientAce.OpcDaClient.ItemValueCallback[])">
+            <summary>
+            This is an event that is ran by the program when data has changed in the PLC
+            </summary>
+            <param name="clientSubscription">The subscription</param>
+            <param name="allQualitiesGood">All tags have good quality</param>   
+            <param name="noErrors">No errors reported</param>   
+            <param name="itemValues">Values of the items</param>  
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.DAserver_ServerStateChanged(System.Int32,Kepware.ClientAce.OpcDaClient.ServerState)">
+            <summary>
+            This is an method that is triggered when the state of the server changes
+            </summary>
+            <param name="clientHandle">The handle of the client</param>
+            <param name="state">State of the server</param>   
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.DataChanged(System.Int32,System.Boolean,System.Boolean,Kepware.ClientAce.OpcDaClient.ItemValueCallback[])">
+            <summary>
+            This is an event that is ran by the program when data has changed in the PLC
+            </summary>
+            <param name="clientSubscription">The subscription</param>
+            <param name="allQualitiesGood">All tags have good quality</param>   
+            <param name="noErrors">No errors reported</param>   
+            <param name="itemValues">Values of the items</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.ServerStateChanged(System.Int32,Kepware.ClientAce.OpcDaClient.ServerState)">
+            <summary>
+            This is an method that is triggered when the state of the server changes
+            </summary>
+            <param name="clientHandle">The handle of the client</param>
+            <param name="state">State of the server</param>   
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.SubscribeToData">
+            <summary>
+            Subscribes to all the data on the OPC server that the program want to know
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.SetMotor1OnOff(System.Int32)">
+            <summary>
+            Changes On/Off1 for motor 1
+            </summary>
+            <param name="value">The new value of the tag</param>  
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.SetMotor2OnOff(System.Int32)">
+            <summary>
+            Changes On/Off1 for motor 2
+            </summary>
+            <param name="value">The new value of the tag</param>  
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.SetMotor1NewPos(System.Int32)">
+            <summary>
+            Updates the position for motor 1
+            </summary>
+            <param name="value">The new value of the tag</param>  
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.SetMotor2NewPos(System.Int32)">
+            <summary>
+            Updates the position for motor 2
+            </summary>
+            <param name="value">The new value of the tag</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.SetMotor12RadialNewPos(System.Int32)">
+            <summary>
+            Updates the position for motor 1 and motor 2 when the user are using the radial value
+            </summary>
+            <param name="value">The new value of the tags</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.SetMotor12TetaNewPos(System.Int32)">
+            <summary>
+            Updates the position for motor 1 and motor 2 when the user are using the teta  value
+            </summary>
+            <param name="value">The new value of the tags</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.AcknowledgeMotors">
+            <summary>
+            Acknowledge any alarms that the motor currently have
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.SetMotor1MDIActive(System.Int32)">
+            <summary>
+            Updates the MDIActive value for motor 1
+            </summary>
+            <param name="value">The new value of the tags</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.OPC.SetMotor2MDIActive(System.Int32)">
+            <summary>
+            Updates the MDIActive value for motor 2
+            </summary>
+            <param name="value">The new value of the tags</param>
+        </member>
+        <member name="T:MirrorAlignmentSystem.OptionForm">
+            <summary>
+             This class handles the OptionForm 
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.OptionForm.#ctor(MirrorAlignmentSystem.CameraController)">
+            <summary>
+            The class constructor
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.OptionForm.OptionForm_Load(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the form is loaded
+            </summary>
+            <param name="sender">The control, in this method the form</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="M:MirrorAlignmentSystem.OptionForm.button1_Click(System.Object,System.EventArgs)">
+            <summary>
+            Event method for when the user clicks the update button. Calls the DAL class which then updates the settings in the database
+            </summary>
+            <param name="sender">The control, in this method the button</param> 
+            <param name="e">The event information</param> 
+        </member>
+        <member name="F:MirrorAlignmentSystem.OptionForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.OptionForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.OptionForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.OptionForm.ParentWindow">
+            <summary>
+            Get or set the parent of the window
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:MirrorAlignmentSystem.Worker">
+            <summary>
+             This class is the main worker of the application
+            </summary>
+        </member>
+        <member name="F:MirrorAlignmentSystem.Worker.mainWindow">
+            <summary>
+            The main GUI, the worker rules over the GUI
+            </summary>
+        </member>
+        <member name="F:MirrorAlignmentSystem.Worker.cameraController">
+            <summary>
+            The class that controls the camera of this application
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.Worker.#ctor(MirrorAlignmentSystem.MainWindow,MirrorAlignmentSystem.CameraController)">
+            <summary>
+             This class constructor
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.Worker.Run">
+            <summary>
+             Entry point for the thread
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.Worker.CameraController">
+            <summary>
+             Not implemented
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.Worker.MainWindow">
+            <summary>
+             Not implemented
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.Worker.MonitorHandler">
+            <summary>
+             Not implemented
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.Worker.Algorithm">
+            <summary>
+             Not implemented
+            </summary>
+        </member>
+        <member name="T:MirrorAlignmentSystem.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.Properties.Resources.Black_Background">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.Properties.Resources.White_Background">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+    </members>
+</doc>
