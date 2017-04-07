@@ -844,7 +844,7 @@ namespace MirrorAlignmentSystem
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             valueLiveCheckState = checkBox1.CheckState.ToString();
-            MessageBox.Show(valueLiveCheckState);
+            //MessageBox.Show(valueLiveCheckState);
         }
 
 		char toc(int i)
@@ -982,12 +982,15 @@ namespace MirrorAlignmentSystem
 		private void btnCheckAllFine_Click(object sender, EventArgs e)
 		{
 			// check all
+			bool old = checkBox1.Checked;
+			checkBox1.Checked = false;
 			Alignment = "checkALLfine";
 			caf.Start();
 			caf.Title("check all fine");
 			//BIA_timer.Enabled = true;
 			prog = 0;
 			caf.ShowDialog();
+			checkBox1.Checked = old;
 		}
 
 		private void btnCheckAllCoarse_Click(object sender, EventArgs e)
