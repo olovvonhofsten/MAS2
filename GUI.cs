@@ -47,7 +47,7 @@ namespace MirrorAlignmentSystem
            
 		string valueBlackBGNumberTextBox;
 		string valueSegmentNumberTextbox;
-        string valueLiveCheckState;
+        string valueLiveCheckState="Checked";
 
 		Point realCoM;
 
