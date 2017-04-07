@@ -548,5 +548,103 @@ namespace MirrorAlignmentSystem
 			caf.SetImage(overviewFine);
 			caf.WaitClose();
 		}
+
+        public static void checkAllSegmentsCoarse(
+            CameraController cameraController,
+            string[] cameraSettings,
+            MonitorHandler monitor,
+            CheckAllForm caf,
+            out double[,] fineData,
+            out Bitmap overviewX, out Bitmap overviewY)
+        {
+            fineData = new double[66, 3];
+            double[,] doublePoints;
+            double exposureRate = 4.5 * double.Parse(cameraSettings[0]);
+            double framerate = double.Parse(cameraSettings[5]);
+            double threshold = double.Parse(cameraSettings[2]);
+            int waitOnMonitor = int.Parse(cameraSettings[3]);
+            int waitOnCycle = int.Parse(cameraSettings[4]);
+            int tick = 0;
+            Bitmap combinedBitmap = new Bitmap(304, 164, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+            double[] offsetXY, offsetRT, mradOffset;
+            Point massCenter = new Point(0, 0);
+            int ok;
+            //Image<Gray, byte> TotImg = new Image<Gray, byte>(imagesizex, imagesizey);
+            //TotImg.SetZero();
+            //Rectangle currentROI;
+
+            Image<Bgr, byte> TotImg = new Image<Bgr, byte>(imagesizex, imagesizey);
+            TotImg.SetZero();
+
+
+            int errcnt = 0;
+            int i = 0, n = Calibrate.segments.Length;
+            foreach (string s in Calibrate.segments)
+            {
+                ++i;
+                caf.SetProgress(100 * i / n);
+
+                // Get segment data
+                int[] AOIData = DAL.GetAOIData(s);
+
+                //Set cameracontroller parameters
+                cameraController.SetAOI(AOIData[2], AOIData[3], AOIData[0], AOIData[1] - AOIData[3]);
+                cameraController.SetExposureTime(exposureRate);
+                //Rectangle currentROI = new Rectangle((int)AOIData[0], (int)AOIData[1], (int)AOIData[2], (int)AOIData[3]);
+                TotImg.ROI = Rectangle.Empty;
+                Size sz = TotImg.Size;
+                Rectangle currentROI = new Rectangle((int)AOIData[0], (int)AOIData[1], (int)AOIData[2], (int)AOIData[3]);
+                TotImg.ROI = currentROI;
+
+                if (!rect_check(sz, currentROI))
+                {
+                    //MessageBox.Show("ROI Error");
+                    ++errcnt;
+                }
+
+                //Show black pattern on monitor
+                monitor.BlackScreen();
+                Thread.Sleep(waitOnMonitor);
+
+                //Take background image
+                Bitmap cameraFineAlignBlack = cameraController.AquisitionVideo(AOIData[2]).Clone(new Rectangle(new Point(0, 0), new Size(AOIData[2], AOIData[3])), System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+
+                //Show pattern on monitor
+                doublePoints = SegmentPatternPoints(new Point(AOIData[12], AOIData[13]));
+                monitor.UpdatePatternVertices(doublePoints, true);
+                Thread.Sleep(waitOnMonitor);
+
+                //Take background image
+                Bitmap cameraFineAlign = cameraController.AquisitionVideo(AOIData[2]).Clone(new Rectangle(new Point(0, 0), new Size(AOIData[2], AOIData[3])), System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+
+                //Calculate alignment
+                Fine_algorithm(cameraFineAlign, cameraFineAlignBlack, threshold, int.Parse(DAL.GetRawSegmentNumber(s)), out offsetXY, out offsetRT, out massCenter, out combinedBitmap);
+                Algorithm.pix2mrad(int.Parse(DAL.GetRawSegmentNumber(s)), offsetRT, out mradOffset);
+                Image<Bgr, byte> combinedImg = new Image<Bgr, byte>(combinedBitmap);
+
+                // check tolerance
+                ok = (mradOffset[0] + mradOffset[1] < fineTolerance) ? 1 : 0;
+
+                fineData[tick, 0] = ok;
+                fineData[tick, 1] = offsetXY[0];
+                fineData[tick, 2] = offsetXY[1];
+                fineData[tick, 3] = mradOffset[0];
+                fineData[tick, 4] = mradOffset[1];
+
+                Image<Bgr, Byte> addImg = new Image<Bgr, byte>(TotImg.Size);
+                CvInvoke.Add(combinedImg, TotImg, addImg);
+                CvInvoke.cvCopy(addImg, TotImg, IntPtr.Zero);
+                tick++;
+
+                addImg.Dispose();
+                combinedImg.Dispose();
+
+
+            }
+            TotImg.ROI = Rectangle.Empty;
+            overviewFine = TotImg.ToBitmap();
+            caf.SetImage(overviewFine);
+            caf.WaitClose();
+        }
     }
 }
