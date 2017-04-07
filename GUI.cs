@@ -1043,6 +1043,36 @@ namespace MirrorAlignmentSystem
 			lbl_09.ForeColor = (rot_y > 3) ? Color.Red : Color.Green;
 			lbl_11.Text = rot_z.ToString() + " mrad";
 			lbl_11.ForeColor = (rot_z > 10) ? Color.Red : Color.Green;
+
+			lbl_01.Visible = true;
+			lbl_02.Visible = true;
+			lbl_03.Visible = true;
+			lbl_04.Visible = true;
+			lbl_05.Visible = true;
+			lbl_06.Visible = true;
+			lbl_07.Visible = true;
+			lbl_08.Visible = true;
+			lbl_09.Visible = true;
+			lbl_10.Visible = true;
+			lbl_11.Visible = true;
+		}
+
+		/// <summary>
+		/// Disables the labels.
+		/// </summary>
+		public void DisableLabel ()
+		{
+			lbl_01.Visible = false;
+			lbl_02.Visible = false;
+			lbl_03.Visible = false;
+			lbl_04.Visible = false;
+			lbl_05.Visible = false;
+			lbl_06.Visible = false;
+			lbl_07.Visible = false;
+			lbl_08.Visible = false;
+			lbl_09.Visible = false;
+			lbl_10.Visible = false;
+			lbl_11.Visible = false;
 		}
 
 	}
