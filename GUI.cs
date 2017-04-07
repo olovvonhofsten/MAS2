@@ -47,7 +47,7 @@ namespace MirrorAlignmentSystem
            
 		string valueBlackBGNumberTextBox;
 		string valueSegmentNumberTextbox;
-        string valueLiveCheckState;
+        string valueLiveCheckState="Checked";
 
 		Point realCoM;
 
@@ -844,7 +844,7 @@ namespace MirrorAlignmentSystem
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             valueLiveCheckState = checkBox1.CheckState.ToString();
-            MessageBox.Show(valueLiveCheckState);
+            //MessageBox.Show(valueLiveCheckState);
         }
 
 		char toc(int i)
@@ -982,12 +982,15 @@ namespace MirrorAlignmentSystem
 		private void btnCheckAllFine_Click(object sender, EventArgs e)
 		{
 			// check all
+			bool old = checkBox1.Checked;
+			checkBox1.Checked = false;
 			Alignment = "checkALLfine";
 			caf.Start();
 			caf.Title("check all fine");
 			//BIA_timer.Enabled = true;
 			prog = 0;
 			caf.ShowDialog();
+			checkBox1.Checked = old;
 		}
 
 		private void btnCheckAllCoarse_Click(object sender, EventArgs e)
@@ -1011,7 +1014,68 @@ namespace MirrorAlignmentSystem
 			}
 			else
 				caf.SetProgress(prog);
+		}
 
+		/// <summary>
+		/// Updates the labels.
+		/// </summary>
+		/// <param name="segnum">The segment number.</param>
+		/// <param name="align_x">The x alignment.</param>
+		/// <param name="align_y">The y alignment.</param>
+		/// <param name="rot_x">The x rotation.</param>
+		/// <param name="rot_y">The y rotation.</param>
+		/// <param name="rot_z">The z rotation.</param>
+		public void UpdateLabel (
+			int segnum,
+			int align_x,
+			int align_y,
+			int rot_x,
+			int rot_y,
+			int rot_z )
+		{
+			lbl_01.Text = "SEGMENT " + segnum.ToString();
+
+			lbl_03.Text = align_x.ToString() + " mm";
+			lbl_03.ForeColor = (align_x > 4) ? Color.Red : Color.Green;
+			lbl_05.Text = align_y.ToString() + " mm";
+			lbl_05.ForeColor = (align_y > 4) ? Color.Red : Color.Green;
+
+			lbl_07.Text = rot_x.ToString() + " mrad";
+			lbl_07.ForeColor = (rot_x > 3) ? Color.Red : Color.Green;
+			lbl_09.Text = rot_y.ToString() + " mrad";
+			lbl_09.ForeColor = (rot_y > 3) ? Color.Red : Color.Green;
+			lbl_11.Text = rot_z.ToString() + " mrad";
+			lbl_11.ForeColor = (rot_z > 10) ? Color.Red : Color.Green;
+
+			lbl_01.Visible = true;
+			lbl_02.Visible = true;
+			lbl_03.Visible = true;
+			lbl_04.Visible = true;
+			lbl_05.Visible = true;
+			lbl_06.Visible = true;
+			lbl_07.Visible = true;
+			lbl_08.Visible = true;
+			lbl_09.Visible = true;
+			lbl_10.Visible = true;
+			lbl_11.Visible = true;
+		}
+
+		/// <summary>
+		/// Disables the labels.
+		/// </summary>
+		public void DisableLabel ()
+		{
+			lbl_01.Visible = false;
+			lbl_02.Visible = false;
+			lbl_03.Visible = false;
+			lbl_04.Visible = false;
+			lbl_05.Visible = false;
+			lbl_06.Visible = false;
+			lbl_07.Visible = false;
+			lbl_08.Visible = false;
+			lbl_09.Visible = false;
+			lbl_10.Visible = false;
+			lbl_11.Visible = false;
 		}
 
 	}
