@@ -481,6 +481,10 @@ namespace MirrorAlignmentSystem
                         }
                         else if(alignmentMode == "checkALLcoarse")
                         {
+                            double[,] coarseData;
+                            Bitmap coarseY, coarseX;
+                            var caf = mainWindow.getCAF();
+
 
                         }
 					}
