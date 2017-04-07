@@ -482,9 +482,10 @@ namespace MirrorAlignmentSystem
                         else if(alignmentMode == "checkALLcoarse")
                         {
                             double[,] coarseData;
-                            Bitmap coarseY, coarseX;
+                            Bitmap overviewCoarse;
                             var caf = mainWindow.getCAF();
-
+                            Algorithm.checkAllSegmentsCoarse(cameraController, cameraSettings, monitor, caf, out coarseData, out overviewCoarse);
+                            alignmentMode = "over";
 
                         }
 					}

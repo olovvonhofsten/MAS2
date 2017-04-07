@@ -197,6 +197,7 @@
 			// 
 			// tabOverview
 			// 
+			this.tabOverview.AutoScroll = true;
 			this.tabOverview.BackColor = System.Drawing.Color.Moccasin;
 			this.tabOverview.Controls.Add(this.btnCheckAllCoarse);
 			this.tabOverview.Controls.Add(this.btnCheckAllFine);
@@ -364,6 +365,7 @@
 			// 
 			// tabCoarse
 			// 
+			this.tabCoarse.AutoScroll = true;
 			this.tabCoarse.BackColor = System.Drawing.Color.MistyRose;
 			this.tabCoarse.Controls.Add(this.gbCoarse);
 			this.tabCoarse.Controls.Add(this.lbl_lr_1);
@@ -487,6 +489,7 @@
 			// 
 			// tabFine
 			// 
+			this.tabFine.AutoScroll = true;
 			this.tabFine.BackColor = System.Drawing.Color.LemonChiffon;
 			this.tabFine.Controls.Add(this.combinedImagePB);
 			this.tabFine.Controls.Add(this.CoMLabel);
@@ -523,6 +526,7 @@
 			// 
 			// tabCal
 			// 
+			this.tabCal.AutoScroll = true;
 			this.tabCal.BackColor = System.Drawing.Color.White;
 			this.tabCal.Controls.Add(this.CalibrateImgPB);
 			this.tabCal.Location = new System.Drawing.Point(4, 48);

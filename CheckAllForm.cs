@@ -106,7 +106,6 @@ namespace MirrorAlignmentSystem
 
 		private void button1_Click_1(object sender, EventArgs e)
 		{
-			button1.Top += 1;
 		}
 
 		private void btnClose_Click(object sender, EventArgs e)

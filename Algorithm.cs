@@ -540,8 +540,8 @@ namespace MirrorAlignmentSystem
 
 				addImg.Dispose();
 				combinedImg.Dispose();
-
-
+                cameraFineAlignBlack.Dispose();
+                cameraFineAlign.Dispose();
             }
 			TotImg.ROI = Rectangle.Empty;
 			overviewFine = TotImg.ToBitmap();
@@ -554,10 +554,10 @@ namespace MirrorAlignmentSystem
             string[] cameraSettings,
             MonitorHandler monitor,
             CheckAllForm caf,
-            out double[,] fineData,
-            out Bitmap overviewX, out Bitmap overviewY)
+            out double[,] coarseData,
+            out Bitmap overviewX)
         {
-            fineData = new double[66, 3];
+            coarseData = new double[66, 3];
             double[,] doublePoints;
             double exposureRate = 4.5 * double.Parse(cameraSettings[0]);
             double framerate = double.Parse(cameraSettings[5]);
@@ -565,16 +565,19 @@ namespace MirrorAlignmentSystem
             int waitOnMonitor = int.Parse(cameraSettings[3]);
             int waitOnCycle = int.Parse(cameraSettings[4]);
             int tick = 0;
-            Bitmap combinedBitmap = new Bitmap(304, 164, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
-            double[] offsetXY, offsetRT, mradOffset;
-            Point massCenter = new Point(0, 0);
+            Bitmap coarseBitmap1 = new Bitmap(304, 164, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+            Bitmap coarseBitmap2 = new Bitmap(304, 164, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+            int dirUD, dirLR;
+
             int ok;
             //Image<Gray, byte> TotImg = new Image<Gray, byte>(imagesizex, imagesizey);
             //TotImg.SetZero();
             //Rectangle currentROI;
 
-            Image<Bgr, byte> TotImg = new Image<Bgr, byte>(imagesizex, imagesizey);
-            TotImg.SetZero();
+            Image<Bgr, byte> TotImg1 = new Image<Bgr, byte>(imagesizex, imagesizey);
+            TotImg1.SetZero();
+            Image<Bgr, byte> TotImg2 = new Image<Bgr, byte>(imagesizex, imagesizey);
+            TotImg2.SetZero();
 
 
             int errcnt = 0;
@@ -591,12 +594,16 @@ namespace MirrorAlignmentSystem
                 cameraController.SetAOI(AOIData[2], AOIData[3], AOIData[0], AOIData[1] - AOIData[3]);
                 cameraController.SetExposureTime(exposureRate);
                 //Rectangle currentROI = new Rectangle((int)AOIData[0], (int)AOIData[1], (int)AOIData[2], (int)AOIData[3]);
-                TotImg.ROI = Rectangle.Empty;
-                Size sz = TotImg.Size;
+                TotImg1.ROI = Rectangle.Empty;
+                Size sz1 = TotImg1.Size;
                 Rectangle currentROI = new Rectangle((int)AOIData[0], (int)AOIData[1], (int)AOIData[2], (int)AOIData[3]);
-                TotImg.ROI = currentROI;
+                TotImg1.ROI = currentROI;
 
-                if (!rect_check(sz, currentROI))
+                TotImg2.ROI = Rectangle.Empty;
+                Size sz2 = TotImg2.Size;
+                TotImg2.ROI = currentROI;
+
+                if (!rect_check(sz1, currentROI))
                 {
                     //MessageBox.Show("ROI Error");
                     ++errcnt;
@@ -607,43 +614,77 @@ namespace MirrorAlignmentSystem
                 Thread.Sleep(waitOnMonitor);
 
                 //Take background image
-                Bitmap cameraFineAlignBlack = cameraController.AquisitionVideo(AOIData[2]).Clone(new Rectangle(new Point(0, 0), new Size(AOIData[2], AOIData[3])), System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+                Bitmap cameraCoarseAlignBlack = cameraController.AquisitionVideo(AOIData[2]).Clone(new Rectangle(new Point(0, 0), new Size(AOIData[2], AOIData[3])), System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+                Bitmap cameraCoarseAlignBlackUD = new Bitmap(cameraCoarseAlignBlack);
 
-                //Show pattern on monitor
-                doublePoints = SegmentPatternPoints(new Point(AOIData[12], AOIData[13]));
-                monitor.UpdatePatternVertices(doublePoints, true);
+                //Show left/right patterns on monitor and take images
+                Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(s)), 1, out doublePoints);
+                monitor.UpdatePatternVertices(doublePoints, false);
                 Thread.Sleep(waitOnMonitor);
+                //Take image
+                Bitmap cameraCoarseLR = cameraController.AquisitionVideo(AOIData[2]).Clone(new Rectangle(new Point(0, 0), new Size(AOIData[2], AOIData[3])), System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
 
-                //Take background image
-                Bitmap cameraFineAlign = cameraController.AquisitionVideo(AOIData[2]).Clone(new Rectangle(new Point(0, 0), new Size(AOIData[2], AOIData[3])), System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+                //Show right/left patterns on monitor and take images
+                Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(s)), 3, out doublePoints);
+                monitor.UpdatePatternVertices(doublePoints, false);
+                Thread.Sleep(waitOnMonitor);
+                //Take image
+                Bitmap cameraCoarseRL = cameraController.AquisitionVideo(AOIData[2]).Clone(new Rectangle(new Point(0, 0), new Size(AOIData[2], AOIData[3])), System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
 
-                //Calculate alignment
-                Fine_algorithm(cameraFineAlign, cameraFineAlignBlack, threshold, int.Parse(DAL.GetRawSegmentNumber(s)), out offsetXY, out offsetRT, out massCenter, out combinedBitmap);
-                Algorithm.pix2mrad(int.Parse(DAL.GetRawSegmentNumber(s)), offsetRT, out mradOffset);
-                Image<Bgr, byte> combinedImg = new Image<Bgr, byte>(combinedBitmap);
+                //Calculate alignment Left/Right
+                Coarse_algorithm(cameraCoarseLR, cameraCoarseRL, cameraCoarseAlignBlack, int.Parse(DAL.GetRawSegmentNumber(s)), out dirLR, out coarseBitmap1, out coarseBitmap2);
+                Image<Bgr, byte> coarseLR = new Image<Bgr, byte>(coarseBitmap1);
+                
+                //////////////////////////////////////////////////////
+                
+                //Show up/down patterns on monitor and take images
+                Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(s)), 0, out doublePoints);
+                monitor.UpdatePatternVertices(doublePoints, false);
+                Thread.Sleep(waitOnMonitor);
+                //Take image
+                Bitmap cameraCoarseUD = cameraController.AquisitionVideo(AOIData[2]).Clone(new Rectangle(new Point(0, 0), new Size(AOIData[2], AOIData[3])), System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+
+                //Show right/left patterns on monitor and take images
+                Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(s)), 2, out doublePoints);
+                monitor.UpdatePatternVertices(doublePoints, false);
+                Thread.Sleep(waitOnMonitor);
+                //Take image
+                Bitmap cameraCoarseDU = cameraController.AquisitionVideo(AOIData[2]).Clone(new Rectangle(new Point(0, 0), new Size(AOIData[2], AOIData[3])), System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+
+                //Calculate alignment Up/Down
+                Coarse_algorithm(cameraCoarseUD, cameraCoarseDU, cameraCoarseAlignBlackUD, int.Parse(DAL.GetRawSegmentNumber(s)), out dirUD, out coarseBitmap1, out coarseBitmap2);
+                Image<Bgr, byte> coarseUD = new Image<Bgr, byte>(coarseBitmap1);
 
                 // check tolerance
-                ok = (mradOffset[0] + mradOffset[1] < fineTolerance) ? 1 : 0;
+                ok = (dirLR == 0 && dirUD == 0) ? 1 : 0;
+                coarseData[tick, 0] = dirLR;
+                coarseData[tick, 1] = dirUD;
 
-                fineData[tick, 0] = ok;
-                fineData[tick, 1] = offsetXY[0];
-                fineData[tick, 2] = offsetXY[1];
-                fineData[tick, 3] = mradOffset[0];
-                fineData[tick, 4] = mradOffset[1];
+                Image<Bgr, Byte> addImg1 = new Image<Bgr, byte>(TotImg1.Size);
+                CvInvoke.Add(coarseUD, TotImg1, addImg1);
+                CvInvoke.cvCopy(addImg1, TotImg1, IntPtr.Zero);
 
-                Image<Bgr, Byte> addImg = new Image<Bgr, byte>(TotImg.Size);
-                CvInvoke.Add(combinedImg, TotImg, addImg);
-                CvInvoke.cvCopy(addImg, TotImg, IntPtr.Zero);
+                Image<Bgr, Byte> addImg2 = new Image<Bgr, byte>(TotImg1.Size);
+                CvInvoke.Add(coarseLR, TotImg2, addImg2);
+                CvInvoke.cvCopy(addImg2, TotImg2, IntPtr.Zero);
                 tick++;
 
-                addImg.Dispose();
-                combinedImg.Dispose();
-
-
+                addImg1.Dispose();
+                addImg2.Dispose();
+                coarseUD.Dispose();
+                coarseLR.Dispose();
+                cameraCoarseAlignBlack.Dispose();
+                cameraCoarseAlignBlackUD.Dispose();
+                cameraCoarseDU.Dispose();
+                cameraCoarseLR.Dispose();
+                cameraCoarseRL.Dispose();
+                cameraCoarseUD.Dispose();
             }
-            TotImg.ROI = Rectangle.Empty;
-            overviewFine = TotImg.ToBitmap();
-            caf.SetImage(overviewFine);
+            TotImg1.ROI = Rectangle.Empty;
+            TotImg2.ROI = Rectangle.Empty;
+            overviewX = TotImg1.ToBitmap(); //LR
+            //overviewY = TotImg2.ToBitmap(); //UD
+            caf.SetImage(overviewX);
             caf.WaitClose();
         }
     }
