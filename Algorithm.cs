@@ -461,9 +461,13 @@ namespace MirrorAlignmentSystem
             double[] offsetXY, offsetRT, mradOffset;
             Point massCenter = new Point(0,0);
             int ok;
-            Image<Gray, byte> TotImg = new Image<Gray, byte>(imagesizex, imagesizey);
-            TotImg.SetZero();
+            //Image<Gray, byte> TotImg = new Image<Gray, byte>(imagesizex, imagesizey);
+            //TotImg.SetZero();
             //Rectangle currentROI;
+
+            Image<Bgr, byte> TotImg = new Image<Bgr, byte>(imagesizex, imagesizey);
+            TotImg.SetZero();
+
            
 			int i = 0, n = Calibrate.segments.Length;
 			foreach (string s in Calibrate.segments)
@@ -499,7 +503,7 @@ namespace MirrorAlignmentSystem
                 //Calculate alignment
                 Fine_algorithm(cameraFineAlign, cameraFineAlignBlack, threshold, int.Parse(DAL.GetRawSegmentNumber(s)), out offsetXY, out offsetRT, out massCenter, out combinedBitmap);
                 Algorithm.pix2mrad(int.Parse(DAL.GetRawSegmentNumber(s)), offsetRT, out mradOffset);
-                Image<Gray, byte> combinedImg = new Image<Gray, byte>(combinedBitmap);
+                Image<Bgr, byte> combinedImg = new Image<Bgr, byte>(combinedBitmap);
          
                 // check tolerance
                 if(mradOffset[0]+mradOffset[1] < fineTolerance)
@@ -513,13 +517,24 @@ namespace MirrorAlignmentSystem
                 fineData[tick, 2] = offsetXY[1];
                 fineData[tick, 3] = mradOffset[0];
                 fineData[tick, 4] = mradOffset[1];
+
+                /*
                 TotImg = combinedImg.Copy();
 
                 tick++;
                 TotImg.ROI = Rectangle.Empty;
+                */
+                Image<Bgr, Byte> addImg = TotImg.Copy();
+                addImg.SetZero();
+                CvInvoke.Add(combinedImg, TotImg.Copy(), addImg);
+                CvInvoke.cvCopy(addImg, TotImg, IntPtr.Zero);
+                tick++;
+                TotImg.ROI = Rectangle.Empty;
+
+
             }
             overviewFine = TotImg.ToBitmap();
-			caf.SetImage(combinedBitmap);
+			caf.SetImage(overviewFine);
 			caf.WaitClose();
 		}
     }
