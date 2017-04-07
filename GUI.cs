@@ -86,6 +86,7 @@ namespace MirrorAlignmentSystem
 			SegmentNumberTextbox.Text = "0911";
 			valueSegmentNumberTextbox = SegmentNumberTextbox.Text;
 
+			CheckForIllegalCrossThreadCalls = false;
 			//this.ActiveControl = BlackBGNumberLabel;
 		}
 
@@ -1076,6 +1077,11 @@ namespace MirrorAlignmentSystem
 			lbl_09.Visible = false;
 			lbl_10.Visible = false;
 			lbl_11.Visible = false;
+		}
+
+		private void pictureBox1_Click(object sender, EventArgs e)
+		{
+
 		}
 
 	}

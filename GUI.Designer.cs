@@ -78,6 +78,9 @@
 			this.lbl_08 = new System.Windows.Forms.Label();
 			this.lbl_11 = new System.Windows.Forms.Label();
 			this.lbl_10 = new System.Windows.Forms.Label();
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.pictureBox2 = new System.Windows.Forms.PictureBox();
+			this.imageList1 = new System.Windows.Forms.ImageList(this.components);
 			this.menuStrip1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabOverview.SuspendLayout();
@@ -93,6 +96,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.combinedImagePB)).BeginInit();
 			this.tabCal.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.CalibrateImgPB)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -364,6 +369,8 @@
 			// 
 			this.tabCoarse.AutoScroll = true;
 			this.tabCoarse.BackColor = System.Drawing.Color.MistyRose;
+			this.tabCoarse.Controls.Add(this.pictureBox2);
+			this.tabCoarse.Controls.Add(this.pictureBox1);
 			this.tabCoarse.Controls.Add(this.gbCoarse);
 			this.tabCoarse.Location = new System.Drawing.Point(4, 48);
 			this.tabCoarse.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
@@ -622,6 +629,34 @@
 			this.lbl_10.TabIndex = 47;
 			this.lbl_10.Text = "Z:";
 			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+			this.pictureBox1.Location = new System.Drawing.Point(822, 81);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(200, 224);
+			this.pictureBox1.TabIndex = 27;
+			this.pictureBox1.TabStop = false;
+			this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+			// 
+			// pictureBox2
+			// 
+			this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+			this.pictureBox2.Location = new System.Drawing.Point(822, 395);
+			this.pictureBox2.Name = "pictureBox2";
+			this.pictureBox2.Size = new System.Drawing.Size(200, 224);
+			this.pictureBox2.TabIndex = 28;
+			this.pictureBox2.TabStop = false;
+			// 
+			// imageList1
+			// 
+			this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+			this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+			this.imageList1.Images.SetKeyName(0, "leftleft.png");
+			this.imageList1.Images.SetKeyName(1, "leftright.png");
+			this.imageList1.Images.SetKeyName(2, "rightleft.png");
+			this.imageList1.Images.SetKeyName(3, "rightright.png");
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -671,6 +706,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.combinedImagePB)).EndInit();
 			this.tabCal.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.CalibrateImgPB)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -726,6 +763,9 @@
 		private System.Windows.Forms.Label lbl_08;
 		private System.Windows.Forms.Label lbl_11;
 		private System.Windows.Forms.Label lbl_10;
+		private System.Windows.Forms.PictureBox pictureBox1;
+		private System.Windows.Forms.PictureBox pictureBox2;
+		private System.Windows.Forms.ImageList imageList1;
     }
 }
 
