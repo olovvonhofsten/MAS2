@@ -478,7 +478,8 @@ namespace MirrorAlignmentSystem
             Image<Bgr, byte> TotImg = new Image<Bgr, byte>(imagesizex, imagesizey);
             TotImg.SetZero();
 
-           
+
+            int errcnt = 0;
 			int i = 0, n = Calibrate.segments.Length;
 			foreach (string s in Calibrate.segments)
             {
@@ -492,14 +493,15 @@ namespace MirrorAlignmentSystem
                 cameraController.SetAOI(AOIData[2], AOIData[3], AOIData[0], AOIData[1] - AOIData[3]);
                 cameraController.SetExposureTime(exposureRate);
                 //Rectangle currentROI = new Rectangle((int)AOIData[0], (int)AOIData[1], (int)AOIData[2], (int)AOIData[3]);
+                TotImg.ROI = Rectangle.Empty;
+                Size sz = TotImg.Size;
                 Rectangle currentROI = new Rectangle((int)AOIData[0], (int)AOIData[1], (int)AOIData[2], (int)AOIData[3]);
                 TotImg.ROI = currentROI;
 
-				Size sz = TotImg.Size;
-				Rectangle rect = TotImg.ROI;
-				if (!rect_check(sz, rect))
+				if (!rect_check(sz, currentROI))
 				{
 					//MessageBox.Show("ROI Error");
+                    ++errcnt;
 				}
 
                 //Show black pattern on monitor
@@ -532,15 +534,12 @@ namespace MirrorAlignmentSystem
                 fineData[tick, 4] = mradOffset[1];
 
 				Image<Bgr, Byte> addImg = new Image<Bgr, byte>(TotImg.Size);
-				//	= TotImg.Copy();
-                //addImg.SetZero();
                 CvInvoke.Add(combinedImg, TotImg, addImg);
                 CvInvoke.cvCopy(addImg, TotImg, IntPtr.Zero);
                 tick++;
-                //TotImg.ROI = Rectangle.Empty;
 
-				//addImg.Dispose();
-				//combinedImg.Dispose();
+				addImg.Dispose();
+				combinedImg.Dispose();
 
 
             }
