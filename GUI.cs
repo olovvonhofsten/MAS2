@@ -224,7 +224,6 @@ namespace MirrorAlignmentSystem
 			else
 			{
 				combinedImagePB.Image = null;
-
 				combinedImagePB.Image = (Bitmap)image.Clone(); //image;
 			}
 		}
