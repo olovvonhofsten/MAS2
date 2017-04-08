@@ -191,7 +191,7 @@ namespace MirrorAlignmentSystem
 					mainWindow.ShowLeftRightOneBackgroundBitmap(returnImg1);
 					mainWindow.ShowLeftRightTwoBackgroundBitmap(returnImg2);
 
-					mainWindow.ShowLeftRightDirection("" + dir);
+                    mainWindow.SetUpperImgNoval(dir, dir);
 				}
 
 				blackBGCounterLeftRight++;
@@ -394,7 +394,7 @@ namespace MirrorAlignmentSystem
 					mainWindow.ShowUpDownOneBackgroundBitmap(returnImg3);
 					mainWindow.ShowUpDownTwoBackgroundBitmap(returnImg4);
 
-					mainWindow.ShowUpDownDirection("" + dir);
+                    mainWindow.SetLowerImgNoval(-dir, dir);
 				}
 
 				blackBGCounterUpDown++;
