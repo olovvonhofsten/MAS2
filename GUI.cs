@@ -945,8 +945,8 @@ namespace MirrorAlignmentSystem
 
 		SegmentNumber segnum = new SegmentNumber();
 
-        private void UpButton_Click(object sender, EventArgs e)
-        {
+		private void UpButton_Click(object sender, EventArgs e)
+		{
 			segnum.FromString(valueSegmentNumberTextbox);
 			segnum.Up();
 			string seg = segnum.ToString();
@@ -955,8 +955,8 @@ namespace MirrorAlignmentSystem
 			ShowSegnum(seg);
 		}
 
-        private void DWbutton_Click(object sender, EventArgs e)
-        {
+		private void DWbutton_Click(object sender, EventArgs e)
+		{
 			segnum.FromString(valueSegmentNumberTextbox);
 			segnum.Dn();
 			string seg = segnum.ToString();
@@ -965,8 +965,8 @@ namespace MirrorAlignmentSystem
 			ShowSegnum(seg);
 		}
 
-        private void RTbutton_Click(object sender, EventArgs e)
-        {
+		private void RTbutton_Click(object sender, EventArgs e)
+		{
 			segnum.FromString(valueSegmentNumberTextbox);
 			segnum.Rg();
 			string seg = segnum.ToString();
@@ -975,13 +975,13 @@ namespace MirrorAlignmentSystem
 			ShowSegnum(seg);
 		}
 
-        private void LTbutton_Click(object sender, EventArgs e)
-        {
+		private void LTbutton_Click(object sender, EventArgs e)
+		{
 			segnum.FromString(valueSegmentNumberTextbox);
 			segnum.Lf();
 			string seg = segnum.ToString();
-            valueSegmentNumberTextbox = seg;
-            SegmentNumberTextbox.Text = seg;
+			valueSegmentNumberTextbox = seg;
+			SegmentNumberTextbox.Text = seg;
 			ShowSegnum(seg);
 		}
 
@@ -1050,9 +1050,9 @@ namespace MirrorAlignmentSystem
 		public void ShowAlign(int align_x, int align_y)
 		{
 			lbl_03.Text = align_x.ToString() + " mm";
-			lbl_03.ForeColor = (align_x > 4) ? Color.Red : Color.Green;
+			lbl_03.ForeColor = (Math.Abs(align_x) > 4) ? Color.Red : Color.Green;
 			lbl_05.Text = align_y.ToString() + " mm";
-			lbl_05.ForeColor = (align_y > 4) ? Color.Red : Color.Green;
+			lbl_05.ForeColor = (Math.Abs(align_y) > 4) ? Color.Red : Color.Green;
 
 			lbl_03.Visible = true;
 			lbl_05.Visible = true;
@@ -1076,11 +1076,11 @@ namespace MirrorAlignmentSystem
 		public void ShowRot(int rot_x, int rot_y, int rot_z)
 		{
 			lbl_07.Text = rot_x.ToString() + " mrad";
-			lbl_07.ForeColor = (rot_x > 3) ? Color.Red : Color.Green;
+			lbl_07.ForeColor = (Math.Abs(rot_x) > 3) ? Color.Red : Color.Green;
 			lbl_09.Text = rot_y.ToString() + " mrad";
-			lbl_09.ForeColor = (rot_y > 3) ? Color.Red : Color.Green;
+			lbl_09.ForeColor = (Math.Abs(rot_y) > 3) ? Color.Red : Color.Green;
 			lbl_11.Text = rot_z.ToString() + " mrad";
-			lbl_11.ForeColor = (rot_z > 10) ? Color.Red : Color.Green;
+			lbl_11.ForeColor = (Math.Abs(rot_z) > 10) ? Color.Red : Color.Green;
 
 			lbl_07.Visible = true;
 			lbl_09.Visible = true;
@@ -1115,31 +1115,10 @@ namespace MirrorAlignmentSystem
 			int rot_y,
 			int rot_z )
 		{
-			lbl_01.Text = "SEGMENT " + segnum;
+			ShowSegnum(segnum);
+			ShowAlign(align_x, align_y);
+			ShowRot(rot_x, rot_y, rot_z);
 
-			lbl_03.Text = align_x.ToString() + " mm";
-			lbl_03.ForeColor = (align_x > 4) ? Color.Red : Color.Green;
-			lbl_05.Text = align_y.ToString() + " mm";
-			lbl_05.ForeColor = (align_y > 4) ? Color.Red : Color.Green;
-
-			lbl_07.Text = rot_x.ToString() + " mrad";
-			lbl_07.ForeColor = (rot_x > 3) ? Color.Red : Color.Green;
-			lbl_09.Text = rot_y.ToString() + " mrad";
-			lbl_09.ForeColor = (rot_y > 3) ? Color.Red : Color.Green;
-			lbl_11.Text = rot_z.ToString() + " mrad";
-			lbl_11.ForeColor = (rot_z > 10) ? Color.Red : Color.Green;
-
-			lbl_01.Visible = true;
-			lbl_02.Visible = true;
-			lbl_03.Visible = true;
-			lbl_04.Visible = true;
-			lbl_05.Visible = true;
-			lbl_06.Visible = true;
-			lbl_07.Visible = true;
-			lbl_08.Visible = true;
-			lbl_09.Visible = true;
-			lbl_10.Visible = true;
-			lbl_11.Visible = true;
 		}
 
 		/// <summary>
@@ -1148,15 +1127,15 @@ namespace MirrorAlignmentSystem
 		public void DisableLabel ()
 		{
 			lbl_01.Visible = false;
-			lbl_02.Visible = false;
+			//lbl_02.Visible = false;
 			lbl_03.Visible = false;
-			lbl_04.Visible = false;
+			//lbl_04.Visible = false;
 			lbl_05.Visible = false;
-			lbl_06.Visible = false;
+			//lbl_06.Visible = false;
 			lbl_07.Visible = false;
-			lbl_08.Visible = false;
+			//lbl_08.Visible = false;
 			lbl_09.Visible = false;
-			lbl_10.Visible = false;
+			//lbl_10.Visible = false;
 			lbl_11.Visible = false;
 		}
 
