@@ -98,6 +98,9 @@
 			this.imageList1 = new System.Windows.Forms.ImageList(this.components);
 			this.button1 = new System.Windows.Forms.Button();
 			this.button3 = new System.Windows.Forms.Button();
+			this.lbl_fr = new System.Windows.Forms.Label();
+			this.lbl_fl = new System.Windows.Forms.Label();
+			this.button4 = new System.Windows.Forms.Button();
 			this.menuStrip1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabOverview.SuspendLayout();
@@ -145,19 +148,19 @@
 			// pathToolStripMenuItem
 			// 
 			this.pathToolStripMenuItem.Name = "pathToolStripMenuItem";
-			this.pathToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+			this.pathToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.pathToolStripMenuItem.Text = "Select &Path";
 			this.pathToolStripMenuItem.Click += new System.EventHandler(this.pathToolStripMenuItem_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(129, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
 			this.exitToolStripMenuItem.Text = "E&xit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
@@ -560,6 +563,9 @@
 			// 
 			this.tabFine.AutoScroll = true;
 			this.tabFine.BackColor = System.Drawing.Color.LemonChiffon;
+			this.tabFine.Controls.Add(this.button4);
+			this.tabFine.Controls.Add(this.lbl_fr);
+			this.tabFine.Controls.Add(this.lbl_fl);
 			this.tabFine.Controls.Add(this.button3);
 			this.tabFine.Controls.Add(this.button1);
 			this.tabFine.Controls.Add(this.CoMLabel);
@@ -852,6 +858,36 @@
 			this.button3.UseVisualStyleBackColor = true;
 			this.button3.Click += new System.EventHandler(this.button3_Click);
 			// 
+			// lbl_fr
+			// 
+			this.lbl_fr.AutoSize = true;
+			this.lbl_fr.BackColor = System.Drawing.Color.White;
+			this.lbl_fr.Location = new System.Drawing.Point(817, 150);
+			this.lbl_fr.Name = "lbl_fr";
+			this.lbl_fr.Size = new System.Drawing.Size(24, 26);
+			this.lbl_fr.TabIndex = 46;
+			this.lbl_fr.Text = "0";
+			// 
+			// lbl_fl
+			// 
+			this.lbl_fl.AutoSize = true;
+			this.lbl_fl.BackColor = System.Drawing.Color.White;
+			this.lbl_fl.Location = new System.Drawing.Point(732, 150);
+			this.lbl_fl.Name = "lbl_fl";
+			this.lbl_fl.Size = new System.Drawing.Size(24, 26);
+			this.lbl_fl.TabIndex = 45;
+			this.lbl_fl.Text = "0";
+			// 
+			// button4
+			// 
+			this.button4.Location = new System.Drawing.Point(10, 217);
+			this.button4.Name = "button4";
+			this.button4.Size = new System.Drawing.Size(149, 57);
+			this.button4.TabIndex = 47;
+			this.button4.Text = "2 2";
+			this.button4.UseVisualStyleBackColor = true;
+			this.button4.Click += new System.EventHandler(this.button4_Click);
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -981,6 +1017,9 @@
 		private System.Windows.Forms.ToolStripMenuItem pathToolStripMenuItem;
 		private System.Windows.Forms.Button button3;
 		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Label lbl_fr;
+		private System.Windows.Forms.Label lbl_fl;
+		private System.Windows.Forms.Button button4;
     }
 }
 
