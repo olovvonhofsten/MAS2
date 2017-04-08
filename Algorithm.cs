@@ -97,7 +97,7 @@ namespace MirrorAlignmentSystem
 
             // Set everything outside mask to zero
             Image<Gray, Byte> Img2m = Img2.Copy(mask);
-            mask.ToBitmap().Save("c:\\visningsbilder\\vombinedFine.bmp");
+            //mask.ToBitmap().Save("c:\\visningsbilder\\vombinedFine.bmp");
 
             // Calculate center of mass
             MCvPoint2D64f massCenterTemp = new MCvPoint2D64f();
@@ -510,10 +510,10 @@ namespace MirrorAlignmentSystem
 			string[] cameraSettings, 
 			MonitorHandler monitor, 
 			CheckAllForm caf,
-			out double[,] fineData, 
+			out int[,] fineData, 
 			out Bitmap overviewFine )
         {
-            fineData = new double[66, 5];
+            fineData = new int[67, 5];
             double [,] doublePoints;
             double exposureRate = 4.5 * double.Parse(cameraSettings[0]);
             double framerate = double.Parse(cameraSettings[5]);
@@ -583,10 +583,10 @@ namespace MirrorAlignmentSystem
                 ok = (mradOffset[0]+mradOffset[1] < fineTolerance) ? 1 : 0;
 
                 fineData[tick, 0] = ok;
-                fineData[tick, 1] = offsetXY[0];
-                fineData[tick, 2] = offsetXY[1];
-                fineData[tick, 3] = mradOffset[0];
-                fineData[tick, 4] = mradOffset[1];
+                fineData[tick, 1] = (int) Math.Round(offsetXY[0]);
+                fineData[tick, 2] = (int) Math.Round(offsetXY[1]);
+                fineData[tick, 3] = (int) Math.Round(mradOffset[0]);
+                fineData[tick, 4] = (int) Math.Round(mradOffset[1]);
 
 				Image<Bgr, Byte> addImg = new Image<Bgr, byte>(TotImg.Size);
                 CvInvoke.Add(combinedImg, TotImg, addImg);

@@ -60,7 +60,7 @@ namespace MirrorAlignmentSystem
 		int waitOnCycle;
 		int xOffset;
 		int yOffset;
-        int[,] statusOfSegments = new int[66, 3];
+        int[,] statusOfSegments = new int[67, 3];
 		Bitmap cameraFineAlignBlack;
 		Bitmap cameraFineAlignPattern;
 		Bitmap combinedBitmap;
@@ -476,15 +476,15 @@ namespace MirrorAlignmentSystem
 						}
                         else if(alignmentMode == "checkALLfine")
                         {
-                            double[,] fineData;
+                            int[,] fineData;
                             Bitmap overviewFine;
 							var caf = mainWindow.getCAF();
                             Algorithm.checkAllSegmentsFine(cameraController, cameraSettings, monitor, caf, out fineData, out overviewFine);
 							for(int ticks = 0; ticks < 67; ticks++)
                             {
-                                statusOfSegments[ticks, 0] = (int) Math.Round(fineData[ticks, 0]);
-                                statusOfSegments[ticks, 1] = (int) Math.Round(fineData[ticks, 2]);
-                                statusOfSegments[ticks, 2] = (int) Math.Round(fineData[ticks, 3]);
+                                statusOfSegments[ticks, 0] = fineData[ticks, 0];
+                                statusOfSegments[ticks, 1] = fineData[ticks, 2];
+                                statusOfSegments[ticks, 2] = fineData[ticks, 3];
                             }
                             alignmentMode = "over";
                             //updateSegmentStatus
