@@ -1260,6 +1260,40 @@ namespace MirrorAlignmentSystem
 			pb_Lower.Image = imageList1.Images[num];
 		}
 
+
+		/// <summary>
+		/// Sets the fine img.
+		/// </summary>
+		/// <param name="lft">The LFT.</param>
+		/// <param name="rgt">The RGT.</param>
+		public void SetFineImg(int lft, int rgt)
+		{
+			if (lft == 0 && rgt == 0)
+			{
+				pbFine.Image = imageList1.Images[0];
+				lbl_fl.Visible = false;
+				lbl_fr.Visible = false;
+				return;
+			}
+
+			lbl_fl.Visible = true;
+			lbl_fr.Visible = true;
+
+			bool neglft = lft < 0;
+			if (neglft) lft = -lft;
+			bool negrgt = rgt < 0;
+			if (negrgt) rgt = -rgt;
+
+			lbl_fl.Text = lft.ToString();
+			lbl_fr.Text = rgt.ToString();
+
+			int num = 1 + (neglft ? 0 : 2) + (negrgt ? 0 : 1);
+			pbFine.Image = imageList1.Images[num];
+		}
+
+		
+
+
 		private bool can_accept = false;
 
 		/// <summary>
@@ -1280,13 +1314,37 @@ namespace MirrorAlignmentSystem
 			//
 			if (can_accept)
 			{
+				string fn = getChosenPath() + "\\image_";
+				var now = DateTime.Now;
+				fn += now.ToShortDateString() + "_" + now.ToShortTimeString().Replace(':','-') + "_";
+				fn += valueSegmentNumberTextbox + ".bmp";
+				if (combinedImagePB.Image!=null) combinedImagePB.Image.Save(fn);
 				Alignment = "calibrate";
+				tabControl1.SelectedIndex = 3;
 			}
 		}
 
+		private string folder_path = ".";
+
 		private void pathToolStripMenuItem_Click(object sender, EventArgs e)
 		{
+			FolderBrowserDialog folderBrowserDialog1 = new FolderBrowserDialog();
+			folderBrowserDialog1.ShowNewFolderButton = true;
+			folderBrowserDialog1.RootFolder = Environment.SpecialFolder.Desktop;
+			DialogResult result = folderBrowserDialog1.ShowDialog();
+	        if( result == DialogResult.OK )
+			{
+				folder_path = folderBrowserDialog1.SelectedPath;
+			}
+		}
 
+		/// <summary>
+		/// Gets the chosen path.
+		/// </summary>
+		/// <returns>the path</returns>
+		public string getChosenPath()
+		{
+			return folder_path;
 		}
 
 		private void button1_Click_2(object sender, EventArgs e)
@@ -1297,6 +1355,11 @@ namespace MirrorAlignmentSystem
 		private void button3_Click(object sender, EventArgs e)
 		{
 			SetTanRad(0.3, 0.2);
+		}
+
+		private void button4_Click(object sender, EventArgs e)
+		{
+			SetFineImg(2, 2);
 		}
 
 
