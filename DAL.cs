@@ -16,18 +16,8 @@ namespace MirrorAlignmentSystem
         /// The connection string to the database
         /// </summary>
 
-        static string SQLString = "server=CLEANERGY-PC\\SQLEXPRESS;" +
-                   "integrated security=SSPI;" +
-                   "Trusted_Connection=yes;" +
-                   "database=MAS2DB; " +
-                   "connection timeout=30";
+        static string SQLString = LocalSettings.SQLString();
 
-        /*static string SQLString = "server=MAS_COMPUTER\\SQLEXPRESS;" +
-                           "integrated security=SSPI;" +
-                           "Trusted_Connection=yes;" +
-						   "database=MirrorAlignmentSystemDB; " +
-                           "connection timeout=30";
-        */
         /// <summary>
         /// Gets a image from the database of the whole disc. This method is only used when the application is running in offline mode
         /// and in fine alignment
