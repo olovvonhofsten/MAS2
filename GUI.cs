@@ -1266,7 +1266,7 @@ namespace MirrorAlignmentSystem
 		/// </summary>
 		/// <param name="lft">The LFT.</param>
 		/// <param name="rgt">The RGT.</param>
-		public void SetFineImg(int lft, int rgt)
+		public void SetFineImg(double lft, double rgt)
 		{
 			if (lft == 0 && rgt == 0)
 			{
@@ -1279,13 +1279,13 @@ namespace MirrorAlignmentSystem
 			lbl_fl.Visible = true;
 			lbl_fr.Visible = true;
 
-			bool neglft = lft < 0;
+			bool neglft = lft < 0.0;
 			if (neglft) lft = -lft;
-			bool negrgt = rgt < 0;
+			bool negrgt = rgt < 0.0;
 			if (negrgt) rgt = -rgt;
 
-			lbl_fl.Text = lft.ToString();
-			lbl_fr.Text = rgt.ToString();
+			lbl_fl.Text = lft.ToString("N1");
+			lbl_fr.Text = rgt.ToString("N1");
 
 			int num = 1 + (neglft ? 0 : 2) + (negrgt ? 0 : 1);
 			pbFine.Image = imageList1.Images[num];
@@ -1312,16 +1312,13 @@ namespace MirrorAlignmentSystem
 		private void acceptButton_Click(object sender, EventArgs e)
 		{
 			//
-			if (can_accept)
-			{
-				string fn = getChosenPath() + "\\image_";
-				var now = DateTime.Now;
-				fn += now.ToShortDateString() + "_" + now.ToShortTimeString().Replace(':','-') + "_";
-				fn += valueSegmentNumberTextbox + ".bmp";
-				if (combinedImagePB.Image!=null) combinedImagePB.Image.Save(fn);
-				Alignment = "calibrate";
-				tabControl1.SelectedIndex = 3;
-			}
+			string fn = getChosenPath() + "\\image_";
+			var now = DateTime.Now;
+			fn += now.ToShortDateString() + "_" + now.ToShortTimeString().Replace(':','-') + "_";
+			fn += valueSegmentNumberTextbox + ".bmp";
+			if (combinedImagePB.Image!=null) combinedImagePB.Image.Save(fn);
+			Alignment = "calibrate";
+			tabControl1.SelectedIndex = 3;
 		}
 
 		private string folder_path = ".";
