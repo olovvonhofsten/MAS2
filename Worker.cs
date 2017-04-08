@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace MirrorAlignmentSystem
 {
@@ -59,6 +60,7 @@ namespace MirrorAlignmentSystem
 		int waitOnCycle;
 		int xOffset;
 		int yOffset;
+        int[] statusOfSegments = Enumerable.Repeat(0, 66).ToArray();
 		Bitmap cameraFineAlignBlack;
 		Bitmap cameraFineAlignPattern;
 		Bitmap combinedBitmap;

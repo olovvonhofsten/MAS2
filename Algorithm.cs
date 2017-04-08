@@ -420,6 +420,29 @@ namespace MirrorAlignmentSystem
             bmp.UnlockBits(bmpData);
         }
 
+        // Draws red segment if status = 0 (not ok) and green segments if status = 1 (ok)
+        public static Bitmap drawSegmentTypes(int[] status, Bitmap Canvas)
+        {
+            Image<Bgr, byte> segmentsImage = new Image<Bgr, byte>(Canvas);
+            int ticker = 0;
+            foreach (string s in Calibrate.segments)
+            {
+                int[] AOIData = DAL.GetAOIData(s);
+                Point[] Seg = new Point[] { new Point(AOIData[4], AOIData[5]), new Point(AOIData[6], AOIData[7]), new Point(AOIData[8], AOIData[9]), new Point(AOIData[10], AOIData[11]) };
+                if (status[ticker] == 0)
+                {
+                    segmentsImage.Draw(Seg, new Bgr(Color.Red), 1);
+                }
+                if (status[ticker] == 1)
+                {
+                    segmentsImage.Draw(Seg, new Bgr(Color.Green), 1);
+                }
+            }
+
+            Bitmap outBmp = segmentsImage.ToBitmap();
+            return outBmp;
+        }
+
         public static double[,] SegmentPatternPoints(Point PatternCenter)
         {
             int sx = screensizex;
@@ -513,7 +536,7 @@ namespace MirrorAlignmentSystem
                 Bitmap cameraFineAlignBlack = cameraController.AquisitionVideo(AOIData[2]).Clone(new Rectangle(new Point(0, 0), new Size(AOIData[2], AOIData[3])), System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
 
                 //Show pattern on monitor
-                doublePoints = SegmentPatternPoints(new Point(AOIData[12], AOIData[13]));
+                doublePoints = SegmentPatternPoints(new Point(AOIData[14], AOIData[15]));
                 monitor.UpdatePatternVertices(doublePoints, true);
                 Thread.Sleep(waitOnMonitor);
 
