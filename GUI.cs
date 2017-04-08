@@ -88,6 +88,9 @@ namespace MirrorAlignmentSystem
 
 			CheckForIllegalCrossThreadCalls = false;
 			//this.ActiveControl = BlackBGNumberLabel;
+
+			DisableLabel();
+			ShowSegnum(valueSegmentNumberTextbox);
 		}
 
 		/// <summary>
@@ -327,6 +330,7 @@ namespace MirrorAlignmentSystem
 				DAL.InsertEvent(SegmentNumberTextbox.Text, valueSegmentNumberTextbox, CurrentUser.GetCurrentUser(), "Segment changed", "SegmentNumberTextbox");
 
 				valueSegmentNumberTextbox = SegmentNumberTextbox.Text;
+				ShowSegnum(valueSegmentNumberTextbox);
 			}
 		}
 
