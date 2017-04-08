@@ -69,6 +69,7 @@
 			this.leftRightPBOne = new System.Windows.Forms.PictureBox();
 			this.leftRightPBTwo = new System.Windows.Forms.PictureBox();
 			this.tabFine = new System.Windows.Forms.TabPage();
+			this.CoMLabel = new System.Windows.Forms.Label();
 			this.acceptButton = new System.Windows.Forms.Button();
 			this.pbFine = new System.Windows.Forms.PictureBox();
 			this.lbl_rad_ofs = new System.Windows.Forms.Label();
@@ -94,7 +95,6 @@
 			this.lbl_11 = new System.Windows.Forms.Label();
 			this.lbl_10 = new System.Windows.Forms.Label();
 			this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-			this.CoMLabel = new System.Windows.Forms.Label();
 			this.menuStrip1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabOverview.SuspendLayout();
@@ -394,7 +394,7 @@
 			this.tabCoarse.Location = new System.Drawing.Point(4, 48);
 			this.tabCoarse.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.tabCoarse.Name = "tabCoarse";
-			this.tabCoarse.Size = new System.Drawing.Size(1012, 454);
+			this.tabCoarse.Size = new System.Drawing.Size(1012, 484);
 			this.tabCoarse.TabIndex = 2;
 			this.tabCoarse.Text = "COARSE";
 			// 
@@ -565,6 +565,17 @@
 			this.tabFine.TabIndex = 1;
 			this.tabFine.Text = "FINE";
 			// 
+			// CoMLabel
+			// 
+			this.CoMLabel.AutoSize = true;
+			this.CoMLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+			this.CoMLabel.Location = new System.Drawing.Point(691, 410);
+			this.CoMLabel.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+			this.CoMLabel.Name = "CoMLabel";
+			this.CoMLabel.Size = new System.Drawing.Size(19, 26);
+			this.CoMLabel.TabIndex = 42;
+			this.CoMLabel.Text = "-";
+			// 
 			// acceptButton
 			// 
 			this.acceptButton.BackColor = System.Drawing.Color.Red;
@@ -648,7 +659,7 @@
 			this.tabCal.Location = new System.Drawing.Point(4, 48);
 			this.tabCal.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.tabCal.Name = "tabCal";
-			this.tabCal.Size = new System.Drawing.Size(1012, 454);
+			this.tabCal.Size = new System.Drawing.Size(1012, 484);
 			this.tabCal.TabIndex = 3;
 			this.tabCal.Text = "CALIBRATE";
 			// 
@@ -807,17 +818,6 @@
 			this.imageList1.Images.SetKeyName(2, "leftright.png");
 			this.imageList1.Images.SetKeyName(3, "rightleft.png");
 			this.imageList1.Images.SetKeyName(4, "rightright.png");
-			// 
-			// CoMLabel
-			// 
-			this.CoMLabel.AutoSize = true;
-			this.CoMLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-			this.CoMLabel.Location = new System.Drawing.Point(691, 410);
-			this.CoMLabel.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-			this.CoMLabel.Name = "CoMLabel";
-			this.CoMLabel.Size = new System.Drawing.Size(19, 26);
-			this.CoMLabel.TabIndex = 42;
-			this.CoMLabel.Text = "-";
 			// 
 			// MainWindow
 			// 

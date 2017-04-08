@@ -5,6 +5,9 @@ using System.IO;
 namespace MirrorAlignmentSystem
 {
 
+	/// <summary>
+	/// 
+	/// </summary>
 	public static class LocalSettings
 	{
 
@@ -38,6 +41,10 @@ namespace MirrorAlignmentSystem
 			return val;
 		}
 
+		/// <summary>
+		/// SQLs the string.
+		/// </summary>
+		/// <returns></returns>
 		public static string SQLString()
 		{
 			StreamReader sett = File.OpenText("./settings.txt");
