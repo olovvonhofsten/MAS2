@@ -420,8 +420,34 @@ namespace MirrorAlignmentSystem
             bmp.UnlockBits(bmpData);
         }
 
+        //Change status of a segment
+        public static void changeSegmentStatus(string segment, double [] mradOffset, int[,] oldStatusOfSegments, out int[,] newStatusOfSegments)
+        {
+            int ticker = 0;
+            newStatusOfSegments = new int[66, 3];
+            foreach (string s in Calibrate.segments)
+            {
+                if (s == segment)
+                {
+                    oldStatusOfSegments[ticker, 1] = (int) Math.Round(mradOffset[0]);
+                    oldStatusOfSegments[ticker, 2] = (int)Math.Round(mradOffset[1]);
+                    if(mradOffset[0] <= 1 && mradOffset[1] < 1)
+                    {
+                        oldStatusOfSegments[ticker,0] = 1;
+                    }
+                    else
+                    {
+                        oldStatusOfSegments[ticker,0] = 0;
+                    }
+
+                }
+                ticker++;
+            }
+            newStatusOfSegments = oldStatusOfSegments;
+        }
+
         // Draws red segment if status = 0 (not ok) and green segments if status = 1 (ok)
-        public static Bitmap drawSegmentTypes(int[] status, Bitmap Canvas)
+        public static Bitmap drawSegmentTypes(int[,] status, Bitmap Canvas)
         {
             Image<Bgr, byte> segmentsImage = new Image<Bgr, byte>(Canvas);
             int ticker = 0;
@@ -429,14 +455,19 @@ namespace MirrorAlignmentSystem
             {
                 int[] AOIData = DAL.GetAOIData(s);
                 Point[] Seg = new Point[] { new Point(AOIData[4], AOIData[5]), new Point(AOIData[6], AOIData[7]), new Point(AOIData[8], AOIData[9]), new Point(AOIData[10], AOIData[11]) };
-                if (status[ticker] == 0)
+                if (s == "0911")
+                {
+                    System.Diagnostics.Debug.WriteLine(status[ticker, 0]);
+                }
+                if (status[ticker,0] == 0)
                 {
                     segmentsImage.Draw(Seg, new Bgr(Color.Red), 1);
                 }
-                if (status[ticker] == 1)
+                if (status[ticker,0] == 1)
                 {
                     segmentsImage.Draw(Seg, new Bgr(Color.Green), 1);
                 }
+                ticker++;
             }
 
             Bitmap outBmp = segmentsImage.ToBitmap();

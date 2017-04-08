@@ -72,6 +72,7 @@ namespace MirrorAlignmentSystem
 					}
 
 					//This part paints the Area Of Interest above the overview image
+                    System.Diagnostics.Debug.WriteLine("Overview, 0911 status: " + statusOfSegments[8, 0]);
                     Bitmap cameraOverview2 = Algorithm.drawSegmentTypes(statusOfSegments, cameraOverview);
                     using (Bitmap tempBitmap = new Bitmap(cameraOverview.Width, cameraOverview.Height))
 					{
