@@ -759,16 +759,26 @@ namespace MirrorAlignmentSystem
 		/// <param name="realCoMInput">beats me</param>
 		public void UpdateCoMLabel(string CoM, Point realCoMInput)
 		{
-			if (this.CoMLabel.InvokeRequired)
+			if (this.lbl_tan_ofs.InvokeRequired)
 			{
 				SetCoMLabelActiveCallback d = new SetCoMLabelActiveCallback(UpdateCoMLabel);
 				this.Invoke(d, new object[] { CoM, realCoMInput });
 			}
 			else
 			{
-				CoMLabel.Text = "CoM offset: " + CoM;
+				CoMLabel.Text = /*"CoM offset: " +*/ CoM;
 				realCoM = realCoMInput;
 			}
+		}
+
+		bool accept_eanbled = false;
+
+		public void SetTanRad(float tan, float rad)
+		{
+			lbl_tan_ofs.Text = tan.ToString();
+			lbl_rad_ofs.Text = rad.ToString();
+			accept_eanbled = (tan <= 1) && (rad <= 1);
+			acceptButton.BackColor = accept_eanbled ? Color.Green : Color.Red;
 		}
 
 		private void MainWindow_FormClosing(object sender, FormClosingEventArgs e)
@@ -1281,6 +1291,15 @@ namespace MirrorAlignmentSystem
 		{
 			SetUpperImg(+2, -3);
 			SetLowerImg(+2, -3);
+		}
+
+		private void acceptButton_Click(object sender, EventArgs e)
+		{
+			if (accept_eanbled)
+			{
+				// actually accept
+				Alignment = "calibrate";
+			}
 		}
 
 

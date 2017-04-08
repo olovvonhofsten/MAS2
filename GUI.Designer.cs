@@ -71,11 +71,11 @@
 			this.tabFine = new System.Windows.Forms.TabPage();
 			this.acceptButton = new System.Windows.Forms.Button();
 			this.pbFine = new System.Windows.Forms.PictureBox();
-			this.label1 = new System.Windows.Forms.Label();
+			this.lbl_rad_ofs = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.TanOffsetLabel = new System.Windows.Forms.Label();
 			this.combinedImagePB = new System.Windows.Forms.PictureBox();
-			this.CoMLabel = new System.Windows.Forms.Label();
+			this.lbl_tan_ofs = new System.Windows.Forms.Label();
 			this.tabCal = new System.Windows.Forms.TabPage();
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.label5 = new System.Windows.Forms.Label();
@@ -94,6 +94,7 @@
 			this.lbl_11 = new System.Windows.Forms.Label();
 			this.lbl_10 = new System.Windows.Forms.Label();
 			this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+			this.CoMLabel = new System.Windows.Forms.Label();
 			this.menuStrip1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabOverview.SuspendLayout();
@@ -548,18 +549,19 @@
 			// 
 			this.tabFine.AutoScroll = true;
 			this.tabFine.BackColor = System.Drawing.Color.LemonChiffon;
+			this.tabFine.Controls.Add(this.CoMLabel);
 			this.tabFine.Controls.Add(this.acceptButton);
 			this.tabFine.Controls.Add(this.pbFine);
-			this.tabFine.Controls.Add(this.label1);
+			this.tabFine.Controls.Add(this.lbl_rad_ofs);
 			this.tabFine.Controls.Add(this.label2);
 			this.tabFine.Controls.Add(this.TanOffsetLabel);
 			this.tabFine.Controls.Add(this.combinedImagePB);
-			this.tabFine.Controls.Add(this.CoMLabel);
+			this.tabFine.Controls.Add(this.lbl_tan_ofs);
 			this.tabFine.Location = new System.Drawing.Point(4, 48);
 			this.tabFine.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.tabFine.Name = "tabFine";
 			this.tabFine.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-			this.tabFine.Size = new System.Drawing.Size(1012, 454);
+			this.tabFine.Size = new System.Drawing.Size(1012, 484);
 			this.tabFine.TabIndex = 1;
 			this.tabFine.Text = "FINE";
 			// 
@@ -573,6 +575,7 @@
 			this.acceptButton.TabIndex = 41;
 			this.acceptButton.Text = "ACCEPT";
 			this.acceptButton.UseVisualStyleBackColor = false;
+			this.acceptButton.Click += new System.EventHandler(this.acceptButton_Click);
 			// 
 			// pbFine
 			// 
@@ -583,19 +586,19 @@
 			this.pbFine.TabIndex = 40;
 			this.pbFine.TabStop = false;
 			// 
-			// label1
+			// lbl_rad_ofs
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(808, 368);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(19, 26);
-			this.label1.TabIndex = 39;
-			this.label1.Text = "-";
+			this.lbl_rad_ofs.AutoSize = true;
+			this.lbl_rad_ofs.Location = new System.Drawing.Point(809, 369);
+			this.lbl_rad_ofs.Name = "lbl_rad_ofs";
+			this.lbl_rad_ofs.Size = new System.Drawing.Size(19, 26);
+			this.lbl_rad_ofs.TabIndex = 39;
+			this.lbl_rad_ofs.Text = "-";
 			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(680, 368);
+			this.label2.Location = new System.Drawing.Point(682, 369);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(124, 26);
 			this.label2.TabIndex = 38;
@@ -604,7 +607,7 @@
 			// TanOffsetLabel
 			// 
 			this.TanOffsetLabel.AutoSize = true;
-			this.TanOffsetLabel.Location = new System.Drawing.Point(680, 326);
+			this.TanOffsetLabel.Location = new System.Drawing.Point(682, 328);
 			this.TanOffsetLabel.Name = "TanOffsetLabel";
 			this.TanOffsetLabel.Size = new System.Drawing.Size(125, 26);
 			this.TanOffsetLabel.TabIndex = 37;
@@ -622,16 +625,16 @@
 			this.combinedImagePB.TabStop = false;
 			this.combinedImagePB.WaitOnLoad = true;
 			// 
-			// CoMLabel
+			// lbl_tan_ofs
 			// 
-			this.CoMLabel.AutoSize = true;
-			this.CoMLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-			this.CoMLabel.Location = new System.Drawing.Point(809, 328);
-			this.CoMLabel.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
-			this.CoMLabel.Name = "CoMLabel";
-			this.CoMLabel.Size = new System.Drawing.Size(19, 26);
-			this.CoMLabel.TabIndex = 36;
-			this.CoMLabel.Text = "-";
+			this.lbl_tan_ofs.AutoSize = true;
+			this.lbl_tan_ofs.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+			this.lbl_tan_ofs.Location = new System.Drawing.Point(809, 328);
+			this.lbl_tan_ofs.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+			this.lbl_tan_ofs.Name = "lbl_tan_ofs";
+			this.lbl_tan_ofs.Size = new System.Drawing.Size(19, 26);
+			this.lbl_tan_ofs.TabIndex = 36;
+			this.lbl_tan_ofs.Text = "-";
 			// 
 			// tabCal
 			// 
@@ -805,6 +808,17 @@
 			this.imageList1.Images.SetKeyName(3, "rightleft.png");
 			this.imageList1.Images.SetKeyName(4, "rightright.png");
 			// 
+			// CoMLabel
+			// 
+			this.CoMLabel.AutoSize = true;
+			this.CoMLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+			this.CoMLabel.Location = new System.Drawing.Point(691, 410);
+			this.CoMLabel.Margin = new System.Windows.Forms.Padding(7, 0, 7, 0);
+			this.CoMLabel.Name = "CoMLabel";
+			this.CoMLabel.Size = new System.Drawing.Size(19, 26);
+			this.CoMLabel.TabIndex = 42;
+			this.CoMLabel.Text = "-";
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -894,7 +908,7 @@
         private System.Windows.Forms.TextBox BlackBGNumberTextBox;
 		private System.Windows.Forms.TextBox SegmentNumberTextbox;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label CoMLabel;
+        private System.Windows.Forms.Label lbl_tan_ofs;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.PictureBox CalibrateImgPB;
         private System.Windows.Forms.Button RTbutton;
@@ -921,7 +935,7 @@
 		private System.Windows.Forms.Label lbl_ul;
 		private System.Windows.Forms.Label lbl_lr;
 		private System.Windows.Forms.Label lbl_ll;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbl_rad_ofs;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label TanOffsetLabel;
         private System.Windows.Forms.Button acceptButton;
@@ -930,6 +944,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label CoMLabel;
     }
 }
 
