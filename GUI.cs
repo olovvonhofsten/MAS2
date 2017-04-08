@@ -793,7 +793,18 @@ namespace MirrorAlignmentSystem
 
 		private void MainWindow_KeyDown(object sender, KeyEventArgs e)
 		{
-			//menuStrip1.OnKeyDown(sender, e);
+			/* /menuStrip1.OnKeyDown(sender, e);
+			if (Alignment=="over")
+			{
+				if (e.KeyCode == Keys.Left)
+					LTbutton_Click(sender, e);
+				if (e.KeyCode == Keys.Right)
+					RTbutton_Click(sender, e);
+				if (e.KeyCode == Keys.Up)
+					UpButton_Click(sender, e);
+				if (e.KeyCode == Keys.Down)
+					DWbutton_Click(sender, e);
+			} */
 		}
 
         private void tabPage1_Click(object sender, EventArgs e)
@@ -985,8 +996,6 @@ namespace MirrorAlignmentSystem
 			ShowSegnum(seg);
 		}
 
-		int prog = 0;
-
 		private void btnCheckAllFine_Click(object sender, EventArgs e)
 		{
 			// check all
@@ -995,8 +1004,6 @@ namespace MirrorAlignmentSystem
 			Alignment = "checkALLfine";
 			caf.Start();
 			caf.Title("check all fine");
-			//BIA_timer.Enabled = true;
-			prog = 0;
 			caf.ShowDialog();
 			checkBox1.Checked = old;
 		}
@@ -1004,24 +1011,18 @@ namespace MirrorAlignmentSystem
 		private void btnCheckAllCoarse_Click(object sender, EventArgs e)
 		{
 			// check all
+			bool old = checkBox1.Checked;
+			checkBox1.Checked = false;
 			Alignment = "checkALLcoarse";
 			caf.Start();
 			caf.Title("check all coarse");
-			//BIA_timer.Enabled = true;
-			prog = 0;
 			caf.ShowDialog();
+			checkBox1.Checked = old;
 		}
 
 		private void timer1_Tick(object sender, EventArgs e)
 		{
-			++prog;
-			if (prog > 100)
-			{
-				caf.CloseDown();
-				BIA_timer.Enabled = false;
-			}
-			else
-				caf.SetProgress(prog);
+
 		}
 
 		/// <summary>
@@ -1259,33 +1260,43 @@ namespace MirrorAlignmentSystem
 			pb_Lower.Image = imageList1.Images[num];
 		}
 
-		private void button1_Click_2(object sender, EventArgs e)
-		{
-			SetUpperImg(1, 1);
-			SetLowerImg(1, 1);
-		}
+		private bool can_accept = false;
 
-		private void button3_Click(object sender, EventArgs e)
+		/// <summary>
+		/// Sets the tangetial and radial ofsetts in "fine".
+		/// </summary>
+		/// <param name="tan">The tan.</param>
+		/// <param name="rad">The rad.</param>
+		public void SetTanRad(double tan, double rad)
 		{
-			SetUpperImg(0, 0);
-			SetLowerImg(0, 0);
-		}
-
-		private void button4_Click(object sender, EventArgs e)
-		{
-			SetUpperImg(-1, +1);
-			SetLowerImg(-1, +1);
-		}
-
-		private void button5_Click(object sender, EventArgs e)
-		{
-			SetUpperImg(+2, -3);
-			SetLowerImg(+2, -3);
+			lbl_tan_ofs.Text = tan.ToString();
+			lbl_rad_ofs.Text = rad.ToString();
+			can_accept = (Math.Abs(tan) <= 1.0) && (Math.Abs(rad) <= 1.0);
+			acceptButton.BackColor = can_accept ? Color.Green : Color.Red;
 		}
 
 		private void acceptButton_Click(object sender, EventArgs e)
 		{
 			//
+			if (can_accept)
+			{
+				Alignment = "calibrate";
+			}
+		}
+
+		private void pathToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void button1_Click_2(object sender, EventArgs e)
+		{
+			SetTanRad(1.2, -0.7);
+		}
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			SetTanRad(0.3, 0.2);
 		}
 
 

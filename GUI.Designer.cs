@@ -32,6 +32,7 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
 			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
 			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.pathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,8 +74,8 @@
 			this.acceptButton = new System.Windows.Forms.Button();
 			this.pbFine = new System.Windows.Forms.PictureBox();
 			this.lbl_rad_ofs = new System.Windows.Forms.Label();
-			this.label2 = new System.Windows.Forms.Label();
-			this.TanOffsetLabel = new System.Windows.Forms.Label();
+			this.lbl_ofs_rad = new System.Windows.Forms.Label();
+			this.lbl_ofs_tan = new System.Windows.Forms.Label();
 			this.combinedImagePB = new System.Windows.Forms.PictureBox();
 			this.lbl_tan_ofs = new System.Windows.Forms.Label();
 			this.tabCal = new System.Windows.Forms.TabPage();
@@ -95,6 +96,8 @@
 			this.lbl_11 = new System.Windows.Forms.Label();
 			this.lbl_10 = new System.Windows.Forms.Label();
 			this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+			this.button1 = new System.Windows.Forms.Button();
+			this.button3 = new System.Windows.Forms.Button();
 			this.menuStrip1.SuspendLayout();
 			this.tabControl1.SuspendLayout();
 			this.tabOverview.SuspendLayout();
@@ -132,21 +135,29 @@
 			// fileToolStripMenuItem
 			// 
 			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pathToolStripMenuItem,
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
 			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
 			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 19);
 			this.fileToolStripMenuItem.Text = "&File";
 			// 
+			// pathToolStripMenuItem
+			// 
+			this.pathToolStripMenuItem.Name = "pathToolStripMenuItem";
+			this.pathToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+			this.pathToolStripMenuItem.Text = "Select &Path";
+			this.pathToolStripMenuItem.Click += new System.EventHandler(this.pathToolStripMenuItem_Click);
+			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(89, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(129, 6);
 			// 
 			// exitToolStripMenuItem
 			// 
 			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+			this.exitToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
 			this.exitToolStripMenuItem.Text = "E&xit";
 			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
 			// 
@@ -549,12 +560,14 @@
 			// 
 			this.tabFine.AutoScroll = true;
 			this.tabFine.BackColor = System.Drawing.Color.LemonChiffon;
+			this.tabFine.Controls.Add(this.button3);
+			this.tabFine.Controls.Add(this.button1);
 			this.tabFine.Controls.Add(this.CoMLabel);
 			this.tabFine.Controls.Add(this.acceptButton);
 			this.tabFine.Controls.Add(this.pbFine);
 			this.tabFine.Controls.Add(this.lbl_rad_ofs);
-			this.tabFine.Controls.Add(this.label2);
-			this.tabFine.Controls.Add(this.TanOffsetLabel);
+			this.tabFine.Controls.Add(this.lbl_ofs_rad);
+			this.tabFine.Controls.Add(this.lbl_ofs_tan);
 			this.tabFine.Controls.Add(this.combinedImagePB);
 			this.tabFine.Controls.Add(this.lbl_tan_ofs);
 			this.tabFine.Location = new System.Drawing.Point(4, 48);
@@ -606,23 +619,23 @@
 			this.lbl_rad_ofs.TabIndex = 39;
 			this.lbl_rad_ofs.Text = "-";
 			// 
-			// label2
+			// lbl_ofs_rad
 			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(682, 369);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(124, 26);
-			this.label2.TabIndex = 38;
-			this.label2.Text = "RAD offset:";
+			this.lbl_ofs_rad.AutoSize = true;
+			this.lbl_ofs_rad.Location = new System.Drawing.Point(682, 369);
+			this.lbl_ofs_rad.Name = "lbl_ofs_rad";
+			this.lbl_ofs_rad.Size = new System.Drawing.Size(124, 26);
+			this.lbl_ofs_rad.TabIndex = 38;
+			this.lbl_ofs_rad.Text = "RAD offset:";
 			// 
-			// TanOffsetLabel
+			// lbl_ofs_tan
 			// 
-			this.TanOffsetLabel.AutoSize = true;
-			this.TanOffsetLabel.Location = new System.Drawing.Point(682, 328);
-			this.TanOffsetLabel.Name = "TanOffsetLabel";
-			this.TanOffsetLabel.Size = new System.Drawing.Size(125, 26);
-			this.TanOffsetLabel.TabIndex = 37;
-			this.TanOffsetLabel.Text = "TAN Offset:";
+			this.lbl_ofs_tan.AutoSize = true;
+			this.lbl_ofs_tan.Location = new System.Drawing.Point(682, 328);
+			this.lbl_ofs_tan.Name = "lbl_ofs_tan";
+			this.lbl_ofs_tan.Size = new System.Drawing.Size(125, 26);
+			this.lbl_ofs_tan.TabIndex = 37;
+			this.lbl_ofs_tan.Text = "TAN Offset:";
 			// 
 			// combinedImagePB
 			// 
@@ -819,6 +832,26 @@
 			this.imageList1.Images.SetKeyName(3, "rightleft.png");
 			this.imageList1.Images.SetKeyName(4, "rightright.png");
 			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(10, 30);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(149, 63);
+			this.button1.TabIndex = 43;
+			this.button1.Text = "1.2 -0.7";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click_2);
+			// 
+			// button3
+			// 
+			this.button3.Location = new System.Drawing.Point(10, 113);
+			this.button3.Name = "button3";
+			this.button3.Size = new System.Drawing.Size(149, 57);
+			this.button3.TabIndex = 44;
+			this.button3.Text = "0.3 0.2";
+			this.button3.UseVisualStyleBackColor = true;
+			this.button3.Click += new System.EventHandler(this.button3_Click);
+			// 
 			// MainWindow
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -936,8 +969,8 @@
 		private System.Windows.Forms.Label lbl_lr;
 		private System.Windows.Forms.Label lbl_ll;
         private System.Windows.Forms.Label lbl_rad_ofs;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label TanOffsetLabel;
+        private System.Windows.Forms.Label lbl_ofs_rad;
+        private System.Windows.Forms.Label lbl_ofs_tan;
         private System.Windows.Forms.Button acceptButton;
         private System.Windows.Forms.PictureBox pbFine;
         private System.Windows.Forms.TextBox textBox1;
@@ -945,6 +978,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label CoMLabel;
+		private System.Windows.Forms.ToolStripMenuItem pathToolStripMenuItem;
+		private System.Windows.Forms.Button button3;
+		private System.Windows.Forms.Button button1;
     }
 }
 
