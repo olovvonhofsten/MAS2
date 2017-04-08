@@ -48,6 +48,8 @@ namespace MirrorAlignmentSystem
 					//validates if the system is online or is running in offline mode
 					if (!offline)
 					{
+                        monitor.BlackScreen();
+                        Thread.Sleep(waitOnMonitor);
 						//System.Diagnostics.Debug.WriteLine("The program is running in online mode");
 						System.Diagnostics.Debug.WriteLine("Aquiring new overview image");
 						cameraController.SetAOI(1936, 1216, 0, 0);
@@ -58,7 +60,9 @@ namespace MirrorAlignmentSystem
 							cameraOverview = new Bitmap(cameraController.Aquisition(1936));
 						}
 					}
-					//The application is running in offline mode
+
+                    // Draw segments. Red = not ok, Yellow = current, Green = ok
+                    //The application is running in offline mode
 					else
 					{
 						System.Diagnostics.Debug.WriteLine("The program is running in offline mode , picking up overview image");
@@ -68,28 +72,29 @@ namespace MirrorAlignmentSystem
 					}
 
 					//This part paints the Area Of Interest above the overview image
-					using (Bitmap tempBitmap = new Bitmap(cameraOverview.Width, cameraOverview.Height))
+                    Bitmap cameraOverview2 = Algorithm.drawSegmentTypes(statusOfSegments, cameraOverview);
+                    using (Bitmap tempBitmap = new Bitmap(cameraOverview.Width, cameraOverview.Height))
 					{
 						using (Graphics g = Graphics.FromImage(tempBitmap))
 						{
 							Pen redPen = new Pen(Color.Red, 10);
-							Pen goldPen = new Pen(Color.Green, 5);
+							Pen goldPen = new Pen(Color.Yellow, 5);
 
-							g.DrawImage(cameraOverview, 0, 0);
+							g.DrawImage(cameraOverview2, 0, 0);
 
 							//MessageBox.Show("startX: " + (AOIData[0] + xOffset) + " startY: " + (AOIData[1] + yOffset) + " stopX: " + ((AOIData[0] + AOIData[2]) + xOffset) + " stopY: " + (AOIData[1] + yOffset) + " xOffset: " + xOffset + " yOffset: " + yOffset + " ImageWidth: " + cameraOverview.Width + " Cameraheight: " + cameraOverview.Height);
 							//Top left corner
-							g.DrawLine(redPen, (AOIData[0] + xOffset), (AOIData[1] + yOffset), ((AOIData[0] + AOIData[2]) + xOffset), (AOIData[1] + yOffset));
+							//g.DrawLine(redPen, (AOIData[0] + xOffset), (AOIData[1] + yOffset), ((AOIData[0] + AOIData[2]) + xOffset), (AOIData[1] + yOffset));
 							//g.DrawLine(redPen, 0, 0, cameraOverview.Width, cameraOverview.Height);
 							//g.DrawLine(redPen, 1136, 1464, cameraOverview.Width, cameraOverview.Height);
 							//Top right corner
-							g.DrawLine(redPen, ((AOIData[0] + AOIData[2]) + xOffset), (AOIData[1] + yOffset), ((AOIData[0] + AOIData[2]) + xOffset), ((AOIData[1] + AOIData[3]) + yOffset));
+							//g.DrawLine(redPen, ((AOIData[0] + AOIData[2]) + xOffset), (AOIData[1] + yOffset), ((AOIData[0] + AOIData[2]) + xOffset), ((AOIData[1] + AOIData[3]) + yOffset));
 
 							//Bottom right corner
-							g.DrawLine(redPen, ((AOIData[0] + AOIData[2]) + xOffset), ((AOIData[1] + AOIData[3]) + yOffset), (AOIData[0] + xOffset), ((AOIData[1] + AOIData[3]) + yOffset));
+							//g.DrawLine(redPen, ((AOIData[0] + AOIData[2]) + xOffset), ((AOIData[1] + AOIData[3]) + yOffset), (AOIData[0] + xOffset), ((AOIData[1] + AOIData[3]) + yOffset));
 
 							//Bottom left corner
-							g.DrawLine(redPen, (AOIData[0] + xOffset), ((AOIData[1] + AOIData[3]) + yOffset), (AOIData[0] + xOffset), (AOIData[1] + yOffset));
+							//g.DrawLine(redPen, (AOIData[0] + xOffset), ((AOIData[1] + AOIData[3]) + yOffset), (AOIData[0] + xOffset), (AOIData[1] + yOffset));
 
 							//Top left corner
 							g.DrawLine(goldPen, (AOIData[4] + xOffset), (AOIData[5] + yOffset), (AOIData[6] + xOffset), (AOIData[7] + yOffset));
