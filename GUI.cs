@@ -88,6 +88,9 @@ namespace MirrorAlignmentSystem
 
 			CheckForIllegalCrossThreadCalls = false;
 			//this.ActiveControl = BlackBGNumberLabel;
+
+			DisableLabel();
+			ShowSegnum(valueSegmentNumberTextbox);
 		}
 
 		/// <summary>
@@ -327,6 +330,7 @@ namespace MirrorAlignmentSystem
 				DAL.InsertEvent(SegmentNumberTextbox.Text, valueSegmentNumberTextbox, CurrentUser.GetCurrentUser(), "Segment changed", "SegmentNumberTextbox");
 
 				valueSegmentNumberTextbox = SegmentNumberTextbox.Text;
+				ShowSegnum(valueSegmentNumberTextbox);
 			}
 		}
 
@@ -943,38 +947,42 @@ namespace MirrorAlignmentSystem
 
         private void UpButton_Click(object sender, EventArgs e)
         {
-            string seg = valueSegmentNumberTextbox;
-			segnum.FromString(seg);
+			segnum.FromString(valueSegmentNumberTextbox);
 			segnum.Up();
-            valueSegmentNumberTextbox = segnum.ToString();
-            SegmentNumberTextbox.Text = valueSegmentNumberTextbox;
-        }
+			string seg = segnum.ToString();
+			valueSegmentNumberTextbox = seg;
+			SegmentNumberTextbox.Text = seg;
+			ShowSegnum(seg);
+		}
 
         private void DWbutton_Click(object sender, EventArgs e)
         {
-            string seg = valueSegmentNumberTextbox;
-			segnum.FromString(seg);
+			segnum.FromString(valueSegmentNumberTextbox);
 			segnum.Dn();
-            valueSegmentNumberTextbox = segnum.ToString();
-            SegmentNumberTextbox.Text = valueSegmentNumberTextbox;
-        }
+			string seg = segnum.ToString();
+			valueSegmentNumberTextbox = seg;
+			SegmentNumberTextbox.Text = seg;
+			ShowSegnum(seg);
+		}
 
         private void RTbutton_Click(object sender, EventArgs e)
         {
-            string seg = valueSegmentNumberTextbox;
-			segnum.FromString(seg);
+			segnum.FromString(valueSegmentNumberTextbox);
 			segnum.Rg();
-            valueSegmentNumberTextbox = segnum.ToString();
-            SegmentNumberTextbox.Text = valueSegmentNumberTextbox;
-        }
+			string seg = segnum.ToString();
+			valueSegmentNumberTextbox = seg;
+			SegmentNumberTextbox.Text = seg;
+			ShowSegnum(seg);
+		}
 
         private void LTbutton_Click(object sender, EventArgs e)
         {
-            string seg = valueSegmentNumberTextbox;
-			segnum.FromString(seg);
+			segnum.FromString(valueSegmentNumberTextbox);
 			segnum.Lf();
-            valueSegmentNumberTextbox = segnum.ToString();
-            SegmentNumberTextbox.Text = valueSegmentNumberTextbox;
+			string seg = segnum.ToString();
+            valueSegmentNumberTextbox = seg;
+            SegmentNumberTextbox.Text = seg;
+			ShowSegnum(seg);
 		}
 
 		int prog = 0;
@@ -1015,6 +1023,80 @@ namespace MirrorAlignmentSystem
 			else
 				caf.SetProgress(prog);
 		}
+
+		/// <summary>
+		/// show segment number
+		/// </summary>
+		/// <param name="segnum"></param>
+		public void ShowSegnum(string segnum)
+		{
+			lbl_01.Text = "SEGMENT " + segnum;
+			lbl_01.Visible = true;
+		}
+
+		/// <summary>
+		/// hide segment number
+		/// </summary>
+		public void HideSegnum()
+		{
+			lbl_01.Visible = false;
+		}
+
+		/// <summary>
+		/// show algnment
+		/// </summary>
+		/// <param name="align_x"></param>
+		/// <param name="align_y"></param>
+		public void ShowAlign(int align_x, int align_y)
+		{
+			lbl_03.Text = align_x.ToString() + " mm";
+			lbl_03.ForeColor = (align_x > 4) ? Color.Red : Color.Green;
+			lbl_05.Text = align_y.ToString() + " mm";
+			lbl_05.ForeColor = (align_y > 4) ? Color.Red : Color.Green;
+
+			lbl_03.Visible = true;
+			lbl_05.Visible = true;
+		}
+
+		/// <summary>
+		/// hide alignment
+		/// </summary>
+		public void HideAlign()
+		{
+			lbl_03.Visible = false;
+			lbl_05.Visible = false;
+		}
+
+		/// <summary>
+		/// show rotation
+		/// </summary>
+		/// <param name="rot_x"></param>
+		/// <param name="rot_y"></param>
+		/// <param name="rot_z"></param>
+		public void ShowRot(int rot_x, int rot_y, int rot_z)
+		{
+			lbl_07.Text = rot_x.ToString() + " mrad";
+			lbl_07.ForeColor = (rot_x > 3) ? Color.Red : Color.Green;
+			lbl_09.Text = rot_y.ToString() + " mrad";
+			lbl_09.ForeColor = (rot_y > 3) ? Color.Red : Color.Green;
+			lbl_11.Text = rot_z.ToString() + " mrad";
+			lbl_11.ForeColor = (rot_z > 10) ? Color.Red : Color.Green;
+
+			lbl_07.Visible = true;
+			lbl_09.Visible = true;
+			lbl_11.Visible = true;
+		}
+
+		/// <summary>
+		/// hide rotation
+		/// </summary>
+		public void HideRot()
+		{
+			lbl_07.Visible = false;
+			lbl_09.Visible = false;
+			lbl_11.Visible = false;
+		}
+
 
 		/// <summary>
 		/// Updates the labels.
@@ -1079,6 +1161,35 @@ namespace MirrorAlignmentSystem
 		}
 
 		/// <summary>
+		/// hide upper image
+		/// </summary>
+		public void HideUpperImg()
+		{
+			pb_Upper.Image = imageList1.Images[0];
+			lbl_ul.Visible = false;
+			lbl_ur.Visible = false;
+		}
+
+		/// <summary>
+		/// set upper image l/r only
+		/// </summary>
+		/// <param name="lft"></param>
+		/// <param name="rgt"></param>
+		public void SetUpperImgNoval(int lft, int rgt)
+		{
+			lbl_ul.Visible = false;
+			lbl_ur.Visible = false;
+
+			bool neglft = lft < 0;
+			if (neglft) lft = -lft;
+			bool negrgt = rgt < 0;
+			if (negrgt) rgt = -rgt;
+
+			int num = 1 + (neglft ? 0 : 2) + (negrgt ? 0 : 1);
+			pb_Upper.Image = imageList1.Images[num];
+		}
+
+		/// <summary>
 		/// Sets the upper img.
 		/// </summary>
 		/// <param name="lft">The LFT.</param>
@@ -1106,6 +1217,36 @@ namespace MirrorAlignmentSystem
 
 			int num = 1 + (neglft ? 0 : 2) + (negrgt ? 0 : 1);
 			pb_Upper.Image = imageList1.Images[num];
+		}
+
+
+		/// <summary>
+		/// hide lower img
+		/// </summary>
+		public void HideLowerImg()
+		{
+			pb_Lower.Image = imageList1.Images[0];
+			lbl_ul.Visible = false;
+			lbl_ur.Visible = false;
+		}
+
+		/// <summary>
+		/// set lower image l/r only
+		/// </summary>
+		/// <param name="lft"></param>
+		/// <param name="rgt"></param>
+		public void SetLowerImgNoval(int lft, int rgt)
+		{
+			lbl_ll.Visible = false;
+			lbl_lr.Visible = false;
+
+			bool neglft = lft < 0;
+			if (neglft) lft = -lft;
+			bool negrgt = rgt < 0;
+			if (negrgt) rgt = -rgt;
+
+			int num = 1 + (neglft ? 0 : 2) + (negrgt ? 0 : 1);
+			pb_Lower.Image = imageList1.Images[num];
 		}
 
 
