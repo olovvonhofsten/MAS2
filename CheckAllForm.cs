@@ -101,7 +101,7 @@ namespace MirrorAlignmentSystem
 		{
 			DialogResult = System.Windows.Forms.DialogResult.OK;
 			Visible = false;
-			Close();
+			//Close();
 		}
 
 		private void button1_Click_1(object sender, EventArgs e)
