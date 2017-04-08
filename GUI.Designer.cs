@@ -55,10 +55,6 @@
 			this.groupBox5 = new System.Windows.Forms.GroupBox();
 			this.overviewImagePB = new System.Windows.Forms.PictureBox();
 			this.tabCoarse = new System.Windows.Forms.TabPage();
-			this.button5 = new System.Windows.Forms.Button();
-			this.button4 = new System.Windows.Forms.Button();
-			this.button3 = new System.Windows.Forms.Button();
-			this.button1 = new System.Windows.Forms.Button();
 			this.lbl_lr = new System.Windows.Forms.Label();
 			this.lbl_ll = new System.Windows.Forms.Label();
 			this.lbl_ur = new System.Windows.Forms.Label();
@@ -127,7 +123,7 @@
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Padding = new System.Windows.Forms.Padding(12, 4, 0, 4);
-			this.menuStrip1.Size = new System.Drawing.Size(1050, 27);
+			this.menuStrip1.Size = new System.Drawing.Size(1052, 27);
 			this.menuStrip1.TabIndex = 19;
 			this.menuStrip1.Text = "menuStrip1";
 			this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -211,7 +207,7 @@
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.Padding = new System.Drawing.Point(70, 10);
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(1041, 555);
+			this.tabControl1.Size = new System.Drawing.Size(1020, 536);
 			this.tabControl1.TabIndex = 37;
 			this.tabControl1.TabIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
 			this.tabControl1.Click += new System.EventHandler(this.tabControl1_Click);
@@ -236,7 +232,7 @@
 			this.tabOverview.Margin = new System.Windows.Forms.Padding(9, 6, 7, 6);
 			this.tabOverview.Name = "tabOverview";
 			this.tabOverview.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-			this.tabOverview.Size = new System.Drawing.Size(1033, 503);
+			this.tabOverview.Size = new System.Drawing.Size(1012, 484);
 			this.tabOverview.TabIndex = 0;
 			this.tabOverview.Text = "OVERVIEW";
 			this.tabOverview.Click += new System.EventHandler(this.tabPage1_Click);
@@ -256,7 +252,7 @@
 			// 
 			this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button2.Location = new System.Drawing.Point(170, 425);
+			this.button2.Location = new System.Drawing.Point(170, 406);
 			this.button2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(571, 66);
@@ -387,10 +383,6 @@
 			// 
 			this.tabCoarse.AutoScroll = true;
 			this.tabCoarse.BackColor = System.Drawing.Color.MistyRose;
-			this.tabCoarse.Controls.Add(this.button5);
-			this.tabCoarse.Controls.Add(this.button4);
-			this.tabCoarse.Controls.Add(this.button3);
-			this.tabCoarse.Controls.Add(this.button1);
 			this.tabCoarse.Controls.Add(this.lbl_lr);
 			this.tabCoarse.Controls.Add(this.lbl_ll);
 			this.tabCoarse.Controls.Add(this.lbl_ur);
@@ -401,49 +393,9 @@
 			this.tabCoarse.Location = new System.Drawing.Point(4, 48);
 			this.tabCoarse.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.tabCoarse.Name = "tabCoarse";
-			this.tabCoarse.Size = new System.Drawing.Size(1033, 503);
+			this.tabCoarse.Size = new System.Drawing.Size(1012, 454);
 			this.tabCoarse.TabIndex = 2;
 			this.tabCoarse.Text = "COARSE";
-			// 
-			// button5
-			// 
-			this.button5.Location = new System.Drawing.Point(10, 180);
-			this.button5.Name = "button5";
-			this.button5.Size = new System.Drawing.Size(94, 34);
-			this.button5.TabIndex = 36;
-			this.button5.Text = "+2 -3";
-			this.button5.UseVisualStyleBackColor = true;
-			this.button5.Click += new System.EventHandler(this.button5_Click);
-			// 
-			// button4
-			// 
-			this.button4.Location = new System.Drawing.Point(10, 140);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(94, 34);
-			this.button4.TabIndex = 35;
-			this.button4.Text = "-1 +1";
-			this.button4.UseVisualStyleBackColor = true;
-			this.button4.Click += new System.EventHandler(this.button4_Click);
-			// 
-			// button3
-			// 
-			this.button3.Location = new System.Drawing.Point(10, 100);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(94, 34);
-			this.button3.TabIndex = 34;
-			this.button3.Text = "0 0";
-			this.button3.UseVisualStyleBackColor = true;
-			this.button3.Click += new System.EventHandler(this.button3_Click);
-			// 
-			// button1
-			// 
-			this.button1.Location = new System.Drawing.Point(10, 60);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(94, 34);
-			this.button1.TabIndex = 33;
-			this.button1.Text = "+1 +1";
-			this.button1.UseVisualStyleBackColor = true;
-			this.button1.Click += new System.EventHandler(this.button1_Click_2);
 			// 
 			// lbl_lr
 			// 
@@ -607,7 +559,7 @@
 			this.tabFine.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.tabFine.Name = "tabFine";
 			this.tabFine.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-			this.tabFine.Size = new System.Drawing.Size(1033, 503);
+			this.tabFine.Size = new System.Drawing.Size(1012, 454);
 			this.tabFine.TabIndex = 1;
 			this.tabFine.Text = "FINE";
 			// 
@@ -693,13 +645,13 @@
 			this.tabCal.Location = new System.Drawing.Point(4, 48);
 			this.tabCal.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.tabCal.Name = "tabCal";
-			this.tabCal.Size = new System.Drawing.Size(1026, 503);
+			this.tabCal.Size = new System.Drawing.Size(1012, 454);
 			this.tabCal.TabIndex = 3;
 			this.tabCal.Text = "CALIBRATE";
 			// 
 			// textBox1
 			// 
-			this.textBox1.Location = new System.Drawing.Point(895, 95);
+			this.textBox1.Location = new System.Drawing.Point(869, 98);
 			this.textBox1.Name = "textBox1";
 			this.textBox1.Size = new System.Drawing.Size(100, 32);
 			this.textBox1.TabIndex = 4;
@@ -707,7 +659,7 @@
 			// label5
 			// 
 			this.label5.AutoSize = true;
-			this.label5.Location = new System.Drawing.Point(777, 98);
+			this.label5.Location = new System.Drawing.Point(741, 101);
 			this.label5.Name = "label5";
 			this.label5.Size = new System.Drawing.Size(112, 26);
 			this.label5.TabIndex = 3;
@@ -716,7 +668,7 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(960, 25);
+			this.label4.Location = new System.Drawing.Point(929, 25);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(24, 26);
 			this.label4.TabIndex = 2;
@@ -725,7 +677,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(772, 25);
+			this.label3.Location = new System.Drawing.Point(741, 25);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(182, 26);
 			this.label3.TabIndex = 1;
@@ -733,7 +685,7 @@
 			// 
 			// CalibrateImgPB
 			// 
-			this.CalibrateImgPB.Location = new System.Drawing.Point(51, 14);
+			this.CalibrateImgPB.Location = new System.Drawing.Point(20, 11);
 			this.CalibrateImgPB.Name = "CalibrateImgPB";
 			this.CalibrateImgPB.Size = new System.Drawing.Size(715, 462);
 			this.CalibrateImgPB.TabIndex = 0;
@@ -742,7 +694,7 @@
 			// lbl_01
 			// 
 			this.lbl_01.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.lbl_01.Location = new System.Drawing.Point(15, 594);
+			this.lbl_01.Location = new System.Drawing.Point(15, 575);
 			this.lbl_01.Name = "lbl_01";
 			this.lbl_01.Size = new System.Drawing.Size(198, 24);
 			this.lbl_01.TabIndex = 38;
@@ -751,7 +703,7 @@
 			// lbl_02
 			// 
 			this.lbl_02.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.lbl_02.Location = new System.Drawing.Point(219, 594);
+			this.lbl_02.Location = new System.Drawing.Point(219, 575);
 			this.lbl_02.Name = "lbl_02";
 			this.lbl_02.Size = new System.Drawing.Size(143, 24);
 			this.lbl_02.TabIndex = 39;
@@ -761,7 +713,7 @@
 			// 
 			this.lbl_03.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.lbl_03.ForeColor = System.Drawing.Color.Green;
-			this.lbl_03.Location = new System.Drawing.Point(368, 594);
+			this.lbl_03.Location = new System.Drawing.Point(368, 575);
 			this.lbl_03.Name = "lbl_03";
 			this.lbl_03.Size = new System.Drawing.Size(76, 24);
 			this.lbl_03.TabIndex = 40;
@@ -770,7 +722,7 @@
 			// lbl_04
 			// 
 			this.lbl_04.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.lbl_04.Location = new System.Drawing.Point(450, 594);
+			this.lbl_04.Location = new System.Drawing.Point(450, 575);
 			this.lbl_04.Name = "lbl_04";
 			this.lbl_04.Size = new System.Drawing.Size(50, 24);
 			this.lbl_04.TabIndex = 41;
@@ -780,7 +732,7 @@
 			// 
 			this.lbl_05.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.lbl_05.ForeColor = System.Drawing.Color.Green;
-			this.lbl_05.Location = new System.Drawing.Point(506, 594);
+			this.lbl_05.Location = new System.Drawing.Point(506, 575);
 			this.lbl_05.Name = "lbl_05";
 			this.lbl_05.Size = new System.Drawing.Size(86, 24);
 			this.lbl_05.TabIndex = 42;
@@ -789,7 +741,7 @@
 			// lbl_06
 			// 
 			this.lbl_06.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.lbl_06.Location = new System.Drawing.Point(614, 594);
+			this.lbl_06.Location = new System.Drawing.Point(614, 575);
 			this.lbl_06.Name = "lbl_06";
 			this.lbl_06.Size = new System.Drawing.Size(80, 24);
 			this.lbl_06.TabIndex = 43;
@@ -799,7 +751,7 @@
 			// 
 			this.lbl_07.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.lbl_07.ForeColor = System.Drawing.Color.Red;
-			this.lbl_07.Location = new System.Drawing.Point(700, 594);
+			this.lbl_07.Location = new System.Drawing.Point(700, 575);
 			this.lbl_07.Name = "lbl_07";
 			this.lbl_07.Size = new System.Drawing.Size(86, 24);
 			this.lbl_07.TabIndex = 44;
@@ -809,7 +761,7 @@
 			// 
 			this.lbl_09.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.lbl_09.ForeColor = System.Drawing.Color.Red;
-			this.lbl_09.Location = new System.Drawing.Point(832, 594);
+			this.lbl_09.Location = new System.Drawing.Point(832, 575);
 			this.lbl_09.Name = "lbl_09";
 			this.lbl_09.Size = new System.Drawing.Size(86, 24);
 			this.lbl_09.TabIndex = 46;
@@ -818,7 +770,7 @@
 			// lbl_08
 			// 
 			this.lbl_08.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.lbl_08.Location = new System.Drawing.Point(792, 594);
+			this.lbl_08.Location = new System.Drawing.Point(792, 575);
 			this.lbl_08.Name = "lbl_08";
 			this.lbl_08.Size = new System.Drawing.Size(34, 24);
 			this.lbl_08.TabIndex = 45;
@@ -828,7 +780,7 @@
 			// 
 			this.lbl_11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.lbl_11.ForeColor = System.Drawing.Color.Green;
-			this.lbl_11.Location = new System.Drawing.Point(964, 594);
+			this.lbl_11.Location = new System.Drawing.Point(964, 575);
 			this.lbl_11.Name = "lbl_11";
 			this.lbl_11.Size = new System.Drawing.Size(86, 24);
 			this.lbl_11.TabIndex = 48;
@@ -837,7 +789,7 @@
 			// lbl_10
 			// 
 			this.lbl_10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.lbl_10.Location = new System.Drawing.Point(924, 594);
+			this.lbl_10.Location = new System.Drawing.Point(924, 575);
 			this.lbl_10.Name = "lbl_10";
 			this.lbl_10.Size = new System.Drawing.Size(34, 24);
 			this.lbl_10.TabIndex = 47;
@@ -858,7 +810,7 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoScroll = true;
-			this.ClientSize = new System.Drawing.Size(1043, 674);
+			this.ClientSize = new System.Drawing.Size(1052, 608);
 			this.Controls.Add(this.lbl_11);
 			this.Controls.Add(this.lbl_10);
 			this.Controls.Add(this.lbl_09);
@@ -969,10 +921,6 @@
 		private System.Windows.Forms.Label lbl_ul;
 		private System.Windows.Forms.Label lbl_lr;
 		private System.Windows.Forms.Label lbl_ll;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Button button4;
-		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label TanOffsetLabel;
