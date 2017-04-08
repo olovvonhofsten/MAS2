@@ -1,5 +1,6 @@
 ﻿
 using System.IO;
+using System.Windows.Forms;
 
 
 namespace MirrorAlignmentSystem
@@ -47,8 +48,19 @@ namespace MirrorAlignmentSystem
 		/// <returns></returns>
 		public static string SQLString()
 		{
-			StreamReader sett = File.OpenText("./settings.txt");
-			StreamReader loc  = File.OpenText("./local.txt");
+			StreamReader sett = null, loc = null;
+
+			//string lwd = Directory.GetCurrentDirectory();
+			//MessageBox.Show(lwd);
+
+			try
+			{
+				sett = new StreamReader("settings.txt");
+			} catch {}
+
+
+			try { loc = new StreamReader("local.txt"); }
+			catch { }
 
 			return GetVal(sett, loc, "SQLString");
 		}
