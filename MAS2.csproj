@@ -201,6 +201,7 @@
     <Compile Include="ImageInfo.Designer.cs">
       <DependentUpon>ImageInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="LocalSettings.cs" />
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>

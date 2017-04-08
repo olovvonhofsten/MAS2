@@ -5,6 +5,8 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
+
+
 namespace MirrorAlignmentSystem
 {
     /// <summary>
@@ -16,18 +18,13 @@ namespace MirrorAlignmentSystem
         /// The connection string to the database
         /// </summary>
 
-        static string SQLString = "server=CLEANERGY-PC\\SQLEXPRESS;" +
-                   "integrated security=SSPI;" +
-                   "Trusted_Connection=yes;" +
-                   "database=MAS2DB; " +
-                   "connection timeout=30";
+        static string SQLString = LocalSettings.SQLString();
 
-        /*static string SQLString = "server=MAS_COMPUTER\\SQLEXPRESS;" +
-                           "integrated security=SSPI;" +
-                           "Trusted_Connection=yes;" +
-						   "database=MirrorAlignmentSystemDB; " +
-                           "connection timeout=30";
-        */
+		private static void Err(string msg)
+		{
+			Err(msg);
+		}
+
         /// <summary>
         /// Gets a image from the database of the whole disc. This method is only used when the application is running in offline mode
         /// and in fine alignment
@@ -53,7 +50,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                Err(ex.Message);
             }
 
             return bitmap;
@@ -84,7 +81,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+				Err(ex.Message);
             }
 
             return bitmap;
@@ -115,7 +112,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+				Err(ex.Message);
             }
 
             return bitmap;
@@ -146,7 +143,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+				Err(ex.Message);
             }
 
             return bitmap;
@@ -177,7 +174,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+				Err(ex.Message);
             }
 
             return bitmap;
@@ -208,7 +205,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+				Err(ex.Message);
             }
         }
 
@@ -237,7 +234,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                Err(ex.Message);
             }
 
             return bitmap;
@@ -268,7 +265,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                Err(ex.Message);
             }
 
             return bitmap;
@@ -299,7 +296,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                Err(ex.Message);
             }
 
             return bitmap;
@@ -326,7 +323,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                Err(ex.Message);
             }
         }
 
@@ -382,7 +379,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                Err(ex.Message);
             }
 
             return returnValues;
@@ -440,7 +437,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                Err(ex.Message);
             }
 
             return returnValues;
@@ -470,7 +467,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                Err(ex.Message);
 
                 return "";
             }
@@ -500,7 +497,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                Err(ex.Message);
             }
 
             System.Diagnostics.Debug.WriteLine("Done opening eventlog");
@@ -530,7 +527,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                Err(ex.Message);
             }
 
             return returnTable;
@@ -560,7 +557,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                Err(ex.Message);
 
                 return false;
             }
@@ -596,7 +593,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                Err(ex.Message);
 
                 return "User not found";
             }
@@ -624,7 +621,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                Err(ex.Message);
 
                 return "User not found";
             }
@@ -654,7 +651,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                Err(ex.Message);
 
                 return false;
             }
@@ -683,7 +680,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                Err(ex.Message);
 
                 return false;
             }
@@ -724,7 +721,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                Err(ex.Message);
             }
 
             return returnData;
@@ -759,7 +756,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                Err(ex.Message);
 
                 return false;
             }
@@ -805,7 +802,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                Err(ex.Message);
             }
         }
 
@@ -834,7 +831,7 @@ namespace MirrorAlignmentSystem
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                Err(ex.Message);
 
                 return 0;
             }
@@ -866,7 +863,7 @@ public static int GetMaxWidth()
             }
             catch (SqlException ex)
             {
-                MessageBox.Show("Something went wrong: " + ex.Message);
+                Err(ex.Message);
 
                 return 0;
             }
