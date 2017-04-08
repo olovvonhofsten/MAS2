@@ -424,14 +424,14 @@ namespace MirrorAlignmentSystem
         public static void changeSegmentStatus(string segment, double [] mradOffset, int[,] oldStatusOfSegments, out int[,] newStatusOfSegments)
         {
             int ticker = 0;
-            newStatusOfSegments = new int[66, 3];
+            newStatusOfSegments = new int[67, 3];
             foreach (string s in Calibrate.segments)
             {
                 if (s == segment)
                 {
                     oldStatusOfSegments[ticker, 1] = (int) Math.Round(mradOffset[0]);
                     oldStatusOfSegments[ticker, 2] = (int)Math.Round(mradOffset[1]);
-                    if(mradOffset[0] <= 1 && mradOffset[1] < 1)
+                    if(Math.Abs(mradOffset[0]) <= 1.0 && Math.Abs(mradOffset[1]) < 1.0)
                     {
                         oldStatusOfSegments[ticker,0] = 1;
                     }
@@ -465,7 +465,9 @@ namespace MirrorAlignmentSystem
                 }
                 if (status[ticker,0] == 1)
                 {
+                    System.Diagnostics.Debug.WriteLine(status[ticker, 1] + " " + status[ticker, 2] + "mrad");
                     segmentsImage.Draw(Seg, new Bgr(Color.Green), 1);
+
                 }
                 ticker++;
             }
@@ -580,8 +582,13 @@ namespace MirrorAlignmentSystem
                 Image<Bgr, byte> combinedImg = new Image<Bgr, byte>(combinedBitmap);
          
                 // check tolerance
-                ok = (mradOffset[0]+mradOffset[1] < fineTolerance) ? 1 : 0;
-
+                ok = ((Math.Abs(mradOffset[0]) <= 1.0) && (Math.Abs(mradOffset[1]) <= 1.0)) ? 1 : 0;
+                if (ok == 1)
+                {
+                    System.Diagnostics.Debug.WriteLine("segment" + s + " ok!" + "Offset: " + mradOffset[0] + ", " + mradOffset[1]);
+                    combinedBitmap.Save("C:\\vsiningsbilder\\oksegment.bmp");
+          
+                }
                 fineData[tick, 0] = ok;
                 fineData[tick, 1] = (int) Math.Round(offsetXY[0]);
                 fineData[tick, 2] = (int) Math.Round(offsetXY[1]);
