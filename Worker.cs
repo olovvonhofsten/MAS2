@@ -480,7 +480,13 @@ namespace MirrorAlignmentSystem
                             Bitmap overviewFine;
 							var caf = mainWindow.getCAF();
                             Algorithm.checkAllSegmentsFine(cameraController, cameraSettings, monitor, caf, out fineData, out overviewFine);
-							alignmentMode = "over";
+							for(int ticks = 0; ticks < 67; ticks++)
+                            {
+                                statusOfSegments[ticks, 0] = (int) Math.Round(fineData[ticks, 0]);
+                                statusOfSegments[ticks, 1] = (int) Math.Round(fineData[ticks, 2]);
+                                statusOfSegments[ticks, 2] = (int) Math.Round(fineData[ticks, 3]);
+                            }
+                            alignmentMode = "over";
                             //updateSegmentStatus
                         }
                         else if(alignmentMode == "checkALLcoarse")
