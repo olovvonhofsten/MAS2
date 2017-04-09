@@ -33,13 +33,13 @@ namespace MirrorAlignmentSystem
 				{
 					System.Diagnostics.Debug.WriteLine("ONLINE MODE LEFT&RIGHT");
 
-					cameraController.SetAOI(AOIData[2], AOIData[3], AOIData[0], AOIData[1] - AOIData[3]);
+                    cameraController.SetAOI(AOIData[2], AOIData[3], AOIData[0], AOIData[1]);
 
 					//Left image
 					if (coarseCounter == 0)
 					{
 
-						Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(segment)), 1, out doublePoints);
+						Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(segment)), 2, out doublePoints);
 
 						monitor.UpdatePatternVertices(doublePoints, false);
 
@@ -51,7 +51,7 @@ namespace MirrorAlignmentSystem
 							cameraCoarseAlignLeft.Dispose();
 							cameraCoarseAlignLeft = null;
 						}
-
+                        System.Diagnostics.Debug.WriteLine(cameraController.GetExposureTime() + "");
 						cameraCoarseAlignLeft = cameraController.AquisitionVideo(AOIData[2]).Clone(new Rectangle(new Point(0, 0), new Size(AOIData[2], AOIData[3])), System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
 
 						leftBkgAquired = true;
@@ -59,7 +59,7 @@ namespace MirrorAlignmentSystem
 					//Right image
 					else if (coarseCounter == 1)
 					{
-						Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(segment)), 3, out doublePoints);
+						Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(segment)), 0, out doublePoints);
 
 						monitor.UpdatePatternVertices(doublePoints, false);
 
@@ -115,7 +115,7 @@ namespace MirrorAlignmentSystem
 						}
 
 						System.Diagnostics.Debug.WriteLine("GETTING LEFT IMAGE");
-						cameraCoarseAlignLeft = DAL.GetCoarseLeftBitmapBackgroundOfflineImage();
+						//cameraCoarseAlignLeft = DAL.GetCoarseLeftBitmapBackgroundOfflineImage();
 
 						leftBkgAquired = true;
 					}
@@ -207,13 +207,13 @@ namespace MirrorAlignmentSystem
 					System.Diagnostics.Debug.WriteLine("Segment: " + segment);
 					System.Diagnostics.Debug.WriteLine("Getting Up image");
 
-					cameraController.SetAOI(AOIData[2], AOIData[3], AOIData[0], AOIData[1] - AOIData[3]);
+                    cameraController.SetAOI(AOIData[2], AOIData[3], AOIData[0], AOIData[1]);
 					cameraController.SetExposureTime(exposureRate);
 
 					//Up image
 					if (coarseCounter == 0)
 					{
-						Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(segment)), 2, out doublePoints);
+						Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(segment)), 3, out doublePoints);
 
 						//MessageBox.Show("P1.X: " + doublePoints[0, 0] + " P1.Y: " + doublePoints[0, 1] + " P2.X: " + doublePoints[1, 0] + " P2.Y: " + doublePoints[1, 1] + " P3.X: " + doublePoints[2, 0] + " P3.Y: " + doublePoints[2, 1]);
 
@@ -242,7 +242,7 @@ namespace MirrorAlignmentSystem
 					{
 						System.Diagnostics.Debug.WriteLine("Getting Down image");
 
-						Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(segment)), 4, out doublePoints);
+						Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(segment)), 1, out doublePoints);
 
 						//MessageBox.Show("P1.X: " + doublePoints[0, 0] + " P1.Y: " + doublePoints[0, 1] + " P2.X: " + doublePoints[1, 0] + " P2.Y: " + doublePoints[1, 1] + " P3.X: " + doublePoints[2, 0] + " P3.Y: " + doublePoints[2, 1]);
 

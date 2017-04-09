@@ -181,7 +181,7 @@ namespace MirrorAlignmentSystem
             {
                 int[] AOIData = DAL.GetAOIData(s);
                 Point[] Seg = new Point[] {new Point(AOIData[4], AOIData[5]), new Point(AOIData[6], AOIData[7]), new Point(AOIData[8], AOIData[9]), new Point(AOIData[10], AOIData[11])};
-                segmentsImage.Draw(Seg, new Bgr(Color.Red), 1);
+                segmentsImage.Draw(Seg, new Bgr(Color.Red), 3);
             }
             segmentsImage.ROI = new Rectangle(620, 390, 690, 440);
 
