@@ -16,7 +16,7 @@ namespace MirrorAlignmentSystem
 		partial void ExecuteFine()
 		{
 			//Makes sure the number of cycles between each black image on the TV is correct.
-			if (blackBGCounter > Int32.Parse(mainWindow.GetBlackBGNumber()))
+			if (blackBGCounter > 1)
 			{
 				stopWatchBackgroundImage.Reset();
 				stopWatchBackgroundImage.Start();

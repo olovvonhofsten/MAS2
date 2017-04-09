@@ -73,7 +73,7 @@ namespace MirrorAlignmentSystem
 
 					//This part paints the Area Of Interest above the overview image
                     System.Diagnostics.Debug.WriteLine("Overview, 0911 status: " + statusOfSegments[8, 0]);
-                    Bitmap cameraOverview2 = Algorithm.drawSegmentTypes(statusOfSegments, cameraOverview);
+                    cameraOverview = Algorithm.drawSegmentTypes(statusOfSegments, cameraOverview);
                     using (Bitmap tempBitmap = new Bitmap(cameraOverview.Width, cameraOverview.Height))
 					{
 						using (Graphics g = Graphics.FromImage(tempBitmap))
@@ -81,22 +81,7 @@ namespace MirrorAlignmentSystem
 							Pen redPen = new Pen(Color.Red, 10);
 							Pen goldPen = new Pen(Color.Yellow, 5);
 
-							g.DrawImage(cameraOverview2, 0, 0);
-
-							//MessageBox.Show("startX: " + (AOIData[0] + xOffset) + " startY: " + (AOIData[1] + yOffset) + " stopX: " + ((AOIData[0] + AOIData[2]) + xOffset) + " stopY: " + (AOIData[1] + yOffset) + " xOffset: " + xOffset + " yOffset: " + yOffset + " ImageWidth: " + cameraOverview.Width + " Cameraheight: " + cameraOverview.Height);
-							//Top left corner
-							//g.DrawLine(redPen, (AOIData[0] + xOffset), (AOIData[1] + yOffset), ((AOIData[0] + AOIData[2]) + xOffset), (AOIData[1] + yOffset));
-							//g.DrawLine(redPen, 0, 0, cameraOverview.Width, cameraOverview.Height);
-							//g.DrawLine(redPen, 1136, 1464, cameraOverview.Width, cameraOverview.Height);
-							//Top right corner
-							//g.DrawLine(redPen, ((AOIData[0] + AOIData[2]) + xOffset), (AOIData[1] + yOffset), ((AOIData[0] + AOIData[2]) + xOffset), ((AOIData[1] + AOIData[3]) + yOffset));
-
-							//Bottom right corner
-							//g.DrawLine(redPen, ((AOIData[0] + AOIData[2]) + xOffset), ((AOIData[1] + AOIData[3]) + yOffset), (AOIData[0] + xOffset), ((AOIData[1] + AOIData[3]) + yOffset));
-
-							//Bottom left corner
-							//g.DrawLine(redPen, (AOIData[0] + xOffset), ((AOIData[1] + AOIData[3]) + yOffset), (AOIData[0] + xOffset), (AOIData[1] + yOffset));
-
+							g.DrawImage(cameraOverview, 0, 0);
 							//Top left corner
 							g.DrawLine(goldPen, (AOIData[4] + xOffset), (AOIData[5] + yOffset), (AOIData[6] + xOffset), (AOIData[7] + yOffset));
 

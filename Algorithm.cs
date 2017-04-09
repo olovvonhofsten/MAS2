@@ -586,7 +586,7 @@ namespace MirrorAlignmentSystem
                 if (ok == 1)
                 {
                     System.Diagnostics.Debug.WriteLine("segment" + s + " ok!" + "Offset: " + mradOffset[0] + ", " + mradOffset[1]);
-                    combinedBitmap.Save("C:\\vsiningsbilder\\oksegment.bmp");
+                    combinedBitmap.Save("C:\\visningsbilder\\oksegment.bmp");
           
                 }
                 fineData[tick, 0] = ok;

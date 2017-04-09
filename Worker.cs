@@ -65,6 +65,7 @@ namespace MirrorAlignmentSystem
 		Bitmap cameraFineAlignPattern;
 		Bitmap combinedBitmap;
         Bitmap cameraOverview;
+        Bitmap cameraCal;
 		Bitmap cameraCoarseAlignLeft;
 		Bitmap cameraCoarseAlignRight;
 		Bitmap cameraCoarseAlignUp;
@@ -210,6 +211,7 @@ namespace MirrorAlignmentSystem
 			cameraFineAlignPattern = new Bitmap(304, 164, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
 			combinedBitmap = new Bitmap(304, 164, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
             cameraOverview = new Bitmap(1960, 1216, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+            cameraCal = new Bitmap(1960, 1216, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
 			cameraCoarseAlignLeft = new Bitmap(304, 164, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
 			cameraCoarseAlignRight = new Bitmap(304, 164, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
 			cameraCoarseAlignUp = new Bitmap(304, 164, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
@@ -368,13 +370,13 @@ namespace MirrorAlignmentSystem
 					//Calibrate mode and live video is being displayed in the GUI
 					if (alignmentMode == "calibrate")
 					{
-						monitor.SetCalibrateOrNot(true);
+                        System.Diagnostics.Debug.WriteLine("alignment mode: " + alignmentMode);
+						monitor.SetCalibrateOrNot(false);
 
 						if (calibrateFirstCycle)
 						{
                             cameraController.SetAOI(1936, 1216, 0, 0);
 							cameraController.SetExposureTime(exposureRate);
-
 							calibrateFirstCycle = false;
 						}
 
@@ -399,7 +401,7 @@ namespace MirrorAlignmentSystem
 						if (cameraInitialized)
 						{
 
-                            cameraOverview = new Bitmap(cameraController.AquisitionVideo(1936));
+                            cameraCal = new Bitmap(cameraController.AquisitionVideo(1936));
                             //Find segment centerpoint and blackhole, draw it and show the value in the gui
                             double[] segmentCenterPoint = new double[2];
                             double[,] segmentCenterPoints = new double[4, 2];
@@ -411,7 +413,7 @@ namespace MirrorAlignmentSystem
                             string[] nokSegs = {"ok", "ok", "ok", "ok"};
                             foreach (string segmentsForCalibration in Calibrate.refSegments)
                             {
-                                Calibrate.mirrorCoM(cameraOverview, segmentsForCalibration, out segmentCenterPoint, out segmentCenterOffsetPoint);
+                                Calibrate.mirrorCoM(cameraCal, segmentsForCalibration, out segmentCenterPoint, out segmentCenterOffsetPoint);
                                 segmentCenterOffsetPoints[ticker, 0] = segmentCenterOffsetPoint[0];
                                 segmentCenterOffsetPoints[ticker, 1] = segmentCenterOffsetPoint[1];
                                 segmentCenterPoints[ticker, 0] = segmentCenterPoint[0];
@@ -426,7 +428,7 @@ namespace MirrorAlignmentSystem
                             
                             double[] blackholePoint;
                             double[] blackholeOffsetPoint = new double[2];
-                            Calibrate.findBlackHole(cameraOverview, out blackholePoint, out blackholeOffsetPoint);
+                            Calibrate.findBlackHole(cameraCal, out blackholePoint, out blackholeOffsetPoint);
 
                             double rotZ;
                             Calibrate.rotationZ(segmentCenterOffsetPoints, out rotZ);
@@ -436,30 +438,105 @@ namespace MirrorAlignmentSystem
                             //mainWindow.UpdateblackholeLabel(blackholeOffsetPoint);
 
                             // Draw the crosses
-                            Bitmap tempBitmapCrosses = new Bitmap(cameraOverview);
-                            Calibrate.drawCrosses(out tempBitmapCrosses, cameraOverview, nokSegs, segmentCenterPoints, blackholePoint);
+                            Bitmap tempBitmapCrosses = new Bitmap(cameraCal);
+                            Calibrate.drawCrosses(out tempBitmapCrosses, cameraCal, nokSegs, segmentCenterPoints, blackholePoint);
 
                             // Draw segments in red
                             Bitmap tempBitmapSegments = Calibrate.drawSegments(tempBitmapCrosses);
 
-                            if (cameraOverview != null)
+                            if (cameraCal != null)
                             {
-                                cameraOverview.Dispose();
+                                cameraCal.Dispose();
                             }
-                            cameraOverview = new Bitmap(tempBitmapSegments);
+                            cameraCal = new Bitmap(tempBitmapSegments);
                             tempBitmapSegments.Dispose();
                             tempBitmapCrosses.Dispose();
                         }
 
 						//Displays the live video in the overview picturebox in the GUI
-                        mainWindow.ShowCalibrateBitmap(cameraOverview);
+                        mainWindow.ShowCalibrateBitmap(cameraCal);
                         //mainWindow.ShowOverviewHistogram(cameraOverview);
 
 					}
+
 					if(alignmentMode == "over")
 					{
+                        System.Diagnostics.Debug.WriteLine("alignment mode: " + alignmentMode);
 						ExecuteOverview();
                     }
+
+                    // A quick calibration is done after every segment accept
+                    if (alignmentMode == "checkcalibrate")
+                    {
+                        System.Diagnostics.Debug.WriteLine("alignment mode: " + alignmentMode);
+                        monitor.SetCalibrateOrNot(true);
+
+                        if (calibrateFirstCycle)
+                        {
+                            cameraController.SetAOI(1936, 1216, 0, 0);
+                            cameraController.SetExposureTime(exposureRate);
+                            calibrateFirstCycle = false;
+                        }
+
+                        doublePoints = new double[4, 2];
+
+                        //Covers the whole screen
+                        doublePoints[0, 0] = -1;
+                        doublePoints[0, 1] = -1;
+
+                        doublePoints[1, 0] = 1;
+                        doublePoints[1, 1] = -1;
+
+                        doublePoints[2, 0] = -1;
+                        doublePoints[2, 1] = 1;
+
+                        doublePoints[3, 0] = 1;
+                        doublePoints[3, 1] = 1;
+
+                        monitor.UpdatePatternVertices(doublePoints, true);
+
+                        //Makes sure the camera is initialized before trying to aquire a image from the CameraController class
+                        if (cameraInitialized)
+                        {
+                            if (cameraCal != null)
+                            {
+                                cameraCal.Dispose();
+                            }
+                            cameraCal = new Bitmap(cameraController.AquisitionVideo(1936));
+                            //Find segment centerpoint and blackhole, draw it and show the value in the gui
+                            double[] segmentCenterPoint = new double[2];
+                            double[,] segmentCenterPoints = new double[4, 2];
+                            double[] segmentCenterOffsetPoint = new double[2];
+                            double[,] segmentCenterOffsetPoints = new double[4, 2];
+
+                            // Find reference points on segments
+                            int ticker = 0;
+                            string[] nokSegs = { "ok", "ok", "ok", "ok" };
+                            foreach (string segmentsForCalibration in Calibrate.refSegments)
+                            {
+                                Calibrate.mirrorCoM(cameraCal, segmentsForCalibration, out segmentCenterPoint, out segmentCenterOffsetPoint);
+                                segmentCenterOffsetPoints[ticker, 0] = segmentCenterOffsetPoint[0];
+                                segmentCenterOffsetPoints[ticker, 1] = segmentCenterOffsetPoint[1];
+                                segmentCenterPoints[ticker, 0] = segmentCenterPoint[0];
+                                segmentCenterPoints[ticker, 1] = segmentCenterPoint[1];
+                                if (segmentCenterPoints[ticker, 0] == 1)
+                                {
+                                    nokSegs[ticker] = segmentsForCalibration;
+                                }
+                                ticker++;
+                            }
+
+                            double[] blackholePoint;
+                            double[] blackholeOffsetPoint = new double[2];
+                            Calibrate.findBlackHole(cameraCal, out blackholePoint, out blackholeOffsetPoint);
+                            double rotZ;
+                            Calibrate.rotationZ(segmentCenterOffsetPoints, out rotZ);
+                            mainWindow.UpdateLabel(segment, (int)Math.Round(blackholeOffsetPoint[0]), (int)Math.Round(blackholeOffsetPoint[1]), (int)Math.Round(segmentCenterOffsetPoint[0]), (int)Math.Round(segmentCenterOffsetPoint[1]), (int)Math.Round(rotZ));
+                            alignmentMode = "over";
+                        }
+
+                    }
+                    
                     stopWatchFirstIF.Stop();
                     System.Diagnostics.Debug.WriteLine("First IF time elapsed: " + stopWatchFirstIF.ElapsedMilliseconds + "ms");
                     System.Diagnostics.Debug.WriteLine(alignmentMode);
@@ -487,7 +564,6 @@ namespace MirrorAlignmentSystem
                                 statusOfSegments[ticks, 2] = fineData[ticks, 3];
                             }
                             alignmentMode = "over";
-                            //updateSegmentStatus
                         }
                         else if(alignmentMode == "checkALLcoarse")
                         {
@@ -496,7 +572,6 @@ namespace MirrorAlignmentSystem
                             var caf = mainWindow.getCAF();
                             Algorithm.checkAllSegmentsCoarse(cameraController, cameraSettings, monitor, caf, out coarseData, out overviewCoarse);
                             alignmentMode = "over";
-                            //updateSegmentStatus
 
                         }
 					}

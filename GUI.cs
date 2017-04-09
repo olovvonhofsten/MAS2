@@ -26,6 +26,7 @@ namespace MirrorAlignmentSystem
 		delegate void SetImagesCallback();
 		//delegate void SetBlackBackgroundImageCallback(Bitmap image);
 		//delegate void SetBitmapBackgroundImageCallback(Bitmap image);
+        delegate void SetOverviewImageCallback(Bitmap image);
         delegate void SetCalibrationImageCallback(Bitmap image);
 		delegate void SetCombinedImageCallback(Bitmap image);
 		delegate void SetLeftImageCallback(Bitmap image);
@@ -44,8 +45,8 @@ namespace MirrorAlignmentSystem
 		delegate void SetMotor2MDIActiveCallback(string motor2MDIActive);
 		delegate void SetCoMLabelActiveCallback(string CoM, Point realCoMInput);
 		delegate void SetvisibilityCallback(bool mode);
-           
-		string valueBlackBGNumberTextBox;
+
+        string valueDiscIDTextBox = "NOT SET";
 		string valueSegmentNumberTextbox;
         string valueLiveCheckState="Checked";
 
@@ -81,8 +82,12 @@ namespace MirrorAlignmentSystem
 			CurrentUser.SetCurrentUser("Admin");
 			CurrentUser.SetCurrentUserType("Admin");
 
-			BlackBGNumberTextBox.Text = "1";
-			valueBlackBGNumberTextBox = BlackBGNumberTextBox.Text;
+            //Create path
+            string pathToday = "C:/MASDATA/" + valueDiscIDTextBox + "/" + System.DateTime.Now.ToString("yyyy_MM_dd");
+            System.IO.Directory.CreateDirectory(pathToday);
+
+			DiscIDTextBox.Text = "NOT SET";
+			valueDiscIDTextBox = DiscIDTextBox.Text;
 			SegmentNumberTextbox.Text = "0911";
 			valueSegmentNumberTextbox = SegmentNumberTextbox.Text;
 
@@ -143,34 +148,34 @@ namespace MirrorAlignmentSystem
 			{
 				if (String.Compare(currentUserType.Trim(), "Admin") == 0)
 				{
-					if (this.BlackBGNumberTextBox.InvokeRequired || this.SegmentNumberTextbox.InvokeRequired)
+					if (this.DiscIDTextBox.InvokeRequired || this.SegmentNumberTextbox.InvokeRequired)
 					{
 						SetEnableCallback e = new SetEnableCallback(UpdateGUI);
 						this.Invoke(e, new object[] { i });
 					}
 					else
 					{
-						this.BlackBGNumberTextBox.Enabled = true;
+						this.DiscIDTextBox.Enabled = true;
 						this.SegmentNumberTextbox.Enabled = true;
 					}
 				}
 				else 
 				{
-					if (this.BlackBGNumberTextBox.InvokeRequired || this.SegmentNumberTextbox.InvokeRequired)
+					if (this.DiscIDTextBox.InvokeRequired || this.SegmentNumberTextbox.InvokeRequired)
 					{
 						SetEnableCallback e = new SetEnableCallback(UpdateGUI);
 						this.Invoke(e, new object[] { i });
 					}
 					else
 					{
-						this.BlackBGNumberTextBox.Enabled = false;
+						this.DiscIDTextBox.Enabled = false;
 						this.SegmentNumberTextbox.Enabled = false;
 					}
 				}
 			}
 			else 
 			{
-				if (this.BlackBGNumberTextBox.InvokeRequired || this.SegmentNumberTextbox.InvokeRequired)
+				if (this.DiscIDTextBox.InvokeRequired || this.SegmentNumberTextbox.InvokeRequired)
 				{
 					SetEnableCallback e = new SetEnableCallback(UpdateGUI);
 					this.Invoke(e, new object[] { i });
@@ -189,12 +194,17 @@ namespace MirrorAlignmentSystem
 		/// <param name="image">The image to be displayed in the picturebox</param>    
 		public void ShowOverviewBitmap(Bitmap image)
 		{
-			if (overviewImagePB.Image != null)
+			/*if (overviewImagePB.Image != null)
 			{
 				overviewImagePB.Image.Dispose();
-			}
-
-			overviewImagePB.Image = image;
+			}*/
+            if (this.overviewImagePB.InvokeRequired)
+            {
+                SetOverviewImageCallback d = new SetOverviewImageCallback(ShowCalibrateBitmap);
+                this.Invoke(d, new object[] { image });
+            }
+			overviewImagePB.Image = null;
+            overviewImagePB.Image = (Bitmap)image.Clone();
 		}
 
         /// <summary>
@@ -237,9 +247,9 @@ namespace MirrorAlignmentSystem
 		/// <returns>
 		/// Returns the number(as a string) of intervall between the monitor showing a bitmap and a black background, only works in Fine Alignment phase
 		/// </returns>
-		public string GetBlackBGNumber() 
+		public string GetDiscID() 
 		{
-			return valueBlackBGNumberTextBox;
+			return valueDiscIDTextBox;
 		}
 
 		/// <summary>
@@ -287,7 +297,6 @@ namespace MirrorAlignmentSystem
 			return rval;
 		}
 
-
 		/// <summary>
 		/// This method returns true if the application is in manual alignment mode
 		/// </summary>
@@ -299,20 +308,26 @@ namespace MirrorAlignmentSystem
 			return manualAlignment;
 		}
 
+
 		/// <summary>
 		/// Event method for when the user presses the enter button inside the textbox displaying the number of cycles between each black image on the monitor
 		/// </summary>
 		/// <param name="sender">The control, in this method the textbox</param> 
 		/// <param name="e">The event information</param>  
-		private void BlackBGNumberTextBox_KeyDown(object sender, KeyEventArgs e)
+		private void DiscIDTextBox_KeyDown(object sender, KeyEventArgs e)
 		{
-			if (e.KeyCode == Keys.Enter && (valueBlackBGNumberTextBox != BlackBGNumberTextBox.Text))
+            if (e.KeyCode == Keys.Enter && (valueDiscIDTextBox != DiscIDTextBox.Text))
 			{
 				//this.ActiveControl = BlackBGNumberLabel;
 
-				DAL.InsertEvent(BlackBGNumberTextBox.Text, valueBlackBGNumberTextBox, "No user", "Intervall black background change", "BlackBGNumberTextBox");
+                DAL.InsertEvent(DiscIDTextBox.Text, valueDiscIDTextBox, "No user", "Intervall black background change", "BlackBGNumberTextBox");
 
-				valueBlackBGNumberTextBox = BlackBGNumberTextBox.Text;
+				valueDiscIDTextBox = DiscIDTextBox.Text;
+
+                string pathString1 = "C:/MASDATA/" + valueDiscIDTextBox + "/";
+                string pathString2 = "C:/MASDATA/" + valueDiscIDTextBox + "/" + System.DateTime.Now.ToString("yyyy_MM_dd");
+                System.IO.Directory.CreateDirectory(pathString1);
+                System.IO.Directory.CreateDirectory(pathString2);
 			}
 		}
 
@@ -617,27 +632,8 @@ namespace MirrorAlignmentSystem
 		/// </summary>
 		private void button2_Click(object sender, EventArgs e)
 		{
-			string[] settings = DAL.GetSettings("User");
+			//string[] settings = DAL.GetSettings("User");
 
-			//MessageBox.Show("massCenter x: " + realCoM.X + " y: " + realCoM.Y);
-
-			if(Alignment == "fine")
-			{
-				Bitmap saveimage = new Bitmap(combinedImagePB.Image);
-				DAL.AddImage(saveimage, cameraController.GetExposureTime(), cameraController.GetAOI().ToString(), 1, double.Parse(settings[2]), 1, realCoM);
-				saveimage.Save("c:/imagedata/image"+ System.DateTime.Now.ToString("yyy_MM_dd.HH_mm_ss")+ ".bmp");
-
-			}
-			else
-			{
-				DAL.AddImage(new Bitmap(leftRightPBOne.Image), cameraController.GetExposureTime(), cameraController.GetAOI().ToString(), 2, double.Parse(settings[2]), 1, realCoM);
-				DAL.AddImage(new Bitmap(leftRightPBTwo.Image), cameraController.GetExposureTime(), cameraController.GetAOI().ToString(), 3, double.Parse(settings[2]), 1, realCoM);
-				DAL.AddImage(new Bitmap(upDownPBOne.Image), cameraController.GetExposureTime(), cameraController.GetAOI().ToString(), 4, double.Parse(settings[2]), 1, realCoM);
-				DAL.AddImage(new Bitmap(upDownPBTwo.Image), cameraController.GetExposureTime(), cameraController.GetAOI().ToString(), 5, double.Parse(settings[2]), 1, realCoM);
-			}
-
-			//blackBackgroundImagePB.Image = null;
-			//bitmapBackgroundImagePB.Image = null;
 		}
 
 		/// <summary>
@@ -1303,22 +1299,23 @@ namespace MirrorAlignmentSystem
 		/// <param name="rad">The rad.</param>
 		public void SetTanRad(double tan, double rad)
 		{
-			lbl_tan_ofs.Text = tan.ToString();
-			lbl_rad_ofs.Text = rad.ToString();
+			lbl_tan_ofs.Text = tan.ToString("N2");
+			lbl_rad_ofs.Text = rad.ToString("N2");
 			can_accept = (Math.Abs(tan) <= 1.0) && (Math.Abs(rad) <= 1.0);
 			acceptButton.BackColor = can_accept ? Color.Green : Color.Red;
+            lbl_tan_ofs.ForeColor = (Math.Abs(tan) <= 1.0) ? Color.Green : Color.Red;
+            lbl_rad_ofs.ForeColor = (Math.Abs(rad) <= 1.0) ? Color.Green : Color.Red;
 		}
 
 		private void acceptButton_Click(object sender, EventArgs e)
 		{
-			//
 			string fn = getChosenPath() + "\\image_";
 			var now = DateTime.Now;
 			fn += now.ToShortDateString() + "_" + now.ToShortTimeString().Replace(':','-') + "_";
 			fn += valueSegmentNumberTextbox + ".bmp";
 			if (combinedImagePB.Image!=null) combinedImagePB.Image.Save(fn);
-			Alignment = "calibrate";
-			tabControl1.SelectedIndex = 3;
+			Alignment = "checkcalibrate";
+			tabControl1.SelectedIndex = 0;
 		}
 
 		private string folder_path = ".";
@@ -1359,7 +1356,35 @@ namespace MirrorAlignmentSystem
 			SetFineImg(2, 2);
 		}
 
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            if (combinedImagePB.Image != null)
+            {
+                Bitmap saveimage = new Bitmap(combinedImagePB.Image);
+                saveimage.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + GetSegmentNumber() + "Fine" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
+            }
 
+            if (leftRightPBOne.Image != null)
+            {
+                Bitmap saveimageCoarseLR = new Bitmap(leftRightPBOne.Image);
+                Bitmap saveimageCoarseRL = new Bitmap(leftRightPBTwo.Image);
+                Bitmap saveimageCoarseUD = new Bitmap(upDownPBOne.Image);
+                Bitmap saveimageCoarseDU = new Bitmap(upDownPBTwo.Image);
+                saveimageCoarseLR.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + GetSegmentNumber() + "CoarseLR" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
+                saveimageCoarseRL.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + GetSegmentNumber() + "CoarseRL" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
+                saveimageCoarseUD.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + GetSegmentNumber() + "CoarseUD" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
+                saveimageCoarseDU.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + GetSegmentNumber() + "CoarseDU" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
+            }
+
+            if (CalibrateImgPB.Image != null)
+            {
+                Bitmap saveimageCalibrate = new Bitmap(CalibrateImgPB.Image);
+                string filename = "c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") +"/" + "Calibrate" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp";
+                saveimageCalibrate.Save(filename);
+            }
+            Bitmap saveimageOverview = new Bitmap(overviewImagePB.Image);
+            saveimageOverview.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + "Overview" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
+        }
 	}
 }
 

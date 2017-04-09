@@ -79,7 +79,7 @@ namespace MirrorAlignmentSystem
 					//Background image
 					else if (coarseCounter == 2)
 					{
-						if (blackBGCounterLeftRight > Int32.Parse(mainWindow.GetBlackBGNumber()))
+						if (blackBGCounterLeftRight > 1)
 						{
 							monitor.BlackScreen();
 
@@ -138,7 +138,7 @@ namespace MirrorAlignmentSystem
 					{
 						System.Diagnostics.Debug.WriteLine("Getting Black image");
 
-						if (blackBGCounterLeftRight > Int32.Parse(mainWindow.GetBlackBGNumber()))
+						if (blackBGCounterLeftRight > 1)
 						{
 							if (cameraCoarseAlignBlackOne != null)
 							{
@@ -271,7 +271,7 @@ namespace MirrorAlignmentSystem
 					{
 						System.Diagnostics.Debug.WriteLine("Getting Black image");
 
-						if (blackBGCounterUpDown > Int32.Parse(mainWindow.GetBlackBGNumber()))
+						if (blackBGCounterUpDown > 1)
 						{
 							monitor.BlackScreen();
 
@@ -342,7 +342,7 @@ namespace MirrorAlignmentSystem
 					{
 						System.Diagnostics.Debug.WriteLine("Getting black image");
 
-						if (blackBGCounterUpDown > Int32.Parse(mainWindow.GetBlackBGNumber()))
+						if (blackBGCounterUpDown > 1)
 						{
 							if (cameraCoarseAlignBlackTwo != null)
 							{
