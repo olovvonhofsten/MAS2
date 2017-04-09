@@ -216,7 +216,7 @@ namespace MirrorAlignmentSystem
             if (this.CalibrateImgPB.InvokeRequired)
             {
                 SetCalibrationImageCallback d = new SetCalibrationImageCallback(ShowCalibrateBitmap);
-                this.Invoke(d, new object[] { image });
+                this.Invoke(d, new object[] { image.Clone() });
             }
 
             CalibrateImgPB.Image = null;
