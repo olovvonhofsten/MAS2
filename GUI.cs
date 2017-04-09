@@ -1301,7 +1301,7 @@ namespace MirrorAlignmentSystem
 		{
 			lbl_tan_ofs.Text = tan.ToString("N2");
 			lbl_rad_ofs.Text = rad.ToString("N2");
-			can_accept = (Math.Abs(tan) <= 1.0) && (Math.Abs(rad) <= 1.0);
+			can_accept = (Math.Abs(tan) <= 0.3) && (Math.Abs(rad) <= 0.3);
 			acceptButton.BackColor = can_accept ? Color.Green : Color.Red;
             lbl_tan_ofs.ForeColor = (Math.Abs(tan) <= 1.0) ? Color.Green : Color.Red;
             lbl_rad_ofs.ForeColor = (Math.Abs(rad) <= 1.0) ? Color.Green : Color.Red;

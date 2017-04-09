@@ -20,7 +20,7 @@ namespace MirrorAlignmentSystem
         public static double pix2mradDISC = 0.711;
         public static double pix2distBH = 5.36;
         private static int dotWidth = 1;
-        public static int fineTolerance = 2;
+        public static double fineTolerance = 0.3;
 
         public static void Fine_algorithm(Bitmap IMG, Bitmap BKGR, double threshold, int segmentnr, out double[] offsetXY, out double[] offsetRT, out Point massCenter,
            out Bitmap returnBitmap)
@@ -47,6 +47,8 @@ namespace MirrorAlignmentSystem
             //Mask out the segment. Fine uses an elliptical mask
             int[] currentData = DAL.GetAOIDataRawSegment("" + segmentnr);
 
+            DataSaver.instance.AddDataPoint("currdata", currentData);
+
             //Mask out ellipse
             // Calculate point for ideal center of gravity
             Point idealC = new Point(currentData[12] - currentData[0], currentData[13] - currentData[1]);
@@ -58,10 +60,10 @@ namespace MirrorAlignmentSystem
             double angle = Math.Atan((double)(currentData[8] - currentData[10]) / (currentData[9] - currentData[11]));
 
             // Calculate the height and width of the ellipse
-            double w1 = currentData[12] - (currentData[10] + currentData[8]) / 2;
-            double w2 = currentData[13] - (currentData[11] + currentData[9]) / 2;
-            double v1 = currentData[12] - (currentData[6] + currentData[8]) / 2;
-            double v2 = currentData[13] - (currentData[9] + currentData[7]) / 2;
+            double w1 = currentData[12] - (currentData[10] + currentData[8]) / 2.0;
+            double w2 = currentData[13] - (currentData[11] + currentData[9]) / 2.0;
+            double v1 = currentData[12] - (currentData[6] + currentData[8]) / 2.0;
+            double v2 = currentData[13] - (currentData[9] + currentData[7]) / 2.0;
 
             double marginw = 0.9;
             double marginh = 0.9;
@@ -110,10 +112,15 @@ namespace MirrorAlignmentSystem
             //massCenterOffset[1] = currentData[13] - currentData[1] - massCenterTemp.Y;
             massCenterOffset[1] = massCenterTemp.Y - currentData[13] + currentData[1];
 
+            DataSaver.instance.AddDataPoint("massCenter", massCenterOffset);
+
             // calculate offset in polar coordinates
             double[] offset_Rteta = new double[2];
             offset_Rteta[0] = massCenterOffset[0] * Math.Cos(angle) - massCenterOffset[1] * Math.Sin(angle);
             offset_Rteta[1] = massCenterOffset[0] * Math.Cos(angle) + massCenterOffset[1] * Math.Sin(angle);
+
+            DataSaver.instance.AddDataPoint("offset-rtheta", offset_Rteta);
+
 
             // Convert back to bitmap, via image. First draw ellipse borders and segment (but not for 0111 and 1111
             if (segmentnr != 1 && segmentnr != 11)
@@ -431,7 +438,7 @@ namespace MirrorAlignmentSystem
                 {
                     oldStatusOfSegments[ticker, 1] = (int) Math.Round(mradOffset[0]);
                     oldStatusOfSegments[ticker, 2] = (int)Math.Round(mradOffset[1]);
-                    if(Math.Abs(mradOffset[0]) <= 1.0 && Math.Abs(mradOffset[1]) < 1.0)
+                    if(Math.Abs(mradOffset[0]) <= 0.3 && Math.Abs(mradOffset[1]) < 0.3)
                     {
                         oldStatusOfSegments[ticker,0] = 1;
                     }
@@ -455,18 +462,14 @@ namespace MirrorAlignmentSystem
             {
                 int[] AOIData = DAL.GetAOIData(s);
                 Point[] Seg = new Point[] { new Point(AOIData[4], AOIData[5]), new Point(AOIData[6], AOIData[7]), new Point(AOIData[8], AOIData[9]), new Point(AOIData[10], AOIData[11]) };
-                if (s == "0911")
-                {
-                    System.Diagnostics.Debug.WriteLine(status[ticker, 0]);
-                }
                 if (status[ticker,0] == 0)
                 {
-                    segmentsImage.Draw(Seg, new Bgr(Color.Red), 1);
+                    segmentsImage.Draw(Seg, new Bgr(Color.Red), 3);
                 }
                 if (status[ticker,0] == 1)
                 {
                     System.Diagnostics.Debug.WriteLine(status[ticker, 1] + " " + status[ticker, 2] + "mrad");
-                    segmentsImage.Draw(Seg, new Bgr(Color.Green), 1);
+                    segmentsImage.Draw(Seg, new Bgr(Color.LimeGreen), 3);
 
                 }
                 ticker++;
@@ -546,7 +549,7 @@ namespace MirrorAlignmentSystem
                 int[] AOIData = DAL.GetAOIData(s);
 
                 //Set cameracontroller parameters
-                cameraController.SetAOI(AOIData[2], AOIData[3], AOIData[0], AOIData[1] - AOIData[3]);
+                cameraController.SetAOI(AOIData[2], AOIData[3], AOIData[0], AOIData[1]);
                 cameraController.SetExposureTime(exposureRate);
                 //Rectangle currentROI = new Rectangle((int)AOIData[0], (int)AOIData[1], (int)AOIData[2], (int)AOIData[3]);
                 TotImg.ROI = Rectangle.Empty;
@@ -582,7 +585,7 @@ namespace MirrorAlignmentSystem
                 Image<Bgr, byte> combinedImg = new Image<Bgr, byte>(combinedBitmap);
          
                 // check tolerance
-                ok = ((Math.Abs(mradOffset[0]) <= 1.0) && (Math.Abs(mradOffset[1]) <= 1.0)) ? 1 : 0;
+                ok = ((Math.Abs(mradOffset[0]) <= 0.3) && (Math.Abs(mradOffset[1]) <= 0.3)) ? 1 : 0;
                 if (ok == 1)
                 {
                     System.Diagnostics.Debug.WriteLine("segment" + s + " ok!" + "Offset: " + mradOffset[0] + ", " + mradOffset[1]);
@@ -653,7 +656,7 @@ namespace MirrorAlignmentSystem
                 int[] AOIData = DAL.GetAOIData(s);
 
                 //Set cameracontroller parameters
-                cameraController.SetAOI(AOIData[2], AOIData[3], AOIData[0], AOIData[1] - AOIData[3]);
+                cameraController.SetAOI(AOIData[2], AOIData[3], AOIData[0], AOIData[1]);
                 cameraController.SetExposureTime(exposureRate);
                 //Rectangle currentROI = new Rectangle((int)AOIData[0], (int)AOIData[1], (int)AOIData[2], (int)AOIData[3]);
                 TotImg1.ROI = Rectangle.Empty;
@@ -707,7 +710,7 @@ namespace MirrorAlignmentSystem
                 //Take image
                 Bitmap cameraCoarseUD = cameraController.AquisitionVideo(AOIData[2]).Clone(new Rectangle(new Point(0, 0), new Size(AOIData[2], AOIData[3])), System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
 
-                //Show right/left patterns on monitor and take images
+                //Show down/up patterns on monitor and take images
                 Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(s)), 2, out doublePoints);
                 monitor.UpdatePatternVertices(doublePoints, false);
                 Thread.Sleep(waitOnMonitor);

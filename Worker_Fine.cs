@@ -32,7 +32,7 @@ namespace MirrorAlignmentSystem
 					//The sleep to make sure the image is on the monitor before the application continues
 					Thread.Sleep(waitOnMonitor);
 
-					cameraController.SetAOI(AOIData[2], AOIData[3], AOIData[0], AOIData[1] - AOIData[3]);
+                    cameraController.SetAOI(AOIData[2], AOIData[3], AOIData[0], AOIData[1]);
 					cameraController.SetExposureTime(exposureRate);
 
 					if (cameraInitialized)
@@ -112,7 +112,7 @@ namespace MirrorAlignmentSystem
 					//The sleep to make sure the image is on the monitor before the application continues
 					Thread.Sleep(waitOnMonitor);
 
-					cameraController.SetAOI(AOIData[2], AOIData[3], AOIData[0], AOIData[1]-AOIData[3]);
+                    cameraController.SetAOI(AOIData[2], AOIData[3], AOIData[0], AOIData[1]);
 					cameraController.SetExposureTime(exposureRate);
 
 					if (cameraInitialized)

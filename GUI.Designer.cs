@@ -233,8 +233,8 @@
             this.tabOverview.AutoScroll = true;
             this.tabOverview.BackColor = System.Drawing.Color.Moccasin;
             this.tabOverview.Controls.Add(this.label1);
-            this.tabOverview.Controls.Add(this.btnCheckAllCoarse);
             this.tabOverview.Controls.Add(this.button2);
+            this.tabOverview.Controls.Add(this.btnCheckAllCoarse);
             this.tabOverview.Controls.Add(this.btnCheckAllFine);
             this.tabOverview.Controls.Add(this.RTbutton);
             this.tabOverview.Controls.Add(this.LTbutton);
@@ -279,7 +279,7 @@
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(204, 422);
+            this.button2.Location = new System.Drawing.Point(418, 412);
             this.button2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(202, 66);
@@ -388,7 +388,7 @@
             this.groupBox5.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.groupBox5.Size = new System.Drawing.Size(631, 422);
+            this.groupBox5.Size = new System.Drawing.Size(631, 388);
             this.groupBox5.TabIndex = 27;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Overview Image";
@@ -403,7 +403,7 @@
             this.overviewImagePB.Location = new System.Drawing.Point(12, 34);
             this.overviewImagePB.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.overviewImagePB.Name = "overviewImagePB";
-            this.overviewImagePB.Size = new System.Drawing.Size(603, 376);
+            this.overviewImagePB.Size = new System.Drawing.Size(603, 342);
             this.overviewImagePB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.overviewImagePB.TabIndex = 12;
             this.overviewImagePB.TabStop = false;
