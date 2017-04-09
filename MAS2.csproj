@@ -177,6 +177,7 @@
     </Compile>
     <Compile Include="CurrentUser.cs" />
     <Compile Include="DAL.cs" />
+    <Compile Include="DataSaver.cs" />
     <Compile Include="Eventlog.cs">
       <SubType>Form</SubType>
     </Compile>
