@@ -56,6 +56,8 @@ namespace MirrorAlignmentSystem
 		string valueSegmentNumberTextbox;
         string valueLiveCheckState="Checked";
 
+        string finePBshow;
+
 		Point realCoM;
 
 		string currentUser = "Admin";
@@ -96,6 +98,7 @@ namespace MirrorAlignmentSystem
 			valueDiscIDTextBox = DiscIDTextBox.Text;
 			SegmentNumberTextbox.Text = "0911";
 			valueSegmentNumberTextbox = SegmentNumberTextbox.Text;
+            finePBshow = "sgbg";
 
 			CheckForIllegalCrossThreadCalls = false;
 			//this.ActiveControl = BlackBGNumberLabel;
@@ -278,6 +281,17 @@ namespace MirrorAlignmentSystem
 		{
 			return valueSegmentNumberTextbox;
 		}
+
+        /// <summary>
+        /// Returns the value for fine alignment if the picture should be signal, background or signal-background
+        /// </summary>
+        /// <returns>
+        /// Returns the setting as a string 
+        /// </returns>
+        public string GetFineShow()
+        {
+            return finePBshow;
+        }
 
 		/// <summary>
 		/// This method returns the current online/offline mode
@@ -1412,6 +1426,24 @@ namespace MirrorAlignmentSystem
 		{
 			ShowRot(11, 22, 33);
 		}
+
+        private void sgbgFine_CheckedChanged(object sender, EventArgs e)
+        {
+            finePBshow = "sgbg";
+            label2.Text = finePBshow;
+        }
+
+        private void bgFine_CheckedChanged(object sender, EventArgs e)
+        {
+            finePBshow = "bg";
+            label2.Text = finePBshow;
+        }
+
+        private void sgFine_CheckedChanged(object sender, EventArgs e)
+        {
+            finePBshow = "sg";
+            label2.Text = finePBshow;
+        }
 	}
 }
 

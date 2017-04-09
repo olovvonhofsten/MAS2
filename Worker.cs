@@ -191,7 +191,7 @@ namespace MirrorAlignmentSystem
 			cameraSettings = DAL.GetSettings("User");
 
 			// The exposure rate, taken from the database
-			exposureRate = 4.5 * double.Parse( cameraSettings[0] );
+			exposureRate = double.Parse( cameraSettings[0] );
 
 			framerate = double.Parse(cameraSettings[5]);
 
@@ -375,8 +375,9 @@ namespace MirrorAlignmentSystem
 
 						//if (calibrateFirstCycle)
 						//{
-                            cameraController.SetAOI(1936, 1216, 0, 0);
-							cameraController.SetExposureTime(exposureRate);
+                        cameraController.SetAOI(1936, 1216, 0, 0);
+                        exposureRate = 0.1 * double.Parse(cameraSettings[0]);
+						cameraController.SetExposureTime(exposureRate);
 							//calibrateFirstCycle = false;
 						//}
 

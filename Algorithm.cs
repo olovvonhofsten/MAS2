@@ -376,18 +376,14 @@ namespace MirrorAlignmentSystem
             return P;
         }
 
-        public static Mat RemoveBackground(Mat IMG, Mat BKGR)
+        // Takes the difference between two bitmaps
+        public static Bitmap RemoveBackground(Bitmap Img1, Bitmap Img2)
         {
-            Mat Result;
-            CvInvoke.UseOpenCL = false;
-
-            IInputArray IMGmata = IMG;
-            IInputArray BKRmata = BKGR;
-            IOutputArray Resultmata = new Mat();
-            CvInvoke.AbsDiff(IMGmata, BKRmata, Resultmata);
-            Result = (Mat)Resultmata;
-
-            return Result;
+            Image<Gray, byte> Img = new Image<Gray, byte>(Img1);
+            Image<Gray, byte> Bkr = new Image<Gray, byte>(Img2);
+            Image<Gray, byte> Result = Img.Copy();
+            CvInvoke.AbsDiff(Img, Bkr, Result);
+            return Result.ToBitmap();
         }
 
         public static void Masscenter(Image<Gray, Byte> IMG, out MCvPoint2D64f gravC, double threshold)
@@ -684,14 +680,14 @@ namespace MirrorAlignmentSystem
                 Bitmap cameraCoarseAlignBlackUD = new Bitmap(cameraCoarseAlignBlack);
 
                 //Show left/right patterns on monitor and take images
-                Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(s)), 1, out doublePoints);
+                Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(s)), 2, out doublePoints);
                 monitor.UpdatePatternVertices(doublePoints, false);
                 Thread.Sleep(waitOnMonitor);
                 //Take image
                 Bitmap cameraCoarseLR = cameraController.AquisitionVideo(AOIData[2]).Clone(new Rectangle(new Point(0, 0), new Size(AOIData[2], AOIData[3])), System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
 
                 //Show right/left patterns on monitor and take images
-                Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(s)), 3, out doublePoints);
+                Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(s)), 0, out doublePoints);
                 monitor.UpdatePatternVertices(doublePoints, false);
                 Thread.Sleep(waitOnMonitor);
                 //Take image
@@ -704,14 +700,14 @@ namespace MirrorAlignmentSystem
                 //////////////////////////////////////////////////////
                 
                 //Show up/down patterns on monitor and take images
-                Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(s)), 0, out doublePoints);
+                Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(s)), 3, out doublePoints);
                 monitor.UpdatePatternVertices(doublePoints, false);
                 Thread.Sleep(waitOnMonitor);
                 //Take image
                 Bitmap cameraCoarseUD = cameraController.AquisitionVideo(AOIData[2]).Clone(new Rectangle(new Point(0, 0), new Size(AOIData[2], AOIData[3])), System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
 
                 //Show down/up patterns on monitor and take images
-                Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(s)), 2, out doublePoints);
+                Algorithm.CoarsePatternPoints(int.Parse(DAL.GetRawSegmentNumber(s)), 1, out doublePoints);
                 monitor.UpdatePatternVertices(doublePoints, false);
                 Thread.Sleep(waitOnMonitor);
                 //Take image

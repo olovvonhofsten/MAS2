@@ -28,192 +28,193 @@
         /// </summary>
         private void InitializeComponent()
         {
-			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
-			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-			this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.pathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.imagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.administrateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.eventLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.BIA_timer = new System.Windows.Forms.Timer(this.components);
-			this.tabControl1 = new System.Windows.Forms.TabControl();
-			this.tabOverview = new System.Windows.Forms.TabPage();
-			this.label1 = new System.Windows.Forms.Label();
-			this.btnCheckAllCoarse = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
-			this.btnCheckAllFine = new System.Windows.Forms.Button();
-			this.RTbutton = new System.Windows.Forms.Button();
-			this.LTbutton = new System.Windows.Forms.Button();
-			this.DWbutton = new System.Windows.Forms.Button();
-			this.UpButton = new System.Windows.Forms.Button();
-			this.checkBox1 = new System.Windows.Forms.CheckBox();
-			this.DiscIDTextBox = new System.Windows.Forms.TextBox();
-			this.SegmentNumberTextbox = new System.Windows.Forms.TextBox();
-			this.groupBox5 = new System.Windows.Forms.GroupBox();
-			this.overviewImagePB = new System.Windows.Forms.PictureBox();
-			this.tabCoarse = new System.Windows.Forms.TabPage();
-			this.lbl_lr = new System.Windows.Forms.Label();
-			this.lbl_ll = new System.Windows.Forms.Label();
-			this.lbl_ur = new System.Windows.Forms.Label();
-			this.lbl_ul = new System.Windows.Forms.Label();
-			this.pb_Lower = new System.Windows.Forms.PictureBox();
-			this.pb_Upper = new System.Windows.Forms.PictureBox();
-			this.gbCoarse = new System.Windows.Forms.GroupBox();
-			this.lbl_lr_2 = new System.Windows.Forms.Label();
-			this.dirUpDownLabel = new System.Windows.Forms.Label();
-			this.upDownPBTwo = new System.Windows.Forms.PictureBox();
-			this.upDownPBOne = new System.Windows.Forms.PictureBox();
-			this.leftRightPBOne = new System.Windows.Forms.PictureBox();
-			this.leftRightPBTwo = new System.Windows.Forms.PictureBox();
-			this.tabFine = new System.Windows.Forms.TabPage();
-			this.bgFine = new System.Windows.Forms.RadioButton();
-			this.sgFine = new System.Windows.Forms.RadioButton();
-			this.sgbgFine = new System.Windows.Forms.RadioButton();
-			this.lbl_fr = new System.Windows.Forms.Label();
-			this.lbl_fl = new System.Windows.Forms.Label();
-			this.CoMLabel = new System.Windows.Forms.Label();
-			this.acceptButton = new System.Windows.Forms.Button();
-			this.pbFine = new System.Windows.Forms.PictureBox();
-			this.lbl_rad_ofs = new System.Windows.Forms.Label();
-			this.lbl_ofs_rad = new System.Windows.Forms.Label();
-			this.lbl_ofs_tan = new System.Windows.Forms.Label();
-			this.combinedImagePB = new System.Windows.Forms.PictureBox();
-			this.lbl_tan_ofs = new System.Windows.Forms.Label();
-			this.tabCal = new System.Windows.Forms.TabPage();
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label4 = new System.Windows.Forms.Label();
-			this.label3 = new System.Windows.Forms.Label();
-			this.CalibrateImgPB = new System.Windows.Forms.PictureBox();
-			this.lbl_01 = new System.Windows.Forms.Label();
-			this.lbl_02 = new System.Windows.Forms.Label();
-			this.lbl_03 = new System.Windows.Forms.Label();
-			this.lbl_04 = new System.Windows.Forms.Label();
-			this.lbl_05 = new System.Windows.Forms.Label();
-			this.lbl_06 = new System.Windows.Forms.Label();
-			this.lbl_07 = new System.Windows.Forms.Label();
-			this.lbl_09 = new System.Windows.Forms.Label();
-			this.lbl_08 = new System.Windows.Forms.Label();
-			this.lbl_11 = new System.Windows.Forms.Label();
-			this.lbl_10 = new System.Windows.Forms.Label();
-			this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-			this.button1 = new System.Windows.Forms.Button();
-			this.button3 = new System.Windows.Forms.Button();
-			this.menuStrip1.SuspendLayout();
-			this.tabControl1.SuspendLayout();
-			this.tabOverview.SuspendLayout();
-			this.groupBox5.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.overviewImagePB)).BeginInit();
-			this.tabCoarse.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pb_Lower)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.pb_Upper)).BeginInit();
-			this.gbCoarse.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.upDownPBTwo)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.upDownPBOne)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.leftRightPBOne)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.leftRightPBTwo)).BeginInit();
-			this.tabFine.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pbFine)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.combinedImagePB)).BeginInit();
-			this.tabCal.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.CalibrateImgPB)).BeginInit();
-			this.SuspendLayout();
-			// 
-			// menuStrip1
-			// 
-			this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.administrateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eventLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BIA_timer = new System.Windows.Forms.Timer(this.components);
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabOverview = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnCheckAllCoarse = new System.Windows.Forms.Button();
+            this.btnCheckAllFine = new System.Windows.Forms.Button();
+            this.RTbutton = new System.Windows.Forms.Button();
+            this.LTbutton = new System.Windows.Forms.Button();
+            this.DWbutton = new System.Windows.Forms.Button();
+            this.UpButton = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.DiscIDTextBox = new System.Windows.Forms.TextBox();
+            this.SegmentNumberTextbox = new System.Windows.Forms.TextBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.overviewImagePB = new System.Windows.Forms.PictureBox();
+            this.tabCoarse = new System.Windows.Forms.TabPage();
+            this.lbl_lr = new System.Windows.Forms.Label();
+            this.lbl_ll = new System.Windows.Forms.Label();
+            this.lbl_ur = new System.Windows.Forms.Label();
+            this.lbl_ul = new System.Windows.Forms.Label();
+            this.pb_Lower = new System.Windows.Forms.PictureBox();
+            this.pb_Upper = new System.Windows.Forms.PictureBox();
+            this.gbCoarse = new System.Windows.Forms.GroupBox();
+            this.lbl_lr_2 = new System.Windows.Forms.Label();
+            this.dirUpDownLabel = new System.Windows.Forms.Label();
+            this.upDownPBTwo = new System.Windows.Forms.PictureBox();
+            this.upDownPBOne = new System.Windows.Forms.PictureBox();
+            this.leftRightPBOne = new System.Windows.Forms.PictureBox();
+            this.leftRightPBTwo = new System.Windows.Forms.PictureBox();
+            this.tabFine = new System.Windows.Forms.TabPage();
+            this.bgFine = new System.Windows.Forms.RadioButton();
+            this.sgFine = new System.Windows.Forms.RadioButton();
+            this.sgbgFine = new System.Windows.Forms.RadioButton();
+            this.lbl_fr = new System.Windows.Forms.Label();
+            this.lbl_fl = new System.Windows.Forms.Label();
+            this.CoMLabel = new System.Windows.Forms.Label();
+            this.acceptButton = new System.Windows.Forms.Button();
+            this.pbFine = new System.Windows.Forms.PictureBox();
+            this.lbl_rad_ofs = new System.Windows.Forms.Label();
+            this.lbl_ofs_rad = new System.Windows.Forms.Label();
+            this.lbl_ofs_tan = new System.Windows.Forms.Label();
+            this.combinedImagePB = new System.Windows.Forms.PictureBox();
+            this.lbl_tan_ofs = new System.Windows.Forms.Label();
+            this.tabCal = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.CalibrateImgPB = new System.Windows.Forms.PictureBox();
+            this.lbl_01 = new System.Windows.Forms.Label();
+            this.lbl_02 = new System.Windows.Forms.Label();
+            this.lbl_03 = new System.Windows.Forms.Label();
+            this.lbl_04 = new System.Windows.Forms.Label();
+            this.lbl_05 = new System.Windows.Forms.Label();
+            this.lbl_06 = new System.Windows.Forms.Label();
+            this.lbl_07 = new System.Windows.Forms.Label();
+            this.lbl_09 = new System.Windows.Forms.Label();
+            this.lbl_08 = new System.Windows.Forms.Label();
+            this.lbl_11 = new System.Windows.Forms.Label();
+            this.lbl_10 = new System.Windows.Forms.Label();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.button1 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.menuStrip1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabOverview.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.overviewImagePB)).BeginInit();
+            this.tabCoarse.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Lower)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Upper)).BeginInit();
+            this.gbCoarse.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.upDownPBTwo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.upDownPBOne)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.leftRightPBOne)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.leftRightPBTwo)).BeginInit();
+            this.tabFine.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbFine)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.combinedImagePB)).BeginInit();
+            this.tabCal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CalibrateImgPB)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.viewToolStripMenuItem});
-			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-			this.menuStrip1.Name = "menuStrip1";
-			this.menuStrip1.Padding = new System.Windows.Forms.Padding(12, 4, 0, 4);
-			this.menuStrip1.Size = new System.Drawing.Size(1052, 27);
-			this.menuStrip1.TabIndex = 19;
-			this.menuStrip1.Text = "menuStrip1";
-			this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
-			// 
-			// fileToolStripMenuItem
-			// 
-			this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(12, 4, 0, 4);
+            this.menuStrip1.Size = new System.Drawing.Size(1052, 27);
+            this.menuStrip1.TabIndex = 19;
+            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.pathToolStripMenuItem,
             this.toolStripSeparator1,
             this.exitToolStripMenuItem});
-			this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-			this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 19);
-			this.fileToolStripMenuItem.Text = "&File";
-			// 
-			// pathToolStripMenuItem
-			// 
-			this.pathToolStripMenuItem.Name = "pathToolStripMenuItem";
-			this.pathToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-			this.pathToolStripMenuItem.Text = "Select &Path";
-			this.pathToolStripMenuItem.Click += new System.EventHandler(this.pathToolStripMenuItem_Click);
-			// 
-			// toolStripSeparator1
-			// 
-			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(129, 6);
-			// 
-			// exitToolStripMenuItem
-			// 
-			this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-			this.exitToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-			this.exitToolStripMenuItem.Text = "E&xit";
-			this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-			// 
-			// viewToolStripMenuItem
-			// 
-			this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 19);
+            this.fileToolStripMenuItem.Text = "&File";
+            // 
+            // pathToolStripMenuItem
+            // 
+            this.pathToolStripMenuItem.Name = "pathToolStripMenuItem";
+            this.pathToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.pathToolStripMenuItem.Text = "Select &Path";
+            this.pathToolStripMenuItem.Click += new System.EventHandler(this.pathToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(129, 6);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.exitToolStripMenuItem.Text = "E&xit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // viewToolStripMenuItem
+            // 
+            this.viewToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.imagesToolStripMenuItem,
             this.optionsToolStripMenuItem,
             this.administrateToolStripMenuItem,
             this.eventLogToolStripMenuItem});
-			this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-			this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 19);
-			this.viewToolStripMenuItem.Text = "View";
-			// 
-			// imagesToolStripMenuItem
-			// 
-			this.imagesToolStripMenuItem.Name = "imagesToolStripMenuItem";
-			this.imagesToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-			this.imagesToolStripMenuItem.Text = "Images";
-			this.imagesToolStripMenuItem.Click += new System.EventHandler(this.imagesToolStripMenuItem_Click);
-			// 
-			// optionsToolStripMenuItem
-			// 
-			this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-			this.optionsToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-			this.optionsToolStripMenuItem.Text = "Options";
-			this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
-			// 
-			// administrateToolStripMenuItem
-			// 
-			this.administrateToolStripMenuItem.Name = "administrateToolStripMenuItem";
-			this.administrateToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-			this.administrateToolStripMenuItem.Text = "Administrate";
-			this.administrateToolStripMenuItem.Click += new System.EventHandler(this.administrateToolStripMenuItem_Click);
-			// 
-			// eventLogToolStripMenuItem
-			// 
-			this.eventLogToolStripMenuItem.Name = "eventLogToolStripMenuItem";
-			this.eventLogToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
-			this.eventLogToolStripMenuItem.Text = "Event Log";
-			this.eventLogToolStripMenuItem.Click += new System.EventHandler(this.eventLogToolStripMenuItem_Click);
-			// 
-			// BIA_timer
-			// 
-			this.BIA_timer.Interval = 125;
-			this.BIA_timer.Tick += new System.EventHandler(this.timer1_Tick);
-			// 
-			// tabControl1
-			// 
-			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(44, 19);
+            this.viewToolStripMenuItem.Text = "View";
+            // 
+            // imagesToolStripMenuItem
+            // 
+            this.imagesToolStripMenuItem.Name = "imagesToolStripMenuItem";
+            this.imagesToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.imagesToolStripMenuItem.Text = "Images";
+            this.imagesToolStripMenuItem.Click += new System.EventHandler(this.imagesToolStripMenuItem_Click);
+            // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.optionsToolStripMenuItem.Text = "Options";
+            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
+            // 
+            // administrateToolStripMenuItem
+            // 
+            this.administrateToolStripMenuItem.Name = "administrateToolStripMenuItem";
+            this.administrateToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.administrateToolStripMenuItem.Text = "Administrate";
+            this.administrateToolStripMenuItem.Click += new System.EventHandler(this.administrateToolStripMenuItem_Click);
+            // 
+            // eventLogToolStripMenuItem
+            // 
+            this.eventLogToolStripMenuItem.Name = "eventLogToolStripMenuItem";
+            this.eventLogToolStripMenuItem.Size = new System.Drawing.Size(142, 22);
+            this.eventLogToolStripMenuItem.Text = "Event Log";
+            this.eventLogToolStripMenuItem.Click += new System.EventHandler(this.eventLogToolStripMenuItem_Click);
+            // 
+            // BIA_timer
+            // 
+            this.BIA_timer.Interval = 125;
+            this.BIA_timer.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabOverview);
@@ -266,17 +267,6 @@
             this.label1.TabIndex = 50;
             this.label1.Text = "DISC ID";
             // 
-            // btnCheckAllCoarse
-            // 
-            this.btnCheckAllCoarse.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCheckAllCoarse.Location = new System.Drawing.Point(779, 372);
-            this.btnCheckAllCoarse.Name = "btnCheckAllCoarse";
-            this.btnCheckAllCoarse.Size = new System.Drawing.Size(205, 63);
-            this.btnCheckAllCoarse.TabIndex = 49;
-            this.btnCheckAllCoarse.Text = "Check all Coarse";
-            this.btnCheckAllCoarse.UseVisualStyleBackColor = true;
-            this.btnCheckAllCoarse.Click += new System.EventHandler(this.btnCheckAllCoarse_Click);
-            // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -289,6 +279,17 @@
             this.button2.Text = "Save all data";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // btnCheckAllCoarse
+            // 
+            this.btnCheckAllCoarse.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCheckAllCoarse.Location = new System.Drawing.Point(779, 372);
+            this.btnCheckAllCoarse.Name = "btnCheckAllCoarse";
+            this.btnCheckAllCoarse.Size = new System.Drawing.Size(205, 63);
+            this.btnCheckAllCoarse.TabIndex = 49;
+            this.btnCheckAllCoarse.Text = "Check all Coarse";
+            this.btnCheckAllCoarse.UseVisualStyleBackColor = true;
+            this.btnCheckAllCoarse.Click += new System.EventHandler(this.btnCheckAllCoarse_Click);
             // 
             // btnCheckAllFine
             // 
@@ -579,6 +580,7 @@
             // 
             this.tabFine.AutoScroll = true;
             this.tabFine.BackColor = System.Drawing.Color.LemonChiffon;
+            this.tabFine.Controls.Add(this.label2);
             this.tabFine.Controls.Add(this.bgFine);
             this.tabFine.Controls.Add(this.sgFine);
             this.tabFine.Controls.Add(this.sgbgFine);
@@ -609,6 +611,7 @@
             this.bgFine.TabIndex = 49;
             this.bgFine.Text = "BG";
             this.bgFine.UseVisualStyleBackColor = true;
+            this.bgFine.CheckedChanged += new System.EventHandler(this.bgFine_CheckedChanged);
             // 
             // sgFine
             // 
@@ -619,6 +622,7 @@
             this.sgFine.TabIndex = 48;
             this.sgFine.Text = "SG";
             this.sgFine.UseVisualStyleBackColor = true;
+            this.sgFine.CheckedChanged += new System.EventHandler(this.sgFine_CheckedChanged);
             // 
             // sgbgFine
             // 
@@ -631,6 +635,7 @@
             this.sgbgFine.TabStop = true;
             this.sgbgFine.Text = "SG-BG";
             this.sgbgFine.UseVisualStyleBackColor = true;
+            this.sgbgFine.CheckedChanged += new System.EventHandler(this.sgbgFine_CheckedChanged);
             // 
             // lbl_fr
             // 
@@ -908,6 +913,29 @@
             this.imageList1.Images.SetKeyName(3, "rightleft.png");
             this.imageList1.Images.SetKeyName(4, "rightright.png");
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(0, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(39, 30);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(70, 26);
+            this.label2.TabIndex = 50;
+            this.label2.Text = "label2";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -1043,6 +1071,7 @@
         private System.Windows.Forms.RadioButton sgbgFine;
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Label label2;
     }
 }
 

@@ -194,13 +194,18 @@ namespace MirrorAlignmentSystem
 
 				double[] revOffset = new double[2];
 				double[] mradOffset = new double[2];
+                Bitmap sgBMP = new Bitmap(304, 164, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+                Bitmap bgBMP = new Bitmap(304, 164, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
 
 				//Check if the application is offline or not to be able to sent the correct raw segment number
 				if (!offline)
 				{
 					System.Diagnostics.Debug.WriteLine("cameraFineAlignPattern width och height: " + cameraFineAlignPattern.Width + " " + cameraFineAlignPattern.Height + "cameraFineAlignBlack width och height: " + cameraFineAlignBlack.Width + " " + cameraFineAlignBlack.Height);
-					Algorithm.Fine_algorithm(cameraFineAlignPattern, cameraFineAlignBlack, threshold, int.Parse(DAL.GetRawSegmentNumber(segment)), out offsetXY, out offsetRT, out massCenter, out combinedBitmap);
 
+                    sgBMP = (Bitmap) cameraFineAlignPattern.Clone();
+                    bgBMP = (Bitmap) cameraFineAlignBlack.Clone();
+                    Algorithm.Fine_algorithm(cameraFineAlignPattern, cameraFineAlignBlack, threshold, int.Parse(DAL.GetRawSegmentNumber(segment)), out offsetXY, out offsetRT, out massCenter, out combinedBitmap);
+                    
 					Algorithm.pix2mrad(int.Parse(DAL.GetRawSegmentNumber(segment)), offsetRT, out mradOffset);
 
 					Algorithm.mrad2revs(int.Parse(DAL.GetRawSegmentNumber(segment)), mradOffset, out revOffset);
@@ -224,7 +229,20 @@ namespace MirrorAlignmentSystem
                 //statusOfSegments = tempStatus;
 
 				System.Diagnostics.Debug.WriteLine("Load bitmap");
-				mainWindow.ShowCombinedBitmap(combinedBitmap);
+                string showfine = mainWindow.GetFineShow();
+
+                if (showfine == "sg")
+                {
+                    mainWindow.ShowCombinedBitmap(sgBMP);
+                }
+                if (showfine == "bg")
+                {
+                    mainWindow.ShowCombinedBitmap(bgBMP);
+                }
+                if (showfine == "sgbg")
+                {
+                    mainWindow.ShowCombinedBitmap(combinedBitmap);
+                }
 
 				stopWatchCombinedImage.Stop();
 
