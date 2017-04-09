@@ -107,6 +107,7 @@ namespace MirrorAlignmentSystem
 		{
 			mainWindow = mainWindowInput;
 			cameraController = inputCamera;
+
 		}
 
 		partial void ExecuteOverview();
@@ -192,6 +193,7 @@ namespace MirrorAlignmentSystem
 
 			// The exposure rate, taken from the database
 			exposureRate = double.Parse( cameraSettings[0] );
+			mainWindow.SetExposureSlider(exposureRate);
 
 			framerate = double.Parse(cameraSettings[5]);
 
@@ -263,6 +265,8 @@ namespace MirrorAlignmentSystem
 			{
 				while (true)
 				{
+					exposureRate = mainWindow.GetExposureSlider();
+
 					stopWatchProgram.Reset();
 					stopWatchProgram.Start();
 
@@ -376,7 +380,7 @@ namespace MirrorAlignmentSystem
 						//if (calibrateFirstCycle)
 						//{
                         cameraController.SetAOI(1936, 1216, 0, 0);
-                        exposureRate = 0.1 * double.Parse(cameraSettings[0]);
+                        
 						cameraController.SetExposureTime(exposureRate);
 							//calibrateFirstCycle = false;
 						//}

@@ -1444,6 +1444,16 @@ namespace MirrorAlignmentSystem
             finePBshow = "sg";
             label2.Text = finePBshow;
         }
+
+		public void SetExposureSlider(double f)
+		{
+			trackBar2.Value = (int)(100 * f);
+		}
+		public double GetExposureSlider()
+		{
+			return trackBar2.Value / 100.0;
+		}
+
 	}
 }
 
