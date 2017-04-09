@@ -63,6 +63,11 @@ namespace MirrorAlignmentSystem
 		}
 
 		private List<DataBlock> blocks = new List<DataBlock>();
+
+		/// <summary>
+		/// singleton
+		/// </summary>
+		public static DataSaver instance = new DataSaver();
 	}
 
 
