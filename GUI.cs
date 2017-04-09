@@ -45,6 +45,12 @@ namespace MirrorAlignmentSystem
 		delegate void SetMotor2MDIActiveCallback(string motor2MDIActive);
 		delegate void SetCoMLabelActiveCallback(string CoM, Point realCoMInput);
 		delegate void SetvisibilityCallback(bool mode);
+		delegate void UpdateLabelCallback(string segnum,
+			int align_x,
+			int align_y,
+			int rot_x,
+			int rot_y,
+			int rot_z );
 
         string valueDiscIDTextBox = "NOT SET";
 		string valueSegmentNumberTextbox;
@@ -194,17 +200,16 @@ namespace MirrorAlignmentSystem
 		/// <param name="image">The image to be displayed in the picturebox</param>    
 		public void ShowOverviewBitmap(Bitmap image)
 		{
-			/*if (overviewImagePB.Image != null)
+			if (this.overviewImagePB.InvokeRequired)
 			{
-				overviewImagePB.Image.Dispose();
-			}*/
-            if (this.overviewImagePB.InvokeRequired)
-            {
-                SetOverviewImageCallback d = new SetOverviewImageCallback(ShowCalibrateBitmap);
-                this.Invoke(d, new object[] { image });
-            }
-			overviewImagePB.Image = null;
-            overviewImagePB.Image = (Bitmap)image.Clone();
+				SetOverviewImageCallback d = new SetOverviewImageCallback(ShowOverviewBitmap);
+				this.Invoke(d, new object[] { image.Clone() });
+			}
+			else
+			{
+				overviewImagePB.Image = null;
+				overviewImagePB.Image = (Bitmap)image.Clone();
+			}
 		}
 
         /// <summary>
@@ -213,14 +218,16 @@ namespace MirrorAlignmentSystem
         /// <param name="image">The image to be displayed in the picturebox</param>    
         public void ShowCalibrateBitmap(Bitmap image)
         {
-            if (this.CalibrateImgPB.InvokeRequired)
-            {
-                SetCalibrationImageCallback d = new SetCalibrationImageCallback(ShowCalibrateBitmap);
-                this.Invoke(d, new object[] { image.Clone() });
-            }
-
-            CalibrateImgPB.Image = null;
-            CalibrateImgPB.Image = (Bitmap)image.Clone();
+			if (this.CalibrateImgPB.InvokeRequired)
+			{
+				SetCalibrationImageCallback d = new SetCalibrationImageCallback(ShowCalibrateBitmap);
+				this.Invoke(d, new object[] { image.Clone() });
+			}
+			else
+			{
+				CalibrateImgPB.Image = null;
+				CalibrateImgPB.Image = (Bitmap)image.Clone();
+			}
         }
 
 		/// <summary>
@@ -232,7 +239,7 @@ namespace MirrorAlignmentSystem
 			if (this.combinedImagePB.InvokeRequired)
 			{
 				SetCombinedImageCallback d = new SetCombinedImageCallback(ShowCombinedBitmap);
-				this.Invoke(d, new object[] { image });
+				this.Invoke(d, new object[] { image.Clone() });
 			}
 			else
 			{
@@ -1112,10 +1119,18 @@ namespace MirrorAlignmentSystem
 			int rot_y,
 			int rot_z )
 		{
-			ShowSegnum(segnum);
-			ShowAlign(align_x, align_y);
-			ShowRot(rot_x, rot_y, rot_z);
 
+			if (this.lbl_01.InvokeRequired)
+			{
+				UpdateLabelCallback ulcb = new UpdateLabelCallback(UpdateLabel);
+				this.Invoke(ulcb, new object[] { segnum.Clone(), align_x, align_y, rot_x, rot_y, rot_z });
+			}
+			else
+			{
+				ShowSegnum(segnum);
+				ShowAlign(align_x, align_y);
+				ShowRot(rot_x, rot_y, rot_z);
+			}
 		}
 
 		/// <summary>
@@ -1301,10 +1316,10 @@ namespace MirrorAlignmentSystem
 		{
 			lbl_tan_ofs.Text = tan.ToString("N2");
 			lbl_rad_ofs.Text = rad.ToString("N2");
-			can_accept = (Math.Abs(tan) <= 1.0) && (Math.Abs(rad) <= 1.0);
+			can_accept = (Math.Abs(tan) <= 0.3) && (Math.Abs(rad) <= 0.3);
 			acceptButton.BackColor = can_accept ? Color.Green : Color.Red;
-            lbl_tan_ofs.ForeColor = (Math.Abs(tan) <= 1.0) ? Color.Green : Color.Red;
-            lbl_rad_ofs.ForeColor = (Math.Abs(rad) <= 1.0) ? Color.Green : Color.Red;
+            lbl_tan_ofs.ForeColor = (Math.Abs(tan) <= 0.3) ? Color.Green : Color.Red;
+            lbl_rad_ofs.ForeColor = (Math.Abs(rad) <= 0.3) ? Color.Green : Color.Red;
 		}
 
 		private void acceptButton_Click(object sender, EventArgs e)
@@ -1386,6 +1401,16 @@ namespace MirrorAlignmentSystem
             saveimageOverview.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + "Overview" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
 
 			DataSaver.instance.SaveData(getChosenPath() + "\\AllData.csv");
+		}
+
+		private void button1_Click_3(object sender, EventArgs e)
+		{
+			ShowAlign(773, -208);
+		}
+
+		private void button3_Click_1(object sender, EventArgs e)
+		{
+			ShowRot(11, 22, 33);
 		}
 	}
 }
