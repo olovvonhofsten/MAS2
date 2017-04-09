@@ -1384,7 +1384,9 @@ namespace MirrorAlignmentSystem
             }
             Bitmap saveimageOverview = new Bitmap(overviewImagePB.Image);
             saveimageOverview.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + "Overview" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
-        }
+
+			DataSaver.instance.SaveData(getChosenPath() + "\\AllData.csv");
+		}
 	}
 }
 
