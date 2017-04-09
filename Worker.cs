@@ -373,12 +373,12 @@ namespace MirrorAlignmentSystem
                         System.Diagnostics.Debug.WriteLine("alignment mode: " + alignmentMode);
 						monitor.SetCalibrateOrNot(false);
 
-						if (calibrateFirstCycle)
-						{
+						//if (calibrateFirstCycle)
+						//{
                             cameraController.SetAOI(1936, 1216, 0, 0);
 							cameraController.SetExposureTime(exposureRate);
-							calibrateFirstCycle = false;
-						}
+							//calibrateFirstCycle = false;
+						//}
 
 						doublePoints = new double[4, 2];
 
@@ -469,7 +469,7 @@ namespace MirrorAlignmentSystem
                     if (alignmentMode == "checkcalibrate")
                     {
                         System.Diagnostics.Debug.WriteLine("alignment mode: " + alignmentMode);
-                        monitor.SetCalibrateOrNot(true);
+                        monitor.SetCalibrateOrNot(false);
 
                         if (calibrateFirstCycle)
                         {
@@ -557,12 +557,18 @@ namespace MirrorAlignmentSystem
                             Bitmap overviewFine;
 							var caf = mainWindow.getCAF();
                             Algorithm.checkAllSegmentsFine(cameraController, cameraSettings, monitor, caf, out fineData, out overviewFine);
+                            int[] seg1 = new int[67];
+                            int[] seg2 = new int[67];
+                            int[] seg3 = new int[67];
 							for(int ticks = 0; ticks < 67; ticks++)
                             {
-                                statusOfSegments[ticks, 0] = fineData[ticks, 0];
-                                statusOfSegments[ticks, 1] = fineData[ticks, 2];
-                                statusOfSegments[ticks, 2] = fineData[ticks, 3];
+                                statusOfSegments[ticks, 0] = seg1[ticks] = fineData[ticks, 0];
+                                statusOfSegments[ticks, 1] = seg2[ticks] = fineData[ticks, 2];
+                                statusOfSegments[ticks, 2] = seg3[ticks] = fineData[ticks, 3];
                             }
+                            DataSaver.instance.AddDataPoint("segment-1", seg1);
+                            DataSaver.instance.AddDataPoint("segment-2", seg2);
+                            DataSaver.instance.AddDataPoint("segment-3", seg3);
                             alignmentMode = "over";
                         }
                         else if(alignmentMode == "checkALLcoarse")
