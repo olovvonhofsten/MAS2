@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Emgu.CV;
+using Emgu.CV.Structure;
 
 namespace MirrorAlignmentSystem
 {
@@ -74,17 +76,37 @@ namespace MirrorAlignmentSystem
 		}
 
 		/// <summary>
-		/// Sets the image.
+		/// Sets the image in imagebox1.
 		/// </summary>
-		/// <param name="bmp">The BMP.</param>
-		public void SetImage(Bitmap bmp)
+		/// <param name="img">The image.</param>
+        public void SetImage1(Image<Bgr, byte> img)
 		{
 			progressBar1.Visible = false;
-			pictureBox1.Image =(Bitmap) bmp.Clone();
+			imageBox1.Image = img.Clone();
 			btnClose.Visible = true;
 			Update();
 		}
 
+        /// <summary>
+        /// Sets the image in imagebox1.
+        /// </summary>
+        /// <param name="img">The image.</param>
+        public void SetImage2(Image<Bgr, byte> img)
+        {
+            progressBar1.Visible = false;
+            imageBox2.Image = img.Clone();
+            Update();
+        }
+        /// <summary>
+        /// Sets the image in imagebox1.
+        /// </summary>
+        /// <param name="img">The image.</param>
+        public void SetImage3(Image<Bgr,byte> img)
+        {
+            progressBar1.Visible = false;
+            imageBox3.Image = img.Clone();
+            Update();
+        }
 		/// <summary>
 		/// sets Title to t.
 		/// </summary>
@@ -93,6 +115,17 @@ namespace MirrorAlignmentSystem
 		{
 			lblTitle.Text = t;
 		}
+
+        /// <summary>
+        /// sets Title to pictureboxes.
+        /// </summary>
+        /// <param name="t">The title</param>
+        public void PbTitles(string [] t)
+        {
+            label1.Text = t[0];
+            label2.Text = t[1];
+            label3.Text = t[2];
+        }
 
 		/// <summary>
 		/// Closes down.

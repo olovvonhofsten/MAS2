@@ -350,20 +350,20 @@ namespace MirrorAlignmentSystem
 
 				if (rdr.HasRows)
 				{
-					returnValues[0] = Convert.ToInt32(rdr["X"]);
-					returnValues[1] = Convert.ToInt32(rdr["Y"]);
+					returnValues[0] = Convert.ToInt32(rdr["X"])+8;
+					returnValues[1] = Convert.ToInt32(rdr["Y"])+8;
 					returnValues[2] = Convert.ToInt32(rdr["Width"]);
 					returnValues[3] = Convert.ToInt32(rdr["Height"]);
-					returnValues[4] = Convert.ToInt32(rdr["X1"]);
-					returnValues[5] = Convert.ToInt32(rdr["Y1"]);
-					returnValues[6] = Convert.ToInt32(rdr["X2"]);
-					returnValues[7] = Convert.ToInt32(rdr["Y2"]);
-					returnValues[8] = Convert.ToInt32(rdr["X3"]);
-					returnValues[9] = Convert.ToInt32(rdr["Y3"]);
-					returnValues[10] = Convert.ToInt32(rdr["X4"]);
-					returnValues[11] = Convert.ToInt32(rdr["Y4"]);
-					returnValues[12] = Convert.ToInt32(rdr["CenterPointX"]);
-					returnValues[13] = Convert.ToInt32(rdr["CenterPointY"]);
+					returnValues[4] = Convert.ToInt32(rdr["X1"])+8;
+					returnValues[5] = Convert.ToInt32(rdr["Y1"])+8;
+					returnValues[6] = Convert.ToInt32(rdr["X2"])+8;
+					returnValues[7] = Convert.ToInt32(rdr["Y2"])+8;
+					returnValues[8] = Convert.ToInt32(rdr["X3"])+8;
+					returnValues[9] = Convert.ToInt32(rdr["Y3"])+8;
+					returnValues[10] = Convert.ToInt32(rdr["X4"])+8;
+					returnValues[11] = Convert.ToInt32(rdr["Y4"])+8;
+					returnValues[12] = Convert.ToInt32(rdr["CenterPointX"])+8;
+					returnValues[13] = Convert.ToInt32(rdr["CenterPointY"])+8;
 					returnValues[14] = Convert.ToInt32(rdr["PatternCenterPointX"]);
 					returnValues[15] = Convert.ToInt32(rdr["PatternCenterPointY"]);
 				}

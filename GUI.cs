@@ -28,6 +28,7 @@ namespace MirrorAlignmentSystem
 		//delegate void SetBitmapBackgroundImageCallback(Bitmap image);
         delegate void SetOverviewImageCallback(Bitmap image);
         delegate void SetCalibrationImageCallback(Bitmap image);
+        delegate void SetBlackHoleImageCallback(Bitmap image);
 		delegate void SetCombinedImageCallback(Bitmap image);
 		delegate void SetLeftImageCallback(Bitmap image);
 		delegate void SetRightImageCallback(Bitmap image);
@@ -46,15 +47,17 @@ namespace MirrorAlignmentSystem
 		delegate void SetCoMLabelActiveCallback(string CoM, Point realCoMInput);
 		delegate void SetvisibilityCallback(bool mode);
 		delegate void UpdateLabelCallback(string segnum,
-			int align_x,
-			int align_y,
-			int rot_x,
-			int rot_y,
-			int rot_z );
+			double align_x,
+			double align_y,
+			double rot_x,
+			double rot_y,
+			double rot_z );
 
         string valueDiscIDTextBox = "NOT SET";
+        string valueZdist;
 		string valueSegmentNumberTextbox;
         string valueLiveCheckState="Checked";
+        string valueCalBackCheckState = "Checked";
 
         string finePBshow;
 
@@ -99,6 +102,7 @@ namespace MirrorAlignmentSystem
 			SegmentNumberTextbox.Text = "0911";
 			valueSegmentNumberTextbox = SegmentNumberTextbox.Text;
             finePBshow = "sgbg";
+            trackBar2.Value = 100;
 
 			CheckForIllegalCrossThreadCalls = false;
 			//this.ActiveControl = BlackBGNumberLabel;
@@ -233,6 +237,24 @@ namespace MirrorAlignmentSystem
 			}
         }
 
+        /// <summary>
+        /// Updates the picturebox which contains the calibration image
+        /// </summary>
+        /// <param name="image">The image to be displayed in the picturebox</param>    
+        public void ShowBlackHoleBitmap(Bitmap image)
+        {
+            if (this.BlackHolePB.InvokeRequired)
+            {
+                SetBlackHoleImageCallback d = new SetBlackHoleImageCallback(ShowBlackHoleBitmap);
+                this.Invoke(d, new object[] { image.Clone() });
+            }
+            else
+            {
+                BlackHolePB.Image = null;
+                BlackHolePB.Image = (Bitmap)image.Clone();
+            }
+        }
+
 		/// <summary>
 		/// Updates the picturebox which contains the image of the combined image calculated by the algorithm during fine alignment
 		/// </summary>
@@ -269,6 +291,15 @@ namespace MirrorAlignmentSystem
         public string GetLiveMode()
         {
             return valueLiveCheckState;
+        }
+
+        /// <summary>
+        /// Gets the state for remove background in calibrate image.
+        /// </summary>
+        /// <returns></returns>
+        public string GetCalBackMode()
+        {
+            return valueCalBackCheckState;
         }
 
 		/// <summary>
@@ -351,6 +382,30 @@ namespace MirrorAlignmentSystem
                 System.IO.Directory.CreateDirectory(pathString2);
 			}
 		}
+
+        /// <summary>
+        /// Event method for when the user presses the enter button inside the textbox displaying the z distance
+        /// </summary>
+        /// <param name="sender">The control, in this method the textbox</param> 
+        /// <param name="e">The event information</param>  
+        private void zDistTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter && (valueZdist != DiscIDTextBox.Text))
+            {
+                valueZdist = zDist.Text;
+            
+                if (Math.Abs(double.Parse(valueZdist)-7576) > 5)
+                {
+                    MessageBox.Show("Warning! Z distance not within tolerance");
+                }
+                else
+                {
+                    label5.ForeColor = Color.Green;
+                }
+                double[] data = {double.Parse(valueZdist)};
+                DataSaver.instance.AddDataPoint("Z distance", data);
+            }
+        }
 
 		/// <summary>
 		/// Event method for when the user presses the enter button inside the textbox displaying the current segment number being worked on
@@ -1065,13 +1120,19 @@ namespace MirrorAlignmentSystem
 		/// </summary>
 		/// <param name="align_x"></param>
 		/// <param name="align_y"></param>
-		public void ShowAlign(int align_x, int align_y)
+		public void ShowAlign(double align_x, double align_y)
 		{
-			lbl_03.Text = align_x.ToString() + " mm";
-			lbl_03.ForeColor = (Math.Abs(align_x) > 4) ? Color.Red : Color.Green;
-			lbl_05.Text = align_y.ToString() + " mm";
-			lbl_05.ForeColor = (Math.Abs(align_y) > 4) ? Color.Red : Color.Green;
+			lbl_03.Text = align_x.ToString("N1") + " mm";
+            try
+            {
+                lbl_03.ForeColor = (Math.Abs(align_x) > 4) ? Color.Red : Color.Green;
+                lbl_05.Text = align_y.ToString() + " mm";
+                lbl_05.ForeColor = (Math.Abs(align_y) > 4) ? Color.Red : Color.Green;
+            }
+            catch
+            {
 
+            }
 			lbl_03.Visible = true;
 			lbl_05.Visible = true;
 		}
@@ -1091,19 +1152,29 @@ namespace MirrorAlignmentSystem
 		/// <param name="rot_x"></param>
 		/// <param name="rot_y"></param>
 		/// <param name="rot_z"></param>
-		public void ShowRot(int rot_x, int rot_y, int rot_z)
+		public void ShowRot(double rot_x, double rot_y, double rot_z)
 		{
-			lbl_07.Text = rot_x.ToString() + " mrad";
+			lbl_07.Text = rot_x.ToString("N1") + " mrad";
 			lbl_07.ForeColor = (Math.Abs(rot_x) > 3) ? Color.Red : Color.Green;
-			lbl_09.Text = rot_y.ToString() + " mrad";
+            lbl_09.Text = rot_y.ToString("N1") + " mrad";
 			lbl_09.ForeColor = (Math.Abs(rot_y) > 3) ? Color.Red : Color.Green;
-			lbl_11.Text = rot_z.ToString() + " mrad";
+            lbl_11.Text = rot_z.ToString("N1") + " mrad";
 			lbl_11.ForeColor = (Math.Abs(rot_z) > 10) ? Color.Red : Color.Green;
 
 			lbl_07.Visible = true;
 			lbl_09.Visible = true;
 			lbl_11.Visible = true;
 		}
+
+        /// <summary>
+        /// show number of segments used as reference points
+        /// </summary>
+        /// <param name="NOKsegs"
+        public void ShowsRefSegs(int NOKsegs)
+        {
+            label4.Text = NOKsegs.ToString();
+            label4.ForeColor = (Math.Abs(NOKsegs) > 2) ? Color.Red : Color.Green;
+        }
 
 		/// <summary>
 		/// hide rotation
@@ -1127,11 +1198,11 @@ namespace MirrorAlignmentSystem
 		/// <param name="rot_z">The z rotation.</param>
 		public void UpdateLabel (
 			string segnum,
-			int align_x,
-			int align_y,
-			int rot_x,
-			int rot_y,
-			int rot_z )
+			double align_x,
+			double align_y,
+			double rot_x,
+			double rot_y,
+			double rot_z )
 		{
 
 			if (this.lbl_01.InvokeRequired)
@@ -1316,10 +1387,11 @@ namespace MirrorAlignmentSystem
 			pbFine.Image = imageList1.Images[num];
 		}
 
-		
 
 
-		private bool can_accept = false;
+
+        private bool can_accept = false;
+		private bool can_acceptCal = false;
 
 		/// <summary>
 		/// Sets the tangetial and radial ofsetts in "fine".
@@ -1336,9 +1408,21 @@ namespace MirrorAlignmentSystem
             lbl_rad_ofs.ForeColor = (Math.Abs(rad) <= 0.3) ? Color.Green : Color.Red;
 		}
 
+        /// <summary>
+        /// Sets the available number of segments/refpoints for calibrate.
+        /// </summary>
+        /// <param name="tan">The tan.</param>
+        /// <param name="rad">The rad.</param>
+        public void SetTanRad(int numOfSegs)
+        {
+            label4.Text = numOfSegs.ToString();
+            can_acceptCal = (numOfSegs >= 2);
+            lbl_11.BackColor = can_acceptCal ? Color.Green : Color.Red;
+        }
+
 		private void acceptButton_Click(object sender, EventArgs e)
 		{
-			string fn = getChosenPath() + "\\image_";
+			string fn = "c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") +"/" + "image_";
 			var now = DateTime.Now;
 			fn += now.ToShortDateString() + "_" + now.ToShortTimeString().Replace(':','-') + "_";
 			fn += valueSegmentNumberTextbox + ".bmp";
@@ -1385,6 +1469,7 @@ namespace MirrorAlignmentSystem
 			SetFineImg(2, 2);
 		}
 
+        //Saves all data
         private void button2_Click_1(object sender, EventArgs e)
         {
             if (combinedImagePB.Image != null)
@@ -1413,8 +1498,8 @@ namespace MirrorAlignmentSystem
             }
             Bitmap saveimageOverview = new Bitmap(overviewImagePB.Image);
             saveimageOverview.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + "Overview" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
-
-			DataSaver.instance.SaveData(getChosenPath() + "\\AllData.csv");
+            
+            DataSaver.instance.SaveData("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + "AllData.csv");
 		}
 
 		private void button1_Click_3(object sender, EventArgs e)
@@ -1453,6 +1538,16 @@ namespace MirrorAlignmentSystem
 		{
 			return trackBar2.Value / 100.0;
 		}
+
+        private void CalBackCB_CheckedChanged(object sender, EventArgs e)
+        {
+            valueCalBackCheckState = CalBackCB.CheckState.ToString();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
 
 	}
 }

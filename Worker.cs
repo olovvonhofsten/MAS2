@@ -60,12 +60,15 @@ namespace MirrorAlignmentSystem
 		int waitOnCycle;
 		int xOffset;
 		int yOffset;
-        int[,] statusOfSegments = new int[67, 3];
+        double[,] statusOfSegments = new double[67, 5];
 		Bitmap cameraFineAlignBlack;
 		Bitmap cameraFineAlignPattern;
 		Bitmap combinedBitmap;
         Bitmap cameraOverview;
         Bitmap cameraCal;
+        Bitmap cameraCalBlack;
+        Bitmap cameraCalDiff;
+        Bitmap blackHoleImg;
 		Bitmap cameraCoarseAlignLeft;
 		Bitmap cameraCoarseAlignRight;
 		Bitmap cameraCoarseAlignUp;
@@ -192,7 +195,8 @@ namespace MirrorAlignmentSystem
 			cameraSettings = DAL.GetSettings("User");
 
 			// The exposure rate, taken from the database
-			exposureRate = double.Parse( cameraSettings[0] );
+			exposureRate = double.Parse( cameraSettings[0]);
+            exposureRate = 1.0;
 			mainWindow.SetExposureSlider(exposureRate);
 
 			framerate = double.Parse(cameraSettings[5]);
@@ -213,8 +217,11 @@ namespace MirrorAlignmentSystem
 			cameraFineAlignPattern = new Bitmap(304, 164, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
 			combinedBitmap = new Bitmap(304, 164, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
             cameraOverview = new Bitmap(1960, 1216, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
-            cameraCal = new Bitmap(1960, 1216, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
-			cameraCoarseAlignLeft = new Bitmap(304, 164, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+            cameraCal = new Bitmap(1936, 1216, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+            cameraCalBlack = new Bitmap(1936, 1216, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+            cameraCalDiff = new Bitmap(1936, 1216, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+            blackHoleImg = new Bitmap(200, 200, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
+            cameraCoarseAlignLeft = new Bitmap(304, 164, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
 			cameraCoarseAlignRight = new Bitmap(304, 164, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
 			cameraCoarseAlignUp = new Bitmap(304, 164, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
 			cameraCoarseAlignDown = new Bitmap(304, 164, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
@@ -382,7 +389,7 @@ namespace MirrorAlignmentSystem
                         cameraController.SetAOI(1936, 1216, 0, 0);
                         
 						cameraController.SetExposureTime(exposureRate);
-							//calibrateFirstCycle = false;
+						calibrateFirstCycle = false;
 						//}
 
 						doublePoints = new double[4, 2];
@@ -400,66 +407,100 @@ namespace MirrorAlignmentSystem
 						doublePoints[3, 0] = 1;
 						doublePoints[3, 1] = 1;
 
-						monitor.UpdatePatternVertices(doublePoints, true);
-
 						//Makes sure the camera is initialized before trying to aquire a image from the CameraController class
 						if (cameraInitialized)
 						{
-
+                            monitor.UpdatePatternVertices(doublePoints, true);
+                            Thread.Sleep(waitOnMonitor*3);
                             cameraCal = new Bitmap(cameraController.AquisitionVideo(1936));
+                            
+
+                            if(mainWindow.GetCalBackMode() == "Checked")
+                            {
+                                monitor.BlackScreen();
+                                Thread.Sleep(waitOnMonitor*3);
+                                cameraCalBlack = new Bitmap(cameraController.AquisitionVideo(1936));
+                                
+                                cameraCalDiff = Algorithm.RemoveBackground(cameraCal, cameraCalBlack);
+                                
+                            }
+                            else
+                            {
+                                cameraCalDiff = cameraCal;
+                            }
                             //Find segment centerpoint and blackhole, draw it and show the value in the gui
                             double[] segmentCenterPoint = new double[2];
                             double[,] segmentCenterPoints = new double[4, 2];
                             double[] segmentCenterOffsetPoint = new double[2];
                             double[,] segmentCenterOffsetPoints = new double[4, 2];
-                            
+                            double[] AverageSegmentOffsetPoint = new double[2];
+
                             // Find reference points on segments
                             int ticker = 0;
-                            string[] nokSegs = {"ok", "ok", "ok", "ok"};
+                            int divide = 0;
+                            string[] nokSegs = { "ok", "ok", "ok", "ok" };
                             foreach (string segmentsForCalibration in Calibrate.refSegments)
                             {
-                                Calibrate.mirrorCoM(cameraCal, segmentsForCalibration, out segmentCenterPoint, out segmentCenterOffsetPoint);
+                                Calibrate.mirrorCoM(cameraCalDiff, segmentsForCalibration, out segmentCenterPoint, out segmentCenterOffsetPoint);
                                 segmentCenterOffsetPoints[ticker, 0] = segmentCenterOffsetPoint[0];
                                 segmentCenterOffsetPoints[ticker, 1] = segmentCenterOffsetPoint[1];
                                 segmentCenterPoints[ticker, 0] = segmentCenterPoint[0];
                                 segmentCenterPoints[ticker, 1] = segmentCenterPoint[1];
-                                if (segmentCenterPoints[ticker, 0] == 1)
+                                if (segmentCenterPoints[ticker, 0] == 500)
                                 {
                                     nokSegs[ticker] = segmentsForCalibration;
                                 }
+                                
+                                if (nokSegs[ticker] == "ok")
+                                {
+                                    AverageSegmentOffsetPoint[0] = AverageSegmentOffsetPoint[0] + Math.Abs(segmentCenterOffsetPoint[0]);
+                                    AverageSegmentOffsetPoint[1] = AverageSegmentOffsetPoint[1] + Math.Abs(segmentCenterOffsetPoint[1]);
+                                    divide++;
+                                }
+                                AverageSegmentOffsetPoint[0] = AverageSegmentOffsetPoint[0] / ((double)divide);
+                                AverageSegmentOffsetPoint[1] = AverageSegmentOffsetPoint[1] / ((double)divide);
                                 ticker++;
                             }
-                                                            
-                            
                             double[] blackholePoint;
                             double[] blackholeOffsetPoint = new double[2];
-                            Calibrate.findBlackHole(cameraCal, out blackholePoint, out blackholeOffsetPoint);
+                            Calibrate.findBlackHole(cameraCal, out blackHoleImg, out blackholePoint, out blackholeOffsetPoint);
 
                             double rotZ;
                             Calibrate.rotationZ(segmentCenterOffsetPoints, out rotZ);
-
-                            mainWindow.UpdateLabel(segment, (int)Math.Round(blackholeOffsetPoint[0]), (int)Math.Round(blackholeOffsetPoint[1]), (int)Math.Round(segmentCenterOffsetPoint[0]), (int)Math.Round(segmentCenterOffsetPoint[1]), (int)Math.Round(rotZ));
-                            //mainWindow.UpdateSegmentLabel(segmentCenterOffsetPoint);
-                            //mainWindow.UpdateblackholeLabel(blackholeOffsetPoint);
+                            if (Math.Abs(rotZ) > 500 || double.IsNaN(rotZ))
+                            {
+                                rotZ = 500;
+                            }
+                            if (Math.Abs(AverageSegmentOffsetPoint[0]) > 500)
+                            {
+                                AverageSegmentOffsetPoint[0] = 500;
+                            }
+                            if (Math.Abs(AverageSegmentOffsetPoint[1]) > 500)
+                            {
+                                AverageSegmentOffsetPoint[1] = 500;
+                            }
+                            mainWindow.UpdateLabel(segment, blackholeOffsetPoint[0], blackholeOffsetPoint[1], AverageSegmentOffsetPoint[0], AverageSegmentOffsetPoint[1], rotZ);
+                            mainWindow.ShowBlackHoleBitmap(blackHoleImg);
 
                             // Draw the crosses
-                            Bitmap tempBitmapCrosses = new Bitmap(cameraCal);
-                            Calibrate.drawCrosses(out tempBitmapCrosses, cameraCal, nokSegs, segmentCenterPoints, blackholePoint);
+                            Bitmap tempBitmapCrosses = new Bitmap(cameraCalDiff);
+                            Calibrate.drawCrosses(out tempBitmapCrosses, cameraCalDiff, nokSegs, segmentCenterPoints, blackholePoint);
+                            mainWindow.ShowsRefSegs(divide);
 
                             // Draw segments in red
                             Bitmap tempBitmapSegments = Calibrate.drawSegments(tempBitmapCrosses);
 
-                            if (cameraCal != null)
+                            if (cameraCalDiff != null)
                             {
-                                cameraCal.Dispose();
+                                cameraCalDiff.Dispose();
                             }
-                            cameraCal = new Bitmap(tempBitmapSegments);
+                            cameraCalDiff = new Bitmap(tempBitmapSegments);
                             tempBitmapSegments.Dispose();
                             tempBitmapCrosses.Dispose();
                         }
 
 						//Displays the live video in the overview picturebox in the GUI
-                        mainWindow.ShowCalibrateBitmap(cameraCal);
+                        mainWindow.ShowCalibrateBitmap(cameraCalDiff);
                         //mainWindow.ShowOverviewHistogram(cameraOverview);
 
 					}
@@ -499,6 +540,7 @@ namespace MirrorAlignmentSystem
                         doublePoints[3, 1] = 1;
 
                         monitor.UpdatePatternVertices(doublePoints, true);
+                        Thread.Sleep(waitOnMonitor);
 
                         //Makes sure the camera is initialized before trying to aquire a image from the CameraController class
                         if (cameraInitialized)
@@ -508,18 +550,26 @@ namespace MirrorAlignmentSystem
                                 cameraCal.Dispose();
                             }
                             cameraCal = new Bitmap(cameraController.AquisitionVideo(1936));
+
+                            monitor.BlackScreen();
+                            Thread.Sleep(waitOnMonitor);
+                            cameraCalBlack = new Bitmap(cameraController.AquisitionVideo(1936));
+                            cameraCalDiff = Algorithm.RemoveBackground(cameraCal, cameraCalBlack);
+
                             //Find segment centerpoint and blackhole, draw it and show the value in the gui
                             double[] segmentCenterPoint = new double[2];
                             double[,] segmentCenterPoints = new double[4, 2];
                             double[] segmentCenterOffsetPoint = new double[2];
                             double[,] segmentCenterOffsetPoints = new double[4, 2];
+                            double[] AverageSegmentOffsetPoint = new double[2];
 
                             // Find reference points on segments
                             int ticker = 0;
+                            int divide = 0; 
                             string[] nokSegs = { "ok", "ok", "ok", "ok" };
                             foreach (string segmentsForCalibration in Calibrate.refSegments)
                             {
-                                Calibrate.mirrorCoM(cameraCal, segmentsForCalibration, out segmentCenterPoint, out segmentCenterOffsetPoint);
+                                Calibrate.mirrorCoM(cameraCalDiff, segmentsForCalibration, out segmentCenterPoint, out segmentCenterOffsetPoint);
                                 segmentCenterOffsetPoints[ticker, 0] = segmentCenterOffsetPoint[0];
                                 segmentCenterOffsetPoints[ticker, 1] = segmentCenterOffsetPoint[1];
                                 segmentCenterPoints[ticker, 0] = segmentCenterPoint[0];
@@ -528,15 +578,36 @@ namespace MirrorAlignmentSystem
                                 {
                                     nokSegs[ticker] = segmentsForCalibration;
                                 }
+                                if (nokSegs[ticker] == "ok")
+                                {
+                                    AverageSegmentOffsetPoint[0] = AverageSegmentOffsetPoint[0] + segmentCenterOffsetPoint[0];
+                                    AverageSegmentOffsetPoint[1] = AverageSegmentOffsetPoint[1] + segmentCenterOffsetPoint[1];
+                                    divide++;
+                                }
+                                AverageSegmentOffsetPoint[0] = AverageSegmentOffsetPoint[0]/((double)divide);
+                                AverageSegmentOffsetPoint[1] = AverageSegmentOffsetPoint[1]/((double)divide);
                                 ticker++;
                             }
-
                             double[] blackholePoint;
                             double[] blackholeOffsetPoint = new double[2];
-                            Calibrate.findBlackHole(cameraCal, out blackholePoint, out blackholeOffsetPoint);
+                            Calibrate.findBlackHole(cameraCalDiff, out blackHoleImg, out blackholePoint, out blackholeOffsetPoint);
+
                             double rotZ;
+
                             Calibrate.rotationZ(segmentCenterOffsetPoints, out rotZ);
-                            mainWindow.UpdateLabel(segment, (int)Math.Round(blackholeOffsetPoint[0]), (int)Math.Round(blackholeOffsetPoint[1]), (int)Math.Round(segmentCenterOffsetPoint[0]), (int)Math.Round(segmentCenterOffsetPoint[1]), (int)Math.Round(rotZ));
+                            if (Math.Abs(rotZ) > 500 || double.IsNaN(rotZ))
+                            {
+                                rotZ = 500;
+                            }
+                            if (Math.Abs(AverageSegmentOffsetPoint[0]) > 500 || double.IsNaN(AverageSegmentOffsetPoint[0]))
+                            {
+                                AverageSegmentOffsetPoint[0] = 500;
+                            }
+                            if (Math.Abs(AverageSegmentOffsetPoint[1]) > 500 || double.IsNaN(AverageSegmentOffsetPoint[1]))
+                            {
+                                AverageSegmentOffsetPoint[1] = 500;
+                            }
+                            mainWindow.UpdateLabel(segment, blackholeOffsetPoint[0], blackholeOffsetPoint[1], AverageSegmentOffsetPoint[0], AverageSegmentOffsetPoint[1], rotZ);
                             alignmentMode = "over";
                         }
 
@@ -558,32 +629,45 @@ namespace MirrorAlignmentSystem
 						}
                         else if(alignmentMode == "checkALLfine")
                         {
-                            int[,] fineData;
+                            double[,] fineData;
                             Bitmap overviewFine;
 							var caf = mainWindow.getCAF();
-                            Algorithm.checkAllSegmentsFine(cameraController, cameraSettings, monitor, caf, out fineData, out overviewFine);
-                            int[] seg1 = new int[67];
-                            int[] seg2 = new int[67];
-                            int[] seg3 = new int[67];
-							for(int ticks = 0; ticks < 67; ticks++)
+                            string path = "c:/MASDATA/" + mainWindow.GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/";
+                            Algorithm.checkAllSegmentsFine(cameraController, cameraSettings, monitor, caf, path, out fineData, out overviewFine);
+                            double[] seg1 = new double[67];
+                            double[] seg2 = new double[67];
+                            double[] seg3 = new double[67];
+                            double[] seg4 = new double[67];
+                            double[] seg5 = new double[67];
+                            DataSaver.instance.AddDataPoint("segment; offsetX; offsetY; offsetTan; offsetRad", new int[0]);
+							for(int ticks = 0; ticks < 66; ticks++)
                             {
                                 statusOfSegments[ticks, 0] = seg1[ticks] = fineData[ticks, 0];
-                                statusOfSegments[ticks, 1] = seg2[ticks] = fineData[ticks, 2];
-                                statusOfSegments[ticks, 2] = seg3[ticks] = fineData[ticks, 3];
+                                statusOfSegments[ticks, 1] = seg2[ticks] = fineData[ticks, 1];
+                                statusOfSegments[ticks, 2] = seg3[ticks] = fineData[ticks, 2];
+                                statusOfSegments[ticks, 3] = seg4[ticks] = fineData[ticks, 3];
+                                statusOfSegments[ticks, 4] = seg5[ticks] = fineData[ticks, 4];
+                                DataSaver.instance.AddDataPoint(Calibrate.segments[ticks], seg1);
+                                DataSaver.instance.AddDataPoint(Calibrate.segments[ticks], seg2);
+                                DataSaver.instance.AddDataPoint(Calibrate.segments[ticks], seg3);
+                                DataSaver.instance.AddDataPoint(Calibrate.segments[ticks], seg4);
+                                DataSaver.instance.AddDataPoint(Calibrate.segments[ticks], seg5);
                             }
-                            DataSaver.instance.AddDataPoint("segment-1", seg1);
-                            DataSaver.instance.AddDataPoint("segment-2", seg2);
-                            DataSaver.instance.AddDataPoint("segment-3", seg3);
+                            
                             alignmentMode = "over";
+                            overviewFine.Save(path + "CheckAllFine_" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");                
                         }
                         else if(alignmentMode == "checkALLcoarse")
                         {
                             double[,] coarseData;
-                            Bitmap overviewCoarse;
+                            string path = "c:/MASDATA/" + mainWindow.GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/";
+                            Bitmap overviewCoarseX;
+                            Bitmap overviewCoarseY;
                             var caf = mainWindow.getCAF();
-                            Algorithm.checkAllSegmentsCoarse(cameraController, cameraSettings, monitor, caf, out coarseData, out overviewCoarse);
+                            Algorithm.checkAllSegmentsCoarse(cameraController, cameraSettings, monitor, caf, out coarseData, out overviewCoarseX, out overviewCoarseY);
                             alignmentMode = "over";
-
+                            overviewCoarseX.Save(path + "CheckAllCoarseX" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
+                            overviewCoarseY.Save(path + "CheckAllCoarseY" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
                         }
 					}
 

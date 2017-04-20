@@ -13,12 +13,13 @@ namespace MirrorAlignmentSystem
 {
     class Calibrate
     {
-        public static int blackhole_x = Algorithm.imagesizex/2 + 16;
-        public static int blackhole_y = Algorithm.imagesizey/2 + 173;
+        public static int blackhole_x = Algorithm.imagesizex/2 + 15;
+        public static int blackhole_y = Algorithm.imagesizey/2 + 122;
         public static string[] segments = {"0111", "0211", "0311", "0411", "0511", "0611","0711","0811","0911","1011","1111","0121","0221","0321","0421", "0521", "0621", "0721", "0821", "0921", "1021", "1121", "0122", "0222", "0322", "0422", "0522", "0622", "0722", "0822", "0922", "1022", "1122", "0131", "0132","0133", "0231", "0232","0233", "0331", "0332", "0333", "0431", "0432", "0433", "0531", "0532", "0533", "0631", "0632", "0633", "0731", "0732", "0733", "0831", "0832", "0833", "0931", "0932", "0933", "1031", "1032", "1033", "1131", "1132", "1133"};
-        public static string[] refSegments = { "1022", "0822", "0421", "0911"};// "0221" };
+        public static string[] refSegments = { "0232", "0432", "0832", "1032"};// "0221" };
         // refpoint outside the mirror segment CHECK
-        private static PointF refpoint = new PointF(960, 580);
+        private static PointF refpoint = new PointF(968, 581);
+        private static int bbsize = 26;
         
         public static void mirrorCoM(Bitmap InBMP, string segment, out double[] MirrorCoMPoint, out double[] MirrorCoMOffsetPoint)
         {
@@ -28,7 +29,7 @@ namespace MirrorAlignmentSystem
 
             //InBMP.Save("c:\\visningsbilder\\watershed_inbmp.bmp");
             Image<Gray, byte> InImg = new Image<Gray, byte>(InBMP);
-            Image<Gray, byte> crop = InImg.Copy();
+            //Image<Gray, byte> crop = InImg.Copy();
             //crop.SetZero();
             //crop.Draw(new Rectangle(new Point((int)seedpoint.X-120, (int)seedpoint.Y-120), new Size(240, 240)), new Gray(255), -1);
             //InImg = InImg.Copy(crop);
@@ -39,8 +40,8 @@ namespace MirrorAlignmentSystem
             threshold = threshold * 0.8;
             CvInvoke.Threshold(InImg, mask, threshold, 255, ThresholdType.Binary);
             InImg = mask.ToImage<Gray, byte>();
-            InImg.Erode(20);
-            InImg.Dilate(20);
+            InImg.Erode(10);
+           // InImg.Dilate(20);
 
             // Create a seed and a reference
             Image<Gray, Int32> marker = new Image<Gray, Int32>(InImg.Width, InImg.Height);
@@ -54,32 +55,34 @@ namespace MirrorAlignmentSystem
             //InImg.ToBitmap().Save("c:\\visningsbilder\\PreWS.bmp");
             CvInvoke.Watershed(InImg.Convert<Bgr, Byte>(), marker);
             Image<Gray, byte> marker2 = marker.Convert<Gray, byte>();
+            marker.Dispose();
             Mat mask2 = new Mat();
             CvInvoke.Threshold(marker2, mask2, 200, 255, ThresholdType.Binary);
             marker2 = mask2.ToImage<Gray, byte>();
+            InImg.Dispose();
 
             //Check if watershed is ok
-            //marker2.ToBitmap().Save("c:\\visningsbilder\\marker2.bmp");
             int checksum = CvInvoke.CountNonZero(marker2.Convert<Gray, int>());
             MCvPoint2D64f P2 = new MCvPoint2D64f(1, 1);
             System.Diagnostics.Debug.WriteLine(checksum + " is the sum");
+            double[] tempMirrorCoMOffsetPoint = new double[2];
 
             if (checksum < 11000 && checksum > 8000)
             {
                 // Find center of mass
-
-                //erodedMarker.ToBitmap().Save("c:\\visningsbilder\\watershed_afterThreshold.bmp");
-
                 Algorithm.Masscenter(marker2, out P2, 0);
+                marker2.Dispose();
+                //Calculate offsetpoint
+                tempMirrorCoMOffsetPoint[0] = (P2.X - idealPoint[0]) * Algorithm.pix2mradDISC;
+                tempMirrorCoMOffsetPoint[1] = (P2.Y - idealPoint[1]) * Algorithm.pix2mradDISC;
             }
             else
             {
-
+                marker2.Dispose();
+                tempMirrorCoMOffsetPoint[0] = 500;
+                tempMirrorCoMOffsetPoint[1] = 500;
             }
-            //Calculate offsetpoint
-            double[] tempMirrorCoMOffsetPoint = new double[2];
-            tempMirrorCoMOffsetPoint[0] = (P2.X - idealPoint[0]) * Algorithm.pix2mradDISC;
-            tempMirrorCoMOffsetPoint[1] = (P2.Y - idealPoint[1]) * Algorithm.pix2mradDISC;
+            
 
             // Convert to array
             double[] tempMirrorCoMPoint = new double[2];
@@ -91,13 +94,13 @@ namespace MirrorAlignmentSystem
             MirrorCoMPoint = tempMirrorCoMPoint;
         }
 
-        public static void findBlackHole(Bitmap InBMP, out double[] blackCGpoint, out double[] blackCGoffsetpoint)
+        public static void findBlackHole(Bitmap InBMP, out Bitmap BlackHoleImg, out double[] blackCGpoint, out double[] blackCGoffsetpoint)
         {
             // Convert to Image<>
             Image<Gray, byte> InImg = new Image<Gray, byte>(InBMP);
 
             // Set AOI for image, where the hole is contained
-            Rectangle blackROI = new Rectangle(blackhole_x-40, blackhole_y-40, 80, 80);
+            Rectangle blackROI = new Rectangle(blackhole_x-bbsize/2, blackhole_y-bbsize/2, bbsize, bbsize);
             InImg.ROI = blackROI;
 
             // find inverse
@@ -109,7 +112,6 @@ namespace MirrorAlignmentSystem
             invBlackHoleImg.SmoothGaussian(7);
 
             // Find point of max value
-            invBlackHoleImg.ToBitmap().Save("c:\\visningsbilder\\blackholeimg.bmp");
             double[] maxVL = Algorithm.findImageMax(invBlackHoleImg);
             Point maxLocation = new Point((int)Math.Round(maxVL[1]), (int)Math.Round(maxVL[2]));
 
@@ -124,8 +126,8 @@ namespace MirrorAlignmentSystem
             MCvPoint2D64f P2 = new MCvPoint2D64f();
             Algorithm.Masscenter(blackHoleImg, out P2, 0);
             System.Diagnostics.Debug.WriteLine(P2.X + " " + P2.Y);
-            P2.X = P2.X + (double)blackhole_x-40;
-            P2.Y = P2.Y + (double)blackhole_y-40;
+            P2.X = P2.X + (double)blackhole_x-bbsize/2;
+            P2.Y = P2.Y + (double)blackhole_y-bbsize/2;
 
             // Return values
             double[] tempblackCGpoint = new double[2];
@@ -138,6 +140,10 @@ namespace MirrorAlignmentSystem
             tempBlackCGoffsetPoint[0] = (tempblackCGpoint[0] - Calibrate.blackhole_x) * Algorithm.pix2distBH;
             tempBlackCGoffsetPoint[1] = (tempblackCGpoint[1] - Calibrate.blackhole_y) * Algorithm.pix2distBH;
             blackCGoffsetpoint = tempBlackCGoffsetPoint;
+
+            //Draw cross on blackholeimg
+            invBlackHoleImg.Draw(new Cross2DF(new Point(bbsize/2, bbsize/2), 3, 3), new Gray(255), 1);
+            BlackHoleImg = invBlackHoleImg.ToBitmap();
 
         }
 
@@ -168,7 +174,7 @@ namespace MirrorAlignmentSystem
             
             crossesImage.Draw(new Cross2DF(new PointF((float)blackholePoint[0], (float)blackholePoint[1]), 50f, 50f), new Bgr(Color.Violet), 4);
             crossesImage.Draw(new Cross2DF(new PointF((float)blackhole_x, (float)blackhole_y), 35f, 35f), new Bgr(Color.Green), 2);
-            crossesImage.Draw(new Rectangle(blackhole_x - 40, blackhole_y - 40, 80, 80), new Bgr(Color.Yellow), 2);
+            crossesImage.Draw(new Rectangle(blackhole_x - bbsize/2, blackhole_y - bbsize/2, bbsize, bbsize), new Bgr(Color.Yellow), 2);
             crossesImage.Draw(new CircleF(refpoint, 5), new Bgr(Color.Blue));
             outBitmap = crossesImage.ToBitmap();
             
@@ -181,12 +187,12 @@ namespace MirrorAlignmentSystem
             {
                 int[] AOIData = DAL.GetAOIData(s);
                 Point[] Seg = new Point[] {new Point(AOIData[4], AOIData[5]), new Point(AOIData[6], AOIData[7]), new Point(AOIData[8], AOIData[9]), new Point(AOIData[10], AOIData[11])};
-                segmentsImage.Draw(Seg, new Bgr(Color.Red), 3);
+                segmentsImage.Draw(Seg, new Bgr(Color.Red), 2);
             }
-            segmentsImage.ROI = new Rectangle(620, 390, 690, 440);
+            segmentsImage.ROI = new Rectangle(506, 280, 912, 590);
 
             Bitmap outBmp = segmentsImage.Copy().ToBitmap();
-            //outBmp.Save("c:\\visningsbilder\\crosses3.bmp");
+            outBmp.Save("c:\\visningsbilder\\crosses3.bmp");
             return outBmp;
         }
 

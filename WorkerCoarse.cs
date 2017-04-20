@@ -186,12 +186,19 @@ namespace MirrorAlignmentSystem
 						Algorithm.Coarse_algorithm(cameraCoarseAlignLeft, cameraCoarseAlignRight, cameraCoarseAlignBlackOne, 50, out dir, out returnImg1, out returnImg2);
 					}
 
-					//System.Diagnostics.Debug.WriteLine("LEFT&RIGHT DIRECTION: " + dir);
-
 					mainWindow.ShowLeftRightOneBackgroundBitmap(returnImg1);
 					mainWindow.ShowLeftRightTwoBackgroundBitmap(returnImg2);
 
-                    mainWindow.SetUpperImgNoval(dir, dir);
+                    // Outer segments switch direction
+                    if (int.Parse(DAL.GetRawSegmentNumber(segment))>34)
+                    {
+                        mainWindow.SetUpperImgNoval(-dir, -dir);
+                    }
+                    else
+                    {
+                        mainWindow.SetUpperImgNoval(dir, dir);
+                    }
+                    
 				}
 
 				blackBGCounterLeftRight++;

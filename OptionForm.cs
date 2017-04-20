@@ -82,7 +82,7 @@ namespace MirrorAlignmentSystem
 			ParentWindow.SettingsUpdated(true);
 			if (DAL.UpdateSettings(thresholdTB.Text, waitTimeMonitorTB.Text, waitTimeCycleTB.Text, xOffsetTB.Text, yOffsetTB.Text)) 
             {
-                //MessageBox.Show("The settings have been updated");
+               // MessageBox.Show("The settings have been updated");
             }
 		}
 

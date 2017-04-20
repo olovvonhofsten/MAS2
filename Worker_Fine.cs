@@ -222,10 +222,11 @@ namespace MirrorAlignmentSystem
 				stopWatchCombinedImage.Start();
 
 				//mainWindow.UpdateCoMLabel(" X: " + (int)Math.Round(offsetXY[0]) + " Y: " + (int)Math.Round(offsetXY[1]) + ", R: " + (int)Math.Round(offsetRT[0]) + ", T: " + (int)Math.Round(offsetRT[1]) + "varv: " + revOffset[0].ToString("0.00") + ", " + revOffset[1].ToString("0.00"), massCenter);
-                mainWindow.SetFineImg(revOffset[1], revOffset[0]);
+                mainWindow.SetFineImg(-revOffset[1], -revOffset[0]);
                 mainWindow.SetTanRad(mradOffset[0], mradOffset[1]);
                 Algorithm.changeSegmentStatus(segment, mradOffset, statusOfSegments, out statusOfSegments);
-                System.Diagnostics.Debug.WriteLine("0911 status: " + statusOfSegments[8,0]);
+                
+
                 //statusOfSegments = tempStatus;
 
 				System.Diagnostics.Debug.WriteLine("Load bitmap");

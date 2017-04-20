@@ -14,11 +14,11 @@ namespace MirrorAlignmentSystem
         // Size of the screen
         public static int screensizex = 1280;
         public static int screensizey = 720;
-        public static int imagesizex = 1935;
+        public static int imagesizex = 1936;
         public static int imagesizey = 1216;
         public static double pix2distDISC = 10.157;
         public static double pix2mradDISC = 0.711;
-        public static double pix2distBH = 5.36;
+        public static double pix2distBH = 5.366;
         private static int dotWidth = 1;
         public static double fineTolerance = 0.3;
 
@@ -47,7 +47,7 @@ namespace MirrorAlignmentSystem
             //Mask out the segment. Fine uses an elliptical mask
             int[] currentData = DAL.GetAOIDataRawSegment("" + segmentnr);
 
-            DataSaver.instance.AddDataPoint("currdata", currentData);
+            //DataSaver.instance.AddDataPoint("currdata", currentData);
 
             //Mask out ellipse
             // Calculate point for ideal center of gravity
@@ -112,14 +112,13 @@ namespace MirrorAlignmentSystem
             //massCenterOffset[1] = currentData[13] - currentData[1] - massCenterTemp.Y;
             massCenterOffset[1] = massCenterTemp.Y - currentData[13] + currentData[1];
 
+            DataSaver.instance.AddDataPoint("Fine align", currentData);
             DataSaver.instance.AddDataPoint("massCenter", massCenterOffset);
 
             // calculate offset in polar coordinates
             double[] offset_Rteta = new double[2];
-            offset_Rteta[0] = massCenterOffset[0] * Math.Cos(angle) - massCenterOffset[1] * Math.Sin(angle);
-            offset_Rteta[1] = massCenterOffset[0] * Math.Cos(angle) + massCenterOffset[1] * Math.Sin(angle);
-
-            DataSaver.instance.AddDataPoint("offset-rtheta", offset_Rteta);
+            offset_Rteta[0] = massCenterOffset[0] * Math.Cos(angle) + massCenterOffset[1] * Math.Sin(angle);
+            offset_Rteta[1] = massCenterOffset[0] * Math.Sin(angle) - massCenterOffset[1] * Math.Cos(angle);
 
 
             // Convert back to bitmap, via image. First draw ellipse borders and segment (but not for 0111 and 1111
@@ -128,26 +127,37 @@ namespace MirrorAlignmentSystem
                 CvInvoke.Ellipse(Img2m, roifine, new Gray(255).MCvScalar);
             }
 
+            double [] checksum = Img2m.GetSum().MCvScalar.ToArray();
+            int checksumInt = (int)checksum[0];
+
             Image<Bgr, byte> Img2mc = Img2m.Convert<Bgr, byte>();
             CvInvoke.ApplyColorMap(Img2m, Img2mc, ColorMapType.Jet);
             Img2mc.Draw(Seg, new Bgr(Color.Yellow), 1);
-            Img2mc.Draw(new Cross2DF(massCenter, 10, 10), new Bgr(Color.Red), 2);
             Img2mc.Draw(new Cross2DF(idealC, 10, 10), new Bgr(Color.Green), 2);
+
+            if (checksumInt > 200)
+            {
+                // Masscenter ok
+                Img2mc.Draw(new Cross2DF(massCenter, 10, 10), new Bgr(Color.Red), 2);
+            }
+            else
+            {
+                massCenterOffset[0] = 200;
+                massCenterOffset[1] = 200;
+            }
+
             returnBitmap = Img2mc.ToBitmap();
-            returnBitmap.Save("c:\\visningsbilder\\vombinedFine.bmp");
 
             offsetXY = massCenterOffset;
             offsetRT = offset_Rteta;
 
-            System.Diagnostics.Debug.WriteLine("mass center" + massCenter);
-            System.Diagnostics.Debug.WriteLine("mass center offset" + offsetXY[0] + " " + offsetXY[1]);
-            System.Diagnostics.Debug.WriteLine("mass center offset" + offsetRT[0] + " " + offsetRT[1]);
-            System.Diagnostics.Debug.WriteLine("angle " + (angle));
             IMG.Dispose();
             IMG = null;
             BKGR.Dispose();
             BKGR = null;
         }
+
+        // Calculates the mirror tilt in mrad from pixel offset (radially and tangentially)
         public static void pix2mrad(int segment, double[] pixelOffset, out double[] mradoffset)
         {
             mradoffset = new double[2];
@@ -265,10 +275,6 @@ namespace MirrorAlignmentSystem
             Img1out = Img1out.Copy(mask.Convert<Gray, byte>());
             Img2out = Img2out.Copy(mask.Convert<Gray, byte>());
 
-            mask.ToBitmap().Save("c:\\visningsbilder\\maskCoarse.bmp");
-            Img1out.ToBitmap().Save("c:\\visningsbilder\\outbmp1.bmp");
-            Img2out.ToBitmap().Save("c:\\visningsbilder\\outbmp2.bmp");
-
             // Calculate Sum
             MCvScalar s1 = CvInvoke.Sum(Img1out);
             MCvScalar s2 = CvInvoke.Sum(Img2out);
@@ -321,7 +327,7 @@ namespace MirrorAlignmentSystem
 
             // Calculate tilt angle of pattern. (y4-y3)/(x3-x4)
             double angle = Math.Atan((double)(currentData[10] - currentData[8]) / (currentData[11] - currentData[9]));
-
+            System.Diagnostics.Debug.WriteLine(angle.ToString() + "is the angle");
             angle = angle + Math.PI / 2 * (patternType - 1);
 
             // Calculate tiltline points for centered pattern
@@ -424,16 +430,16 @@ namespace MirrorAlignmentSystem
         }
 
         //Change status of a segment
-        public static void changeSegmentStatus(string segment, double [] mradOffset, int[,] oldStatusOfSegments, out int[,] newStatusOfSegments)
+        public static void changeSegmentStatus(string segment, double [] mradOffset, double[,] oldStatusOfSegments, out double[,] newStatusOfSegments)
         {
             int ticker = 0;
-            newStatusOfSegments = new int[67, 3];
+            newStatusOfSegments = new double[67, 3];
             foreach (string s in Calibrate.segments)
             {
                 if (s == segment)
                 {
-                    oldStatusOfSegments[ticker, 1] = (int) Math.Round(mradOffset[0]);
-                    oldStatusOfSegments[ticker, 2] = (int)Math.Round(mradOffset[1]);
+                    oldStatusOfSegments[ticker, 1] = mradOffset[0];
+                    oldStatusOfSegments[ticker, 2] = mradOffset[1];
                     if(Math.Abs(mradOffset[0]) <= 0.3 && Math.Abs(mradOffset[1]) < 0.3)
                     {
                         oldStatusOfSegments[ticker,0] = 1;
@@ -450,7 +456,7 @@ namespace MirrorAlignmentSystem
         }
 
         // Draws red segment if status = 0 (not ok) and green segments if status = 1 (ok)
-        public static Bitmap drawSegmentTypes(int[,] status, Bitmap Canvas)
+        public static Bitmap drawSegmentTypes(double[,] status, Bitmap Canvas)
         {
             Image<Bgr, byte> segmentsImage = new Image<Bgr, byte>(Canvas);
             int ticker = 0;
@@ -473,6 +479,45 @@ namespace MirrorAlignmentSystem
 
             Bitmap outBmp = segmentsImage.ToBitmap();
             return outBmp;
+        }
+
+        // Draws solid segments in different color depending on error
+        public static Image<Bgr,byte> drawSegmentError(double[,] status, int column)
+        {
+            Image<Bgr, byte> segmentsImage = new Image<Bgr, byte>(imagesizex, imagesizey);
+            segmentsImage.SetZero();
+            int ticker = 0;
+            foreach (string s in Calibrate.segments)
+            {
+                int[] AOIData = DAL.GetAOIData(s);
+                Point[] Seg = new Point[] { new Point(AOIData[4], AOIData[5]), new Point(AOIData[6], AOIData[7]), new Point(AOIData[8], AOIData[9]), new Point(AOIData[10], AOIData[11]) };
+                if (status[ticker, column] < 1.5)
+                {
+                    segmentsImage.Draw(Seg, new Bgr(Color.Violet), -1);
+                }
+                if (status[ticker, column] < 1.2)
+                {
+                    segmentsImage.Draw(Seg, new Bgr(Color.Pink), -1);
+                }
+                if (status[ticker, column] < 0.9)
+                {
+                    segmentsImage.Draw(Seg, new Bgr(Color.Orange), -1);
+                }
+                if (status[ticker, column] < 0.6)
+                {
+                    segmentsImage.Draw(Seg, new Bgr(Color.Yellow), -1);
+                }
+                if (status[ticker, column] < 0.3)
+                {
+                    segmentsImage.Draw(Seg, new Bgr(Color.Green), -1);
+                }
+                if (status[ticker, column] > 1.5)
+                {
+                    segmentsImage.Draw(Seg, new Bgr(Color.Red), -1);
+                }
+                ticker++;
+            }
+            return segmentsImage;
         }
 
         public static double[,] SegmentPatternPoints(Point PatternCenter)
@@ -505,16 +550,16 @@ namespace MirrorAlignmentSystem
 			return true;
 		}
 
-
         public static void checkAllSegmentsFine(
 			CameraController cameraController, 
 			string[] cameraSettings, 
 			MonitorHandler monitor, 
 			CheckAllForm caf,
-			out int[,] fineData, 
+            string path,
+			out double[,] fineData, 
 			out Bitmap overviewFine )
         {
-            fineData = new int[67, 5];
+            fineData = new double[67, 5];
             double [,] doublePoints;
             double exposureRate = 4.5 * double.Parse(cameraSettings[0]);
             double framerate = double.Parse(cameraSettings[5]);
@@ -582,17 +627,12 @@ namespace MirrorAlignmentSystem
          
                 // check tolerance
                 ok = ((Math.Abs(mradOffset[0]) <= 0.3) && (Math.Abs(mradOffset[1]) <= 0.3)) ? 1 : 0;
-                if (ok == 1)
-                {
-                    System.Diagnostics.Debug.WriteLine("segment" + s + " ok!" + "Offset: " + mradOffset[0] + ", " + mradOffset[1]);
-                    combinedBitmap.Save("C:\\visningsbilder\\oksegment.bmp");
-          
-                }
+
                 fineData[tick, 0] = ok;
-                fineData[tick, 1] = (int) Math.Round(offsetXY[0]);
-                fineData[tick, 2] = (int) Math.Round(offsetXY[1]);
-                fineData[tick, 3] = (int) Math.Round(mradOffset[0]);
-                fineData[tick, 4] = (int) Math.Round(mradOffset[1]);
+                fineData[tick, 1] = offsetXY[0];
+                fineData[tick, 2] = offsetXY[1];
+                fineData[tick, 3] = mradOffset[0];
+                fineData[tick, 4] = mradOffset[1];
 
 				Image<Bgr, Byte> addImg = new Image<Bgr, byte>(TotImg.Size);
                 CvInvoke.Add(combinedImg, TotImg, addImg);
@@ -606,8 +646,17 @@ namespace MirrorAlignmentSystem
             }
 			TotImg.ROI = Rectangle.Empty;
 			overviewFine = TotImg.ToBitmap();
-			caf.SetImage(overviewFine);
-			caf.WaitClose();
+			caf.SetImage1(TotImg);
+            Image<Bgr, byte> ErrorX = drawSegmentError(fineData, 1);
+            Image<Bgr, byte> ErrorY = drawSegmentError(fineData, 2);
+            caf.SetImage2(ErrorX);
+            caf.SetImage3(ErrorY);
+            string[] titles = { "Fine align", "Error X. Green = ok, red=1.5 mrad", "Error Y" };
+            caf.PbTitles(titles);
+            ErrorX.ToBitmap().Save(path + "CheckAllFineErrorX" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
+            ErrorY.ToBitmap().Save(path + "CheckAllFineErrorY" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
+            TotImg.ToBitmap().Save(path + "CheckAllfineImages" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
+            caf.WaitClose();
 		}
 
         public static void checkAllSegmentsCoarse(
@@ -616,7 +665,7 @@ namespace MirrorAlignmentSystem
             MonitorHandler monitor,
             CheckAllForm caf,
             out double[,] coarseData,
-            out Bitmap overviewX)
+            out Bitmap overviewX, out Bitmap overviewY)
         {
             coarseData = new double[66, 3];
             double[,] doublePoints;
@@ -744,9 +793,12 @@ namespace MirrorAlignmentSystem
             }
             TotImg1.ROI = Rectangle.Empty;
             TotImg2.ROI = Rectangle.Empty;
-            overviewX = TotImg1.ToBitmap(); //LR
-            //overviewY = TotImg2.ToBitmap(); //UD
-            caf.SetImage(overviewX);
+            caf.SetImage1(TotImg1.Convert<Bgr, byte>());
+            caf.SetImage2(TotImg2.Convert<Bgr, byte>());
+            string [] titles = { "Coarse Tangential", "Coarse radial", "unused"};
+            caf.PbTitles(titles);
+            overviewX = TotImg1.ToBitmap();
+            overviewY = TotImg2.ToBitmap();
             caf.WaitClose();
         }
     }
