@@ -252,15 +252,33 @@
             </summary>
             <param name="p">The progress</param>
         </member>
-        <member name="M:MirrorAlignmentSystem.CheckAllForm.SetImage(System.Drawing.Bitmap)">
+        <member name="M:MirrorAlignmentSystem.CheckAllForm.SetImage1(Emgu.CV.Image{Emgu.CV.Structure.Bgr,System.Byte})">
             <summary>
-            Sets the image.
+            Sets the image in imagebox1.
             </summary>
-            <param name="bmp">The BMP.</param>
+            <param name="img">The image.</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CheckAllForm.SetImage2(Emgu.CV.Image{Emgu.CV.Structure.Bgr,System.Byte})">
+            <summary>
+            Sets the image in imagebox1.
+            </summary>
+            <param name="img">The image.</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CheckAllForm.SetImage3(Emgu.CV.Image{Emgu.CV.Structure.Bgr,System.Byte})">
+            <summary>
+            Sets the image in imagebox1.
+            </summary>
+            <param name="img">The image.</param>
         </member>
         <member name="M:MirrorAlignmentSystem.CheckAllForm.Title(System.String)">
             <summary>
             sets Title to t.
+            </summary>
+            <param name="t">The title</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.CheckAllForm.PbTitles(System.String[])">
+            <summary>
+            sets Title to pictureboxes.
             </summary>
             <param name="t">The title</param>
         </member>
@@ -612,6 +630,41 @@
             Returns an int with the max width
             </returns>
         </member>
+        <member name="T:MirrorAlignmentSystem.DataSaver">
+            <summary>
+            holding class for data
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DataSaver.AddDataPoint(System.String,System.Int32[])">
+            <summary>
+            Add an int data point
+            </summary>
+            <param name="name"></param>
+            <param name="vals"></param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DataSaver.AddDataPoint(System.String,System.Double[])">
+            <summary>
+            Add a data point
+            </summary>
+            <param name="name"></param>
+            <param name="vals"></param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DataSaver.ClearAllData">
+            <summary>
+            clears data
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.DataSaver.SaveData(System.String)">
+            <summary>
+            save data to file
+            </summary>
+            <param name="fn"></param>
+        </member>
+        <member name="F:MirrorAlignmentSystem.DataSaver.instance">
+            <summary>
+            singleton
+            </summary>
+        </member>
         <member name="T:MirrorAlignmentSystem.Eventlog">
             <summary>
              This class handles the EventLog form
@@ -707,13 +760,19 @@
             </summary>
             <param name="image">The image to be displayed in the picturebox</param>    
         </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.ShowBlackHoleBitmap(System.Drawing.Bitmap)">
+            <summary>
+            Updates the picturebox which contains the calibration image
+            </summary>
+            <param name="image">The image to be displayed in the picturebox</param>    
+        </member>
         <member name="M:MirrorAlignmentSystem.MainWindow.ShowCombinedBitmap(System.Drawing.Bitmap)">
             <summary>
             Updates the picturebox which contains the image of the combined image calculated by the algorithm during fine alignment
             </summary>
             <param name="image">The image to be displayed in the picturebox</param>    
         </member>
-        <member name="M:MirrorAlignmentSystem.MainWindow.GetBlackBGNumber">
+        <member name="M:MirrorAlignmentSystem.MainWindow.GetDiscID">
             <summary>
             This method returns the value currently in the textbox for interval between black background and bitmap on the monitor
             </summary>
@@ -727,12 +786,26 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.GetCalBackMode">
+            <summary>
+            Gets the state for remove background in calibrate image.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:MirrorAlignmentSystem.MainWindow.GetSegmentNumber">
             <summary>
             This method returns the value of the textbox containing the segment the user want to run at the moment
             </summary>
             <returns>
             Returns the number(as a string) of the segment that the user wants to run the algorithm on at the moment
+            </returns>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.GetFineShow">
+            <summary>
+            Returns the value for fine alignment if the picture should be signal, background or signal-background
+            </summary>
+            <returns>
+            Returns the setting as a string 
             </returns>
         </member>
         <member name="M:MirrorAlignmentSystem.MainWindow.GetOfflineOnlineMode">
@@ -759,9 +832,16 @@
             The alignment mode
             </returns>
         </member>
-        <member name="M:MirrorAlignmentSystem.MainWindow.BlackBGNumberTextBox_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+        <member name="M:MirrorAlignmentSystem.MainWindow.DiscIDTextBox_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
             <summary>
             Event method for when the user presses the enter button inside the textbox displaying the number of cycles between each black image on the monitor
+            </summary>
+            <param name="sender">The control, in this method the textbox</param> 
+            <param name="e">The event information</param>  
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.zDistTextBox_KeyDown(System.Object,System.Windows.Forms.KeyEventArgs)">
+            <summary>
+            Event method for when the user presses the enter button inside the textbox displaying the z distance
             </summary>
             <param name="sender">The control, in this method the textbox</param> 
             <param name="e">The event information</param>  
@@ -926,6 +1006,124 @@
             <param name="CoM">The CoM string</param>
             <param name="realCoMInput">beats me</param>
         </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.ShowSegnum(System.String)">
+            <summary>
+            show segment number
+            </summary>
+            <param name="segnum"></param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.HideSegnum">
+            <summary>
+            hide segment number
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.ShowAlign(System.Double,System.Double)">
+            <summary>
+            show algnment
+            </summary>
+            <param name="align_x"></param>
+            <param name="align_y"></param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.HideAlign">
+            <summary>
+            hide alignment
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.ShowRot(System.Double,System.Double,System.Double)">
+            <summary>
+            show rotation
+            </summary>
+            <param name="rot_x"></param>
+            <param name="rot_y"></param>
+            <param name="rot_z"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:MirrorAlignmentSystem.MainWindow.ShowsRefSegs(System.Int32)" -->
+        <member name="M:MirrorAlignmentSystem.MainWindow.HideRot">
+            <summary>
+            hide rotation
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.UpdateLabel(System.String,System.Double,System.Double,System.Double,System.Double,System.Double)">
+            <summary>
+            Updates the labels.
+            </summary>
+            <param name="segnum">The segment number.</param>
+            <param name="align_x">The x alignment.</param>
+            <param name="align_y">The y alignment.</param>
+            <param name="rot_x">The x rotation.</param>
+            <param name="rot_y">The y rotation.</param>
+            <param name="rot_z">The z rotation.</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.DisableLabel">
+            <summary>
+            Disables the labels.
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.HideUpperImg">
+            <summary>
+            hide upper image
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.SetUpperImgNoval(System.Int32,System.Int32)">
+            <summary>
+            set upper image l/r only
+            </summary>
+            <param name="lft"></param>
+            <param name="rgt"></param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.SetUpperImg(System.Int32,System.Int32)">
+            <summary>
+            Sets the upper img.
+            </summary>
+            <param name="lft">The LFT.</param>
+            <param name="rgt">The RGT.</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.HideLowerImg">
+            <summary>
+            hide lower img
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.SetLowerImgNoval(System.Int32,System.Int32)">
+            <summary>
+            set lower image l/r only
+            </summary>
+            <param name="lft"></param>
+            <param name="rgt"></param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.SetLowerImg(System.Int32,System.Int32)">
+            <summary>
+            Sets the lower img.
+            </summary>
+            <param name="lft">The LFT.</param>
+            <param name="rgt">The RGT.</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.SetFineImg(System.Double,System.Double)">
+            <summary>
+            Sets the fine img.
+            </summary>
+            <param name="lft">The LFT.</param>
+            <param name="rgt">The RGT.</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.SetTanRad(System.Double,System.Double)">
+            <summary>
+            Sets the tangetial and radial ofsetts in "fine".
+            </summary>
+            <param name="tan">The tan.</param>
+            <param name="rad">The rad.</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.SetTanRad(System.Int32)">
+            <summary>
+            Sets the available number of segments/refpoints for calibrate.
+            </summary>
+            <param name="tan">The tan.</param>
+            <param name="rad">The rad.</param>
+        </member>
+        <member name="M:MirrorAlignmentSystem.MainWindow.getChosenPath">
+            <summary>
+            Gets the chosen path.
+            </summary>
+            <returns>the path</returns>
+        </member>
         <member name="F:MirrorAlignmentSystem.MainWindow.components">
             <summary>
             Required designer variable.
@@ -1027,6 +1225,17 @@
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
             </summary>
+        </member>
+        <member name="T:MirrorAlignmentSystem.LocalSettings">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MirrorAlignmentSystem.LocalSettings.SQLString">
+            <summary>
+            SQLs the string.
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:MirrorAlignmentSystem.Login">
             <summary>

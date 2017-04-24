@@ -22,8 +22,7 @@ namespace MirrorAlignmentSystem
 		{
 			MessageBox.Show("Something went wrong: " + msg);
 		}
-
-
+        
 		/// <summary>
 		/// Gets a image from the database of the whole disc. This method is only used when the application is running in offline mode
 		/// and in fine alignment

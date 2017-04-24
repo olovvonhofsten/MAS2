@@ -148,73 +148,73 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdministrateUsersForm.cs">
+    <Compile Include="Windows\AdministrateUsersForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdministrateUsersForm.Designer.cs">
+    <Compile Include="Windows\AdministrateUsersForm.Designer.cs">
       <DependentUpon>AdministrateUsersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Algorithm.cs" />
     <Compile Include="Calibrate.cs" />
     <Compile Include="CameraController.cs" />
-    <Compile Include="ChangePasswordForm.cs">
+    <Compile Include="Windows\ChangePasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChangePasswordForm.Designer.cs">
+    <Compile Include="Windows\ChangePasswordForm.Designer.cs">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CheckAllForm.cs">
+    <Compile Include="Windows\CheckAllForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CheckAllForm.Designer.cs">
+    <Compile Include="Windows\CheckAllForm.Designer.cs">
       <DependentUpon>CheckAllForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateNewUserForm.cs">
+    <Compile Include="Windows\CreateNewUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateNewUserForm.Designer.cs">
+    <Compile Include="Windows\CreateNewUserForm.Designer.cs">
       <DependentUpon>CreateNewUserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CurrentUser.cs" />
     <Compile Include="DAL.cs" />
     <Compile Include="DataSaver.cs" />
-    <Compile Include="Eventlog.cs">
+    <Compile Include="Windows\Eventlog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Eventlog.Designer.cs">
+    <Compile Include="Windows\Eventlog.Designer.cs">
       <DependentUpon>Eventlog.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI.cs">
+    <Compile Include="Windows\GUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI.Designer.cs">
+    <Compile Include="Windows\GUI.Designer.cs">
       <DependentUpon>GUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImageHistory.cs">
+    <Compile Include="Windows\ImageHistory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImageHistory.Designer.cs">
+    <Compile Include="Windows\ImageHistory.Designer.cs">
       <DependentUpon>ImageHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImageInfo.cs">
+    <Compile Include="Windows\ImageInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImageInfo.Designer.cs">
+    <Compile Include="Windows\ImageInfo.Designer.cs">
       <DependentUpon>ImageInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="LocalSettings.cs" />
-    <Compile Include="Login.cs">
+    <Compile Include="Windows\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="Windows\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="MonitorHandler.cs" />
     <Compile Include="OPC.cs" />
-    <Compile Include="OptionForm.cs">
+    <Compile Include="Windows\OptionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OptionForm.Designer.cs">
+    <Compile Include="Windows\OptionForm.Designer.cs">
       <DependentUpon>OptionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -223,37 +223,37 @@
     <Compile Include="WorkerCoarse.cs" />
     <Compile Include="Worker_Fine.cs" />
     <Compile Include="Worker_Overview.cs" />
-    <EmbeddedResource Include="AdministrateUsersForm.resx">
+    <EmbeddedResource Include="Windows\AdministrateUsersForm.resx">
       <DependentUpon>AdministrateUsersForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChangePasswordForm.resx">
+    <EmbeddedResource Include="Windows\ChangePasswordForm.resx">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="CheckAllForm.resx">
+    <EmbeddedResource Include="Windows\CheckAllForm.resx">
       <DependentUpon>CheckAllForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateNewUserForm.resx">
+    <EmbeddedResource Include="Windows\CreateNewUserForm.resx">
       <DependentUpon>CreateNewUserForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Eventlog.resx">
+    <EmbeddedResource Include="Windows\Eventlog.resx">
       <DependentUpon>Eventlog.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI.resx">
+    <EmbeddedResource Include="Windows\GUI.resx">
       <DependentUpon>GUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImageHistory.resx">
+    <EmbeddedResource Include="Windows\ImageHistory.resx">
       <DependentUpon>ImageHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImageInfo.resx">
+    <EmbeddedResource Include="Windows\ImageInfo.resx">
       <DependentUpon>ImageInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="Windows\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OptionForm.resx">
+    <EmbeddedResource Include="Windows\OptionForm.resx">
       <DependentUpon>OptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
