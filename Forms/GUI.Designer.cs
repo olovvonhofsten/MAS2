@@ -332,19 +332,21 @@
             // 
             // DiscIDTextBox
             // 
+            this.DiscIDTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DiscIDTextBox.Location = new System.Drawing.Point(826, 48);
             this.DiscIDTextBox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.DiscIDTextBox.Name = "DiscIDTextBox";
-            this.DiscIDTextBox.Size = new System.Drawing.Size(112, 20);
+            this.DiscIDTextBox.Size = new System.Drawing.Size(112, 35);
             this.DiscIDTextBox.TabIndex = 38;
             this.DiscIDTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DiscIDTextBox_KeyDown);
             // 
             // SegmentNumberTextbox
             // 
-            this.SegmentNumberTextbox.Location = new System.Drawing.Point(834, 244);
+            this.SegmentNumberTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SegmentNumberTextbox.Location = new System.Drawing.Point(826, 259);
             this.SegmentNumberTextbox.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.SegmentNumberTextbox.Name = "SegmentNumberTextbox";
-            this.SegmentNumberTextbox.Size = new System.Drawing.Size(108, 20);
+            this.SegmentNumberTextbox.Size = new System.Drawing.Size(112, 35);
             this.SegmentNumberTextbox.TabIndex = 39;
             this.SegmentNumberTextbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SegmentNumberTextbox_KeyDown);
             // 
