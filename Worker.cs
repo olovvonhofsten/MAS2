@@ -642,7 +642,7 @@ namespace MirrorAlignmentSystem
                             DataSaver.instance.AddDataPoint("segment; offsetX; offsetY; offsetTan; offsetRad", new int[0]);
 							for(int ticks = 0; ticks < 66; ticks++)
                             {
-                                statusOfSegments[ticks, 0] = seg1[ticks] = fineData[ticks, 0];
+                                statusOfSegments[ticks, 0] = seg1[ticks] = fineData[ticks, 0]; 
                                 statusOfSegments[ticks, 1] = seg2[ticks] = fineData[ticks, 1];
                                 statusOfSegments[ticks, 2] = seg3[ticks] = fineData[ticks, 2];
                                 statusOfSegments[ticks, 3] = seg4[ticks] = fineData[ticks, 3];

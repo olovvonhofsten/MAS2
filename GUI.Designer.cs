@@ -235,7 +235,7 @@
 			this.tabControl1.Name = "tabControl1";
 			this.tabControl1.Padding = new System.Drawing.Point(70, 10);
 			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(1200, 434);
+			this.tabControl1.Size = new System.Drawing.Size(1200, 494);
 			this.tabControl1.TabIndex = 37;
 			this.tabControl1.TabIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
 			this.tabControl1.Click += new System.EventHandler(this.tabControl1_Click);
@@ -261,7 +261,7 @@
 			this.tabOverview.Margin = new System.Windows.Forms.Padding(9, 6, 7, 6);
 			this.tabOverview.Name = "tabOverview";
 			this.tabOverview.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-			this.tabOverview.Size = new System.Drawing.Size(1192, 382);
+			this.tabOverview.Size = new System.Drawing.Size(1192, 442);
 			this.tabOverview.TabIndex = 0;
 			this.tabOverview.Text = "OVERVIEW";
 			this.tabOverview.Click += new System.EventHandler(this.tabPage1_Click);
@@ -280,7 +280,7 @@
 			// 
 			this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button2.Location = new System.Drawing.Point(408, 418);
+			this.button2.Location = new System.Drawing.Point(-30, 269);
 			this.button2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(202, 66);
@@ -412,7 +412,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.overviewImagePB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.overviewImagePB.Location = new System.Drawing.Point(28, 12);
+			this.overviewImagePB.Location = new System.Drawing.Point(14, 16);
 			this.overviewImagePB.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.overviewImagePB.Name = "overviewImagePB";
 			this.overviewImagePB.Size = new System.Drawing.Size(603, 344);
@@ -436,7 +436,7 @@
 			this.tabCoarse.Location = new System.Drawing.Point(4, 48);
 			this.tabCoarse.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.tabCoarse.Name = "tabCoarse";
-			this.tabCoarse.Size = new System.Drawing.Size(1192, 382);
+			this.tabCoarse.Size = new System.Drawing.Size(1192, 442);
 			this.tabCoarse.TabIndex = 2;
 			this.tabCoarse.Text = "COARSE";
 			// 
@@ -627,7 +627,7 @@
 			this.tabFine.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.tabFine.Name = "tabFine";
 			this.tabFine.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-			this.tabFine.Size = new System.Drawing.Size(1162, 399);
+			this.tabFine.Size = new System.Drawing.Size(1192, 442);
 			this.tabFine.TabIndex = 1;
 			this.tabFine.Text = "FINE";
 			// 
@@ -757,7 +757,7 @@
 			// combinedImagePB
 			// 
 			this.combinedImagePB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-			this.combinedImagePB.Location = new System.Drawing.Point(204, 30);
+			this.combinedImagePB.Location = new System.Drawing.Point(149, 11);
 			this.combinedImagePB.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
 			this.combinedImagePB.Name = "combinedImagePB";
 			this.combinedImagePB.Size = new System.Drawing.Size(461, 365);
