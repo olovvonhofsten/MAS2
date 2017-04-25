@@ -74,38 +74,7 @@ namespace MirrorAlignmentSystem
 					//This part paints the Area Of Interest above the overview image
                     System.Diagnostics.Debug.WriteLine("Overview, 0911 status: " + statusOfSegments[8, 0]);
                     cameraOverview = Algorithm.drawSegmentTypes(statusOfSegments, cameraOverview);
-                    using (Bitmap tempBitmap = new Bitmap(cameraOverview.Width, cameraOverview.Height))
-					{
-						using (Graphics g = Graphics.FromImage(tempBitmap))
-						{
-							Pen redPen = new Pen(Color.Red, 10);
-							Pen goldPen = new Pen(Color.Yellow, 5);
-
-							g.DrawImage(cameraOverview, 0, 0);
-							//Top left corner
-							g.DrawLine(goldPen, (AOIData[4] + xOffset), (AOIData[5] + yOffset), (AOIData[6] + xOffset), (AOIData[7] + yOffset));
-
-							//Top right corner
-							g.DrawLine(goldPen, (AOIData[6] + xOffset), (AOIData[7] + yOffset), (AOIData[8] + xOffset), (AOIData[9] + yOffset));
-
-							//Bottom right corner
-							g.DrawLine(goldPen, (AOIData[8] + xOffset), (AOIData[9] + yOffset), (AOIData[10] + xOffset), (AOIData[11] + yOffset));
-
-							//Bottom left corner
-							g.DrawLine(goldPen, (AOIData[10] + xOffset), (AOIData[11] + yOffset), (AOIData[4] + xOffset), (AOIData[5] + yOffset));
-
-							g.Dispose();
-						}
-
-						if (cameraOverview != null)
-						{
-							cameraOverview.Dispose();
-						}
-
-						cameraOverview = new Bitmap(tempBitmap);
-
-						tempBitmap.Dispose();
-					}
+                    cameraOverview = Algorithm.drawCurrentSegment(segment, cameraOverview);
 
 					//Displays the overview image in the correct picturebox
 					mainWindow.ShowOverviewBitmap(cameraOverview);

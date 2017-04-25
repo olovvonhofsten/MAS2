@@ -351,7 +351,7 @@ namespace MirrorAlignmentSystem
 				if (rdr.HasRows)
 				{
 					returnValues[0] = Convert.ToInt32(rdr["X"])+8;
-					returnValues[1] = Convert.ToInt32(rdr["Y"])+8;
+					returnValues[1] = Convert.ToInt32(rdr["Y"]) + 8 - Convert.ToInt32(rdr["Height"]); ///!!!///
 					returnValues[2] = Convert.ToInt32(rdr["Width"]);
 					returnValues[3] = Convert.ToInt32(rdr["Height"]);
 					returnValues[4] = Convert.ToInt32(rdr["X1"])+8;

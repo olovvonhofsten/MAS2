@@ -12,8 +12,8 @@ namespace MirrorAlignmentSystem
     class Algorithm
     {
         // Size of the screen
-        public static int screensizex = 1280;
-        public static int screensizey = 720;
+        public static int screensizex = 1920;//1280;
+        public static int screensizey = 1080;//720;
         public static int imagesizex = 1936;
         public static int imagesizey = 1216;
         public static double pix2distDISC = 10.157;
@@ -133,7 +133,7 @@ namespace MirrorAlignmentSystem
             Image<Bgr, byte> Img2mc = Img2m.Convert<Bgr, byte>();
             CvInvoke.ApplyColorMap(Img2m, Img2mc, ColorMapType.Jet);
             Img2mc.Draw(Seg, new Bgr(Color.Yellow), 1);
-            Img2mc.Draw(new Cross2DF(idealC, 10, 10), new Bgr(Color.Green), 2);
+            Img2mc.Draw(new Cross2DF(idealC, 15, 15), new Bgr(Color.White), 2);
 
             if (checksumInt > 200)
             {
@@ -471,7 +471,7 @@ namespace MirrorAlignmentSystem
                 if (status[ticker,0] == 1)
                 {
                     System.Diagnostics.Debug.WriteLine(status[ticker, 1] + " " + status[ticker, 2] + "mrad");
-                    segmentsImage.Draw(Seg, new Bgr(Color.LimeGreen), 3);
+                    segmentsImage.Draw(Seg, new Bgr(Color.LimeGreen), -1);
 
                 }
                 ticker++;
@@ -480,6 +480,19 @@ namespace MirrorAlignmentSystem
             Bitmap outBmp = segmentsImage.ToBitmap();
             return outBmp;
         }
+
+		// Draws the current segment in yellow
+		public static Bitmap drawCurrentSegment(string segment, Bitmap Canvas)
+		{
+			Image<Bgr, byte> segmentsImage = new Image<Bgr, byte>(Canvas);
+			int[] AOIData = DAL.GetAOIData(segment);
+
+			Point[] Seg = new Point[] { new Point(AOIData[4], AOIData[5]), new Point(AOIData[6], AOIData[7]), new Point(AOIData[8], AOIData[9]), new Point(AOIData[10], AOIData[11]) };
+			segmentsImage.Draw(Seg, new Bgr(Color.Orange), 12);
+			segmentsImage.Draw(new Rectangle(AOIData[0], AOIData[1], AOIData[2], AOIData[3]), new Bgr(Color.Violet), 5);
+			Bitmap outBmp = segmentsImage.ToBitmap();
+			return outBmp;
+		}
 
         // Draws solid segments in different color depending on error
         public static Image<Bgr,byte> drawSegmentError(double[,] status, int column)

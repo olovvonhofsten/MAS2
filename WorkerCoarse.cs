@@ -177,6 +177,9 @@ namespace MirrorAlignmentSystem
 						returnImg2 = null;
 					}
 
+					mainWindow.ShowLeftRightOneBackgroundBitmap(cameraCoarseAlignLeft);
+					mainWindow.ShowLeftRightTwoBackgroundBitmap(cameraCoarseAlignRight);
+
 					if (!offline)
 					{
 						Algorithm.Coarse_algorithm(cameraCoarseAlignLeft, cameraCoarseAlignRight, cameraCoarseAlignBlackOne, int.Parse(DAL.GetRawSegmentNumber(segment)), out dir, out returnImg1, out returnImg2);
@@ -186,8 +189,8 @@ namespace MirrorAlignmentSystem
 						Algorithm.Coarse_algorithm(cameraCoarseAlignLeft, cameraCoarseAlignRight, cameraCoarseAlignBlackOne, 50, out dir, out returnImg1, out returnImg2);
 					}
 
-					mainWindow.ShowLeftRightOneBackgroundBitmap(returnImg1);
-					mainWindow.ShowLeftRightTwoBackgroundBitmap(returnImg2);
+					//mainWindow.ShowLeftRightOneBackgroundBitmap(returnImg1);
+					//mainWindow.ShowLeftRightTwoBackgroundBitmap(returnImg2);
 
                     // Outer segments switch direction
                     if (int.Parse(DAL.GetRawSegmentNumber(segment))>34)
@@ -385,7 +388,8 @@ namespace MirrorAlignmentSystem
 						returnImg4.Dispose();
 						returnImg4 = null;
 					}
-
+					mainWindow.ShowUpDownOneBackgroundBitmap(cameraCoarseAlignUp);
+					mainWindow.ShowUpDownTwoBackgroundBitmap(cameraCoarseAlignDown);
 					if (!offline)
 					{
 						Algorithm.Coarse_algorithm(cameraCoarseAlignUp, cameraCoarseAlignDown, cameraCoarseAlignBlackTwo, int.Parse(DAL.GetRawSegmentNumber(segment)), out dir, out returnImg3, out returnImg4);
@@ -398,8 +402,10 @@ namespace MirrorAlignmentSystem
 
 					//System.Diagnostics.Debug.WriteLine("LEFT&RIGHT DIRECTION: " + dir);
 
-					mainWindow.ShowUpDownOneBackgroundBitmap(returnImg3);
-					mainWindow.ShowUpDownTwoBackgroundBitmap(returnImg4);
+					//mainWindow.ShowUpDownOneBackgroundBitmap(returnImg3);
+					//mainWindow.ShowUpDownTwoBackgroundBitmap(returnImg4);
+					//mainWindow.ShowUpDownOneBackgroundBitmap(cameraCoarseAlignUp);
+					//mainWindow.ShowUpDownOneBackgroundBitmap(cameraCoarseAlignDown);
 
                     mainWindow.SetLowerImgNoval(-dir, dir);
 				}

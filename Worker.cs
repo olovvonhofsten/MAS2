@@ -160,7 +160,7 @@ namespace MirrorAlignmentSystem
 			blackBGCounterLeftRight = 0;
 			blackBGCounterUpDown = 0;
 
-			dotWidth = 1;
+			dotWidth = 10;
 			sensorHeight = 0;// 1200;
 
 			// Keeps track of the offline/online mode to help the application notice when the user change mode.
@@ -394,7 +394,7 @@ namespace MirrorAlignmentSystem
 
 						doublePoints = new double[4, 2];
 
-						//Covers the whole screen
+						//Makes a white screen
 						doublePoints[0, 0] = -1;
 						doublePoints[0, 1] = -1;
 
@@ -725,12 +725,12 @@ namespace MirrorAlignmentSystem
 
 				segment = mainWindow.GetSegmentNumber().Trim();
 				//Gets the Area Of Interest for the segment(currently choosen in the GUI) from the database
-				AOIData = DAL.GetAOIData(segment);
-				AOIData[1] = sensorHeight - AOIData[1];
-				AOIData[5] = sensorHeight - AOIData[5];
-				AOIData[7] = sensorHeight - AOIData[7];
-				AOIData[9] = sensorHeight - AOIData[9];
-				AOIData[11] = sensorHeight - AOIData[11];
+				//AOIData = DAL.GetAOIData(segment);
+				//AOIData[1] = sensorHeight - AOIData[1];
+				//AOIData[5] = sensorHeight - AOIData[5];
+				//AOIData[7] = sensorHeight - AOIData[7];
+				//AOIData[9] = sensorHeight - AOIData[9];
+				//AOIData[11] = sensorHeight - AOIData[11];
 
 
 				//Start fine alignment
