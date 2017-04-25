@@ -90,14 +90,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MirrorAlignmentSystem.exe" size="577984">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MirrorAlignmentSystem.exe" size="579520">
       <assemblyIdentity name="MirrorAlignmentSystem" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>QT2b8SMaEhijwFpMUpzrHiZ6ddrr3fhqiwJ8YkT+RTA=</dsig:DigestValue>
+        <dsig:DigestValue>9mR0LtVX7DcMHiMO7fGxoc/h3o7cs0bY/y1lSyL7YOk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

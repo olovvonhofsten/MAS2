@@ -110,7 +110,11 @@
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.exposureSlider = new System.Windows.Forms.TrackBar();
+            this.reduceExposureLarge_button = new System.Windows.Forms.Button();
+            this.reduceExposureSmall_button = new System.Windows.Forms.Button();
+            this.increaseExposureSmall_button = new System.Windows.Forms.Button();
+            this.increaseExposureLarge_button = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabOverview.SuspendLayout();
@@ -130,7 +134,7 @@
             this.tabCal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BlackHolePB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CalibrateImgPB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exposureSlider)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -235,7 +239,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(70, 10);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1230, 434);
+            this.tabControl1.Size = new System.Drawing.Size(1414, 519);
             this.tabControl1.TabIndex = 37;
             this.tabControl1.TabIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
             this.tabControl1.Click += new System.EventHandler(this.tabControl1_Click);
@@ -261,7 +265,7 @@
             this.tabOverview.Margin = new System.Windows.Forms.Padding(9, 6, 7, 6);
             this.tabOverview.Name = "tabOverview";
             this.tabOverview.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.tabOverview.Size = new System.Drawing.Size(1222, 382);
+            this.tabOverview.Size = new System.Drawing.Size(1406, 467);
             this.tabOverview.TabIndex = 0;
             this.tabOverview.Text = "OVERVIEW";
             this.tabOverview.Click += new System.EventHandler(this.tabPage1_Click);
@@ -280,7 +284,7 @@
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(408, 471);
+            this.button2.Location = new System.Drawing.Point(408, 970);
             this.button2.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(202, 66);
@@ -436,7 +440,7 @@
             this.tabCoarse.Location = new System.Drawing.Point(4, 48);
             this.tabCoarse.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tabCoarse.Name = "tabCoarse";
-            this.tabCoarse.Size = new System.Drawing.Size(1192, 382);
+            this.tabCoarse.Size = new System.Drawing.Size(1342, 331);
             this.tabCoarse.TabIndex = 2;
             this.tabCoarse.Text = "COARSE";
             // 
@@ -628,7 +632,7 @@
             this.tabFine.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tabFine.Name = "tabFine";
             this.tabFine.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.tabFine.Size = new System.Drawing.Size(1192, 382);
+            this.tabFine.Size = new System.Drawing.Size(1342, 331);
             this.tabFine.TabIndex = 1;
             this.tabFine.Text = "FINE";
             // 
@@ -795,7 +799,7 @@
             this.tabCal.Location = new System.Drawing.Point(4, 48);
             this.tabCal.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tabCal.Name = "tabCal";
-            this.tabCal.Size = new System.Drawing.Size(1192, 382);
+            this.tabCal.Size = new System.Drawing.Size(1342, 331);
             this.tabCal.TabIndex = 3;
             this.tabCal.Text = "CALIBRATE";
             // 
@@ -855,7 +859,6 @@
             this.label4.Size = new System.Drawing.Size(24, 26);
             this.label4.TabIndex = 2;
             this.label4.Text = "0";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -878,7 +881,7 @@
             // lbl_01
             // 
             this.lbl_01.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_01.Location = new System.Drawing.Point(15, 473);
+            this.lbl_01.Location = new System.Drawing.Point(15, 558);
             this.lbl_01.Name = "lbl_01";
             this.lbl_01.Size = new System.Drawing.Size(198, 24);
             this.lbl_01.TabIndex = 38;
@@ -887,7 +890,7 @@
             // lbl_02
             // 
             this.lbl_02.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_02.Location = new System.Drawing.Point(219, 473);
+            this.lbl_02.Location = new System.Drawing.Point(219, 558);
             this.lbl_02.Name = "lbl_02";
             this.lbl_02.Size = new System.Drawing.Size(143, 24);
             this.lbl_02.TabIndex = 39;
@@ -897,7 +900,7 @@
             // 
             this.lbl_03.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbl_03.ForeColor = System.Drawing.Color.Green;
-            this.lbl_03.Location = new System.Drawing.Point(368, 473);
+            this.lbl_03.Location = new System.Drawing.Point(368, 558);
             this.lbl_03.Name = "lbl_03";
             this.lbl_03.Size = new System.Drawing.Size(76, 24);
             this.lbl_03.TabIndex = 40;
@@ -906,7 +909,7 @@
             // lbl_04
             // 
             this.lbl_04.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_04.Location = new System.Drawing.Point(450, 473);
+            this.lbl_04.Location = new System.Drawing.Point(450, 558);
             this.lbl_04.Name = "lbl_04";
             this.lbl_04.Size = new System.Drawing.Size(50, 24);
             this.lbl_04.TabIndex = 41;
@@ -916,7 +919,7 @@
             // 
             this.lbl_05.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbl_05.ForeColor = System.Drawing.Color.Green;
-            this.lbl_05.Location = new System.Drawing.Point(506, 473);
+            this.lbl_05.Location = new System.Drawing.Point(506, 558);
             this.lbl_05.Name = "lbl_05";
             this.lbl_05.Size = new System.Drawing.Size(86, 24);
             this.lbl_05.TabIndex = 42;
@@ -925,7 +928,7 @@
             // lbl_06
             // 
             this.lbl_06.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_06.Location = new System.Drawing.Point(614, 473);
+            this.lbl_06.Location = new System.Drawing.Point(614, 558);
             this.lbl_06.Name = "lbl_06";
             this.lbl_06.Size = new System.Drawing.Size(80, 24);
             this.lbl_06.TabIndex = 43;
@@ -935,7 +938,7 @@
             // 
             this.lbl_07.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbl_07.ForeColor = System.Drawing.Color.Red;
-            this.lbl_07.Location = new System.Drawing.Point(700, 473);
+            this.lbl_07.Location = new System.Drawing.Point(700, 558);
             this.lbl_07.Name = "lbl_07";
             this.lbl_07.Size = new System.Drawing.Size(86, 24);
             this.lbl_07.TabIndex = 44;
@@ -945,7 +948,7 @@
             // 
             this.lbl_09.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbl_09.ForeColor = System.Drawing.Color.Red;
-            this.lbl_09.Location = new System.Drawing.Point(832, 473);
+            this.lbl_09.Location = new System.Drawing.Point(832, 558);
             this.lbl_09.Name = "lbl_09";
             this.lbl_09.Size = new System.Drawing.Size(86, 24);
             this.lbl_09.TabIndex = 46;
@@ -954,7 +957,7 @@
             // lbl_08
             // 
             this.lbl_08.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_08.Location = new System.Drawing.Point(792, 473);
+            this.lbl_08.Location = new System.Drawing.Point(792, 558);
             this.lbl_08.Name = "lbl_08";
             this.lbl_08.Size = new System.Drawing.Size(34, 24);
             this.lbl_08.TabIndex = 45;
@@ -964,7 +967,7 @@
             // 
             this.lbl_11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbl_11.ForeColor = System.Drawing.Color.Green;
-            this.lbl_11.Location = new System.Drawing.Point(964, 473);
+            this.lbl_11.Location = new System.Drawing.Point(964, 558);
             this.lbl_11.Name = "lbl_11";
             this.lbl_11.Size = new System.Drawing.Size(86, 24);
             this.lbl_11.TabIndex = 48;
@@ -973,7 +976,7 @@
             // lbl_10
             // 
             this.lbl_10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_10.Location = new System.Drawing.Point(924, 473);
+            this.lbl_10.Location = new System.Drawing.Point(924, 558);
             this.lbl_10.Name = "lbl_10";
             this.lbl_10.Size = new System.Drawing.Size(34, 24);
             this.lbl_10.TabIndex = 47;
@@ -1003,23 +1006,71 @@
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 0;
             // 
-            // trackBar2
+            // exposureSlider
             // 
-            this.trackBar2.Location = new System.Drawing.Point(104, 0);
-            this.trackBar2.Maximum = 2000;
-            this.trackBar2.Minimum = 1;
-            this.trackBar2.Name = "trackBar2";
-            this.trackBar2.Size = new System.Drawing.Size(908, 45);
-            this.trackBar2.TabIndex = 49;
-            this.trackBar2.TickStyle = System.Windows.Forms.TickStyle.None;
-            this.trackBar2.Value = 100;
+            this.exposureSlider.Location = new System.Drawing.Point(104, 0);
+            this.exposureSlider.Maximum = 2000;
+            this.exposureSlider.Minimum = 1;
+            this.exposureSlider.Name = "exposureSlider";
+            this.exposureSlider.Size = new System.Drawing.Size(682, 45);
+            this.exposureSlider.TabIndex = 49;
+            this.exposureSlider.TickStyle = System.Windows.Forms.TickStyle.None;
+            this.exposureSlider.Value = 100;
+            // 
+            // reduceExposureLarge_button
+            // 
+            this.reduceExposureLarge_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reduceExposureLarge_button.Location = new System.Drawing.Point(804, 4);
+            this.reduceExposureLarge_button.Name = "reduceExposureLarge_button";
+            this.reduceExposureLarge_button.Size = new System.Drawing.Size(34, 27);
+            this.reduceExposureLarge_button.TabIndex = 0;
+            this.reduceExposureLarge_button.Text = "- -";
+            this.reduceExposureLarge_button.UseVisualStyleBackColor = true;
+            this.reduceExposureLarge_button.Click += new System.EventHandler(this.reduceExposureLarge_button_Click);
+            // 
+            // reduceExposureSmall_button
+            // 
+            this.reduceExposureSmall_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reduceExposureSmall_button.Location = new System.Drawing.Point(844, 4);
+            this.reduceExposureSmall_button.Name = "reduceExposureSmall_button";
+            this.reduceExposureSmall_button.Size = new System.Drawing.Size(34, 27);
+            this.reduceExposureSmall_button.TabIndex = 53;
+            this.reduceExposureSmall_button.Text = "-";
+            this.reduceExposureSmall_button.UseVisualStyleBackColor = true;
+            this.reduceExposureSmall_button.Click += new System.EventHandler(this.reduceExposureSmall_button_Click);
+            // 
+            // increaseExposureSmall_button
+            // 
+            this.increaseExposureSmall_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.increaseExposureSmall_button.Location = new System.Drawing.Point(907, 4);
+            this.increaseExposureSmall_button.Name = "increaseExposureSmall_button";
+            this.increaseExposureSmall_button.Size = new System.Drawing.Size(34, 27);
+            this.increaseExposureSmall_button.TabIndex = 54;
+            this.increaseExposureSmall_button.Text = "+";
+            this.increaseExposureSmall_button.UseVisualStyleBackColor = true;
+            this.increaseExposureSmall_button.Click += new System.EventHandler(this.increaseExposureSmall_button_Click);
+            // 
+            // increaseExposureLarge_button
+            // 
+            this.increaseExposureLarge_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.increaseExposureLarge_button.Location = new System.Drawing.Point(947, 4);
+            this.increaseExposureLarge_button.Name = "increaseExposureLarge_button";
+            this.increaseExposureLarge_button.Size = new System.Drawing.Size(34, 27);
+            this.increaseExposureLarge_button.TabIndex = 55;
+            this.increaseExposureLarge_button.Text = "++";
+            this.increaseExposureLarge_button.UseVisualStyleBackColor = true;
+            this.increaseExposureLarge_button.Click += new System.EventHandler(this.increaseExposureLarge_button_Click);
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1020, 625);
+            this.ClientSize = new System.Drawing.Size(1084, 761);
+            this.Controls.Add(this.increaseExposureLarge_button);
+            this.Controls.Add(this.increaseExposureSmall_button);
+            this.Controls.Add(this.reduceExposureSmall_button);
+            this.Controls.Add(this.reduceExposureLarge_button);
             this.Controls.Add(this.lbl_11);
             this.Controls.Add(this.lbl_10);
             this.Controls.Add(this.lbl_09);
@@ -1033,7 +1084,7 @@
             this.Controls.Add(this.lbl_01);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.trackBar2);
+            this.Controls.Add(this.exposureSlider);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Location = new System.Drawing.Point(5, 5);
@@ -1070,7 +1121,7 @@
             this.tabCal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BlackHolePB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CalibrateImgPB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exposureSlider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1153,12 +1204,16 @@
 		private System.Windows.Forms.Button button1;
 		private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.TrackBar trackBar2;
+		private System.Windows.Forms.TrackBar exposureSlider;
         private System.Windows.Forms.CheckBox CalBackCB;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox BlackHolePB;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button reduceExposureLarge_button;
+        private System.Windows.Forms.Button reduceExposureSmall_button;
+        private System.Windows.Forms.Button increaseExposureSmall_button;
+        private System.Windows.Forms.Button increaseExposureLarge_button;
     }
 }
 
