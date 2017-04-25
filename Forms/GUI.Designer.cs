@@ -47,15 +47,10 @@
             this.button2 = new System.Windows.Forms.Button();
             this.btnCheckAllCoarse = new System.Windows.Forms.Button();
             this.btnCheckAllFine = new System.Windows.Forms.Button();
-            this.RTbutton = new System.Windows.Forms.Button();
-            this.LTbutton = new System.Windows.Forms.Button();
-            this.DWbutton = new System.Windows.Forms.Button();
-            this.UpButton = new System.Windows.Forms.Button();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.DiscIDTextBox = new System.Windows.Forms.TextBox();
             this.SegmentNumberTextbox = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.overviewImagePB = new System.Windows.Forms.PictureBox();
             this.tabCoarse = new System.Windows.Forms.TabPage();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -63,15 +58,9 @@
             this.lbl_ll = new System.Windows.Forms.Label();
             this.lbl_ur = new System.Windows.Forms.Label();
             this.lbl_ul = new System.Windows.Forms.Label();
-            this.pb_Lower = new System.Windows.Forms.PictureBox();
-            this.pb_Upper = new System.Windows.Forms.PictureBox();
             this.gbCoarse = new System.Windows.Forms.GroupBox();
             this.lbl_lr_2 = new System.Windows.Forms.Label();
             this.dirUpDownLabel = new System.Windows.Forms.Label();
-            this.upDownPBTwo = new System.Windows.Forms.PictureBox();
-            this.upDownPBOne = new System.Windows.Forms.PictureBox();
-            this.leftRightPBOne = new System.Windows.Forms.PictureBox();
-            this.leftRightPBTwo = new System.Windows.Forms.PictureBox();
             this.tabFine = new System.Windows.Forms.TabPage();
             this.label2 = new System.Windows.Forms.Label();
             this.bgFine = new System.Windows.Forms.RadioButton();
@@ -81,21 +70,17 @@
             this.lbl_fl = new System.Windows.Forms.Label();
             this.CoMLabel = new System.Windows.Forms.Label();
             this.acceptButton = new System.Windows.Forms.Button();
-            this.pbFine = new System.Windows.Forms.PictureBox();
             this.lbl_rad_ofs = new System.Windows.Forms.Label();
             this.lbl_ofs_rad = new System.Windows.Forms.Label();
             this.lbl_ofs_tan = new System.Windows.Forms.Label();
-            this.combinedImagePB = new System.Windows.Forms.PictureBox();
             this.lbl_tan_ofs = new System.Windows.Forms.Label();
             this.tabCal = new System.Windows.Forms.TabPage();
-            this.BlackHolePB = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.CalBackCB = new System.Windows.Forms.CheckBox();
             this.zDist = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.CalibrateImgPB = new System.Windows.Forms.PictureBox();
             this.lbl_01 = new System.Windows.Forms.Label();
             this.lbl_02 = new System.Windows.Forms.Label();
             this.lbl_03 = new System.Windows.Forms.Label();
@@ -115,26 +100,41 @@
             this.reduceExposureSmall_button = new System.Windows.Forms.Button();
             this.increaseExposureSmall_button = new System.Windows.Forms.Button();
             this.increaseExposureLarge_button = new System.Windows.Forms.Button();
+            this.Out_button = new System.Windows.Forms.Button();
+            this.In_button = new System.Windows.Forms.Button();
+            this.Clockwise_button = new System.Windows.Forms.Button();
+            this.CounterClockwise_button = new System.Windows.Forms.Button();
+            this.overviewImagePB = new System.Windows.Forms.PictureBox();
+            this.upDownPBTwo = new System.Windows.Forms.PictureBox();
+            this.upDownPBOne = new System.Windows.Forms.PictureBox();
+            this.leftRightPBOne = new System.Windows.Forms.PictureBox();
+            this.leftRightPBTwo = new System.Windows.Forms.PictureBox();
+            this.pb_Lower = new System.Windows.Forms.PictureBox();
+            this.pb_Upper = new System.Windows.Forms.PictureBox();
+            this.pbFine = new System.Windows.Forms.PictureBox();
+            this.combinedImagePB = new System.Windows.Forms.PictureBox();
+            this.BlackHolePB = new System.Windows.Forms.PictureBox();
+            this.CalibrateImgPB = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabOverview.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.overviewImagePB)).BeginInit();
             this.tabCoarse.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_Lower)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_Upper)).BeginInit();
             this.gbCoarse.SuspendLayout();
+            this.tabFine.SuspendLayout();
+            this.tabCal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.exposureSlider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.overviewImagePB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownPBTwo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownPBOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.leftRightPBOne)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.leftRightPBTwo)).BeginInit();
-            this.tabFine.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Lower)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Upper)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.combinedImagePB)).BeginInit();
-            this.tabCal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BlackHolePB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CalibrateImgPB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.exposureSlider)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -252,10 +252,10 @@
             this.tabOverview.Controls.Add(this.button2);
             this.tabOverview.Controls.Add(this.btnCheckAllCoarse);
             this.tabOverview.Controls.Add(this.btnCheckAllFine);
-            this.tabOverview.Controls.Add(this.RTbutton);
-            this.tabOverview.Controls.Add(this.LTbutton);
-            this.tabOverview.Controls.Add(this.DWbutton);
-            this.tabOverview.Controls.Add(this.UpButton);
+            this.tabOverview.Controls.Add(this.Out_button);
+            this.tabOverview.Controls.Add(this.In_button);
+            this.tabOverview.Controls.Add(this.Clockwise_button);
+            this.tabOverview.Controls.Add(this.CounterClockwise_button);
             this.tabOverview.Controls.Add(this.checkBox1);
             this.tabOverview.Controls.Add(this.DiscIDTextBox);
             this.tabOverview.Controls.Add(this.SegmentNumberTextbox);
@@ -315,54 +315,6 @@
             this.btnCheckAllFine.UseVisualStyleBackColor = true;
             this.btnCheckAllFine.Click += new System.EventHandler(this.btnCheckAllFine_Click);
             // 
-            // RTbutton
-            // 
-            this.RTbutton.BackColor = System.Drawing.Color.White;
-            this.RTbutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("RTbutton.BackgroundImage")));
-            this.RTbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.RTbutton.Location = new System.Drawing.Point(929, 134);
-            this.RTbutton.Name = "RTbutton";
-            this.RTbutton.Size = new System.Drawing.Size(67, 63);
-            this.RTbutton.TabIndex = 47;
-            this.RTbutton.UseVisualStyleBackColor = false;
-            this.RTbutton.Click += new System.EventHandler(this.RTbutton_Click);
-            // 
-            // LTbutton
-            // 
-            this.LTbutton.BackColor = System.Drawing.Color.White;
-            this.LTbutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("LTbutton.BackgroundImage")));
-            this.LTbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.LTbutton.Location = new System.Drawing.Point(780, 134);
-            this.LTbutton.Name = "LTbutton";
-            this.LTbutton.Size = new System.Drawing.Size(67, 63);
-            this.LTbutton.TabIndex = 46;
-            this.LTbutton.UseVisualStyleBackColor = false;
-            this.LTbutton.Click += new System.EventHandler(this.LTbutton_Click);
-            // 
-            // DWbutton
-            // 
-            this.DWbutton.BackColor = System.Drawing.Color.White;
-            this.DWbutton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DWbutton.BackgroundImage")));
-            this.DWbutton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.DWbutton.Location = new System.Drawing.Point(853, 172);
-            this.DWbutton.Name = "DWbutton";
-            this.DWbutton.Size = new System.Drawing.Size(67, 63);
-            this.DWbutton.TabIndex = 45;
-            this.DWbutton.UseVisualStyleBackColor = false;
-            this.DWbutton.Click += new System.EventHandler(this.DWbutton_Click);
-            // 
-            // UpButton
-            // 
-            this.UpButton.BackColor = System.Drawing.Color.White;
-            this.UpButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("UpButton.BackgroundImage")));
-            this.UpButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.UpButton.Location = new System.Drawing.Point(853, 103);
-            this.UpButton.Name = "UpButton";
-            this.UpButton.Size = new System.Drawing.Size(67, 63);
-            this.UpButton.TabIndex = 44;
-            this.UpButton.UseVisualStyleBackColor = false;
-            this.UpButton.Click += new System.EventHandler(this.UpButton_Click);
-            // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
@@ -410,20 +362,6 @@
             this.groupBox5.Text = "Overview Image";
             this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
             // 
-            // overviewImagePB
-            // 
-            this.overviewImagePB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.overviewImagePB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.overviewImagePB.Location = new System.Drawing.Point(28, 12);
-            this.overviewImagePB.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.overviewImagePB.Name = "overviewImagePB";
-            this.overviewImagePB.Size = new System.Drawing.Size(603, 344);
-            this.overviewImagePB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.overviewImagePB.TabIndex = 12;
-            this.overviewImagePB.TabStop = false;
-            // 
             // tabCoarse
             // 
             this.tabCoarse.AutoScroll = true;
@@ -434,9 +372,9 @@
             this.tabCoarse.Controls.Add(this.lbl_ll);
             this.tabCoarse.Controls.Add(this.lbl_ur);
             this.tabCoarse.Controls.Add(this.lbl_ul);
+            this.tabCoarse.Controls.Add(this.gbCoarse);
             this.tabCoarse.Controls.Add(this.pb_Lower);
             this.tabCoarse.Controls.Add(this.pb_Upper);
-            this.tabCoarse.Controls.Add(this.gbCoarse);
             this.tabCoarse.Location = new System.Drawing.Point(4, 48);
             this.tabCoarse.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tabCoarse.Name = "tabCoarse";
@@ -502,24 +440,6 @@
             this.lbl_ul.TabIndex = 29;
             this.lbl_ul.Text = "0";
             // 
-            // pb_Lower
-            // 
-            this.pb_Lower.Image = ((System.Drawing.Image)(resources.GetObject("pb_Lower.Image")));
-            this.pb_Lower.Location = new System.Drawing.Point(766, 299);
-            this.pb_Lower.Name = "pb_Lower";
-            this.pb_Lower.Size = new System.Drawing.Size(200, 224);
-            this.pb_Lower.TabIndex = 28;
-            this.pb_Lower.TabStop = false;
-            // 
-            // pb_Upper
-            // 
-            this.pb_Upper.Image = ((System.Drawing.Image)(resources.GetObject("pb_Upper.Image")));
-            this.pb_Upper.Location = new System.Drawing.Point(766, 45);
-            this.pb_Upper.Name = "pb_Upper";
-            this.pb_Upper.Size = new System.Drawing.Size(200, 224);
-            this.pb_Upper.TabIndex = 27;
-            this.pb_Upper.TabStop = false;
-            // 
             // gbCoarse
             // 
             this.gbCoarse.BackColor = System.Drawing.Color.Transparent;
@@ -561,55 +481,6 @@
             this.dirUpDownLabel.TabIndex = 17;
             this.dirUpDownLabel.Text = "0";
             // 
-            // upDownPBTwo
-            // 
-            this.upDownPBTwo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.upDownPBTwo.Location = new System.Drawing.Point(11, 281);
-            this.upDownPBTwo.Margin = new System.Windows.Forms.Padding(4);
-            this.upDownPBTwo.Name = "upDownPBTwo";
-            this.upDownPBTwo.Size = new System.Drawing.Size(250, 250);
-            this.upDownPBTwo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.upDownPBTwo.TabIndex = 15;
-            this.upDownPBTwo.TabStop = false;
-            this.upDownPBTwo.WaitOnLoad = true;
-            // 
-            // upDownPBOne
-            // 
-            this.upDownPBOne.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.upDownPBOne.Location = new System.Drawing.Point(269, 281);
-            this.upDownPBOne.Margin = new System.Windows.Forms.Padding(4);
-            this.upDownPBOne.Name = "upDownPBOne";
-            this.upDownPBOne.Size = new System.Drawing.Size(250, 250);
-            this.upDownPBOne.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.upDownPBOne.TabIndex = 14;
-            this.upDownPBOne.TabStop = false;
-            this.upDownPBOne.WaitOnLoad = true;
-            // 
-            // leftRightPBOne
-            // 
-            this.leftRightPBOne.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.leftRightPBOne.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.leftRightPBOne.Location = new System.Drawing.Point(11, 23);
-            this.leftRightPBOne.Margin = new System.Windows.Forms.Padding(4);
-            this.leftRightPBOne.Name = "leftRightPBOne";
-            this.leftRightPBOne.Size = new System.Drawing.Size(250, 250);
-            this.leftRightPBOne.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.leftRightPBOne.TabIndex = 13;
-            this.leftRightPBOne.TabStop = false;
-            this.leftRightPBOne.WaitOnLoad = true;
-            // 
-            // leftRightPBTwo
-            // 
-            this.leftRightPBTwo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.leftRightPBTwo.Location = new System.Drawing.Point(269, 23);
-            this.leftRightPBTwo.Margin = new System.Windows.Forms.Padding(4);
-            this.leftRightPBTwo.Name = "leftRightPBTwo";
-            this.leftRightPBTwo.Size = new System.Drawing.Size(250, 250);
-            this.leftRightPBTwo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.leftRightPBTwo.TabIndex = 12;
-            this.leftRightPBTwo.TabStop = false;
-            this.leftRightPBTwo.WaitOnLoad = true;
-            // 
             // tabFine
             // 
             this.tabFine.AutoScroll = true;
@@ -622,12 +493,12 @@
             this.tabFine.Controls.Add(this.lbl_fl);
             this.tabFine.Controls.Add(this.CoMLabel);
             this.tabFine.Controls.Add(this.acceptButton);
-            this.tabFine.Controls.Add(this.pbFine);
             this.tabFine.Controls.Add(this.lbl_rad_ofs);
             this.tabFine.Controls.Add(this.lbl_ofs_rad);
             this.tabFine.Controls.Add(this.lbl_ofs_tan);
-            this.tabFine.Controls.Add(this.combinedImagePB);
             this.tabFine.Controls.Add(this.lbl_tan_ofs);
+            this.tabFine.Controls.Add(this.pbFine);
+            this.tabFine.Controls.Add(this.combinedImagePB);
             this.tabFine.Location = new System.Drawing.Point(4, 48);
             this.tabFine.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tabFine.Name = "tabFine";
@@ -723,15 +594,6 @@
             this.acceptButton.UseVisualStyleBackColor = false;
             this.acceptButton.Click += new System.EventHandler(this.acceptButton_Click);
             // 
-            // pbFine
-            // 
-            this.pbFine.Image = ((System.Drawing.Image)(resources.GetObject("pbFine.Image")));
-            this.pbFine.Location = new System.Drawing.Point(685, 99);
-            this.pbFine.Name = "pbFine";
-            this.pbFine.Size = new System.Drawing.Size(200, 224);
-            this.pbFine.TabIndex = 40;
-            this.pbFine.TabStop = false;
-            // 
             // lbl_rad_ofs
             // 
             this.lbl_rad_ofs.AutoSize = true;
@@ -758,18 +620,6 @@
             this.lbl_ofs_tan.Size = new System.Drawing.Size(125, 26);
             this.lbl_ofs_tan.TabIndex = 37;
             this.lbl_ofs_tan.Text = "TAN Offset:";
-            // 
-            // combinedImagePB
-            // 
-            this.combinedImagePB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.combinedImagePB.Location = new System.Drawing.Point(204, 30);
-            this.combinedImagePB.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.combinedImagePB.Name = "combinedImagePB";
-            this.combinedImagePB.Size = new System.Drawing.Size(461, 365);
-            this.combinedImagePB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.combinedImagePB.TabIndex = 13;
-            this.combinedImagePB.TabStop = false;
-            this.combinedImagePB.WaitOnLoad = true;
             // 
             // lbl_tan_ofs
             // 
@@ -802,15 +652,6 @@
             this.tabCal.Size = new System.Drawing.Size(1406, 467);
             this.tabCal.TabIndex = 3;
             this.tabCal.Text = "CALIBRATE";
-            // 
-            // BlackHolePB
-            // 
-            this.BlackHolePB.Location = new System.Drawing.Point(742, 223);
-            this.BlackHolePB.Name = "BlackHolePB";
-            this.BlackHolePB.Size = new System.Drawing.Size(250, 210);
-            this.BlackHolePB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.BlackHolePB.TabIndex = 8;
-            this.BlackHolePB.TabStop = false;
             // 
             // label6
             // 
@@ -868,15 +709,6 @@
             this.label3.Size = new System.Drawing.Size(182, 26);
             this.label3.TabIndex = 1;
             this.label3.Text = "Reference points:";
-            // 
-            // CalibrateImgPB
-            // 
-            this.CalibrateImgPB.Location = new System.Drawing.Point(20, 11);
-            this.CalibrateImgPB.Name = "CalibrateImgPB";
-            this.CalibrateImgPB.Size = new System.Drawing.Size(715, 462);
-            this.CalibrateImgPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.CalibrateImgPB.TabIndex = 0;
-            this.CalibrateImgPB.TabStop = false;
             // 
             // lbl_01
             // 
@@ -1061,6 +893,178 @@
             this.increaseExposureLarge_button.UseVisualStyleBackColor = true;
             this.increaseExposureLarge_button.Click += new System.EventHandler(this.increaseExposureLarge_button_Click);
             // 
+            // Out_button
+            // 
+            this.Out_button.BackColor = System.Drawing.Color.White;
+            this.Out_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Out_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Out_button.Location = new System.Drawing.Point(854, 172);
+            this.Out_button.Name = "Out_button";
+            this.Out_button.Size = new System.Drawing.Size(67, 63);
+            this.Out_button.TabIndex = 47;
+            this.Out_button.Text = "Out";
+            this.Out_button.UseVisualStyleBackColor = false;
+            this.Out_button.Click += new System.EventHandler(this.RTbutton_Click);
+            // 
+            // In_button
+            // 
+            this.In_button.BackColor = System.Drawing.Color.White;
+            this.In_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.In_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.In_button.Location = new System.Drawing.Point(854, 103);
+            this.In_button.Name = "In_button";
+            this.In_button.Size = new System.Drawing.Size(67, 63);
+            this.In_button.TabIndex = 46;
+            this.In_button.Text = "In";
+            this.In_button.UseVisualStyleBackColor = false;
+            this.In_button.Click += new System.EventHandler(this.LTbutton_Click);
+            // 
+            // Clockwise_button
+            // 
+            this.Clockwise_button.BackColor = System.Drawing.Color.White;
+            this.Clockwise_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Clockwise_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Clockwise_button.Location = new System.Drawing.Point(927, 134);
+            this.Clockwise_button.Name = "Clockwise_button";
+            this.Clockwise_button.Size = new System.Drawing.Size(67, 63);
+            this.Clockwise_button.TabIndex = 45;
+            this.Clockwise_button.Text = "CW";
+            this.Clockwise_button.UseVisualStyleBackColor = false;
+            this.Clockwise_button.Click += new System.EventHandler(this.DWbutton_Click);
+            // 
+            // CounterClockwise_button
+            // 
+            this.CounterClockwise_button.BackColor = System.Drawing.Color.White;
+            this.CounterClockwise_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.CounterClockwise_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CounterClockwise_button.Location = new System.Drawing.Point(781, 134);
+            this.CounterClockwise_button.Name = "CounterClockwise_button";
+            this.CounterClockwise_button.Size = new System.Drawing.Size(67, 63);
+            this.CounterClockwise_button.TabIndex = 44;
+            this.CounterClockwise_button.Text = "CCW";
+            this.CounterClockwise_button.UseVisualStyleBackColor = false;
+            this.CounterClockwise_button.Click += new System.EventHandler(this.UpButton_Click);
+            // 
+            // overviewImagePB
+            // 
+            this.overviewImagePB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.overviewImagePB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.overviewImagePB.Location = new System.Drawing.Point(28, 12);
+            this.overviewImagePB.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.overviewImagePB.Name = "overviewImagePB";
+            this.overviewImagePB.Size = new System.Drawing.Size(603, 344);
+            this.overviewImagePB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.overviewImagePB.TabIndex = 12;
+            this.overviewImagePB.TabStop = false;
+            // 
+            // upDownPBTwo
+            // 
+            this.upDownPBTwo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.upDownPBTwo.Location = new System.Drawing.Point(11, 281);
+            this.upDownPBTwo.Margin = new System.Windows.Forms.Padding(4);
+            this.upDownPBTwo.Name = "upDownPBTwo";
+            this.upDownPBTwo.Size = new System.Drawing.Size(250, 250);
+            this.upDownPBTwo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.upDownPBTwo.TabIndex = 15;
+            this.upDownPBTwo.TabStop = false;
+            this.upDownPBTwo.WaitOnLoad = true;
+            // 
+            // upDownPBOne
+            // 
+            this.upDownPBOne.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.upDownPBOne.Location = new System.Drawing.Point(269, 281);
+            this.upDownPBOne.Margin = new System.Windows.Forms.Padding(4);
+            this.upDownPBOne.Name = "upDownPBOne";
+            this.upDownPBOne.Size = new System.Drawing.Size(250, 250);
+            this.upDownPBOne.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.upDownPBOne.TabIndex = 14;
+            this.upDownPBOne.TabStop = false;
+            this.upDownPBOne.WaitOnLoad = true;
+            // 
+            // leftRightPBOne
+            // 
+            this.leftRightPBOne.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.leftRightPBOne.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.leftRightPBOne.Location = new System.Drawing.Point(11, 23);
+            this.leftRightPBOne.Margin = new System.Windows.Forms.Padding(4);
+            this.leftRightPBOne.Name = "leftRightPBOne";
+            this.leftRightPBOne.Size = new System.Drawing.Size(250, 250);
+            this.leftRightPBOne.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.leftRightPBOne.TabIndex = 13;
+            this.leftRightPBOne.TabStop = false;
+            this.leftRightPBOne.WaitOnLoad = true;
+            // 
+            // leftRightPBTwo
+            // 
+            this.leftRightPBTwo.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.leftRightPBTwo.Location = new System.Drawing.Point(269, 23);
+            this.leftRightPBTwo.Margin = new System.Windows.Forms.Padding(4);
+            this.leftRightPBTwo.Name = "leftRightPBTwo";
+            this.leftRightPBTwo.Size = new System.Drawing.Size(250, 250);
+            this.leftRightPBTwo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.leftRightPBTwo.TabIndex = 12;
+            this.leftRightPBTwo.TabStop = false;
+            this.leftRightPBTwo.WaitOnLoad = true;
+            // 
+            // pb_Lower
+            // 
+            this.pb_Lower.Image = ((System.Drawing.Image)(resources.GetObject("pb_Lower.Image")));
+            this.pb_Lower.Location = new System.Drawing.Point(766, 299);
+            this.pb_Lower.Name = "pb_Lower";
+            this.pb_Lower.Size = new System.Drawing.Size(200, 224);
+            this.pb_Lower.TabIndex = 28;
+            this.pb_Lower.TabStop = false;
+            // 
+            // pb_Upper
+            // 
+            this.pb_Upper.Image = ((System.Drawing.Image)(resources.GetObject("pb_Upper.Image")));
+            this.pb_Upper.Location = new System.Drawing.Point(766, 45);
+            this.pb_Upper.Name = "pb_Upper";
+            this.pb_Upper.Size = new System.Drawing.Size(200, 224);
+            this.pb_Upper.TabIndex = 27;
+            this.pb_Upper.TabStop = false;
+            // 
+            // pbFine
+            // 
+            this.pbFine.Image = ((System.Drawing.Image)(resources.GetObject("pbFine.Image")));
+            this.pbFine.Location = new System.Drawing.Point(685, 99);
+            this.pbFine.Name = "pbFine";
+            this.pbFine.Size = new System.Drawing.Size(200, 224);
+            this.pbFine.TabIndex = 40;
+            this.pbFine.TabStop = false;
+            // 
+            // combinedImagePB
+            // 
+            this.combinedImagePB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.combinedImagePB.Location = new System.Drawing.Point(204, 30);
+            this.combinedImagePB.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
+            this.combinedImagePB.Name = "combinedImagePB";
+            this.combinedImagePB.Size = new System.Drawing.Size(461, 365);
+            this.combinedImagePB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.combinedImagePB.TabIndex = 13;
+            this.combinedImagePB.TabStop = false;
+            this.combinedImagePB.WaitOnLoad = true;
+            // 
+            // BlackHolePB
+            // 
+            this.BlackHolePB.Location = new System.Drawing.Point(742, 223);
+            this.BlackHolePB.Name = "BlackHolePB";
+            this.BlackHolePB.Size = new System.Drawing.Size(250, 210);
+            this.BlackHolePB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.BlackHolePB.TabIndex = 8;
+            this.BlackHolePB.TabStop = false;
+            // 
+            // CalibrateImgPB
+            // 
+            this.CalibrateImgPB.Location = new System.Drawing.Point(20, 11);
+            this.CalibrateImgPB.Name = "CalibrateImgPB";
+            this.CalibrateImgPB.Size = new System.Drawing.Size(715, 462);
+            this.CalibrateImgPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.CalibrateImgPB.TabIndex = 0;
+            this.CalibrateImgPB.TabStop = false;
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -1102,26 +1106,26 @@
             this.tabOverview.ResumeLayout(false);
             this.tabOverview.PerformLayout();
             this.groupBox5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.overviewImagePB)).EndInit();
             this.tabCoarse.ResumeLayout(false);
             this.tabCoarse.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_Lower)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pb_Upper)).EndInit();
             this.gbCoarse.ResumeLayout(false);
             this.gbCoarse.PerformLayout();
+            this.tabFine.ResumeLayout(false);
+            this.tabFine.PerformLayout();
+            this.tabCal.ResumeLayout(false);
+            this.tabCal.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.exposureSlider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.overviewImagePB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownPBTwo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.upDownPBOne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.leftRightPBOne)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.leftRightPBTwo)).EndInit();
-            this.tabFine.ResumeLayout(false);
-            this.tabFine.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Lower)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_Upper)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbFine)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.combinedImagePB)).EndInit();
-            this.tabCal.ResumeLayout(false);
-            this.tabCal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BlackHolePB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CalibrateImgPB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.exposureSlider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1160,10 +1164,10 @@
         private System.Windows.Forms.Label lbl_tan_ofs;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.PictureBox CalibrateImgPB;
-        private System.Windows.Forms.Button RTbutton;
-        private System.Windows.Forms.Button LTbutton;
-        private System.Windows.Forms.Button DWbutton;
-        private System.Windows.Forms.Button UpButton;
+        private System.Windows.Forms.Button Out_button;
+        private System.Windows.Forms.Button In_button;
+        private System.Windows.Forms.Button Clockwise_button;
+        private System.Windows.Forms.Button CounterClockwise_button;
 		private System.Windows.Forms.Button btnCheckAllCoarse;
 		private System.Windows.Forms.Button btnCheckAllFine;
 		private System.Windows.Forms.Label lbl_01;

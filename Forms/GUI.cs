@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MirrorAlignmentSystem.Properties;
+using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -98,15 +99,29 @@ namespace MirrorAlignmentSystem
             valueSegmentNumberTextbox = SegmentNumberTextbox.Text;
             finePBshow = "sgbg";
             exposureSlider.Value = 100;
-            //VisualStyleElement.TrackBar sd = new VisualStyleElement.TrackBar();
-            //exposureSlider.rect
-            //TrackBarEnlarger.SetThumbRect(exposureSlider);
 
             CheckForIllegalCrossThreadCalls = false;
-            //this.ActiveControl = BlackBGNumberLabel;
+
+            SetSegmentControllerArrows();
 
             DisableLabel();
             ShowSegnum(valueSegmentNumberTextbox);
+        }
+
+        private void SetSegmentControllerArrows()
+        {
+            //CCW_Button
+            var counterClockwiseArrow = new Bitmap(Resources.curvedArrow);
+            counterClockwiseArrow.RotateFlip(RotateFlipType.RotateNoneFlipX);
+            this.CounterClockwise_button.BackgroundImage = counterClockwiseArrow;
+            this.CounterClockwise_button.BackgroundImageLayout = ImageLayout.Stretch;
+            this.CounterClockwise_button.Text = "";
+
+            //CCW_Button
+            var clockwiseArrow = new Bitmap(Resources.curvedArrow);
+            this.Clockwise_button.BackgroundImage = clockwiseArrow;
+            this.Clockwise_button.BackgroundImageLayout = ImageLayout.Stretch;
+            this.Clockwise_button.Text = "";
         }
 
         /// <summary>
@@ -1564,7 +1579,7 @@ namespace MirrorAlignmentSystem
             exposureSlider.Value += 20;
 
         }
-        }
+    }
 
     //public static class TrackBarEnlarger
     //{

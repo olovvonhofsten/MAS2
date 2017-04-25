@@ -73,6 +73,16 @@ namespace MirrorAlignmentSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap curvedArrow {
+            get {
+                object obj = ResourceManager.GetObject("curvedArrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap White_Background {
             get {
                 object obj = ResourceManager.GetObject("White_Background", resourceCulture);

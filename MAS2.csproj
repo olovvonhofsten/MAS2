@@ -291,6 +291,7 @@
     <None Include="Resources\White_Background.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\curvedArrow.png" />
     <Content Include="triangle.fx" />
   </ItemGroup>
   <ItemGroup>
