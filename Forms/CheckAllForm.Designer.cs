@@ -79,25 +79,26 @@
             // 
             // imageBox1
             // 
+            this.imageBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.imageBox1.Location = new System.Drawing.Point(0, 67);
             this.imageBox1.Name = "imageBox1";
-            this.imageBox1.Size = new System.Drawing.Size(289, 288);
+            this.imageBox1.Size = new System.Drawing.Size(548, 288);
             this.imageBox1.TabIndex = 2;
             this.imageBox1.TabStop = false;
             // 
             // imageBox2
             // 
-            this.imageBox2.Location = new System.Drawing.Point(295, 67);
+            this.imageBox2.Location = new System.Drawing.Point(554, 67);
             this.imageBox2.Name = "imageBox2";
-            this.imageBox2.Size = new System.Drawing.Size(253, 288);
+            this.imageBox2.Size = new System.Drawing.Size(250, 120);
             this.imageBox2.TabIndex = 2;
             this.imageBox2.TabStop = false;
             // 
             // imageBox3
             // 
-            this.imageBox3.Location = new System.Drawing.Point(554, 67);
+            this.imageBox3.Location = new System.Drawing.Point(554, 235);
             this.imageBox3.Name = "imageBox3";
-            this.imageBox3.Size = new System.Drawing.Size(269, 288);
+            this.imageBox3.Size = new System.Drawing.Size(250, 120);
             this.imageBox3.TabIndex = 2;
             this.imageBox3.TabStop = false;
             // 
@@ -113,7 +114,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(362, 369);
+            this.label2.Location = new System.Drawing.Point(631, 199);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 13);
             this.label2.TabIndex = 5;
