@@ -440,7 +440,7 @@
             this.tabCoarse.Location = new System.Drawing.Point(4, 48);
             this.tabCoarse.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tabCoarse.Name = "tabCoarse";
-            this.tabCoarse.Size = new System.Drawing.Size(1342, 331);
+            this.tabCoarse.Size = new System.Drawing.Size(1406, 467);
             this.tabCoarse.TabIndex = 2;
             this.tabCoarse.Text = "COARSE";
             // 
@@ -632,7 +632,7 @@
             this.tabFine.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tabFine.Name = "tabFine";
             this.tabFine.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.tabFine.Size = new System.Drawing.Size(1342, 331);
+            this.tabFine.Size = new System.Drawing.Size(1406, 467);
             this.tabFine.TabIndex = 1;
             this.tabFine.Text = "FINE";
             // 
@@ -799,7 +799,7 @@
             this.tabCal.Location = new System.Drawing.Point(4, 48);
             this.tabCal.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tabCal.Name = "tabCal";
-            this.tabCal.Size = new System.Drawing.Size(1342, 331);
+            this.tabCal.Size = new System.Drawing.Size(1406, 467);
             this.tabCal.TabIndex = 3;
             this.tabCal.Text = "CALIBRATE";
             // 
@@ -1008,7 +1008,7 @@
             // 
             // exposureSlider
             // 
-            this.exposureSlider.Location = new System.Drawing.Point(104, 0);
+            this.exposureSlider.Location = new System.Drawing.Point(223, 0);
             this.exposureSlider.Maximum = 2000;
             this.exposureSlider.Minimum = 1;
             this.exposureSlider.Name = "exposureSlider";
@@ -1020,7 +1020,7 @@
             // reduceExposureLarge_button
             // 
             this.reduceExposureLarge_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reduceExposureLarge_button.Location = new System.Drawing.Point(804, 4);
+            this.reduceExposureLarge_button.Location = new System.Drawing.Point(140, 4);
             this.reduceExposureLarge_button.Name = "reduceExposureLarge_button";
             this.reduceExposureLarge_button.Size = new System.Drawing.Size(34, 27);
             this.reduceExposureLarge_button.TabIndex = 0;
@@ -1030,8 +1030,8 @@
             // 
             // reduceExposureSmall_button
             // 
-            this.reduceExposureSmall_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.reduceExposureSmall_button.Location = new System.Drawing.Point(844, 4);
+            this.reduceExposureSmall_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reduceExposureSmall_button.Location = new System.Drawing.Point(180, 4);
             this.reduceExposureSmall_button.Name = "reduceExposureSmall_button";
             this.reduceExposureSmall_button.Size = new System.Drawing.Size(34, 27);
             this.reduceExposureSmall_button.TabIndex = 53;
