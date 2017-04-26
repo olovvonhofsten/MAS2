@@ -1,3 +1,0 @@
-SQLString # server=CLEANERGY-PC\SQLEXPRESS; integrated security=SSPI; Trusted_Connection=yes; database=MAS2DB; connection timeout=30
-
-

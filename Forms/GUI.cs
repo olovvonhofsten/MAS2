@@ -94,6 +94,7 @@ namespace MirrorAlignmentSystem
             System.IO.Directory.CreateDirectory(pathToday);
 
             DiscIDTextBox.Text = "NOT SET";
+
             valueDiscIDTextBox = DiscIDTextBox.Text;
             SegmentNumberTextbox.Text = "0911";
             valueSegmentNumberTextbox = SegmentNumberTextbox.Text;

@@ -53,3 +53,4 @@ local.txt
 *.suo
 bin/
 Debug/
+bin
