@@ -103,7 +103,7 @@ namespace MirrorAlignmentSystem
             CheckForIllegalCrossThreadCalls = false;
 
             SetSegmentControllerArrows();
-
+            //exposureSlider.SetThumbRect();
             DisableLabel();
             ShowSegnum(valueSegmentNumberTextbox);
         }
@@ -719,11 +719,11 @@ namespace MirrorAlignmentSystem
         /// <summary>
         /// Saves the settings in the DALgetmotor1spreache
         /// </summary>
-        private void button2_Click(object sender, EventArgs e)
-        {
+        //private void button2_Click(object sender, EventArgs e)
+        //{
             //string[] settings = DAL.GetSettings("User");
 
-        }
+        //}
 
         /// <summary>
         /// Not implemented
@@ -1041,7 +1041,7 @@ namespace MirrorAlignmentSystem
 
         SegmentNumber segnum = new SegmentNumber();
 
-        private void UpButton_Click(object sender, EventArgs e)
+        private void CounterClockwise_button_Click(object sender, EventArgs e)
         {
             segnum.FromString(valueSegmentNumberTextbox);
             segnum.Up();
@@ -1051,7 +1051,7 @@ namespace MirrorAlignmentSystem
             ShowSegnum(seg);
         }
 
-        private void DWbutton_Click(object sender, EventArgs e)
+        private void Clockwise_button_Click(object sender, EventArgs e)
         {
             segnum.FromString(valueSegmentNumberTextbox);
             segnum.Dn();
@@ -1061,7 +1061,7 @@ namespace MirrorAlignmentSystem
             ShowSegnum(seg);
         }
 
-        private void RTbutton_Click(object sender, EventArgs e)
+        private void Out_button_Click(object sender, EventArgs e)
         {
             segnum.FromString(valueSegmentNumberTextbox);
             segnum.Rg();
@@ -1071,7 +1071,7 @@ namespace MirrorAlignmentSystem
             ShowSegnum(seg);
         }
 
-        private void LTbutton_Click(object sender, EventArgs e)
+        private void In_button_Click(object sender, EventArgs e)
         {
             segnum.FromString(valueSegmentNumberTextbox);
             segnum.Lf();
@@ -1467,23 +1467,23 @@ namespace MirrorAlignmentSystem
             return folder_path;
         }
 
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-            SetTanRad(1.2, -0.7);
-        }
+        //private void button1_Click_2(object sender, EventArgs e)
+        //{
+        //    SetTanRad(1.2, -0.7);
+        //}
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            SetTanRad(0.3, 0.2);
-        }
+        //private void button3_Click(object sender, EventArgs e)
+        //{
+        //    SetTanRad(0.3, 0.2);
+        //}
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            SetFineImg(2, 2);
-        }
+        //private void button4_Click(object sender, EventArgs e)
+        //{
+        //    SetFineImg(2, 2);
+        //}
 
         //Saves all data
-        private void button2_Click_1(object sender, EventArgs e)
+        private void SaveAllData_button_Click(object sender, EventArgs e)
         {
             if (combinedImagePB.Image != null)
             {
@@ -1515,15 +1515,15 @@ namespace MirrorAlignmentSystem
             DataSaver.instance.SaveData("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + "AllData.csv");
         }
 
-        private void button1_Click_3(object sender, EventArgs e)
-        {
-            ShowAlign(773, -208);
-        }
+        //private void button1_Click_3(object sender, EventArgs e)
+        //{
+        //    ShowAlign(773, -208);
+        //}
 
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-            ShowRot(11, 22, 33);
-        }
+        //private void button3_Click_1(object sender, EventArgs e)
+        //{
+        //    ShowRot(11, 22, 33);
+        //}
 
         private void sgbgFine_CheckedChanged(object sender, EventArgs e)
         {
@@ -1610,7 +1610,7 @@ namespace MirrorAlignmentSystem
     //    public static void SetThumbRect(this TrackBar trackBar)
     //    {
     //        RECT rc = new RECT();
-    //        SendMessage(trackBar.Handle=, TBM_SETTHUMBRECT, IntPtr.Zero, ref rc);
+    //        SendMessage(trackBar.Handle, TBM_SETTHUMBRECT, IntPtr.Zero, ref rc);
     //        //return rc;
     //    }
     //}
