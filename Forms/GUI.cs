@@ -1461,7 +1461,12 @@ namespace MirrorAlignmentSystem
             var time = DateTime.Now.ToString("HH:mm:ss");
             using (var streamWriter = new StreamWriter(path, append: !newFile))
             {
-                streamWriter.Write(string.Format("{0};{1};{2};{3};{4};", segment, isOk, tanOffset, radOffset, time));
+                if (newFile)
+                {
+                    streamWriter.Write(string.Format("{0};{1};{2};{3};{4};\r\n", "segment", "Ok", "tan offset", "rad offset", "time"));
+
+                }
+                streamWriter.Write(string.Format("{0};{1};{2};{3};{4};\r\n", segment, isOk, tanOffset, radOffset, time));
             }
         }
 
