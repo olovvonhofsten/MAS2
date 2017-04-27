@@ -4,123 +4,126 @@ using System.Drawing;
 using System.Threading;
 using System.Windows.Forms;
 using System.Linq;
+using System.IO;
 
 namespace MirrorAlignmentSystem
 {
-	/// <summary>
-	///  This class is the main worker of the application
-	/// </summary>
-	public partial class Worker
-	{
-		/// <summary>
-		/// The main GUI, the worker rules over the GUI
-		/// </summary>
-		MainWindow mainWindow;
+    /// <summary>
+    ///  This class is the main worker of the application
+    /// </summary>
+    public partial class Worker
+    {
+        /// <summary>
+        /// The main GUI, the worker rules over the GUI
+        /// </summary>
+        MainWindow mainWindow;
 
-		/// <summary>
-		/// The class that controls the camera of this application
-		/// </summary>
-		CameraController cameraController;
+        /// <summary>
+        /// The class that controls the camera of this application
+        /// </summary>
+        CameraController cameraController;
 
-		// a whole bush of liberated variables
-		bool manualMeasureMode;
-		bool blackBkgAquired;
-		bool blackBkgAquiredUpDown;       
-		bool segNotExist;
-		bool manualOverviewUpdate;
-		double[,] doublePoints;
-		bool bitmapBkgAquired;
-		bool leftBkgAquired;
-		bool rightBkgAquired;
-		bool upBkgAquired;
-		bool downBkgAquired;
-		int lifeTics;
-		int programCycle;
-		int blackBGCounter;
-		int blackBGCounterLeftRight;
-		int blackBGCounterUpDown;
-		int dotWidth;
-		int sensorHeight;
-		bool offlineOnlineLastCycle;
-		string alignmentLastCycle;
-		bool leftRightUpDownLastCycle;
-		bool leftRightCoarseAlignment;
-		bool upDownCoarseAlignment;
-		int coarseCounter;
-		string segmentLastCycle;
-		string segment;
-		int[] AOIData;
-		bool calibrateFirstCycle;
-		float FPS;
-		string[] cameraSettings;
-		double exposureRate;
-		double framerate;
-		double threshold;
-		int waitOnMonitor;
-		int waitOnCycle;
-		int xOffset;
-		int yOffset;
+        // a whole bush of liberated variables
+        bool manualMeasureMode;
+        bool blackBkgAquired;
+        bool blackBkgAquiredUpDown;
+        bool segNotExist;
+        bool manualOverviewUpdate;
+        double[,] doublePoints;
+        bool bitmapBkgAquired;
+        bool leftBkgAquired;
+        bool rightBkgAquired;
+        bool upBkgAquired;
+        bool downBkgAquired;
+        int lifeTics;
+        int programCycle;
+        int blackBGCounter;
+        int blackBGCounterLeftRight;
+        int blackBGCounterUpDown;
+        int dotWidth;
+        int sensorHeight;
+        bool offlineOnlineLastCycle;
+        string alignmentLastCycle;
+        bool leftRightUpDownLastCycle;
+        bool leftRightCoarseAlignment;
+        bool upDownCoarseAlignment;
+        int coarseCounter;
+        string segmentLastCycle;
+        string segment;
+        int[] AOIData;
+        bool calibrateFirstCycle;
+        float FPS;
+        string[] cameraSettings;
+        double exposureRate;
+        double framerate;
+        double threshold;
+        int waitOnMonitor;
+        int waitOnCycle;
+        int xOffset;
+        int yOffset;
+
+        //status of segments contains: [ok, offsetX; offsetY; offsetTan; offsetRad]
         double[,] statusOfSegments = new double[67, 5];
-		Bitmap cameraFineAlignBlack;
-		Bitmap cameraFineAlignPattern;
-		Bitmap combinedBitmap;
+        Bitmap cameraFineAlignBlack;
+        Bitmap cameraFineAlignPattern;
+        Bitmap combinedBitmap;
         Bitmap cameraOverview;
         Bitmap cameraCal;
         Bitmap cameraCalBlack;
         Bitmap cameraCalDiff;
         Bitmap blackHoleImg;
-		Bitmap cameraCoarseAlignLeft;
-		Bitmap cameraCoarseAlignRight;
-		Bitmap cameraCoarseAlignUp;
-		Bitmap cameraCoarseAlignDown;
-		Bitmap cameraCoarseAlignBlackOne;
-		Bitmap cameraCoarseAlignBlackTwo;
-		Bitmap returnImg1;
-		Bitmap returnImg2;
-		Bitmap returnImg3;
-		Bitmap returnImg4;
-		Point massCenter = new Point(0,0);
+        Bitmap cameraCoarseAlignLeft;
+        Bitmap cameraCoarseAlignRight;
+        Bitmap cameraCoarseAlignUp;
+        Bitmap cameraCoarseAlignDown;
+        Bitmap cameraCoarseAlignBlackOne;
+        Bitmap cameraCoarseAlignBlackTwo;
+        Bitmap returnImg1;
+        Bitmap returnImg2;
+        Bitmap returnImg3;
+        Bitmap returnImg4;
+        Point massCenter = new Point(0, 0);
         double[] offsetXY, offsetRT;
-		MonitorHandler monitor;
-		Stopwatch stopWatchProgram;
-		Stopwatch stopWatchStartUp;
-		Stopwatch stopWatchCamera;
-		Stopwatch stopWatchAlgorithm;
-		Stopwatch stopWatchBackgroundImage;
-		Stopwatch stopWatchOverviewImage;
-		Stopwatch stopWatchBlackBkgImage;
-		Stopwatch stopWatchBitmapBkgImage;
-		Stopwatch stopWatchCombinedImage;
-		Stopwatch stopWatchImageStore;
-		Stopwatch stopWatchUpdateGUI;
-		
-		Stopwatch stopWatchFPS;
-		bool cameraInitialized;
+        MonitorHandler monitor;
+        Stopwatch stopWatchProgram;
+        Stopwatch stopWatchStartUp;
+        Stopwatch stopWatchCamera;
+        Stopwatch stopWatchAlgorithm;
+        Stopwatch stopWatchBackgroundImage;
+        Stopwatch stopWatchOverviewImage;
+        Stopwatch stopWatchBlackBkgImage;
+        Stopwatch stopWatchBitmapBkgImage;
+        Stopwatch stopWatchCombinedImage;
+        Stopwatch stopWatchImageStore;
+        Stopwatch stopWatchUpdateGUI;
 
-		bool offline;
-		string alignmentMode;
-		bool manualAlignment;
+        Stopwatch stopWatchFPS;
+        bool cameraInitialized;
+
+        bool offline;
+        string alignmentMode;
+        bool manualAlignment;
 
 
 
-		/// <summary>
-		///  This class constructor
-		/// </summary>
-		public Worker(MainWindow mainWindowInput, CameraController inputCamera) 
-		{
-			mainWindow = mainWindowInput;
-			cameraController = inputCamera;
+        /// <summary>
+        ///  This class constructor
+        /// </summary>
+        public Worker(MainWindow mainWindowInput, CameraController inputCamera)
+        {
+            mainWindow = mainWindowInput;
+            cameraController = inputCamera;
 
-		}
+        }
 
-		partial void ExecuteOverview();
-		partial void ExecuteFine();
-		partial void ExecuteCoarse();
+        partial void ExecuteOverview();
+        partial void ExecuteFine();
+        partial void ExecuteCoarse();
 
-		/// <summary>
-		///  Entry point for the thread
-		/// </summary>
-		public void Run()
+        /// <summary>
+        ///  Entry point for the thread
+        /// </summary>
+        public void Run()
         {
 
             // Set variables
@@ -160,7 +163,7 @@ namespace MirrorAlignmentSystem
             blackBGCounterLeftRight = 0;
             blackBGCounterUpDown = 0;
 
-			dotWidth = 10;
+            dotWidth = 10;
             sensorHeight = 0;// 1200;
 
             // Keeps track of the offline/online mode to help the application notice when the user change mode.
@@ -407,7 +410,7 @@ namespace MirrorAlignmentSystem
 
                     doublePoints = new double[4, 2];
 
-						//Makes a white screen
+                    //Makes a white screen
                     doublePoints[0, 0] = -1;
                     doublePoints[0, 1] = -1;
 
@@ -652,23 +655,28 @@ namespace MirrorAlignmentSystem
                         double[] seg3 = new double[67];
                         double[] seg4 = new double[67];
                         double[] seg5 = new double[67];
-                        DataSaver.instance.ClearAllData();
-                        DataSaver.instance.AddDataPoint("segment; offsetX; offsetY; offsetTan; offsetRad", new int[0]);
-                        for (int ticks = 0; ticks < 66; ticks++)
+
+                        var finePath = "c:/MASDATA/" + mainWindow.GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + "AllFineData_" + DateTime.Now.ToString("HHmm") + ".csv";
+                        using (var streamWriter = new StreamWriter(finePath))
                         {
-                            statusOfSegments[ticks, 0] = seg1[ticks] = fineData[ticks, 0];
-                            statusOfSegments[ticks, 1] = seg2[ticks] = fineData[ticks, 1];
-                            statusOfSegments[ticks, 2] = seg3[ticks] = fineData[ticks, 2];
-                            statusOfSegments[ticks, 3] = seg4[ticks] = fineData[ticks, 3];
-                            statusOfSegments[ticks, 4] = seg5[ticks] = fineData[ticks, 4];
-                            DataSaver.instance.AddDataPoint(Calibrate.segments[ticks], seg1);
-                            DataSaver.instance.AddDataPoint(Calibrate.segments[ticks], seg2);
-                            DataSaver.instance.AddDataPoint(Calibrate.segments[ticks], seg3);
-                            DataSaver.instance.AddDataPoint(Calibrate.segments[ticks], seg4);
-                            DataSaver.instance.AddDataPoint(Calibrate.segments[ticks], seg5);
+                            streamWriter.WriteLine("segment; ok; offsetX; offsetY; offsetTan; offsetRad");
+                            for (int ticks = 0; ticks < 66; ticks++)
+                            {
+                                statusOfSegments[ticks, 0] = seg1[ticks] = fineData[ticks, 0];
+                                statusOfSegments[ticks, 1] = seg2[ticks] = fineData[ticks, 1];
+                                statusOfSegments[ticks, 2] = seg3[ticks] = fineData[ticks, 2];
+                                statusOfSegments[ticks, 3] = seg4[ticks] = fineData[ticks, 3];
+                                statusOfSegments[ticks, 4] = seg5[ticks] = fineData[ticks, 4];
+
+                                streamWriter.Write(Calibrate.segments[ticks] + ";");
+                                streamWriter.Write(seg1[ticks] + ";");
+                                streamWriter.Write(seg2[ticks] + ";");
+                                streamWriter.Write(seg3[ticks] + ";");
+                                streamWriter.Write(seg4[ticks] + ";");
+                                streamWriter.Write(seg5[ticks] + ";\r\n");
+                            }
                         }
-                        //DataSaver.instance.SaveData("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + "AllData.csv");
-                        DataSaver.instance.SaveData($"c:/MASDATA/{mainWindow.GetDiscID()}/{DateTime.Now.ToString("yyyy_MM_dd")}/AllFineData_{DateTime.Now.ToString("HHmm")}.csv");
+
                         alignmentMode = "over";
                         overviewFine.Save(path + "CheckAllFine_" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
                     }
@@ -680,6 +688,8 @@ namespace MirrorAlignmentSystem
                         Bitmap overviewCoarseY;
                         var caf = mainWindow.getCAF();
                         Algorithm.checkAllSegmentsCoarse(cameraController, cameraSettings, monitor, caf, out coarseData, out overviewCoarseX, out overviewCoarseY);
+                        PrintAllCoarse(coarseData);
+
                         alignmentMode = "over";
                         overviewCoarseX.Save(path + "CheckAllCoarseX" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
                         overviewCoarseY.Save(path + "CheckAllCoarseY" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
@@ -718,12 +728,22 @@ namespace MirrorAlignmentSystem
                 programCycle++;
             }
         }
-				//AOIData = DAL.GetAOIData(segment);
-				//AOIData[1] = sensorHeight - AOIData[1];
-				//AOIData[5] = sensorHeight - AOIData[5];
-				//AOIData[7] = sensorHeight - AOIData[7];
-				//AOIData[9] = sensorHeight - AOIData[9];
-				//AOIData[11] = sensorHeight - AOIData[11];
+
+        private void PrintAllCoarse(double[,] coarseData)
+        {
+            var coarsePath = "c:/MASDATA/" + mainWindow.GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + "AllCoarseData_" + DateTime.Now.ToString("HHmm") + ".csv";
+            using (var streamWriter = new StreamWriter(coarsePath))
+            {
+                streamWriter.WriteLine("segment; ok; LR, UD");
+                for (int ticks = 0; ticks < 66; ticks++)
+                {
+                    streamWriter.Write(Calibrate.segments[ticks] + ";");
+                    streamWriter.Write(coarseData[ticks, 0] + ";");
+                    streamWriter.Write(coarseData[ticks, 1] + ";");
+                    streamWriter.Write(coarseData[ticks, 2] + ";\r\n");
+                }
+            }
+        }
 
         private void InitializeStopwatches()
         {

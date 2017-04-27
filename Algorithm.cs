@@ -677,7 +677,7 @@ namespace MirrorAlignmentSystem
             string[] cameraSettings,
             MonitorHandler monitor,
             CheckAllForm caf,
-            out double[,] coarseData,
+            out double[,] coarseData,   //ok, LR, UD
             out Bitmap overviewX, out Bitmap overviewY)
         {
             coarseData = new double[66, 3];
@@ -691,11 +691,6 @@ namespace MirrorAlignmentSystem
             Bitmap coarseBitmap1 = new Bitmap(304, 164, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
             Bitmap coarseBitmap2 = new Bitmap(304, 164, System.Drawing.Imaging.PixelFormat.Format8bppIndexed);
             int dirUD, dirLR;
-
-            int ok;
-            //Image<Gray, byte> TotImg = new Image<Gray, byte>(imagesizex, imagesizey);
-            //TotImg.SetZero();
-            //Rectangle currentROI;
 
             Image<Bgr, byte> TotImg1 = new Image<Bgr, byte>(imagesizex, imagesizey);
             TotImg1.SetZero();
@@ -780,9 +775,10 @@ namespace MirrorAlignmentSystem
                 Image<Bgr, byte> coarseUD = new Image<Bgr, byte>(coarseBitmap1);
 
                 // check tolerance
-                ok = (dirLR == 0 && dirUD == 0) ? 1 : 0;
-                coarseData[tick, 0] = dirLR;
-                coarseData[tick, 1] = dirUD;
+                int ok = (dirLR == 0 && dirUD == 0) ? 1 : 0;
+                coarseData[tick, 0] = ok;
+                coarseData[tick, 1] = dirLR;
+                coarseData[tick, 2] = dirUD;
 
                 Image<Bgr, Byte> addImg1 = new Image<Bgr, byte>(TotImg1.Size);
                 CvInvoke.Add(coarseUD, TotImg1, addImg1);
