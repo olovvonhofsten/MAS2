@@ -1,6 +1,7 @@
 ﻿using MirrorAlignmentSystem.Properties;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
@@ -1435,13 +1436,33 @@ namespace MirrorAlignmentSystem
 
         private void acceptButton_Click(object sender, EventArgs e)
         {
-            string fn = "c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + "image_";
+            string path = "c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/";
+
+            PrintAcceptFineData(path);
+
+            string fn = path + "image_";
             var now = DateTime.Now;
             fn += now.ToShortDateString() + "_" + now.ToShortTimeString().Replace(':', '-') + "_";
             fn += valueSegmentNumberTextbox + ".bmp";
             if (combinedImagePB.Image != null) combinedImagePB.Image.Save(fn);
             Alignment = "checkcalibrate";
             tabControl1.SelectedIndex = 0;
+        }
+
+        private void PrintAcceptFineData(string path)
+        {
+            path = path + "accept_data.csv";
+            var newFile = !File.Exists(path);
+
+            var segment = GetSegmentNumber();
+            var tanOffset = lbl_tan_ofs.Text;
+            var radOffset = lbl_rad_ofs.Text;
+            var isOk = Convert.ToInt32(can_accept);
+            var time = DateTime.Now.ToString("HH:mm:ss");
+            using (var streamWriter = new StreamWriter(path, append: !newFile))
+            {
+                streamWriter.Write(string.Format("{0};{1};{2};{3};{4};", segment, isOk, tanOffset, radOffset, time));
+            }
         }
 
         private string folder_path = ".";
@@ -1466,48 +1487,38 @@ namespace MirrorAlignmentSystem
         //{
         //    return folder_path;
         //}
-        
+
         //Saves all data
-        private void SaveAllData_button_Click(object sender, EventArgs e)
-        {
-            if (combinedImagePB.Image != null)
-            {
-                Bitmap saveimage = new Bitmap(combinedImagePB.Image);
-                saveimage.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + GetSegmentNumber() + "Fine" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
-            }
-
-            if (leftRightPBOne.Image != null)
-            {
-                Bitmap saveimageCoarseLR = new Bitmap(leftRightPBOne.Image);
-                Bitmap saveimageCoarseRL = new Bitmap(leftRightPBTwo.Image);
-                Bitmap saveimageCoarseUD = new Bitmap(upDownPBOne.Image);
-                Bitmap saveimageCoarseDU = new Bitmap(upDownPBTwo.Image);
-                saveimageCoarseLR.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + GetSegmentNumber() + "CoarseLR" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
-                saveimageCoarseRL.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + GetSegmentNumber() + "CoarseRL" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
-                saveimageCoarseUD.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + GetSegmentNumber() + "CoarseUD" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
-                saveimageCoarseDU.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + GetSegmentNumber() + "CoarseDU" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
-            }
-
-            if (CalibrateImgPB.Image != null)
-            {
-                Bitmap saveimageCalibrate = new Bitmap(CalibrateImgPB.Image);
-                string filename = "c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + "Calibrate" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp";
-                saveimageCalibrate.Save(filename);
-            }
-            Bitmap saveimageOverview = new Bitmap(overviewImagePB.Image);
-            saveimageOverview.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + "Overview" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
-
-            DataSaver.instance.SaveData("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + "AllData.csv");
-        }
-
-        //private void button1_Click_3(object sender, EventArgs e)
+        //private void SaveAllData_button_Click(object sender, EventArgs e)
         //{
-        //    ShowAlign(773, -208);
-        //}
+        //    if (combinedImagePB.Image != null)
+        //    {
+        //        Bitmap saveimage = new Bitmap(combinedImagePB.Image);
+        //        saveimage.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + GetSegmentNumber() + "Fine" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
+        //    }
 
-        //private void button3_Click_1(object sender, EventArgs e)
-        //{
-        //    ShowRot(11, 22, 33);
+        //    if (leftRightPBOne.Image != null)
+        //    {
+        //        Bitmap saveimageCoarseLR = new Bitmap(leftRightPBOne.Image);
+        //        Bitmap saveimageCoarseRL = new Bitmap(leftRightPBTwo.Image);
+        //        Bitmap saveimageCoarseUD = new Bitmap(upDownPBOne.Image);
+        //        Bitmap saveimageCoarseDU = new Bitmap(upDownPBTwo.Image);
+        //        saveimageCoarseLR.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + GetSegmentNumber() + "CoarseLR" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
+        //        saveimageCoarseRL.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + GetSegmentNumber() + "CoarseRL" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
+        //        saveimageCoarseUD.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + GetSegmentNumber() + "CoarseUD" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
+        //        saveimageCoarseDU.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + GetSegmentNumber() + "CoarseDU" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
+        //    }
+
+        //    if (CalibrateImgPB.Image != null)
+        //    {
+        //        Bitmap saveimageCalibrate = new Bitmap(CalibrateImgPB.Image);
+        //        string filename = "c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + "Calibrate" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp";
+        //        saveimageCalibrate.Save(filename);
+        //    }
+        //    Bitmap saveimageOverview = new Bitmap(overviewImagePB.Image);
+        //    saveimageOverview.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + "Overview" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
+
+        //    DataSaver.instance.SaveData("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + "AllData.csv");
         //}
 
         private void sgbgFine_CheckedChanged(object sender, EventArgs e)
@@ -1565,40 +1576,5 @@ namespace MirrorAlignmentSystem
 
         }
     }
-
-    //public static class TrackBarEnlarger
-    //{
-    //    //TRACKBAR STUFF
-    //    [StructLayout(LayoutKind.Sequential)]
-    //    public struct RECT
-    //    {
-    //        public int Left;
-    //        public int Top;
-    //        public int Right;
-    //        public int Bottom;
-    //    }
-
-    //    [DllImport("user32.dll")]
-    //    static extern void SendMessage(IntPtr hwnd, uint msg, IntPtr wp, ref RECT lp);
-
-    //    private const uint TBM_GETTHUMBRECT = 0x419;
-    //    private const uint TBM_SETTHUMBRECT = 0x421;
-
-    //    // Implemented as an extension method.
-    //    public static RECT GetThumbRect(this TrackBar trackBar)
-    //    {
-    //        RECT rc = new RECT();
-    //        SendMessage(trackBar.Handle, TBM_GETTHUMBRECT, IntPtr.Zero, ref rc);
-    //        return rc;
-    //    }
-
-    //    public static void SetThumbRect(this TrackBar trackBar)
-    //    {
-    //        RECT rc = new RECT();
-    //        SendMessage(trackBar.Handle, TBM_SETTHUMBRECT, IntPtr.Zero, ref rc);
-    //        //return rc;
-    //    }
-    //}
-
 }
 

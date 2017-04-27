@@ -44,7 +44,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabOverview = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
-            this.SaveAllData_button = new System.Windows.Forms.Button();
             this.btnCheckAllCoarse = new System.Windows.Forms.Button();
             this.btnCheckAllFine = new System.Windows.Forms.Button();
             this.Out_button = new System.Windows.Forms.Button();
@@ -227,8 +226,8 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabOverview);
             this.tabControl1.Controls.Add(this.tabCoarse);
@@ -278,19 +277,6 @@
             this.label1.Size = new System.Drawing.Size(81, 24);
             this.label1.TabIndex = 50;
             this.label1.Text = "DISC ID";
-            // 
-            // SaveAllData_button
-            // 
-            this.SaveAllData_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.SaveAllData_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SaveAllData_button.Location = new System.Drawing.Point(224, 624);
-            this.SaveAllData_button.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.SaveAllData_button.Name = "SaveAllData_button";
-            this.SaveAllData_button.Size = new System.Drawing.Size(202, 66);
-            this.SaveAllData_button.TabIndex = 41;
-            this.SaveAllData_button.Text = "Save all data";
-            this.SaveAllData_button.UseVisualStyleBackColor = true;
-            this.SaveAllData_button.Click += new System.EventHandler(this.SaveAllData_button_Click);
             // 
             // btnCheckAllCoarse
             // 
@@ -417,8 +403,8 @@
             // 
             // overviewImagePB
             // 
-            this.overviewImagePB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.overviewImagePB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.overviewImagePB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.overviewImagePB.Location = new System.Drawing.Point(28, 12);
@@ -1073,7 +1059,6 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1084, 761);
             this.Controls.Add(this.increaseExposureLarge_button);
-            this.Controls.Add(this.SaveAllData_button);
             this.Controls.Add(this.increaseExposureSmall_button);
             this.Controls.Add(this.reduceExposureSmall_button);
             this.Controls.Add(this.reduceExposureLarge_button);
@@ -1144,7 +1129,7 @@
         private System.Windows.Forms.ToolStripMenuItem administrateToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem imagesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
-		private System.Windows.Forms.Timer BIA_timer;
+        private System.Windows.Forms.Timer BIA_timer;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabOverview;
         private System.Windows.Forms.TabPage tabFine;
@@ -1153,16 +1138,15 @@
         private System.Windows.Forms.PictureBox combinedImagePB;
         private System.Windows.Forms.TabPage tabCoarse;
         private System.Windows.Forms.GroupBox gbCoarse;
-		private System.Windows.Forms.Label lbl_lr_2;
-		private System.Windows.Forms.Label dirUpDownLabel;
+        private System.Windows.Forms.Label lbl_lr_2;
+        private System.Windows.Forms.Label dirUpDownLabel;
         private System.Windows.Forms.PictureBox upDownPBTwo;
         private System.Windows.Forms.PictureBox upDownPBOne;
         private System.Windows.Forms.PictureBox leftRightPBOne;
         private System.Windows.Forms.PictureBox leftRightPBTwo;
         private System.Windows.Forms.TabPage tabCal;
         private System.Windows.Forms.TextBox DiscIDTextBox;
-		private System.Windows.Forms.TextBox SegmentNumberTextbox;
-        private System.Windows.Forms.Button SaveAllData_button;
+        private System.Windows.Forms.TextBox SegmentNumberTextbox;
         private System.Windows.Forms.Label lbl_tan_ofs;
         private System.Windows.Forms.CheckBox checkBox1;
         private System.Windows.Forms.PictureBox CalibrateImgPB;
@@ -1170,26 +1154,26 @@
         private System.Windows.Forms.Button In_button;
         private System.Windows.Forms.Button Clockwise_button;
         private System.Windows.Forms.Button CounterClockwise_button;
-		private System.Windows.Forms.Button btnCheckAllCoarse;
-		private System.Windows.Forms.Button btnCheckAllFine;
-		private System.Windows.Forms.Label lbl_01;
-		private System.Windows.Forms.Label lbl_02;
-		private System.Windows.Forms.Label lbl_03;
-		private System.Windows.Forms.Label lbl_04;
-		private System.Windows.Forms.Label lbl_05;
-		private System.Windows.Forms.Label lbl_06;
-		private System.Windows.Forms.Label lbl_07;
-		private System.Windows.Forms.Label lbl_09;
-		private System.Windows.Forms.Label lbl_08;
-		private System.Windows.Forms.Label lbl_11;
-		private System.Windows.Forms.Label lbl_10;
-		private System.Windows.Forms.PictureBox pb_Upper;
-		private System.Windows.Forms.PictureBox pb_Lower;
-		private System.Windows.Forms.ImageList imageList1;
-		private System.Windows.Forms.Label lbl_ur;
-		private System.Windows.Forms.Label lbl_ul;
-		private System.Windows.Forms.Label lbl_lr;
-		private System.Windows.Forms.Label lbl_ll;
+        private System.Windows.Forms.Button btnCheckAllCoarse;
+        private System.Windows.Forms.Button btnCheckAllFine;
+        private System.Windows.Forms.Label lbl_01;
+        private System.Windows.Forms.Label lbl_02;
+        private System.Windows.Forms.Label lbl_03;
+        private System.Windows.Forms.Label lbl_04;
+        private System.Windows.Forms.Label lbl_05;
+        private System.Windows.Forms.Label lbl_06;
+        private System.Windows.Forms.Label lbl_07;
+        private System.Windows.Forms.Label lbl_09;
+        private System.Windows.Forms.Label lbl_08;
+        private System.Windows.Forms.Label lbl_11;
+        private System.Windows.Forms.Label lbl_10;
+        private System.Windows.Forms.PictureBox pb_Upper;
+        private System.Windows.Forms.PictureBox pb_Lower;
+        private System.Windows.Forms.ImageList imageList1;
+        private System.Windows.Forms.Label lbl_ur;
+        private System.Windows.Forms.Label lbl_ul;
+        private System.Windows.Forms.Label lbl_lr;
+        private System.Windows.Forms.Label lbl_ll;
         private System.Windows.Forms.Label lbl_rad_ofs;
         private System.Windows.Forms.Label lbl_ofs_rad;
         private System.Windows.Forms.Label lbl_ofs_tan;
@@ -1199,18 +1183,18 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.Label CoMLabel;
+        private System.Windows.Forms.Label CoMLabel;
         private System.Windows.Forms.ToolStripMenuItem pathToolStripMenuItem;
-		private System.Windows.Forms.Label lbl_fr;
+        private System.Windows.Forms.Label lbl_fr;
         private System.Windows.Forms.Label lbl_fl;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton bgFine;
         private System.Windows.Forms.RadioButton sgFine;
         private System.Windows.Forms.RadioButton sgbgFine;
-		private System.Windows.Forms.Button anonymous1_button;
-		private System.Windows.Forms.Button anonymous2_button;
+        private System.Windows.Forms.Button anonymous1_button;
+        private System.Windows.Forms.Button anonymous2_button;
         private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.TrackBar exposureSlider;
+        private System.Windows.Forms.TrackBar exposureSlider;
         private System.Windows.Forms.CheckBox CalBackCB;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox BlackHolePB;
