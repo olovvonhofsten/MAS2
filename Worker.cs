@@ -652,6 +652,7 @@ namespace MirrorAlignmentSystem
                         double[] seg3 = new double[67];
                         double[] seg4 = new double[67];
                         double[] seg5 = new double[67];
+                        DataSaver.instance.ClearAllData();
                         DataSaver.instance.AddDataPoint("segment; offsetX; offsetY; offsetTan; offsetRad", new int[0]);
                         for (int ticks = 0; ticks < 66; ticks++)
                         {
@@ -666,7 +667,8 @@ namespace MirrorAlignmentSystem
                             DataSaver.instance.AddDataPoint(Calibrate.segments[ticks], seg4);
                             DataSaver.instance.AddDataPoint(Calibrate.segments[ticks], seg5);
                         }
-
+                        //DataSaver.instance.SaveData("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + "AllData.csv");
+                        DataSaver.instance.SaveData($"c:/MASDATA/{mainWindow.GetDiscID()}/{DateTime.Now.ToString("yyyy_MM_dd")}/AllFineData_{DateTime.Now.ToString("HHmm")}.csv");
                         alignmentMode = "over";
                         overviewFine.Save(path + "CheckAllFine_" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
                     }
