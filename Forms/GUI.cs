@@ -721,7 +721,7 @@ namespace MirrorAlignmentSystem
         /// </summary>
         //private void button2_Click(object sender, EventArgs e)
         //{
-            //string[] settings = DAL.GetSettings("User");
+        //string[] settings = DAL.GetSettings("User");
 
         //}
 
@@ -1462,26 +1462,11 @@ namespace MirrorAlignmentSystem
         /// Gets the chosen path.
         /// </summary>
         /// <returns>the path</returns>
-        public string getChosenPath()
-        {
-            return folder_path;
-        }
-
-        //private void button1_Click_2(object sender, EventArgs e)
+        //public string getChosenPath()
         //{
-        //    SetTanRad(1.2, -0.7);
+        //    return folder_path;
         //}
-
-        //private void button3_Click(object sender, EventArgs e)
-        //{
-        //    SetTanRad(0.3, 0.2);
-        //}
-
-        //private void button4_Click(object sender, EventArgs e)
-        //{
-        //    SetFineImg(2, 2);
-        //}
-
+        
         //Saves all data
         private void SaveAllData_button_Click(object sender, EventArgs e)
         {
