@@ -51,3 +51,6 @@ obj
 MAS2.v12.suo
 local.txt
 *.suo
+bin/
+Debug/
+bin

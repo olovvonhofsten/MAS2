@@ -148,73 +148,73 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdministrateUsersForm.cs">
+    <Compile Include="Forms\AdministrateUsersForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdministrateUsersForm.Designer.cs">
+    <Compile Include="Forms\AdministrateUsersForm.Designer.cs">
       <DependentUpon>AdministrateUsersForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Algorithm.cs" />
     <Compile Include="Calibrate.cs" />
     <Compile Include="CameraController.cs" />
-    <Compile Include="ChangePasswordForm.cs">
+    <Compile Include="Forms\ChangePasswordForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChangePasswordForm.Designer.cs">
+    <Compile Include="Forms\ChangePasswordForm.Designer.cs">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CheckAllForm.cs">
+    <Compile Include="Forms\CheckAllForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CheckAllForm.Designer.cs">
+    <Compile Include="Forms\CheckAllForm.Designer.cs">
       <DependentUpon>CheckAllForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateNewUserForm.cs">
+    <Compile Include="Forms\CreateNewUserForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CreateNewUserForm.Designer.cs">
+    <Compile Include="Forms\CreateNewUserForm.Designer.cs">
       <DependentUpon>CreateNewUserForm.cs</DependentUpon>
     </Compile>
     <Compile Include="CurrentUser.cs" />
     <Compile Include="DAL.cs" />
     <Compile Include="DataSaver.cs" />
-    <Compile Include="Eventlog.cs">
+    <Compile Include="Forms\Eventlog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Eventlog.Designer.cs">
+    <Compile Include="Forms\Eventlog.Designer.cs">
       <DependentUpon>Eventlog.cs</DependentUpon>
     </Compile>
-    <Compile Include="GUI.cs">
+    <Compile Include="Forms\GUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI.Designer.cs">
+    <Compile Include="Forms\GUI.Designer.cs">
       <DependentUpon>GUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImageHistory.cs">
+    <Compile Include="Forms\ImageHistory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImageHistory.Designer.cs">
+    <Compile Include="Forms\ImageHistory.Designer.cs">
       <DependentUpon>ImageHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="ImageInfo.cs">
+    <Compile Include="Forms\ImageInfo.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ImageInfo.Designer.cs">
+    <Compile Include="Forms\ImageInfo.Designer.cs">
       <DependentUpon>ImageInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="LocalSettings.cs" />
-    <Compile Include="Login.cs">
+    <Compile Include="Forms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="Forms\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="MonitorHandler.cs" />
     <Compile Include="OPC.cs" />
-    <Compile Include="OptionForm.cs">
+    <Compile Include="Forms\OptionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OptionForm.Designer.cs">
+    <Compile Include="Forms\OptionForm.Designer.cs">
       <DependentUpon>OptionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -223,37 +223,37 @@
     <Compile Include="WorkerCoarse.cs" />
     <Compile Include="Worker_Fine.cs" />
     <Compile Include="Worker_Overview.cs" />
-    <EmbeddedResource Include="AdministrateUsersForm.resx">
+    <EmbeddedResource Include="Forms\AdministrateUsersForm.resx">
       <DependentUpon>AdministrateUsersForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChangePasswordForm.resx">
+    <EmbeddedResource Include="Forms\ChangePasswordForm.resx">
       <DependentUpon>ChangePasswordForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="CheckAllForm.resx">
+    <EmbeddedResource Include="Forms\CheckAllForm.resx">
       <DependentUpon>CheckAllForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CreateNewUserForm.resx">
+    <EmbeddedResource Include="Forms\CreateNewUserForm.resx">
       <DependentUpon>CreateNewUserForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Eventlog.resx">
+    <EmbeddedResource Include="Forms\Eventlog.resx">
       <DependentUpon>Eventlog.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI.resx">
+    <EmbeddedResource Include="Forms\GUI.resx">
       <DependentUpon>GUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImageHistory.resx">
+    <EmbeddedResource Include="Forms\ImageHistory.resx">
       <DependentUpon>ImageHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ImageInfo.resx">
+    <EmbeddedResource Include="Forms\ImageInfo.resx">
       <DependentUpon>ImageInfo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="Forms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OptionForm.resx">
+    <EmbeddedResource Include="Forms\OptionForm.resx">
       <DependentUpon>OptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -291,6 +291,7 @@
     <None Include="Resources\White_Background.png" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\curvedArrow.png" />
     <Content Include="triangle.fx" />
   </ItemGroup>
   <ItemGroup>
