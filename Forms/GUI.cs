@@ -1436,8 +1436,16 @@ namespace MirrorAlignmentSystem
 
         private void acceptButton_Click(object sender, EventArgs e)
         {
-            string path = "c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/";
+            if (!can_accept)
+            {
+                var acceptSegment = MessageBox.Show("Segment is not valid! Do you want to validate it anyway?", "Invalid segment", MessageBoxButtons.YesNo) == DialogResult.Yes;
+                if (!acceptSegment)
+                {
+                    return;
+                }
+            }
 
+            string path = "c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/";
             PrintAcceptFineData(path);
 
             string fn = path + "image_";

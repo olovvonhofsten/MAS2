@@ -5,6 +5,7 @@ using System.Threading;
 using System.Windows.Forms;
 using System.Linq;
 using System.IO;
+using System.Collections.Generic;
 
 namespace MirrorAlignmentSystem
 {
@@ -531,6 +532,14 @@ namespace MirrorAlignmentSystem
                 if (alignmentMode == "checkcalibrate")
                 {
                     System.Diagnostics.Debug.WriteLine("alignment mode: " + alignmentMode);
+                    for (int i = 0; i < statusOfSegments.Length; i++)
+                    {
+                        if (statusOfSegments[i,0].ToString()== segment)
+                        {
+                            statusOfSegments[i, 1] = 1;
+                            break;
+                        }
+                    }
                     monitor.SetCalibrateOrNot(false);
 
                     if (calibrateFirstCycle)

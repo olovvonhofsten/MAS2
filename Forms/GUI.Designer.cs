@@ -114,6 +114,8 @@
             this.reduceExposureSmall_button = new System.Windows.Forms.Button();
             this.increaseExposureSmall_button = new System.Windows.Forms.Button();
             this.increaseExposureLarge_button = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabOverview.SuspendLayout();
@@ -134,6 +136,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.BlackHolePB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.CalibrateImgPB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.exposureSlider)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -226,8 +229,8 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabOverview);
             this.tabControl1.Controls.Add(this.tabCoarse);
@@ -403,8 +406,8 @@
             // 
             // overviewImagePB
             // 
-            this.overviewImagePB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.overviewImagePB.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.overviewImagePB.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.overviewImagePB.Location = new System.Drawing.Point(28, 12);
@@ -1052,12 +1055,29 @@
             this.increaseExposureLarge_button.UseVisualStyleBackColor = true;
             this.increaseExposureLarge_button.Click += new System.EventHandler(this.increaseExposureLarge_button_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 739);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1084, 22);
+            this.statusStrip1.TabIndex = 56;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1084, 761);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.increaseExposureLarge_button);
             this.Controls.Add(this.increaseExposureSmall_button);
             this.Controls.Add(this.reduceExposureSmall_button);
@@ -1113,6 +1133,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.BlackHolePB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.CalibrateImgPB)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.exposureSlider)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1204,6 +1226,8 @@
         private System.Windows.Forms.Button reduceExposureSmall_button;
         private System.Windows.Forms.Button increaseExposureSmall_button;
         private System.Windows.Forms.Button increaseExposureLarge_button;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }
 
