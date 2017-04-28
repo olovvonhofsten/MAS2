@@ -43,6 +43,7 @@
             this.BIA_timer = new System.Windows.Forms.Timer(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabOverview = new System.Windows.Forms.TabPage();
+            this.LoadData_button = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCheckAllCoarse = new System.Windows.Forms.Button();
             this.btnCheckAllFine = new System.Windows.Forms.Button();
@@ -92,20 +93,9 @@
             this.CalBackCB = new System.Windows.Forms.CheckBox();
             this.zDist = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.calibrateReferencePoints_label = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.CalibrateImgPB = new System.Windows.Forms.PictureBox();
-            this.lbl_01 = new System.Windows.Forms.Label();
-            this.lbl_02 = new System.Windows.Forms.Label();
-            this.lbl_03 = new System.Windows.Forms.Label();
-            this.lbl_04 = new System.Windows.Forms.Label();
-            this.lbl_05 = new System.Windows.Forms.Label();
-            this.lbl_06 = new System.Windows.Forms.Label();
-            this.lbl_07 = new System.Windows.Forms.Label();
-            this.lbl_09 = new System.Windows.Forms.Label();
-            this.lbl_08 = new System.Windows.Forms.Label();
-            this.lbl_11 = new System.Windows.Forms.Label();
-            this.lbl_10 = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.anonymous1_button = new System.Windows.Forms.Button();
             this.anonymous2_button = new System.Windows.Forms.Button();
@@ -115,8 +105,19 @@
             this.increaseExposureSmall_button = new System.Windows.Forms.Button();
             this.increaseExposureLarge_button = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.LoadData_button = new System.Windows.Forms.Button();
+            this.segmentId_statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.AlignmentOffset_statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.AlignmentOffsetX_statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.AlignmentOffsetXValue_statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.AlignmentOffsetY_statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.AlignmentOffsetYValue_statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.RotationOffset_statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.RotationOffsetX_statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.RotationOffsetXValue_statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.RotationOffsetY_statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.RotationOffsetYValue_statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.RotationOffsetZ_statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.RotationOffsetZValue_statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabOverview.SuspendLayout();
@@ -168,19 +169,19 @@
             // pathToolStripMenuItem
             // 
             this.pathToolStripMenuItem.Name = "pathToolStripMenuItem";
-            this.pathToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pathToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.pathToolStripMenuItem.Text = "Select &Path";
             this.pathToolStripMenuItem.Click += new System.EventHandler(this.pathToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(129, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -226,7 +227,6 @@
             // BIA_timer
             // 
             this.BIA_timer.Interval = 125;
-            this.BIA_timer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // tabControl1
             // 
@@ -237,12 +237,12 @@
             this.tabControl1.Controls.Add(this.tabCoarse);
             this.tabControl1.Controls.Add(this.tabFine);
             this.tabControl1.Controls.Add(this.tabCal);
-            this.tabControl1.Location = new System.Drawing.Point(16, 54);
+            this.tabControl1.Location = new System.Drawing.Point(16, 55);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.Padding = new System.Drawing.Point(70, 10);
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1414, 519);
+            this.tabControl1.Size = new System.Drawing.Size(1050, 600);
             this.tabControl1.TabIndex = 37;
             this.tabControl1.TabIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
             this.tabControl1.Click += new System.EventHandler(this.tabControl1_Click);
@@ -268,10 +268,21 @@
             this.tabOverview.Margin = new System.Windows.Forms.Padding(9, 6, 7, 6);
             this.tabOverview.Name = "tabOverview";
             this.tabOverview.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.tabOverview.Size = new System.Drawing.Size(1406, 467);
+            this.tabOverview.Size = new System.Drawing.Size(1042, 548);
             this.tabOverview.TabIndex = 0;
             this.tabOverview.Text = "OVERVIEW";
             this.tabOverview.Click += new System.EventHandler(this.tabPage1_Click);
+            // 
+            // LoadData_button
+            // 
+            this.LoadData_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoadData_button.Location = new System.Drawing.Point(40, 303);
+            this.LoadData_button.Name = "LoadData_button";
+            this.LoadData_button.Size = new System.Drawing.Size(75, 63);
+            this.LoadData_button.TabIndex = 51;
+            this.LoadData_button.Text = "Load data";
+            this.LoadData_button.UseVisualStyleBackColor = true;
+            this.LoadData_button.Click += new System.EventHandler(this.LoadData_button_Click);
             // 
             // label1
             // 
@@ -436,7 +447,7 @@
             this.tabCoarse.Location = new System.Drawing.Point(4, 48);
             this.tabCoarse.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tabCoarse.Name = "tabCoarse";
-            this.tabCoarse.Size = new System.Drawing.Size(1406, 467);
+            this.tabCoarse.Size = new System.Drawing.Size(1042, 548);
             this.tabCoarse.TabIndex = 2;
             this.tabCoarse.Text = "COARSE";
             // 
@@ -628,7 +639,7 @@
             this.tabFine.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tabFine.Name = "tabFine";
             this.tabFine.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
-            this.tabFine.Size = new System.Drawing.Size(1406, 467);
+            this.tabFine.Size = new System.Drawing.Size(1042, 548);
             this.tabFine.TabIndex = 1;
             this.tabFine.Text = "FINE";
             // 
@@ -789,13 +800,13 @@
             this.tabCal.Controls.Add(this.CalBackCB);
             this.tabCal.Controls.Add(this.zDist);
             this.tabCal.Controls.Add(this.label5);
-            this.tabCal.Controls.Add(this.label4);
+            this.tabCal.Controls.Add(this.calibrateReferencePoints_label);
             this.tabCal.Controls.Add(this.label3);
             this.tabCal.Controls.Add(this.CalibrateImgPB);
             this.tabCal.Location = new System.Drawing.Point(4, 48);
             this.tabCal.Margin = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.tabCal.Name = "tabCal";
-            this.tabCal.Size = new System.Drawing.Size(1406, 467);
+            this.tabCal.Size = new System.Drawing.Size(1042, 548);
             this.tabCal.TabIndex = 3;
             this.tabCal.Text = "CALIBRATE";
             // 
@@ -847,14 +858,14 @@
             this.label5.TabIndex = 3;
             this.label5.Text = "Z distance";
             // 
-            // label4
+            // calibrateReferencePoints_label
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(929, 25);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(24, 26);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "0";
+            this.calibrateReferencePoints_label.AutoSize = true;
+            this.calibrateReferencePoints_label.Location = new System.Drawing.Point(929, 25);
+            this.calibrateReferencePoints_label.Name = "calibrateReferencePoints_label";
+            this.calibrateReferencePoints_label.Size = new System.Drawing.Size(24, 26);
+            this.calibrateReferencePoints_label.TabIndex = 2;
+            this.calibrateReferencePoints_label.Text = "0";
             // 
             // label3
             // 
@@ -873,110 +884,6 @@
             this.CalibrateImgPB.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.CalibrateImgPB.TabIndex = 0;
             this.CalibrateImgPB.TabStop = false;
-            // 
-            // lbl_01
-            // 
-            this.lbl_01.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_01.Location = new System.Drawing.Point(15, 573);
-            this.lbl_01.Name = "lbl_01";
-            this.lbl_01.Size = new System.Drawing.Size(198, 24);
-            this.lbl_01.TabIndex = 38;
-            this.lbl_01.Text = "SEGMENT XXXX";
-            // 
-            // lbl_02
-            // 
-            this.lbl_02.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_02.Location = new System.Drawing.Point(219, 573);
-            this.lbl_02.Name = "lbl_02";
-            this.lbl_02.Size = new System.Drawing.Size(143, 24);
-            this.lbl_02.TabIndex = 39;
-            this.lbl_02.Text = "Alignment  X:";
-            // 
-            // lbl_03
-            // 
-            this.lbl_03.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_03.ForeColor = System.Drawing.Color.Green;
-            this.lbl_03.Location = new System.Drawing.Point(368, 573);
-            this.lbl_03.Name = "lbl_03";
-            this.lbl_03.Size = new System.Drawing.Size(76, 24);
-            this.lbl_03.TabIndex = 40;
-            this.lbl_03.Text = "10mm";
-            // 
-            // lbl_04
-            // 
-            this.lbl_04.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_04.Location = new System.Drawing.Point(450, 573);
-            this.lbl_04.Name = "lbl_04";
-            this.lbl_04.Size = new System.Drawing.Size(50, 24);
-            this.lbl_04.TabIndex = 41;
-            this.lbl_04.Text = "  Y:";
-            // 
-            // lbl_05
-            // 
-            this.lbl_05.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_05.ForeColor = System.Drawing.Color.Green;
-            this.lbl_05.Location = new System.Drawing.Point(506, 573);
-            this.lbl_05.Name = "lbl_05";
-            this.lbl_05.Size = new System.Drawing.Size(86, 24);
-            this.lbl_05.TabIndex = 42;
-            this.lbl_05.Text = "10mm";
-            // 
-            // lbl_06
-            // 
-            this.lbl_06.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_06.Location = new System.Drawing.Point(614, 573);
-            this.lbl_06.Name = "lbl_06";
-            this.lbl_06.Size = new System.Drawing.Size(80, 24);
-            this.lbl_06.TabIndex = 43;
-            this.lbl_06.Text = "Rot  X:";
-            // 
-            // lbl_07
-            // 
-            this.lbl_07.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_07.ForeColor = System.Drawing.Color.Red;
-            this.lbl_07.Location = new System.Drawing.Point(700, 573);
-            this.lbl_07.Name = "lbl_07";
-            this.lbl_07.Size = new System.Drawing.Size(86, 24);
-            this.lbl_07.TabIndex = 44;
-            this.lbl_07.Text = "5 mrad";
-            // 
-            // lbl_09
-            // 
-            this.lbl_09.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_09.ForeColor = System.Drawing.Color.Red;
-            this.lbl_09.Location = new System.Drawing.Point(832, 573);
-            this.lbl_09.Name = "lbl_09";
-            this.lbl_09.Size = new System.Drawing.Size(86, 24);
-            this.lbl_09.TabIndex = 46;
-            this.lbl_09.Text = "5 mrad";
-            // 
-            // lbl_08
-            // 
-            this.lbl_08.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_08.Location = new System.Drawing.Point(792, 573);
-            this.lbl_08.Name = "lbl_08";
-            this.lbl_08.Size = new System.Drawing.Size(34, 24);
-            this.lbl_08.TabIndex = 45;
-            this.lbl_08.Text = "Y:";
-            // 
-            // lbl_11
-            // 
-            this.lbl_11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_11.ForeColor = System.Drawing.Color.Green;
-            this.lbl_11.Location = new System.Drawing.Point(964, 573);
-            this.lbl_11.Name = "lbl_11";
-            this.lbl_11.Size = new System.Drawing.Size(86, 24);
-            this.lbl_11.TabIndex = 48;
-            this.lbl_11.Text = "1 mrad";
-            // 
-            // lbl_10
-            // 
-            this.lbl_10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_10.Location = new System.Drawing.Point(924, 573);
-            this.lbl_10.Name = "lbl_10";
-            this.lbl_10.Size = new System.Drawing.Size(34, 24);
-            this.lbl_10.TabIndex = 47;
-            this.lbl_10.Text = "Z:";
             // 
             // imageList1
             // 
@@ -1060,52 +967,143 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 739);
+            this.segmentId_statusLabel,
+            this.AlignmentOffset_statusLabel,
+            this.AlignmentOffsetX_statusLabel,
+            this.AlignmentOffsetXValue_statusLabel,
+            this.AlignmentOffsetY_statusLabel,
+            this.AlignmentOffsetYValue_statusLabel,
+            this.RotationOffset_statusLabel,
+            this.RotationOffsetX_statusLabel,
+            this.RotationOffsetXValue_statusLabel,
+            this.RotationOffsetY_statusLabel,
+            this.RotationOffsetYValue_statusLabel,
+            this.RotationOffsetZ_statusLabel,
+            this.RotationOffsetZValue_statusLabel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 670);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1084, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1084, 41);
             this.statusStrip1.TabIndex = 56;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // toolStripStatusLabel1
+            // segmentId_statusLabel
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
+            this.segmentId_statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.segmentId_statusLabel.Name = "segmentId_statusLabel";
+            this.segmentId_statusLabel.Size = new System.Drawing.Size(186, 36);
+            this.segmentId_statusLabel.Text = "SEGMENT XXXX";
             // 
-            // LoadData_button
+            // AlignmentOffset_statusLabel
             // 
-            this.LoadData_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoadData_button.Location = new System.Drawing.Point(11, 303);
-            this.LoadData_button.Name = "LoadData_button";
-            this.LoadData_button.Size = new System.Drawing.Size(142, 63);
-            this.LoadData_button.TabIndex = 51;
-            this.LoadData_button.Text = "Load data";
-            this.LoadData_button.UseVisualStyleBackColor = true;
-            this.LoadData_button.Click += new System.EventHandler(this.LoadData_button_Click);
+            this.AlignmentOffset_statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AlignmentOffset_statusLabel.Name = "AlignmentOffset_statusLabel";
+            this.AlignmentOffset_statusLabel.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.AlignmentOffset_statusLabel.Size = new System.Drawing.Size(140, 36);
+            this.AlignmentOffset_statusLabel.Text = "Alignment";
+            // 
+            // AlignmentOffsetX_statusLabel
+            // 
+            this.AlignmentOffsetX_statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AlignmentOffsetX_statusLabel.Name = "AlignmentOffsetX_statusLabel";
+            this.AlignmentOffsetX_statusLabel.Size = new System.Drawing.Size(33, 36);
+            this.AlignmentOffsetX_statusLabel.Text = "X:";
+            this.AlignmentOffsetX_statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // AlignmentOffsetXValue_statusLabel
+            // 
+            this.AlignmentOffsetXValue_statusLabel.AutoSize = false;
+            this.AlignmentOffsetXValue_statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AlignmentOffsetXValue_statusLabel.Name = "AlignmentOffsetXValue_statusLabel";
+            this.AlignmentOffsetXValue_statusLabel.Size = new System.Drawing.Size(90, 36);
+            this.AlignmentOffsetXValue_statusLabel.Text = "-";
+            this.AlignmentOffsetXValue_statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // AlignmentOffsetY_statusLabel
+            // 
+            this.AlignmentOffsetY_statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AlignmentOffsetY_statusLabel.Name = "AlignmentOffsetY_statusLabel";
+            this.AlignmentOffsetY_statusLabel.Size = new System.Drawing.Size(34, 36);
+            this.AlignmentOffsetY_statusLabel.Text = "Y:";
+            this.AlignmentOffsetY_statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // AlignmentOffsetYValue_statusLabel
+            // 
+            this.AlignmentOffsetYValue_statusLabel.AutoSize = false;
+            this.AlignmentOffsetYValue_statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AlignmentOffsetYValue_statusLabel.Name = "AlignmentOffsetYValue_statusLabel";
+            this.AlignmentOffsetYValue_statusLabel.Size = new System.Drawing.Size(90, 36);
+            this.AlignmentOffsetYValue_statusLabel.Text = "-";
+            this.AlignmentOffsetYValue_statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // RotationOffset_statusLabel
+            // 
+            this.RotationOffset_statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RotationOffset_statusLabel.Name = "RotationOffset_statusLabel";
+            this.RotationOffset_statusLabel.Size = new System.Drawing.Size(46, 36);
+            this.RotationOffset_statusLabel.Text = "Rot";
+            // 
+            // RotationOffsetX_statusLabel
+            // 
+            this.RotationOffsetX_statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RotationOffsetX_statusLabel.Name = "RotationOffsetX_statusLabel";
+            this.RotationOffsetX_statusLabel.Size = new System.Drawing.Size(33, 36);
+            this.RotationOffsetX_statusLabel.Text = "X:";
+            this.RotationOffsetX_statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // RotationOffsetXValue_statusLabel
+            // 
+            this.RotationOffsetXValue_statusLabel.AutoSize = false;
+            this.RotationOffsetXValue_statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RotationOffsetXValue_statusLabel.Name = "RotationOffsetXValue_statusLabel";
+            this.RotationOffsetXValue_statusLabel.Size = new System.Drawing.Size(90, 36);
+            this.RotationOffsetXValue_statusLabel.Text = "-";
+            this.RotationOffsetXValue_statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // RotationOffsetY_statusLabel
+            // 
+            this.RotationOffsetY_statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RotationOffsetY_statusLabel.Name = "RotationOffsetY_statusLabel";
+            this.RotationOffsetY_statusLabel.Size = new System.Drawing.Size(34, 36);
+            this.RotationOffsetY_statusLabel.Text = "Y:";
+            this.RotationOffsetY_statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // RotationOffsetYValue_statusLabel
+            // 
+            this.RotationOffsetYValue_statusLabel.AutoSize = false;
+            this.RotationOffsetYValue_statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RotationOffsetYValue_statusLabel.Name = "RotationOffsetYValue_statusLabel";
+            this.RotationOffsetYValue_statusLabel.Size = new System.Drawing.Size(90, 36);
+            this.RotationOffsetYValue_statusLabel.Text = "-";
+            this.RotationOffsetYValue_statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // RotationOffsetZ_statusLabel
+            // 
+            this.RotationOffsetZ_statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RotationOffsetZ_statusLabel.Name = "RotationOffsetZ_statusLabel";
+            this.RotationOffsetZ_statusLabel.Size = new System.Drawing.Size(31, 36);
+            this.RotationOffsetZ_statusLabel.Text = "Z:";
+            this.RotationOffsetZ_statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // RotationOffsetZValue_statusLabel
+            // 
+            this.RotationOffsetZValue_statusLabel.AutoSize = false;
+            this.RotationOffsetZValue_statusLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RotationOffsetZValue_statusLabel.Name = "RotationOffsetZValue_statusLabel";
+            this.RotationOffsetZValue_statusLabel.Size = new System.Drawing.Size(90, 36);
+            this.RotationOffsetZValue_statusLabel.Text = "6";
+            this.RotationOffsetZValue_statusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1084, 761);
+            this.ClientSize = new System.Drawing.Size(1084, 711);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.increaseExposureLarge_button);
             this.Controls.Add(this.increaseExposureSmall_button);
             this.Controls.Add(this.reduceExposureSmall_button);
             this.Controls.Add(this.reduceExposureLarge_button);
-            this.Controls.Add(this.lbl_11);
-            this.Controls.Add(this.lbl_10);
-            this.Controls.Add(this.lbl_09);
-            this.Controls.Add(this.lbl_08);
-            this.Controls.Add(this.lbl_07);
-            this.Controls.Add(this.lbl_06);
-            this.Controls.Add(this.lbl_05);
-            this.Controls.Add(this.lbl_04);
-            this.Controls.Add(this.lbl_03);
-            this.Controls.Add(this.lbl_02);
-            this.Controls.Add(this.lbl_01);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.exposureSlider);
@@ -1191,17 +1189,6 @@
         private System.Windows.Forms.Button CounterClockwise_button;
         private System.Windows.Forms.Button btnCheckAllCoarse;
         private System.Windows.Forms.Button btnCheckAllFine;
-        private System.Windows.Forms.Label lbl_01;
-        private System.Windows.Forms.Label lbl_02;
-        private System.Windows.Forms.Label lbl_03;
-        private System.Windows.Forms.Label lbl_04;
-        private System.Windows.Forms.Label lbl_05;
-        private System.Windows.Forms.Label lbl_06;
-        private System.Windows.Forms.Label lbl_07;
-        private System.Windows.Forms.Label lbl_09;
-        private System.Windows.Forms.Label lbl_08;
-        private System.Windows.Forms.Label lbl_11;
-        private System.Windows.Forms.Label lbl_10;
         private System.Windows.Forms.PictureBox pb_Upper;
         private System.Windows.Forms.PictureBox pb_Lower;
         private System.Windows.Forms.ImageList imageList1;
@@ -1216,7 +1203,7 @@
         private System.Windows.Forms.PictureBox pbFine;
         private System.Windows.Forms.TextBox zDist;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label calibrateReferencePoints_label;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label CoMLabel;
         private System.Windows.Forms.ToolStripMenuItem pathToolStripMenuItem;
@@ -1240,8 +1227,20 @@
         private System.Windows.Forms.Button increaseExposureSmall_button;
         private System.Windows.Forms.Button increaseExposureLarge_button;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel RotationOffset_statusLabel;
         private System.Windows.Forms.Button LoadData_button;
+        private System.Windows.Forms.ToolStripStatusLabel segmentId_statusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel AlignmentOffset_statusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel AlignmentOffsetX_statusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel AlignmentOffsetY_statusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel RotationOffsetX_statusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel RotationOffsetY_statusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel RotationOffsetZ_statusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel AlignmentOffsetXValue_statusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel AlignmentOffsetYValue_statusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel RotationOffsetXValue_statusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel RotationOffsetYValue_statusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel RotationOffsetZValue_statusLabel;
     }
 }
 

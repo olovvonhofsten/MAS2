@@ -149,7 +149,6 @@ namespace MirrorAlignmentSystem
 
         public static void drawCrosses(out Bitmap outBitmap, Bitmap canvas, string[] NotOKsegments, double[,] segmentCenterPoints, double[] blackholePoint)
         {
-            
             Image<Bgr, byte> crossesImage = new Image<Bgr, byte>(canvas);
             int ticker = 0;
             foreach (string s in refSegments)
@@ -159,7 +158,6 @@ namespace MirrorAlignmentSystem
                 crossesImage.Draw(new Cross2DF(new PointF((float)segmentCenterPoints[ticker,0], (float)segmentCenterPoints[ticker, 1]), 50f, 50f), new Bgr(Color.Yellow), 4);
                 ticker++;
             }
-            ticker = 0;
             System.Diagnostics.Debug.WriteLine(NotOKsegments);
             foreach (string s in NotOKsegments)
             {
@@ -167,7 +165,6 @@ namespace MirrorAlignmentSystem
                 {
                     double[] idealCenter = Algorithm.GetSegmentIdealCGPoint(int.Parse(DAL.GetRawSegmentNumber(s)));
                     crossesImage.Draw(new Cross2DF(new PointF((float)Math.Round(idealCenter[0]), (float)Math.Round(idealCenter[1])), 50f, 50f), new Bgr(Color.Red), 4);
-                    ticker++;
                 }
                 
             }

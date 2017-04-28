@@ -398,7 +398,7 @@ namespace MirrorAlignmentSystem
                 if (alignmentMode == "UpdateStatusOfSegments")
                 {
                     UpdateSegments();
-
+                    alignmentMode = "over";
                 }
 
                 //Calibrate mode and live video is being displayed in the GUI
