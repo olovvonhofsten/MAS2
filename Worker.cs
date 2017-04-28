@@ -536,7 +536,7 @@ namespace MirrorAlignmentSystem
                     {
 						if (Calibrate.segments[i] == segment)
                         {
-                            statusOfSegments[i, 1] = 1;
+                            statusOfSegments[i, 0] = 1;
                             break;
                         }
                     }
