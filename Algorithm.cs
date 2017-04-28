@@ -433,13 +433,13 @@ namespace MirrorAlignmentSystem
         public static void changeSegmentStatus(string segment, double [] mradOffset, double[,] oldStatusOfSegments, out double[,] newStatusOfSegments)
         {
             int ticker = 0;
-            newStatusOfSegments = new double[67, 3];
+            newStatusOfSegments = new double[67, 5];
             foreach (string s in Calibrate.segments)
             {
                 if (s == segment)
                 {
-                    oldStatusOfSegments[ticker, 1] = mradOffset[0];
-                    oldStatusOfSegments[ticker, 2] = mradOffset[1];
+                    oldStatusOfSegments[ticker, 3] = mradOffset[0];
+                    oldStatusOfSegments[ticker, 4] = mradOffset[1];
                     if(Math.Abs(mradOffset[0]) <= 0.3 && Math.Abs(mradOffset[1]) < 0.3)
                     {
                         oldStatusOfSegments[ticker,0] = 1;

@@ -532,9 +532,9 @@ namespace MirrorAlignmentSystem
                 if (alignmentMode == "checkcalibrate")
                 {
                     System.Diagnostics.Debug.WriteLine("alignment mode: " + alignmentMode);
-                    for (int i = 0; i < statusOfSegments.Length; i++)
+                    for (int i = 0; i <  Calibrate.segments.Length; i++)
                     {
-                        if (statusOfSegments[i,0].ToString()== segment)
+						if (Calibrate.segments[i] == segment)
                         {
                             statusOfSegments[i, 1] = 1;
                             break;

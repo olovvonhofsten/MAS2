@@ -225,9 +225,6 @@ namespace MirrorAlignmentSystem
                 mainWindow.SetFineImg(-revOffset[1], -revOffset[0]);
                 mainWindow.SetTanRad(mradOffset[0], mradOffset[1]);
                 Algorithm.changeSegmentStatus(segment, mradOffset, statusOfSegments, out statusOfSegments);
-                
-
-                //statusOfSegments = tempStatus;
 
 				System.Diagnostics.Debug.WriteLine("Load bitmap");
                 string showfine = mainWindow.GetFineShow();
