@@ -751,13 +751,14 @@ namespace MirrorAlignmentSystem
             {
                 for (int i = 0; i < Calibrate.segments.Length; i++)
                 {
-                    if (Calibrate.segments[i] == segment[0].ToString())
+                    if (Calibrate.segments[i] == segment.Id)
                     {
-                        statusOfSegments[i,0] = segment[1];
-                        statusOfSegments[i,1] = segment[2];
-                        statusOfSegments[i,2] = segment[3];
-                        statusOfSegments[i,3] = segment[4];
-                        statusOfSegments[i,4] = segment[5];
+                        //[ok, offsetX; offsetY; offsetTan; offsetRad]
+                        statusOfSegments[i, 0] = Convert.ToInt32(segment.Status);
+                        statusOfSegments[i, 1] = segment.OffsetX;
+                        statusOfSegments[i, 2] = segment.OffsetY;
+                        statusOfSegments[i, 3] = segment.OffsetTan;
+                        statusOfSegments[i, 4] = segment.OffsetRad;
 
                         break;
                     }

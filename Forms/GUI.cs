@@ -70,7 +70,7 @@ namespace MirrorAlignmentSystem
         CameraController cameraController;
         CheckAllForm caf = new CheckAllForm();
 
-        public List<double[]> LoadedSegments { get; set; }
+        public List<Segment> LoadedSegments { get; set; }
 
         /// <summary>
         /// Gets the caf.
@@ -1605,15 +1605,15 @@ namespace MirrorAlignmentSystem
             UpdateStatusOfSegments(updatedSegments);
         }
 
-        private void UpdateStatusOfSegments(List<double[]> updatedSegments)
+        private void UpdateStatusOfSegments(List<Segment> updatedSegments)
         {
             LoadedSegments = updatedSegments;
             Alignment = "UpdateStatusOfSegments";
         }
 
-        private List<double[]> GetSegmentsFromFile(string file)
+        private List<Segment> GetSegmentsFromFile(string file)
         {
-            var result = new List<double[]>();
+            var result = new List<Segment>();
             using (var streamReader = new StreamReader(file))
             {
                 var thisLine = streamReader.ReadLine();//header
@@ -1625,13 +1625,14 @@ namespace MirrorAlignmentSystem
                     {
                         throw new Exception("Unexpected line from file: " + thisLine);
                     }
-                    result.Add(new double[] {
-                        double.Parse(separatedLine[0]),
-                        double.Parse(separatedLine[1]),
-                        double.Parse(separatedLine[2]),
-                        double.Parse(separatedLine[3]),
-                        double.Parse(separatedLine[4]),
-                        double.Parse(separatedLine[5])
+                    result.Add(new Segment
+                    {
+                        Id = separatedLine[0],
+                        Status = Convert.ToBoolean(int.Parse(separatedLine[1])),
+                        OffsetTan = double.Parse(separatedLine[2]),
+                        OffsetRad = double.Parse(separatedLine[3]),
+                        OffsetX = 0,
+                        OffsetY = 0
                     });
                     thisLine = streamReader.ReadLine();
                 }
@@ -1642,8 +1643,8 @@ namespace MirrorAlignmentSystem
         private string GetFile()
         {
             string result;
-            string path = "c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/";
-            var openFileDialog = new OpenFileDialog();
+            string path = "c://MASDATA//" + GetDiscID() + "//" + System.DateTime.Now.ToString("yyyy_MM_dd") + "//";
+            var openFileDialog = new  OpenFileDialog();
             openFileDialog.InitialDirectory = path;
             var dialogResult = openFileDialog.ShowDialog();
             if (dialogResult == DialogResult.OK)
@@ -1662,6 +1663,16 @@ namespace MirrorAlignmentSystem
             return "";
 
         }
+    }
+
+    public class Segment
+    {
+        public string Id { get; set; }
+        public double OffsetX { get; set; }
+        public double OffsetY { get; set; }
+        public bool Status { get; set; }
+        public double OffsetTan { get; set; }
+        public double OffsetRad { get; set; }
     }
 }
 
