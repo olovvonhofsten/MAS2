@@ -1,5 +1,6 @@
 ﻿using MirrorAlignmentSystem.Properties;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -68,6 +69,8 @@ namespace MirrorAlignmentSystem
 
         CameraController cameraController;
         CheckAllForm caf = new CheckAllForm();
+
+        public List<double[]> LoadedSegments { get; set; }
 
         /// <summary>
         /// Gets the caf.
@@ -1586,6 +1589,77 @@ namespace MirrorAlignmentSystem
         private void increaseExposureLarge_button_Click(object sender, EventArgs e)
         {
             exposureSlider.Value += 20;
+
+        }
+
+        private void LoadData_button_Click(object sender, EventArgs e)
+        {
+            PopulateSegments();
+
+        }
+
+        private void PopulateSegments()
+        {
+            var file = GetFile();
+            var updatedSegments = GetSegmentsFromFile(file);
+            UpdateStatusOfSegments(updatedSegments);
+        }
+
+        private void UpdateStatusOfSegments(List<double[]> updatedSegments)
+        {
+            LoadedSegments = updatedSegments;
+            Alignment = "UpdateStatusOfSegments";
+        }
+
+        private List<double[]> GetSegmentsFromFile(string file)
+        {
+            var result = new List<double[]>();
+            using (var streamReader = new StreamReader(file))
+            {
+                var thisLine = streamReader.ReadLine();//header
+                thisLine = streamReader.ReadLine();//first row of data
+                while (thisLine != null)
+                {
+                    var separatedLine = thisLine.Split(new char[] { ';' });
+                    if (separatedLine.Length != 6)
+                    {
+                        throw new Exception("Unexpected line from file: " + thisLine);
+                    }
+                    result.Add(new double[] {
+                        double.Parse(separatedLine[0]),
+                        double.Parse(separatedLine[1]),
+                        double.Parse(separatedLine[2]),
+                        double.Parse(separatedLine[3]),
+                        double.Parse(separatedLine[4]),
+                        double.Parse(separatedLine[5])
+                    });
+                    thisLine = streamReader.ReadLine();
+                }
+            }
+            throw new NotImplementedException();
+        }
+
+        private string GetFile()
+        {
+            string result;
+            string path = "c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/";
+            var openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = path;
+            var dialogResult = openFileDialog.ShowDialog();
+            if (dialogResult == DialogResult.OK)
+            {
+                result = openFileDialog.FileName;
+                if (!result.Contains("accept_data"))
+                {
+                    MessageBox.Show("incorrect chosen file!");
+                }
+                else
+                {
+                    return result;
+                }
+
+            }
+            return "";
 
         }
     }

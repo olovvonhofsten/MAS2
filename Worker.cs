@@ -395,6 +395,12 @@ namespace MirrorAlignmentSystem
                 stopWatchFirstIF.Reset();
                 stopWatchFirstIF.Start();
 
+                if (alignmentMode == "UpdateStatusOfSegments")
+                {
+                    UpdateSegments();
+
+                }
+
                 //Calibrate mode and live video is being displayed in the GUI
                 if (alignmentMode == "calibrate")
                 {
@@ -532,9 +538,9 @@ namespace MirrorAlignmentSystem
                 if (alignmentMode == "checkcalibrate")
                 {
                     System.Diagnostics.Debug.WriteLine("alignment mode: " + alignmentMode);
-                    for (int i = 0; i <  Calibrate.segments.Length; i++)
+                    for (int i = 0; i < Calibrate.segments.Length; i++)
                     {
-						if (Calibrate.segments[i] == segment)
+                        if (Calibrate.segments[i] == segment)
                         {
                             statusOfSegments[i, 0] = 1;
                             break;
@@ -735,6 +741,28 @@ namespace MirrorAlignmentSystem
                 Debug.WriteLine("");
 
                 programCycle++;
+            }
+        }
+
+        private void UpdateSegments()
+        {
+            var loadedSegments = mainWindow.LoadedSegments;
+            foreach (var segment in loadedSegments)
+            {
+                for (int i = 0; i < Calibrate.segments.Length; i++)
+                {
+                    if (Calibrate.segments[i] == segment[0].ToString())
+                    {
+                        statusOfSegments[i,0] = segment[1];
+                        statusOfSegments[i,1] = segment[2];
+                        statusOfSegments[i,2] = segment[3];
+                        statusOfSegments[i,3] = segment[4];
+                        statusOfSegments[i,4] = segment[5];
+
+                        break;
+                    }
+                }
+
             }
         }
 

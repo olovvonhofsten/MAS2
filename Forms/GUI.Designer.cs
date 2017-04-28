@@ -116,6 +116,7 @@
             this.increaseExposureLarge_button = new System.Windows.Forms.Button();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.LoadData_button = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabOverview.SuspendLayout();
@@ -167,19 +168,19 @@
             // pathToolStripMenuItem
             // 
             this.pathToolStripMenuItem.Name = "pathToolStripMenuItem";
-            this.pathToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.pathToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.pathToolStripMenuItem.Text = "Select &Path";
             this.pathToolStripMenuItem.Click += new System.EventHandler(this.pathToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(129, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -250,6 +251,7 @@
             // 
             this.tabOverview.AutoScroll = true;
             this.tabOverview.BackColor = System.Drawing.Color.Moccasin;
+            this.tabOverview.Controls.Add(this.LoadData_button);
             this.tabOverview.Controls.Add(this.label1);
             this.tabOverview.Controls.Add(this.btnCheckAllCoarse);
             this.tabOverview.Controls.Add(this.btnCheckAllFine);
@@ -1071,6 +1073,17 @@
             this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 17);
             this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
+            // LoadData_button
+            // 
+            this.LoadData_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LoadData_button.Location = new System.Drawing.Point(11, 303);
+            this.LoadData_button.Name = "LoadData_button";
+            this.LoadData_button.Size = new System.Drawing.Size(142, 63);
+            this.LoadData_button.TabIndex = 51;
+            this.LoadData_button.Text = "Load data";
+            this.LoadData_button.UseVisualStyleBackColor = true;
+            this.LoadData_button.Click += new System.EventHandler(this.LoadData_button_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -1228,6 +1241,7 @@
         private System.Windows.Forms.Button increaseExposureLarge_button;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.Button LoadData_button;
     }
 }
 
