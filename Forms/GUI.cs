@@ -109,8 +109,7 @@ namespace MirrorAlignmentSystem
 
             SetSegmentControllerArrows();
             //exposureSlider.SetThumbRect();
-            DisableLabel();
-            ShowSegnum(valueSegmentNumberTextbox);
+            ShowSegmentId(valueSegmentNumberTextbox);
         }
 
         private void SetSegmentControllerArrows()
@@ -439,7 +438,7 @@ namespace MirrorAlignmentSystem
                 DAL.InsertEvent(SegmentNumberTextbox.Text, valueSegmentNumberTextbox, CurrentUser.GetCurrentUser(), "Segment changed", "SegmentNumberTextbox");
 
                 valueSegmentNumberTextbox = SegmentNumberTextbox.Text;
-                ShowSegnum(valueSegmentNumberTextbox);
+                ShowSegmentId(valueSegmentNumberTextbox);
             }
         }
 
@@ -1053,7 +1052,7 @@ namespace MirrorAlignmentSystem
             string seg = segnum.ToString();
             valueSegmentNumberTextbox = seg;
             SegmentNumberTextbox.Text = seg;
-            ShowSegnum(seg);
+            ShowSegmentId(seg);
         }
 
         private void Clockwise_button_Click(object sender, EventArgs e)
@@ -1063,7 +1062,7 @@ namespace MirrorAlignmentSystem
             string seg = segnum.ToString();
             valueSegmentNumberTextbox = seg;
             SegmentNumberTextbox.Text = seg;
-            ShowSegnum(seg);
+            ShowSegmentId(seg);
         }
 
         private void Out_button_Click(object sender, EventArgs e)
@@ -1073,7 +1072,7 @@ namespace MirrorAlignmentSystem
             string seg = segnum.ToString();
             valueSegmentNumberTextbox = seg;
             SegmentNumberTextbox.Text = seg;
-            ShowSegnum(seg);
+            ShowSegmentId(seg);
         }
 
         private void In_button_Click(object sender, EventArgs e)
@@ -1083,7 +1082,7 @@ namespace MirrorAlignmentSystem
             string seg = segnum.ToString();
             valueSegmentNumberTextbox = seg;
             SegmentNumberTextbox.Text = seg;
-            ShowSegnum(seg);
+            ShowSegmentId(seg);
         }
 
         private void btnCheckAllFine_Click(object sender, EventArgs e)
@@ -1114,19 +1113,18 @@ namespace MirrorAlignmentSystem
         /// show segment number
         /// </summary>
         /// <param name="segnum"></param>
-        public void ShowSegnum(string segnum)
+        public void ShowSegmentId(string segnum)
         {
             segmentId_statusLabel.Text = "SEGMENT " + segnum;
         }
-        
+
         /// <summary>
         /// show algnment
         /// </summary>
         /// <param name="align_x"></param>
         /// <param name="align_y"></param>
-        public void ShowAlign(double align_x, double align_y)
+        public void ShowOffsetAlignment(double align_x, double align_y)
         {
-
             try
             {
                 AlignmentOffsetXValue_statusLabel.Text = align_x.ToString("N1") + " mm";
@@ -1147,7 +1145,7 @@ namespace MirrorAlignmentSystem
         /// <param name="rot_x"></param>
         /// <param name="rot_y"></param>
         /// <param name="rot_z"></param>
-        public void ShowRot(double rot_x, double rot_y, double rot_z)
+        public void ShowOffsetRotation(double rot_x, double rot_y, double rot_z)
         {
             RotationOffsetXValue_statusLabel.Text = rot_x.ToString("N1") + " mrad";
             RotationOffsetXValue_statusLabel.ForeColor = (Math.Abs(rot_x) > 3) ? Color.Red : Color.Green;
@@ -1165,20 +1163,9 @@ namespace MirrorAlignmentSystem
         /// <param name="NOKsegs"
         public void ShowsRefSegs(int NOKsegs)
         {
-            label4.Text = NOKsegs.ToString();
-            label4.ForeColor = (Math.Abs(NOKsegs) > 2) ? Color.Red : Color.Green;
+            calibrateReferencePoints_label.Text = NOKsegs.ToString();
+            calibrateReferencePoints_label.ForeColor = (Math.Abs(NOKsegs) > 2) ? Color.Red : Color.Green;
         }
-
-        /// <summary>
-        /// hide rotation
-        /// </summary>
-        public void HideRot()
-        {
-            lbl_07.Visible = false;
-            lbl_09.Visible = false;
-            lbl_11.Visible = false;
-        }
-
 
         /// <summary>
         /// Updates the labels.
@@ -1198,30 +1185,9 @@ namespace MirrorAlignmentSystem
             double rot_z)
         {
 
-            if (this.lbl_01.InvokeRequired)
-            {
-                UpdateLabelCallback ulcb = new UpdateLabelCallback(UpdateLabel);
-                this.Invoke(ulcb, new object[] { segnum.Clone(), align_x, align_y, rot_x, rot_y, rot_z });
-            }
-            else
-            {
-                ShowSegnum(segnum);
-                ShowAlign(align_x, align_y);
-                ShowRot(rot_x, rot_y, rot_z);
-            }
-        }
-
-        /// <summary>
-        /// Disables the labels.
-        /// </summary>
-        public void DisableLabel()
-        {
-            lbl_01.Visible = false;
-            lbl_03.Visible = false;
-            lbl_05.Visible = false;
-            lbl_07.Visible = false;
-            lbl_09.Visible = false;
-            lbl_11.Visible = false;
+            ShowSegmentId(segnum);
+            ShowOffsetAlignment(align_x, align_y);
+            ShowOffsetRotation(rot_x, rot_y, rot_z);
         }
 
         /// <summary>
@@ -1379,8 +1345,6 @@ namespace MirrorAlignmentSystem
 
 
         private bool can_accept = false;
-        private bool can_acceptCal = false;
-
         /// <summary>
         /// Sets the tangetial and radial ofsetts in "fine".
         /// </summary>
@@ -1403,9 +1367,9 @@ namespace MirrorAlignmentSystem
         /// <param name="rad">The rad.</param>
         public void SetTanRad(int numOfSegs)
         {
-            label4.Text = numOfSegs.ToString();
-            can_acceptCal = (numOfSegs >= 2);
-            lbl_11.BackColor = can_acceptCal ? Color.Green : Color.Red;
+            calibrateReferencePoints_label.Text = numOfSegs.ToString();
+            var canAcceptCal = (numOfSegs >= 2);
+            RotationOffsetZValue_statusLabel.BackColor = canAcceptCal ? Color.Green : Color.Red;
         }
 
         private void acceptButton_Click(object sender, EventArgs e)
