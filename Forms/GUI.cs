@@ -1628,7 +1628,7 @@ namespace MirrorAlignmentSystem
                     }
 
                     //Only add newest instance
-                    if (LoadedSegments.Any(seg => seg.Id == separatedLine[0]))
+					if (!result.Any(seg => seg.Id == separatedLine[0]))
                     {
                         result.Add(new Segment
                         {
