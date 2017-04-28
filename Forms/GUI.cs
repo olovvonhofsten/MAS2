@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
@@ -1625,26 +1626,33 @@ namespace MirrorAlignmentSystem
                     {
                         throw new Exception("Unexpected line from file: " + thisLine);
                     }
-                    result.Add(new Segment
+
+                    //Only add newest instance
+                    if (LoadedSegments.Any(seg => seg.Id == separatedLine[0]))
                     {
-                        Id = separatedLine[0],
-                        Status = Convert.ToBoolean(int.Parse(separatedLine[1])),
-                        OffsetTan = double.Parse(separatedLine[2]),
-                        OffsetRad = double.Parse(separatedLine[3]),
-                        OffsetX = 0,
-                        OffsetY = 0
-                    });
+                        result.Add(new Segment
+                        {
+                            Id = separatedLine[0],
+                            Status = Convert.ToBoolean(int.Parse(separatedLine[1])),
+                            OffsetTan = double.Parse(separatedLine[2]),
+                            OffsetRad = double.Parse(separatedLine[3]),
+                            OffsetX = 0,
+                            OffsetY = 0
+                        });
+                    }
+
                     thisLine = streamReader.ReadLine();
                 }
             }
-            throw new NotImplementedException();
+
+            return result;
         }
 
         private string GetFile()
         {
             string result;
             string path = "c://MASDATA//" + GetDiscID() + "//" + System.DateTime.Now.ToString("yyyy_MM_dd") + "//";
-            var openFileDialog = new  OpenFileDialog();
+            var openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = path;
             var dialogResult = openFileDialog.ShowDialog();
             if (dialogResult == DialogResult.OK)
