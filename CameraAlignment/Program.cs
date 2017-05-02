@@ -1,5 +1,4 @@
-﻿using MirrorAlignmentSystem;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -19,11 +18,12 @@ namespace CameraAlignment
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 
-			CameraController cameraController = new CameraController();
-			MainWindow mainWindow = new MainWindow(cameraController);
+			var cameraController = new MirrorAlignmentSystem.CameraController();
+			var mainWindow = new CameraAlignmentWindow(cameraController);
 
 			//Creates the worker
-			Worker worker = new Worker(mainWindow, cameraController);
+			var worker = new Worker(mainWindow, cameraController);
+
 			Thread oThread = new Thread(new ThreadStart(worker.Run));
 			oThread.Start();
 			Application.Run(mainWindow);
