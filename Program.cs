@@ -6,38 +6,6 @@ namespace MirrorAlignmentSystem
 {
     static class Program
     {
-        public static CameraController CameraController
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public static MainWindow MainWindow
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        public static Worker Worker
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

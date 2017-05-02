@@ -154,7 +154,6 @@
             this.menuStrip1.Size = new System.Drawing.Size(95, 27);
             this.menuStrip1.TabIndex = 19;
             this.menuStrip1.Text = "menuStrip1";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // fileToolStripMenuItem
             // 
@@ -244,7 +243,6 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1050, 600);
             this.tabControl1.TabIndex = 37;
-            this.tabControl1.TabIndexChanged += new System.EventHandler(this.tabControl1_TabIndexChanged);
             this.tabControl1.Click += new System.EventHandler(this.tabControl1_Click);
             // 
             // tabOverview
@@ -271,7 +269,6 @@
             this.tabOverview.Size = new System.Drawing.Size(1042, 548);
             this.tabOverview.TabIndex = 0;
             this.tabOverview.Text = "OVERVIEW";
-            this.tabOverview.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // LoadData_button
             // 
@@ -415,7 +412,6 @@
             this.groupBox5.TabIndex = 27;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Overview Image";
-            this.groupBox5.Enter += new System.EventHandler(this.groupBox5_Enter);
             // 
             // overviewImagePB
             // 
@@ -527,7 +523,6 @@
             this.gbCoarse.TabIndex = 26;
             this.gbCoarse.TabStop = false;
             this.gbCoarse.Text = "Coarse Alignment";
-            this.gbCoarse.Enter += new System.EventHandler(this.gbCoarse_Enter);
             // 
             // lbl_lr_2
             // 
@@ -1116,8 +1111,6 @@
             this.Text = "Mirror Alignment System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainWindow_FormClosing);
-            this.Load += new System.EventHandler(this.MainWindow_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainWindow_KeyDown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);

@@ -376,8 +376,7 @@ namespace MirrorAlignmentSystem
         {
             return manualAlignment;
         }
-
-
+        
         /// <summary>
         /// Event method for when the user presses the enter button inside the textbox displaying the number of cycles between each black image on the monitor
         /// </summary>
@@ -538,8 +537,7 @@ namespace MirrorAlignmentSystem
             BIA_timer.Enabled = true;
             DAL.InsertEvent("0", "1", CurrentUser.GetCurrentUser(), "Coarse alginment deactivated", "coarceRadioButton");
         }
-
-
+        
         /// <summary>
         /// Event method for when the user clicks the option button in the menu. creates a new OptionForm if the current user is the a admin
         /// </summary>
@@ -661,48 +659,6 @@ namespace MirrorAlignmentSystem
         }
 
         /// <summary>
-        /// Updates the label which states in which direction the engines should run
-        /// </summary>
-        /// <param name="dir">The direction to be shown to the user</param>  
-        public void ShowLeftRightDirection(string dir)
-        {
-            //if (this.dirLeftRightLabel.InvokeRequired)
-            //{
-            //	SetDirLeftRightLabelCallback d = new SetDirLeftRightLabelCallback(ShowLeftRightDirection);
-            //	this.Invoke(d, new object[] { dir });
-            //}
-            //else
-            //{
-            //	this.dirLeftRightLabel.Text = dirLeftRightLabel.Text = dir;
-            //}
-        }
-
-        /// <summary>
-        /// Updates the label which states in which direction the engines should run
-        /// </summary>
-        /// <param name="dir">The direction to be shown to the user</param>  
-        public void ShowUpDownDirection(string dir)
-        {
-            if (this.dirUpDownLabel.InvokeRequired)
-            {
-                SetDirLeftRightLabelCallback d = new SetDirLeftRightLabelCallback(ShowUpDownDirection);
-                this.Invoke(d, new object[] { dir });
-            }
-            else
-            {
-                this.dirUpDownLabel.Text = dirUpDownLabel.Text = dir;
-            }
-        }
-
-        /// <summary>
-        /// Manual button to update the overview image is updated
-        /// </summary>
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            manualUpdateOverview = true;
-        }
-
-        /// <summary>
         /// Setting the update telling the worker that the overview image should be updated
         /// </summary>
         /// <param name="value">Set or not set the value that the worker reads</param>  
@@ -717,127 +673,6 @@ namespace MirrorAlignmentSystem
         public bool GetUpdateManualOverview()
         {
             return manualUpdateOverview;
-        }
-
-        /// <summary>
-        /// Saves the settings in the DALgetmotor1spreache
-        /// </summary>
-        //private void button2_Click(object sender, EventArgs e)
-        //{
-        //string[] settings = DAL.GetSettings("User");
-
-        //}
-
-        /// <summary>
-        /// Not implemented
-        /// </summary>
-        public CreateNewUserForm CreateNewUserForm
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        /// <summary>
-        /// Not implemented
-        /// </summary>
-        public AdministrateUsersForm AdministrateUsersForm
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        /// <summary>
-        /// Not implemented
-        /// </summary>
-        public ChangePasswordForm ChangePasswordForm
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        /// <summary>
-        /// Not implemented
-        /// </summary>
-        public Eventlog Eventlog
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        /// <summary>
-        /// Not implemented
-        /// </summary>
-        public OptionForm OptionForm
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        /// <summary>
-        /// Not implemented
-        /// </summary>
-        public ImageHistory ImageHistory
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        /// <summary>
-        /// Not implemented
-        /// </summary>
-        public ImageInfo ImageInfo
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
-
-        /// <summary>
-        /// Not implemented
-        /// </summary>
-        public Login Login
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
         }
 
         /// <summary>
@@ -864,57 +699,6 @@ namespace MirrorAlignmentSystem
             ShutDownProper();
         }
 
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-            //SetToFine();
-        }
-
-        private void MainWindow_Load(object sender, EventArgs e)
-        {
-            //SetToFine();
-        }
-
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void MainWindow_KeyDown(object sender, KeyEventArgs e)
-        {
-            /* /menuStrip1.OnKeyDown(sender, e);
-			if (Alignment=="over")
-			{
-				if (e.KeyCode == Keys.Left)
-					LTbutton_Click(sender, e);
-				if (e.KeyCode == Keys.Right)
-					RTbutton_Click(sender, e);
-				if (e.KeyCode == Keys.Up)
-					UpButton_Click(sender, e);
-				if (e.KeyCode == Keys.Down)
-					DWbutton_Click(sender, e);
-			} */
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox5_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gbCoarse_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void coarseRadioButton_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void tabControl1_Click(object sender, EventArgs e)
         {
             if (tabControl1.SelectedTab == tabControl1.TabPages["tabOverview"])
@@ -937,22 +721,13 @@ namespace MirrorAlignmentSystem
                 Alignment = "calibrate";
             }
         }
-
-        private void tabControl1_TabIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         // The LIVE button has changed state
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             valueLiveCheckState = checkBox1.CheckState.ToString();
             //MessageBox.Show(valueLiveCheckState);
-        }
-
-        char toc(int i)
-        {
-            return (char)('0' + i);
         }
 
         class SegmentNumber
@@ -1247,8 +1022,7 @@ namespace MirrorAlignmentSystem
             int num = 1 + (neglft ? 0 : 2) + (negrgt ? 0 : 1);
             pb_Upper.Image = imageList1.Images[num];
         }
-
-
+        
         /// <summary>
         /// hide lower img
         /// </summary>
@@ -1277,8 +1051,7 @@ namespace MirrorAlignmentSystem
             int num = 1 + (neglft ? 0 : 2) + (negrgt ? 0 : 1);
             pb_Lower.Image = imageList1.Images[num];
         }
-
-
+        
         /// <summary>
         /// Sets the lower img.
         /// </summary>
@@ -1309,7 +1082,6 @@ namespace MirrorAlignmentSystem
             pb_Lower.Image = imageList1.Images[num];
         }
 
-
         /// <summary>
         /// Sets the fine img.
         /// </summary>
@@ -1339,9 +1111,6 @@ namespace MirrorAlignmentSystem
             int num = 1 + (neglft ? 0 : 2) + (negrgt ? 0 : 1);
             pbFine.Image = imageList1.Images[num];
         }
-
-
-
 
         private bool can_accept = false;
         /// <summary>
@@ -1428,48 +1197,6 @@ namespace MirrorAlignmentSystem
                 folder_path = folderBrowserDialog1.SelectedPath;
             }
         }
-
-        /// <summary>
-        /// Gets the chosen path.
-        /// </summary>
-        /// <returns>the path</returns>
-        //public string getChosenPath()
-        //{
-        //    return folder_path;
-        //}
-
-        //Saves all data
-        //private void SaveAllData_button_Click(object sender, EventArgs e)
-        //{
-        //    if (combinedImagePB.Image != null)
-        //    {
-        //        Bitmap saveimage = new Bitmap(combinedImagePB.Image);
-        //        saveimage.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + GetSegmentNumber() + "Fine" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
-        //    }
-
-        //    if (leftRightPBOne.Image != null)
-        //    {
-        //        Bitmap saveimageCoarseLR = new Bitmap(leftRightPBOne.Image);
-        //        Bitmap saveimageCoarseRL = new Bitmap(leftRightPBTwo.Image);
-        //        Bitmap saveimageCoarseUD = new Bitmap(upDownPBOne.Image);
-        //        Bitmap saveimageCoarseDU = new Bitmap(upDownPBTwo.Image);
-        //        saveimageCoarseLR.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + GetSegmentNumber() + "CoarseLR" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
-        //        saveimageCoarseRL.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + GetSegmentNumber() + "CoarseRL" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
-        //        saveimageCoarseUD.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + GetSegmentNumber() + "CoarseUD" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
-        //        saveimageCoarseDU.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + GetSegmentNumber() + "CoarseDU" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
-        //    }
-
-        //    if (CalibrateImgPB.Image != null)
-        //    {
-        //        Bitmap saveimageCalibrate = new Bitmap(CalibrateImgPB.Image);
-        //        string filename = "c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + "Calibrate" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp";
-        //        saveimageCalibrate.Save(filename);
-        //    }
-        //    Bitmap saveimageOverview = new Bitmap(overviewImagePB.Image);
-        //    saveimageOverview.Save("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + "Overview" + System.DateTime.Now.ToString("HH_mm_ss") + ".bmp");
-
-        //    DataSaver.instance.SaveData("c:/MASDATA/" + GetDiscID() + "/" + System.DateTime.Now.ToString("yyyy_MM_dd") + "/" + "AllData.csv");
-        //}
 
         private void sgbgFine_CheckedChanged(object sender, EventArgs e)
         {

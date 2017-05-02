@@ -8,9 +8,6 @@ using uEye.Defines;
 
 namespace MirrorAlignmentSystem
 {
-    //using uEye;
-    //using uEye.Defines;
-
     /// <summary>
     ///  This class handles everything that have to do with the camera.
     /// </summary>
@@ -22,34 +19,6 @@ namespace MirrorAlignmentSystem
         Camera camera;
 
 		static Mutex cameraLock = new Mutex();
-
-		/*
-		/// <summary>
-		/// Stop checking for thread access fails, use only during shutdown
-		/// </summary>   
-		public void StopChecking()
-		{
-			doCheck = false;
-		}
-
-		void check_id()
-		{
-			if (!doCheck) return;
-			int curr = Thread.CurrentThread.ManagedThreadId;
-			if(latestTID == 0)
-			{
-				latestTID = curr;
-			}
-			else
-			{
-				if( curr != latestTID )
-				{
-					latestTID = curr;
-					System.Windows.Forms.MessageBox.Show("Camera access requires thread syncronization", "Info", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				}
-			}
-		}
-		*/
 
         /// <summary>
         /// Initialize the camera
