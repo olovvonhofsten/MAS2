@@ -954,51 +954,6 @@
             Setting the update telling the worker that the overview image should be updated
             </summary>
         </member>
-        <member name="M:MirrorAlignmentSystem.MainWindow.button2_Click(System.Object,System.EventArgs)">
-            <summary>
-            Saves the settings in the DALgetmotor1spreache
-            </summary>
-        </member>
-        <member name="P:MirrorAlignmentSystem.MainWindow.CreateNewUserForm">
-            <summary>
-            Not implemented
-            </summary>
-        </member>
-        <member name="P:MirrorAlignmentSystem.MainWindow.AdministrateUsersForm">
-            <summary>
-            Not implemented
-            </summary>
-        </member>
-        <member name="P:MirrorAlignmentSystem.MainWindow.ChangePasswordForm">
-            <summary>
-            Not implemented
-            </summary>
-        </member>
-        <member name="P:MirrorAlignmentSystem.MainWindow.Eventlog">
-            <summary>
-            Not implemented
-            </summary>
-        </member>
-        <member name="P:MirrorAlignmentSystem.MainWindow.OptionForm">
-            <summary>
-            Not implemented
-            </summary>
-        </member>
-        <member name="P:MirrorAlignmentSystem.MainWindow.ImageHistory">
-            <summary>
-            Not implemented
-            </summary>
-        </member>
-        <member name="P:MirrorAlignmentSystem.MainWindow.ImageInfo">
-            <summary>
-            Not implemented
-            </summary>
-        </member>
-        <member name="P:MirrorAlignmentSystem.MainWindow.Login">
-            <summary>
-            Not implemented
-            </summary>
-        </member>
         <member name="M:MirrorAlignmentSystem.MainWindow.UpdateCoMLabel(System.String,System.Drawing.Point)">
             <summary>
             Updates the CoM value in the GUI
@@ -1006,30 +961,20 @@
             <param name="CoM">The CoM string</param>
             <param name="realCoMInput">beats me</param>
         </member>
-        <member name="M:MirrorAlignmentSystem.MainWindow.ShowSegnum(System.String)">
+        <member name="M:MirrorAlignmentSystem.MainWindow.ShowSegmentId(System.String)">
             <summary>
             show segment number
             </summary>
             <param name="segnum"></param>
         </member>
-        <member name="M:MirrorAlignmentSystem.MainWindow.HideSegnum">
-            <summary>
-            hide segment number
-            </summary>
-        </member>
-        <member name="M:MirrorAlignmentSystem.MainWindow.ShowAlign(System.Double,System.Double)">
+        <member name="M:MirrorAlignmentSystem.MainWindow.ShowOffsetAlignment(System.Double,System.Double)">
             <summary>
             show algnment
             </summary>
             <param name="align_x"></param>
             <param name="align_y"></param>
         </member>
-        <member name="M:MirrorAlignmentSystem.MainWindow.HideAlign">
-            <summary>
-            hide alignment
-            </summary>
-        </member>
-        <member name="M:MirrorAlignmentSystem.MainWindow.ShowRot(System.Double,System.Double,System.Double)">
+        <member name="M:MirrorAlignmentSystem.MainWindow.ShowOffsetRotation(System.Double,System.Double,System.Double)">
             <summary>
             show rotation
             </summary>
@@ -1038,11 +983,6 @@
             <param name="rot_z"></param>
         </member>
         <!-- Badly formed XML comment ignored for member "M:MirrorAlignmentSystem.MainWindow.ShowsRefSegs(System.Int32)" -->
-        <member name="M:MirrorAlignmentSystem.MainWindow.HideRot">
-            <summary>
-            hide rotation
-            </summary>
-        </member>
         <member name="M:MirrorAlignmentSystem.MainWindow.UpdateLabel(System.String,System.Double,System.Double,System.Double,System.Double,System.Double)">
             <summary>
             Updates the labels.
@@ -1053,11 +993,6 @@
             <param name="rot_x">The x rotation.</param>
             <param name="rot_y">The y rotation.</param>
             <param name="rot_z">The z rotation.</param>
-        </member>
-        <member name="M:MirrorAlignmentSystem.MainWindow.DisableLabel">
-            <summary>
-            Disables the labels.
-            </summary>
         </member>
         <member name="M:MirrorAlignmentSystem.MainWindow.HideUpperImg">
             <summary>
@@ -1118,7 +1053,7 @@
             <param name="tan">The tan.</param>
             <param name="rad">The rad.</param>
         </member>
-        <member name="M:MirrorAlignmentSystem.MainWindow.getChosenPath">
+        <member name="M:MirrorAlignmentSystem.MainWindow.sgbgFine_CheckedChanged(System.Object,System.EventArgs)">
             <summary>
             Gets the chosen path.
             </summary>
@@ -1139,6 +1074,46 @@
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.MainWindow.CreateNewUserForm">
+            <summary>
+            Not implemented
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.MainWindow.AdministrateUsersForm">
+            <summary>
+            Not implemented
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.MainWindow.ChangePasswordForm">
+            <summary>
+            Not implemented
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.MainWindow.Eventlog">
+            <summary>
+            Not implemented
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.MainWindow.OptionForm">
+            <summary>
+            Not implemented
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.MainWindow.ImageHistory">
+            <summary>
+            Not implemented
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.MainWindow.ImageInfo">
+            <summary>
+            Not implemented
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.MainWindow.Login">
+            <summary>
+            Not implemented
             </summary>
         </member>
         <member name="T:MirrorAlignmentSystem.ImageHistory">
@@ -1344,11 +1319,6 @@
             The class constructor
             </summary>
         </member>
-        <member name="P:MirrorAlignmentSystem.OptionForm.ParentWindow">
-            <summary>
-            Get or set the parent of the window
-            </summary>
-        </member>
         <member name="M:MirrorAlignmentSystem.OptionForm.OptionForm_Load(System.Object,System.EventArgs)">
             <summary>
             Event method for when the form is loaded
@@ -1378,6 +1348,11 @@
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.OptionForm.ParentWindow">
+            <summary>
+            Get or set the parent of the window
             </summary>
         </member>
         <member name="M:MirrorAlignmentSystem.Program.Main">
@@ -1436,6 +1411,11 @@
             </summary>
         </member>
         <member name="P:MirrorAlignmentSystem.Properties.Resources.Black_Background">
+            <summary>
+              Looks up a localized resource of type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:MirrorAlignmentSystem.Properties.Resources.curvedArrow">
             <summary>
               Looks up a localized resource of type System.Drawing.Bitmap.
             </summary>

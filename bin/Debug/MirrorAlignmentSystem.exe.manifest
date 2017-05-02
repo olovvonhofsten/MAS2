@@ -42,6 +42,11 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.VisualStudio.DebuggerVisualizers" version="12.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Emgu.CV.DebuggerVisualizers.VS2013.dll" size="8192">
       <assemblyIdentity name="Emgu.CV.DebuggerVisualizers.VS2013" version="3.1.0.2282" publicKeyToken="7281126722AB4438" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -90,14 +95,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MirrorAlignmentSystem.exe" size="579520">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MirrorAlignmentSystem.exe" size="635840">
       <assemblyIdentity name="MirrorAlignmentSystem" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>9mR0LtVX7DcMHiMO7fGxoc/h3o7cs0bY/y1lSyL7YOk=</dsig:DigestValue>
+        <dsig:DigestValue>CVDT6SSplGwY4eufEut9eANo/CDg170Wf/CL0R7bUJg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

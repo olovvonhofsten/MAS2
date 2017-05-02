@@ -47,8 +47,6 @@ namespace MirrorAlignmentSystem
             //Mask out the segment. Fine uses an elliptical mask
             int[] currentData = DAL.GetAOIDataRawSegment("" + segmentnr);
 
-            //DataSaver.instance.AddDataPoint("currdata", currentData);
-
             //Mask out ellipse
             // Calculate point for ideal center of gravity
             Point idealC = new Point(currentData[12] - currentData[0], currentData[13] - currentData[1]);
@@ -111,9 +109,6 @@ namespace MirrorAlignmentSystem
             massCenterOffset[0] = massCenterTemp.X - currentData[12] + currentData[0];
             //massCenterOffset[1] = currentData[13] - currentData[1] - massCenterTemp.Y;
             massCenterOffset[1] = massCenterTemp.Y - currentData[13] + currentData[1];
-
-            DataSaver.instance.AddDataPoint("Fine align", currentData);
-            DataSaver.instance.AddDataPoint("massCenter", massCenterOffset);
 
             // calculate offset in polar coordinates
             double[] offset_Rteta = new double[2];

@@ -420,7 +420,6 @@ namespace MirrorAlignmentSystem
                     label5.ForeColor = Color.Green;
                 }
                 double[] data = { double.Parse(valueZdist) };
-                DataSaver.instance.AddDataPoint("Z distance", data);
             }
         }
 
