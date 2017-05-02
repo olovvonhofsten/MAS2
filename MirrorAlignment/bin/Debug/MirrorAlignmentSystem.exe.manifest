@@ -95,14 +95,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MirrorAlignmentSystem.exe" size="635840">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MirrorAlignmentSystem.exe" size="632256">
       <assemblyIdentity name="MirrorAlignmentSystem" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>CVDT6SSplGwY4eufEut9eANo/CDg170Wf/CL0R7bUJg=</dsig:DigestValue>
+        <dsig:DigestValue>2Bj9Dc7E+kM6cUhF4ebASmPXrFS634UaEPmm7wEsABk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -114,7 +114,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>XT+JKq/n3rv/NlpqALzPdgRpBo8qdrd17HLRH6TBwfQ=</dsig:DigestValue>
+        <dsig:DigestValue>8j7CCursFJupY9H7A68+oVhczfGsIH8xU2GoDOqtzAU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

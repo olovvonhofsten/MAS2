@@ -342,7 +342,8 @@ namespace MirrorAlignmentSystem
 			try
 			{
 				myConnection.Open();
-				SqlCommand command = new SqlCommand("SELECT X,Y,Width,Height,X1,Y1,X2,Y2,X3,Y3,X4,Y4,CenterPointX,CenterPointY,PatternCenterPointX,PatternCenterPointY FROM AOIData WHERE Segment='" + segment + "'", myConnection);
+				SqlCommand command = new SqlCommand("SELECT X,Y,Width,Height,X1,Y1,X2,Y2,X3,Y3,X4,Y4,CenterPointX,CenterPointY,PatternCenterPointX,PatternCenterPointY FROM AOIData WHERE Segment='" 
+					+ segment + "'", myConnection);
 				rdr = command.ExecuteReader();
 
 				rdr.Read();

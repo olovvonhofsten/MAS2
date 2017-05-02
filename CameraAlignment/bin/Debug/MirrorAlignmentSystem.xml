@@ -630,41 +630,6 @@
             Returns an int with the max width
             </returns>
         </member>
-        <member name="T:MirrorAlignmentSystem.DataSaver">
-            <summary>
-            holding class for data
-            </summary>
-        </member>
-        <member name="M:MirrorAlignmentSystem.DataSaver.AddDataPoint(System.String,System.Int32[])">
-            <summary>
-            Add an int data point
-            </summary>
-            <param name="name"></param>
-            <param name="vals"></param>
-        </member>
-        <member name="M:MirrorAlignmentSystem.DataSaver.AddDataPoint(System.String,System.Double[])">
-            <summary>
-            Add a data point
-            </summary>
-            <param name="name"></param>
-            <param name="vals"></param>
-        </member>
-        <member name="M:MirrorAlignmentSystem.DataSaver.ClearAllData">
-            <summary>
-            clears data
-            </summary>
-        </member>
-        <member name="M:MirrorAlignmentSystem.DataSaver.SaveData(System.String)">
-            <summary>
-            save data to file
-            </summary>
-            <param name="fn"></param>
-        </member>
-        <member name="F:MirrorAlignmentSystem.DataSaver.instance">
-            <summary>
-            singleton
-            </summary>
-        </member>
         <member name="T:MirrorAlignmentSystem.Eventlog">
             <summary>
              This class handles the EventLog form
@@ -926,23 +891,6 @@
             </summary>
             <param name="image">The image to be displayed in the picturebox</param>  
         </member>
-        <member name="M:MirrorAlignmentSystem.MainWindow.ShowLeftRightDirection(System.String)">
-            <summary>
-            Updates the label which states in which direction the engines should run
-            </summary>
-            <param name="dir">The direction to be shown to the user</param>  
-        </member>
-        <member name="M:MirrorAlignmentSystem.MainWindow.ShowUpDownDirection(System.String)">
-            <summary>
-            Updates the label which states in which direction the engines should run
-            </summary>
-            <param name="dir">The direction to be shown to the user</param>  
-        </member>
-        <member name="M:MirrorAlignmentSystem.MainWindow.button1_Click_1(System.Object,System.EventArgs)">
-            <summary>
-            Manual button to update the overview image is updated
-            </summary>
-        </member>
         <member name="M:MirrorAlignmentSystem.MainWindow.SetManualUpdateOverviewImg(System.Boolean)">
             <summary>
             Setting the update telling the worker that the overview image should be updated
@@ -1053,12 +1001,6 @@
             <param name="tan">The tan.</param>
             <param name="rad">The rad.</param>
         </member>
-        <member name="M:MirrorAlignmentSystem.MainWindow.sgbgFine_CheckedChanged(System.Object,System.EventArgs)">
-            <summary>
-            Gets the chosen path.
-            </summary>
-            <returns>the path</returns>
-        </member>
         <member name="F:MirrorAlignmentSystem.MainWindow.components">
             <summary>
             Required designer variable.
@@ -1074,46 +1016,6 @@
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="P:MirrorAlignmentSystem.MainWindow.CreateNewUserForm">
-            <summary>
-            Not implemented
-            </summary>
-        </member>
-        <member name="P:MirrorAlignmentSystem.MainWindow.AdministrateUsersForm">
-            <summary>
-            Not implemented
-            </summary>
-        </member>
-        <member name="P:MirrorAlignmentSystem.MainWindow.ChangePasswordForm">
-            <summary>
-            Not implemented
-            </summary>
-        </member>
-        <member name="P:MirrorAlignmentSystem.MainWindow.Eventlog">
-            <summary>
-            Not implemented
-            </summary>
-        </member>
-        <member name="P:MirrorAlignmentSystem.MainWindow.OptionForm">
-            <summary>
-            Not implemented
-            </summary>
-        </member>
-        <member name="P:MirrorAlignmentSystem.MainWindow.ImageHistory">
-            <summary>
-            Not implemented
-            </summary>
-        </member>
-        <member name="P:MirrorAlignmentSystem.MainWindow.ImageInfo">
-            <summary>
-            Not implemented
-            </summary>
-        </member>
-        <member name="P:MirrorAlignmentSystem.MainWindow.Login">
-            <summary>
-            Not implemented
             </summary>
         </member>
         <member name="T:MirrorAlignmentSystem.ImageHistory">

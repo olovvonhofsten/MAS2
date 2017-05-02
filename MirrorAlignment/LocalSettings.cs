@@ -14,13 +14,13 @@ namespace MirrorAlignmentSystem
 
 		private static string GetVal(StreamReader sr, string name)
 		{
-			if (sr==null) return null;
+			if (sr == null) return null;
 			string val = null;
 
 			while (true)
 			{
 				string s = sr.ReadLine();
-				if (s==null) break;
+				if (s == null) break;
 				string[] arr = s.Split('#');
 				if (arr.Length != 2) continue;
 				if (arr[0].Trim() == name)
@@ -30,14 +30,14 @@ namespace MirrorAlignmentSystem
 			return val;
 		}
 
-		private static string GetVal(StreamReader sett, StreamReader loc, string name, string def="")
+		private static string GetVal(StreamReader sett, StreamReader loc, string name, string def = "")
 		{
 			string s, val = def;
 			s = GetVal(sett, name);
-			if (s!=null)
+			if (s != null)
 				val = s;
 			s = GetVal(loc, name);
-			if (s!=null)
+			if (s != null)
 				val = s;
 			return val;
 		}
@@ -48,21 +48,15 @@ namespace MirrorAlignmentSystem
 		/// <returns></returns>
 		public static string SQLString()
 		{
-			StreamReader sett = null, loc = null;
+			StreamReader settingsStreamReader = null, localStreamReader = null;
+			var solutionPath = Directory.GetParent(System.IO.Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+			var settingsPath = Path.Combine(solutionPath, "settings.txt");
+			settingsStreamReader = new StreamReader(settingsPath);
 
-			//string lwd = Directory.GetCurrentDirectory();
-			//MessageBox.Show(lwd);
+			var localPath = Path.Combine(solutionPath, "local.txt");
+			localStreamReader = new StreamReader(localPath);
 
-			try
-			{
-				sett = new StreamReader("settings.txt");
-			} catch {}
-
-
-			try { loc = new StreamReader("local.txt"); }
-			catch { }
-
-			return GetVal(sett, loc, "SQLString");
+			return GetVal(settingsStreamReader, localStreamReader, "SQLString");
 		}
 
 	}
