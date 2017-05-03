@@ -93,8 +93,6 @@ namespace CameraAlignment
 			// Connect Event
 			_camera.EventFrame += onFrameEvent;
 
-			//uEye.Types.Range<Double> range;
-			// statusRet = _camera.Timing.Exposure.GetRange(out range);
 			UpdateExposure();
 		}
 

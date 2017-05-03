@@ -150,7 +150,7 @@
 			// ExposureMax_label
 			// 
 			this.ExposureMax_label.AutoSize = true;
-			this.ExposureMax_label.Location = new System.Drawing.Point(809, 45);
+			this.ExposureMax_label.Location = new System.Drawing.Point(770, 45);
 			this.ExposureMax_label.Name = "ExposureMax_label";
 			this.ExposureMax_label.Size = new System.Drawing.Size(27, 13);
 			this.ExposureMax_label.TabIndex = 13;
