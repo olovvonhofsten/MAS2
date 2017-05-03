@@ -1,20 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Emgu.CV;
-using Emgu.CV.Structure;
-using Emgu.Util;
-using MirrorAlignmentSystem;
 
 namespace CameraAlignment
 {
-	public partial class CameraAlignmentWindow : Form
+    public partial class CameraAlignmentWindow : Form
 	{
 		private uEye.Camera _camera;
 		IntPtr displayHandle = IntPtr.Zero;
@@ -112,12 +102,9 @@ namespace CameraAlignment
 			Camera.Memory.GetActive(out s32MemID);
 
 			//TODO: displayHandle is never set. What is it used for?
-
 			Camera.Display.Render(s32MemID, displayHandle, uEye.Defines.DisplayRenderMode.FitToWindow);
-
 		}
 
-		//TODO: not used?
 		private void UpdateOverlayInformation()
 		{
 			uEye.Types.Size<UInt32> overlaySize;
@@ -126,7 +113,6 @@ namespace CameraAlignment
 			statusRet = _camera.DirectRenderer.Overlay.GetSize(out overlaySize);
 		}
 
-		//TODO: not used?
 		private void UpdateImageInformation()
 		{
 			/* open the camera */
@@ -201,7 +187,6 @@ namespace CameraAlignment
 			const double pixelLength_mrad_per_pixel = 0.71;
 
 			var xOffset_mm = double.Parse(xOffsetTB.Text);
-			//var yOffset_mm = double.Parse(yOffsetTB.Text);
 			var zDistance_mm = double.Parse(zOffsetTB.Text);
 
 			return ((xOffset_mm / zDistance_mm) / pixelLength_mrad_per_pixel) * 1000;
@@ -211,7 +196,6 @@ namespace CameraAlignment
 		{
 			const double pixelLength_mrad_per_pixel = 0.71;
 
-			//var xOffset_mm = double.Parse(xOffsetTB.Text);
 			var yOffset_mm = double.Parse(yOffsetTB.Text);
 			var zDistance_mm = double.Parse(zOffsetTB.Text);
 
