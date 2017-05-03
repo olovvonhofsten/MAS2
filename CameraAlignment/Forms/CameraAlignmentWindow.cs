@@ -92,6 +92,10 @@ namespace CameraAlignment
 
 			// Connect Event
 			_camera.EventFrame += onFrameEvent;
+
+			//uEye.Types.Range<Double> range;
+			// statusRet = _camera.Timing.Exposure.GetRange(out range);
+			UpdateExposure();
 		}
 
 		private void onFrameEvent(object sender, EventArgs e)
@@ -201,5 +205,45 @@ namespace CameraAlignment
 
 			return ((yOffset_mm / zDistance_mm) / pixelLength_mrad_per_pixel) * 1000;
 		}
+
+		private void UpdateExposure()
+		{
+			uEye.Defines.Status statusRet;
+			uEye.Types.Range<Double> range;
+
+			statusRet = _camera.Timing.Exposure.GetRange(out range);
+
+			ExposureMin_label.Text = Math.Round(range.Minimum, 2) + " ms";
+			ExposureMax_label.Text = Math.Round(range.Maximum, 2) + " ms";
+
+			// trackbar range
+			Int32 s32Step = Convert.ToInt32((range.Maximum - range.Minimum) / range.Increment + 0.0005);
+			Exposure_trackBar.SetRange(0, s32Step);
+
+			Double dValue;
+			statusRet = _camera.Timing.Exposure.Get(out dValue);
+
+			Int32 s32Value = Convert.ToInt32((dValue - range.Minimum) / range.Increment + 0.0005);
+			Exposure_trackBar.Value = s32Value > Exposure_trackBar.Maximum ? Exposure_trackBar.Maximum : s32Value;
+		}
+
+		private void Exposure_trackBar_Scroll(object sender, EventArgs e)
+		{
+			if (Exposure_trackBar.Focused)
+			{
+				uEye.Defines.Status statusRet;
+				uEye.Types.Range<Double> range;
+
+				statusRet = _camera.Timing.Exposure.GetRange(out range);
+
+				// calculate exposure
+				Double dValue = range.Minimum + Exposure_trackBar.Value * range.Increment;
+
+				// set exposure
+				statusRet = _camera.Timing.Exposure.Set(dValue);
+			}
+
+		}
+
 	}
 }
