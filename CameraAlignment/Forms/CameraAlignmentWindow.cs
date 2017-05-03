@@ -145,7 +145,6 @@ namespace CameraAlignment
 			Graphics graph;
 			_camera.DirectRenderer.Overlay.GetGraphics(out graph);
 
-			var RedPen = new Pen(Color.Red, 10);
 
 			uEye.Types.Size<UInt32> overlaySize;
 			statusRet = _camera.DirectRenderer.Overlay.GetSize(out overlaySize);
@@ -154,14 +153,47 @@ namespace CameraAlignment
 			var xOffset = GetXOffset();
 			var yOffset = GetYOffset();
 
-			var overlayOffset = new Point(overlayCenter.X + (int)xOffset, overlayCenter.Y + (int)yOffset);
+			var overlayOffset = new Point(overlayCenter.X - (int)xOffset, overlayCenter.Y - (int)yOffset);
 
-			graph.DrawLine(RedPen, new Point(overlayOffset.X - 50, overlayOffset.Y), new Point(overlayOffset.X + 50, overlayOffset.Y));
-			graph.DrawLine(RedPen, new Point(overlayOffset.X, overlayOffset.Y - 50), new Point(overlayOffset.X, overlayOffset.Y + 50));
+			DrawOffsetCrosshair(graph, overlayOffset);
+			DrawCenterReferenceCircle(graph, overlayCenter);
 
 			// show overlay
 			_camera.DirectRenderer.Overlay.Show();
-			//_camera.DirectRenderer.Update();
+		}
+
+		private void DrawCenterReferenceCircle(Graphics graph, Point center)
+		{
+			const int circleRadius = 20;
+			
+			var bluePen = new Pen(Color.Blue, 5);
+
+			graph.DrawEllipse(bluePen, center.X-circleRadius/2, center.Y-circleRadius/2, circleRadius, circleRadius);
+		}
+
+		private void DrawOffsetCrosshair(Graphics graph, Point overlayOffset)
+		{
+			const int crosshairLineLength = 40;
+			const int crosshairCenterSpace = 30;
+			const int crosshairCenterSpace_half = crosshairCenterSpace / 2;
+
+			var redPen = new Pen(Color.Red, 7);
+
+			//Horizontal
+			graph.DrawLine(redPen,
+				new Point(overlayOffset.X - (crosshairLineLength + crosshairCenterSpace_half), overlayOffset.Y),
+				new Point(overlayOffset.X - crosshairCenterSpace_half, overlayOffset.Y));
+			graph.DrawLine(redPen,
+				new Point(overlayOffset.X + (crosshairLineLength + crosshairCenterSpace_half), overlayOffset.Y),
+				new Point(overlayOffset.X + crosshairCenterSpace_half, overlayOffset.Y));
+
+			//Vertical
+			graph.DrawLine(redPen,
+				new Point(overlayOffset.X, overlayOffset.Y - (crosshairLineLength + crosshairCenterSpace_half)),
+				new Point(overlayOffset.X, overlayOffset.Y - crosshairCenterSpace_half));
+			graph.DrawLine(redPen,
+				new Point(overlayOffset.X, overlayOffset.Y + (crosshairLineLength + crosshairCenterSpace_half)),
+				new Point(overlayOffset.X, overlayOffset.Y + crosshairCenterSpace_half));		
 		}
 
 		private double GetXOffset()
@@ -172,7 +204,7 @@ namespace CameraAlignment
 			//var yOffset_mm = double.Parse(yOffsetTB.Text);
 			var zDistance_mm = double.Parse(zOffsetTB.Text);
 
-			return (xOffset_mm / zDistance_mm) / pixelLength_mrad_per_pixel;
+			return ((xOffset_mm / zDistance_mm) / pixelLength_mrad_per_pixel) * 1000;
 		}
 
 		private double GetYOffset()
@@ -183,7 +215,7 @@ namespace CameraAlignment
 			var yOffset_mm = double.Parse(yOffsetTB.Text);
 			var zDistance_mm = double.Parse(zOffsetTB.Text);
 
-			return (yOffset_mm / zDistance_mm) / pixelLength_mrad_per_pixel;
+			return ((yOffset_mm / zDistance_mm) / pixelLength_mrad_per_pixel) * 1000;
 		}
 	}
 }
