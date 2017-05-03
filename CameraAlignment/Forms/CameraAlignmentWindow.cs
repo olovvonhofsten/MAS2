@@ -16,58 +16,174 @@ namespace CameraAlignment
 {
 	public partial class CameraAlignmentWindow : Form
 	{
-		CameraController _cameraController;
-
-		delegate void SetOverviewImageCallback(Bitmap image);
-
+		private uEye.Camera _camera;
+		IntPtr displayHandle = IntPtr.Zero;
+		private System.Drawing.Color m_OverlayColor = System.Drawing.Color.Black;
 
 		/// <summary>
 		/// The class constructor
 		/// </summary>
-		public CameraAlignmentWindow(CameraController inputCamera)
+		public CameraAlignmentWindow()
 		{
 			InitializeComponent();
-
-			_cameraController = inputCamera;
-
-			CurrentUser.SetCurrentUser("Admin");
-			CurrentUser.SetCurrentUserType("Admin");
-
-			//Create path
-			//string pathToday = "C:/MASDATA/" + valueDiscIDTextBox + "/" + System.DateTime.Now.ToString("yyyy_MM_dd");
-			//System.IO.Directory.CreateDirectory(pathToday);
-
-			//DiscIDTextBox.Text = "NOT SET";
-			//valueDiscIDTextBox = DiscIDTextBox.Text;
-			//SegmentNumberTextbox.Text = "0911";
-			//valueSegmentNumberTextbox = SegmentNumberTextbox.Text;
-			//finePBshow = "sgbg";
-			//exposureSlider.Value = 100;
-
-			CheckForIllegalCrossThreadCalls = false;
-
-			//SetSegmentControllerArrows();
-			//exposureSlider.SetThumbRect();
-			//ShowSegmentId(valueSegmentNumberTextbox);
 		}
 
-		/// <summary>
-		/// Updates the picturebox which contains the overview image for the segment
-		/// </summary>
-		/// <param name="image">The image to be displayed in the picturebox</param>    
-		public void ShowOverviewBitmap(Bitmap image)
+		private void InitCamera(object sender, EventArgs e)
 		{
-			if (this.CameraAlignment_pictureBox.InvokeRequired)
+			bool bDirect3D = false;
+			bool bOpenGL = false;
+
+			uEye.Defines.Status statusRet;
+			_camera = new uEye.Camera();
+
+			// open first available camera
+			statusRet = _camera.Init(0, CameraAlignment_pictureBox.Handle.ToInt32());
+			if (statusRet == uEye.Defines.Status.SUCCESS)
 			{
-				SetOverviewImageCallback d = new SetOverviewImageCallback(ShowOverviewBitmap);
-				this.Invoke(d, new object[] { image.Clone() });
+				uEye.Defines.DisplayMode supportedMode;
+				statusRet = _camera.DirectRenderer.GetSupported(out supportedMode);
+
+				if ((supportedMode & uEye.Defines.DisplayMode.Direct3D) == uEye.Defines.DisplayMode.Direct3D)
+				{
+					bDirect3D = true;
+				}
+				else
+				{
+					bDirect3D = false;
+				}
+
+				if ((supportedMode & uEye.Defines.DisplayMode.OpenGL) == uEye.Defines.DisplayMode.OpenGL)
+				{
+					bOpenGL = true;
+				}
+				else
+				{
+					bOpenGL = false;
+				}
+
+				if (((supportedMode & uEye.Defines.DisplayMode.Direct3D) == uEye.Defines.DisplayMode.Direct3D) ||
+					((supportedMode & uEye.Defines.DisplayMode.OpenGL) == uEye.Defines.DisplayMode.OpenGL))
+				{
+
+					if (bOpenGL == true)
+					{
+						// set display mode
+						statusRet = _camera.Display.Mode.Set(uEye.Defines.DisplayMode.OpenGL);
+					}
+
+					if (bDirect3D == true)
+					{
+						// set display mode
+						statusRet = _camera.Display.Mode.Set(uEye.Defines.DisplayMode.Direct3D);
+					}
+
+					// start live
+					_camera.Acquisition.Capture();
+					_camera.DirectRenderer.EnableScaling();
+
+					// update information
+					UpdateOverlayInformation();
+					UpdateImageInformation();
+
+					// set default key color
+					m_OverlayColor = System.Drawing.Color.Black; //TODO: what does this do?
+				}
+				else
+				{
+					MessageBox.Show("Direct3D and OpenGL are not supported");
+					Close();
+				}
 			}
 			else
 			{
-				CameraAlignment_pictureBox.Image = null;
-				CameraAlignment_pictureBox.Image = (Bitmap)image.Clone();
+				MessageBox.Show("Start Live Video failed");
+
 			}
+
+			// Connect Event
+			_camera.EventFrame += onFrameEvent;
 		}
 
+		private void onFrameEvent(object sender, EventArgs e)
+		{
+			uEye.Camera Camera = sender as uEye.Camera;
+
+			Int32 s32MemID;
+			Camera.Memory.GetActive(out s32MemID);
+
+			//TODO: displayHandle is never set. What is it used for?
+
+			Camera.Display.Render(s32MemID, displayHandle, uEye.Defines.DisplayRenderMode.FitToWindow);
+
+		}
+
+		//TODO: not used?
+		private void UpdateOverlayInformation()
+		{
+			uEye.Types.Size<UInt32> overlaySize;
+			uEye.Defines.Status statusRet;
+
+			statusRet = _camera.DirectRenderer.Overlay.GetSize(out overlaySize);
+		}
+
+		//TODO: not used?
+		private void UpdateImageInformation()
+		{
+			/* open the camera */
+			System.Drawing.Rectangle imageRect;
+			uEye.Defines.Status statusRet;
+
+			statusRet = _camera.Size.AOI.Get(out imageRect);
+		}
+
+		private void SetCrosshair_button_Click(object sender, EventArgs e)
+		{
+			uEye.Defines.Status statusRet;
+			statusRet = _camera.DirectRenderer.Overlay.Clear();
+
+			// get graphics
+			Graphics graph;
+			_camera.DirectRenderer.Overlay.GetGraphics(out graph);
+
+			var RedPen = new Pen(Color.Red, 10);
+
+			uEye.Types.Size<UInt32> overlaySize;
+			statusRet = _camera.DirectRenderer.Overlay.GetSize(out overlaySize);
+
+			var overlayCenter = new Point((int)overlaySize.Width / 2, (int)overlaySize.Height / 2);
+			var xOffset = GetXOffset();
+			var yOffset = GetYOffset();
+
+			var overlayOffset = new Point(overlayCenter.X + (int)xOffset, overlayCenter.Y + (int)yOffset);
+
+			graph.DrawLine(RedPen, new Point(overlayOffset.X - 50, overlayOffset.Y), new Point(overlayOffset.X + 50, overlayOffset.Y));
+			graph.DrawLine(RedPen, new Point(overlayOffset.X, overlayOffset.Y - 50), new Point(overlayOffset.X, overlayOffset.Y + 50));
+
+			// show overlay
+			_camera.DirectRenderer.Overlay.Show();
+			//_camera.DirectRenderer.Update();
+		}
+
+		private double GetXOffset()
+		{
+			const double pixelLength_mrad_per_pixel = 0.71;
+
+			var xOffset_mm = double.Parse(xOffsetTB.Text);
+			//var yOffset_mm = double.Parse(yOffsetTB.Text);
+			var zDistance_mm = double.Parse(zOffsetTB.Text);
+
+			return (xOffset_mm / zDistance_mm) / pixelLength_mrad_per_pixel;
+		}
+
+		private double GetYOffset()
+		{
+			const double pixelLength_mrad_per_pixel = 0.71;
+
+			//var xOffset_mm = double.Parse(xOffsetTB.Text);
+			var yOffset_mm = double.Parse(yOffsetTB.Text);
+			var zDistance_mm = double.Parse(zOffsetTB.Text);
+
+			return (yOffset_mm / zDistance_mm) / pixelLength_mrad_per_pixel;
+		}
 	}
 }

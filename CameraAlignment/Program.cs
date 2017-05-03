@@ -17,16 +17,7 @@ namespace CameraAlignment
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-
-			var cameraController = new MirrorAlignmentSystem.CameraController();
-			var mainWindow = new CameraAlignmentWindow(cameraController);
-
-			//Creates the worker
-			var worker = new Worker(mainWindow, cameraController);
-
-			Thread oThread = new Thread(new ThreadStart(worker.Run));
-			oThread.Start();
-			Application.Run(mainWindow);
+			Application.Run(new CameraAlignmentWindow());
 		}
 	}
 }
