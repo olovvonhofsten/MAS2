@@ -60,3 +60,15 @@ obj
 MAS2.v12.suo
 local.txt
 *.suo
+*.exe
+*.bmp
+*.pdb
+*.exe
+*.application
+bin/Debug/app.publish/MirrorAlignmentSystem.exe
+*.dll
+*.dll
+bin/Release/opclib.dat
+*.xml
+bin/Debug/app.publish/MirrorAlignmentSystem.exe
+bin/x86/Release/settings.txt
